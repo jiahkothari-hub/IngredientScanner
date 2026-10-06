@@ -1,0 +1,9 @@
+[server]
+maxUploadSize = 15          # MB, enough for phone photos
+headless = true
+
+[browser]
+gatherUsageStats = false
+
+[theme]
+primaryColor = "#2a78d6"

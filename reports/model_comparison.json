@@ -1,0 +1,1890 @@
+{
+  "summary_f1": {
+    "dictionary": {
+      "silver_test": 1.0,
+      "noisy_test_0.05": 0.8616,
+      "noisy_test_0.10": 0.7342,
+      "sentences_per_second": 1113.9
+    },
+    "crf": {
+      "silver_test": 0.9491,
+      "noisy_test_0.05": 0.8722,
+      "noisy_test_0.10": 0.7956,
+      "sentences_per_second": 664.0
+    },
+    "bert": {
+      "silver_test": 0.9292,
+      "noisy_test_0.05": 0.852,
+      "noisy_test_0.10": 0.7669,
+      "sentences_per_second": 14.4
+    },
+    "distilbert": {
+      "silver_test": 0.9426,
+      "noisy_test_0.05": 0.8345,
+      "noisy_test_0.10": 0.7186,
+      "sentences_per_second": 46.9
+    },
+    "distilbert_aug": {
+      "silver_test": 0.9397,
+      "noisy_test_0.05": 0.9222,
+      "noisy_test_0.10": 0.9004,
+      "sentences_per_second": 44.5
+    },
+    "distilbert_crf": {
+      "silver_test": 0.9498,
+      "noisy_test_0.05": 0.8509,
+      "noisy_test_0.10": 0.7472,
+      "sentences_per_second": 48.3
+    }
+  },
+  "details": {
+    "dictionary": {
+      "silver_test": {
+        "micro": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 16127,
+          "predicted": 16127,
+          "correct": 16127
+        },
+        "macro_f1": 1.0,
+        "per_class": {
+          "SUGAR": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 1150,
+            "predicted": 1150,
+            "correct": 1150
+          },
+          "SWEETENER": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 89,
+            "predicted": 89,
+            "correct": 89
+          },
+          "FAT": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 950,
+            "predicted": 950,
+            "correct": 950
+          },
+          "PRESERVATIVE": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 146,
+            "predicted": 146,
+            "correct": 146
+          },
+          "COLOUR": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 219,
+            "predicted": 219,
+            "correct": 219
+          },
+          "ADDITIVE": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 1444,
+            "predicted": 1444,
+            "correct": 1444
+          },
+          "INS_CODE": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 697,
+            "predicted": 697,
+            "correct": 697
+          },
+          "FUNCTION_CLASS": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 1091,
+            "predicted": 1091,
+            "correct": 1091
+          },
+          "FLAVOURING": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 581,
+            "predicted": 581,
+            "correct": 581
+          },
+          "INGREDIENT": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 9760,
+            "predicted": 9760,
+            "correct": 9760
+          }
+        },
+        "partial_micro": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 16127,
+          "predicted": 16127,
+          "correct": 16127
+        },
+        "documents": 1000
+      },
+      "noisy_test_0.05": {
+        "micro": {
+          "precision": 0.9669,
+          "recall": 0.777,
+          "f1": 0.8616,
+          "support": 16127,
+          "predicted": 12960,
+          "correct": 12531
+        },
+        "macro_f1": 0.8628,
+        "per_class": {
+          "SUGAR": {
+            "precision": 0.9842,
+            "recall": 0.867,
+            "f1": 0.9219,
+            "support": 1150,
+            "predicted": 1013,
+            "correct": 997
+          },
+          "SWEETENER": {
+            "precision": 1.0,
+            "recall": 0.7416,
+            "f1": 0.8516,
+            "support": 89,
+            "predicted": 66,
+            "correct": 66
+          },
+          "FAT": {
+            "precision": 0.9821,
+            "recall": 0.8642,
+            "f1": 0.9194,
+            "support": 950,
+            "predicted": 836,
+            "correct": 821
+          },
+          "PRESERVATIVE": {
+            "precision": 0.9811,
+            "recall": 0.7123,
+            "f1": 0.8254,
+            "support": 146,
+            "predicted": 106,
+            "correct": 104
+          },
+          "COLOUR": {
+            "precision": 0.988,
+            "recall": 0.7534,
+            "f1": 0.8549,
+            "support": 219,
+            "predicted": 167,
+            "correct": 165
+          },
+          "ADDITIVE": {
+            "precision": 0.9564,
+            "recall": 0.6683,
+            "f1": 0.7868,
+            "support": 1444,
+            "predicted": 1009,
+            "correct": 965
+          },
+          "INS_CODE": {
+            "precision": 0.9673,
+            "recall": 0.8494,
+            "f1": 0.9045,
+            "support": 697,
+            "predicted": 612,
+            "correct": 592
+          },
+          "FUNCTION_CLASS": {
+            "precision": 0.9747,
+            "recall": 0.7424,
+            "f1": 0.8429,
+            "support": 1091,
+            "predicted": 831,
+            "correct": 810
+          },
+          "FLAVOURING": {
+            "precision": 0.9658,
+            "recall": 0.778,
+            "f1": 0.8618,
+            "support": 581,
+            "predicted": 468,
+            "correct": 452
+          },
+          "INGREDIENT": {
+            "precision": 0.9627,
+            "recall": 0.7745,
+            "f1": 0.8584,
+            "support": 9760,
+            "predicted": 7852,
+            "correct": 7559
+          }
+        },
+        "partial_micro": {
+          "precision": 0.9736,
+          "recall": 0.7824,
+          "f1": 0.8676,
+          "support": 16127,
+          "predicted": 12960,
+          "correct": 12618
+        },
+        "documents": 1000
+      },
+      "noisy_test_0.10": {
+        "micro": {
+          "precision": 0.9338,
+          "recall": 0.6049,
+          "f1": 0.7342,
+          "support": 16127,
+          "predicted": 10448,
+          "correct": 9756
+        },
+        "macro_f1": 0.7185,
+        "per_class": {
+          "SUGAR": {
+            "precision": 0.9742,
+            "recall": 0.7226,
+            "f1": 0.8298,
+            "support": 1150,
+            "predicted": 853,
+            "correct": 831
+          },
+          "SWEETENER": {
+            "precision": 1.0,
+            "recall": 0.573,
+            "f1": 0.7286,
+            "support": 89,
+            "predicted": 51,
+            "correct": 51
+          },
+          "FAT": {
+            "precision": 0.9427,
+            "recall": 0.7274,
+            "f1": 0.8212,
+            "support": 950,
+            "predicted": 733,
+            "correct": 691
+          },
+          "PRESERVATIVE": {
+            "precision": 0.9688,
+            "recall": 0.4247,
+            "f1": 0.5905,
+            "support": 146,
+            "predicted": 64,
+            "correct": 62
+          },
+          "COLOUR": {
+            "precision": 0.9762,
+            "recall": 0.5616,
+            "f1": 0.713,
+            "support": 219,
+            "predicted": 126,
+            "correct": 123
+          },
+          "ADDITIVE": {
+            "precision": 0.9326,
+            "recall": 0.4598,
+            "f1": 0.616,
+            "support": 1444,
+            "predicted": 712,
+            "correct": 664
+          },
+          "INS_CODE": {
+            "precision": 0.9437,
+            "recall": 0.6499,
+            "f1": 0.7698,
+            "support": 697,
+            "predicted": 480,
+            "correct": 453
+          },
+          "FUNCTION_CLASS": {
+            "precision": 0.952,
+            "recall": 0.5087,
+            "f1": 0.6631,
+            "support": 1091,
+            "predicted": 583,
+            "correct": 555
+          },
+          "FLAVOURING": {
+            "precision": 0.9311,
+            "recall": 0.5818,
+            "f1": 0.7161,
+            "support": 581,
+            "predicted": 363,
+            "correct": 338
+          },
+          "INGREDIENT": {
+            "precision": 0.9236,
+            "recall": 0.6135,
+            "f1": 0.7373,
+            "support": 9760,
+            "predicted": 6483,
+            "correct": 5988
+          }
+        },
+        "partial_micro": {
+          "precision": 0.9453,
+          "recall": 0.6124,
+          "f1": 0.7433,
+          "support": 16127,
+          "predicted": 10448,
+          "correct": 9876
+        },
+        "documents": 1000
+      }
+    },
+    "crf": {
+      "silver_test": {
+        "micro": {
+          "precision": 0.9364,
+          "recall": 0.9622,
+          "f1": 0.9491,
+          "support": 16127,
+          "predicted": 16572,
+          "correct": 15518
+        },
+        "macro_f1": 0.9453,
+        "per_class": {
+          "SUGAR": {
+            "precision": 0.9665,
+            "recall": 0.9774,
+            "f1": 0.9719,
+            "support": 1150,
+            "predicted": 1163,
+            "correct": 1124
+          },
+          "SWEETENER": {
+            "precision": 0.9634,
+            "recall": 0.8876,
+            "f1": 0.924,
+            "support": 89,
+            "predicted": 82,
+            "correct": 79
+          },
+          "FAT": {
+            "precision": 0.9595,
+            "recall": 0.9726,
+            "f1": 0.966,
+            "support": 950,
+            "predicted": 963,
+            "correct": 924
+          },
+          "PRESERVATIVE": {
+            "precision": 0.9463,
+            "recall": 0.9658,
+            "f1": 0.9559,
+            "support": 146,
+            "predicted": 149,
+            "correct": 141
+          },
+          "COLOUR": {
+            "precision": 0.9498,
+            "recall": 0.9498,
+            "f1": 0.9498,
+            "support": 219,
+            "predicted": 219,
+            "correct": 208
+          },
+          "ADDITIVE": {
+            "precision": 0.9421,
+            "recall": 0.9688,
+            "f1": 0.9553,
+            "support": 1444,
+            "predicted": 1485,
+            "correct": 1399
+          },
+          "INS_CODE": {
+            "precision": 0.8623,
+            "recall": 0.9254,
+            "f1": 0.8927,
+            "support": 697,
+            "predicted": 748,
+            "correct": 645
+          },
+          "FUNCTION_CLASS": {
+            "precision": 0.9366,
+            "recall": 0.9615,
+            "f1": 0.9489,
+            "support": 1091,
+            "predicted": 1120,
+            "correct": 1049
+          },
+          "FLAVOURING": {
+            "precision": 0.9398,
+            "recall": 0.9398,
+            "f1": 0.9398,
+            "support": 581,
+            "predicted": 581,
+            "correct": 546
+          },
+          "INGREDIENT": {
+            "precision": 0.9345,
+            "recall": 0.9634,
+            "f1": 0.9487,
+            "support": 9760,
+            "predicted": 10062,
+            "correct": 9403
+          }
+        },
+        "partial_micro": {
+          "precision": 0.942,
+          "recall": 0.968,
+          "f1": 0.9548,
+          "support": 16127,
+          "predicted": 16572,
+          "correct": 15611
+        },
+        "documents": 1000
+      },
+      "noisy_test_0.05": {
+        "micro": {
+          "precision": 0.8963,
+          "recall": 0.8493,
+          "f1": 0.8722,
+          "support": 16127,
+          "predicted": 15281,
+          "correct": 13697
+        },
+        "macro_f1": 0.8502,
+        "per_class": {
+          "SUGAR": {
+            "precision": 0.9639,
+            "recall": 0.8591,
+            "f1": 0.9085,
+            "support": 1150,
+            "predicted": 1025,
+            "correct": 988
+          },
+          "SWEETENER": {
+            "precision": 0.9524,
+            "recall": 0.6742,
+            "f1": 0.7895,
+            "support": 89,
+            "predicted": 63,
+            "correct": 60
+          },
+          "FAT": {
+            "precision": 0.9407,
+            "recall": 0.8189,
+            "f1": 0.8756,
+            "support": 950,
+            "predicted": 827,
+            "correct": 778
+          },
+          "PRESERVATIVE": {
+            "precision": 0.9646,
+            "recall": 0.7466,
+            "f1": 0.8417,
+            "support": 146,
+            "predicted": 113,
+            "correct": 109
+          },
+          "COLOUR": {
+            "precision": 0.9556,
+            "recall": 0.7854,
+            "f1": 0.8622,
+            "support": 219,
+            "predicted": 180,
+            "correct": 172
+          },
+          "ADDITIVE": {
+            "precision": 0.9317,
+            "recall": 0.7175,
+            "f1": 0.8106,
+            "support": 1444,
+            "predicted": 1112,
+            "correct": 1036
+          },
+          "INS_CODE": {
+            "precision": 0.84,
+            "recall": 0.8436,
+            "f1": 0.8418,
+            "support": 697,
+            "predicted": 700,
+            "correct": 588
+          },
+          "FUNCTION_CLASS": {
+            "precision": 0.9242,
+            "recall": 0.7709,
+            "f1": 0.8406,
+            "support": 1091,
+            "predicted": 910,
+            "correct": 841
+          },
+          "FLAVOURING": {
+            "precision": 0.916,
+            "recall": 0.7883,
+            "f1": 0.8474,
+            "support": 581,
+            "predicted": 500,
+            "correct": 458
+          },
+          "INGREDIENT": {
+            "precision": 0.8798,
+            "recall": 0.888,
+            "f1": 0.8839,
+            "support": 9760,
+            "predicted": 9851,
+            "correct": 8667
+          }
+        },
+        "partial_micro": {
+          "precision": 0.9121,
+          "recall": 0.8643,
+          "f1": 0.8875,
+          "support": 16127,
+          "predicted": 15281,
+          "correct": 13938
+        },
+        "documents": 1000
+      },
+      "noisy_test_0.10": {
+        "micro": {
+          "precision": 0.8534,
+          "recall": 0.7451,
+          "f1": 0.7956,
+          "support": 16127,
+          "predicted": 14081,
+          "correct": 12017
+        },
+        "macro_f1": 0.7437,
+        "per_class": {
+          "SUGAR": {
+            "precision": 0.9521,
+            "recall": 0.7252,
+            "f1": 0.8233,
+            "support": 1150,
+            "predicted": 876,
+            "correct": 834
+          },
+          "SWEETENER": {
+            "precision": 0.9412,
+            "recall": 0.5393,
+            "f1": 0.6857,
+            "support": 89,
+            "predicted": 51,
+            "correct": 48
+          },
+          "FAT": {
+            "precision": 0.9331,
+            "recall": 0.6611,
+            "f1": 0.7739,
+            "support": 950,
+            "predicted": 673,
+            "correct": 628
+          },
+          "PRESERVATIVE": {
+            "precision": 0.9605,
+            "recall": 0.5,
+            "f1": 0.6577,
+            "support": 146,
+            "predicted": 76,
+            "correct": 73
+          },
+          "COLOUR": {
+            "precision": 0.951,
+            "recall": 0.621,
+            "f1": 0.7514,
+            "support": 219,
+            "predicted": 143,
+            "correct": 136
+          },
+          "ADDITIVE": {
+            "precision": 0.911,
+            "recall": 0.5457,
+            "f1": 0.6825,
+            "support": 1444,
+            "predicted": 865,
+            "correct": 788
+          },
+          "INS_CODE": {
+            "precision": 0.8212,
+            "recall": 0.7575,
+            "f1": 0.7881,
+            "support": 697,
+            "predicted": 643,
+            "correct": 528
+          },
+          "FUNCTION_CLASS": {
+            "precision": 0.9231,
+            "recall": 0.594,
+            "f1": 0.7228,
+            "support": 1091,
+            "predicted": 702,
+            "correct": 648
+          },
+          "FLAVOURING": {
+            "precision": 0.8889,
+            "recall": 0.6196,
+            "f1": 0.7302,
+            "support": 581,
+            "predicted": 405,
+            "correct": 360
+          },
+          "INGREDIENT": {
+            "precision": 0.8266,
+            "recall": 0.817,
+            "f1": 0.8218,
+            "support": 9760,
+            "predicted": 9647,
+            "correct": 7974
+          }
+        },
+        "partial_micro": {
+          "precision": 0.8787,
+          "recall": 0.7672,
+          "f1": 0.8192,
+          "support": 16127,
+          "predicted": 14081,
+          "correct": 12373
+        },
+        "documents": 1000
+      }
+    },
+    "bert": {
+      "silver_test": {
+        "micro": {
+          "precision": 0.912,
+          "recall": 0.947,
+          "f1": 0.9292,
+          "support": 16127,
+          "predicted": 16747,
+          "correct": 15273
+        },
+        "macro_f1": 0.9096,
+        "per_class": {
+          "SUGAR": {
+            "precision": 0.9559,
+            "recall": 0.98,
+            "f1": 0.9678,
+            "support": 1150,
+            "predicted": 1179,
+            "correct": 1127
+          },
+          "SWEETENER": {
+            "precision": 0.8667,
+            "recall": 0.8764,
+            "f1": 0.8715,
+            "support": 89,
+            "predicted": 90,
+            "correct": 78
+          },
+          "FAT": {
+            "precision": 0.9252,
+            "recall": 0.9632,
+            "f1": 0.9438,
+            "support": 950,
+            "predicted": 989,
+            "correct": 915
+          },
+          "PRESERVATIVE": {
+            "precision": 0.8808,
+            "recall": 0.911,
+            "f1": 0.8956,
+            "support": 146,
+            "predicted": 151,
+            "correct": 133
+          },
+          "COLOUR": {
+            "precision": 0.8276,
+            "recall": 0.8767,
+            "f1": 0.8514,
+            "support": 219,
+            "predicted": 232,
+            "correct": 192
+          },
+          "ADDITIVE": {
+            "precision": 0.8542,
+            "recall": 0.9578,
+            "f1": 0.903,
+            "support": 1444,
+            "predicted": 1619,
+            "correct": 1383
+          },
+          "INS_CODE": {
+            "precision": 0.8422,
+            "recall": 0.957,
+            "f1": 0.8959,
+            "support": 697,
+            "predicted": 792,
+            "correct": 667
+          },
+          "FUNCTION_CLASS": {
+            "precision": 0.8937,
+            "recall": 0.956,
+            "f1": 0.9238,
+            "support": 1091,
+            "predicted": 1167,
+            "correct": 1043
+          },
+          "FLAVOURING": {
+            "precision": 0.8977,
+            "recall": 0.9208,
+            "f1": 0.9091,
+            "support": 581,
+            "predicted": 596,
+            "correct": 535
+          },
+          "INGREDIENT": {
+            "precision": 0.9263,
+            "recall": 0.9426,
+            "f1": 0.9344,
+            "support": 9760,
+            "predicted": 9932,
+            "correct": 9200
+          }
+        },
+        "partial_micro": {
+          "precision": 0.9298,
+          "recall": 0.9655,
+          "f1": 0.9473,
+          "support": 16127,
+          "predicted": 16747,
+          "correct": 15571
+        },
+        "documents": 1000
+      },
+      "noisy_test_0.05": {
+        "micro": {
+          "precision": 0.8647,
+          "recall": 0.8397,
+          "f1": 0.852,
+          "support": 16127,
+          "predicted": 15661,
+          "correct": 13542
+        },
+        "macro_f1": 0.8192,
+        "per_class": {
+          "SUGAR": {
+            "precision": 0.9502,
+            "recall": 0.8635,
+            "f1": 0.9048,
+            "support": 1150,
+            "predicted": 1045,
+            "correct": 993
+          },
+          "SWEETENER": {
+            "precision": 0.75,
+            "recall": 0.7416,
+            "f1": 0.7458,
+            "support": 89,
+            "predicted": 88,
+            "correct": 66
+          },
+          "FAT": {
+            "precision": 0.9057,
+            "recall": 0.8295,
+            "f1": 0.8659,
+            "support": 950,
+            "predicted": 870,
+            "correct": 788
+          },
+          "PRESERVATIVE": {
+            "precision": 0.763,
+            "recall": 0.7055,
+            "f1": 0.7331,
+            "support": 146,
+            "predicted": 135,
+            "correct": 103
+          },
+          "COLOUR": {
+            "precision": 0.7431,
+            "recall": 0.7397,
+            "f1": 0.7414,
+            "support": 219,
+            "predicted": 218,
+            "correct": 162
+          },
+          "ADDITIVE": {
+            "precision": 0.7951,
+            "recall": 0.8144,
+            "f1": 0.8047,
+            "support": 1444,
+            "predicted": 1479,
+            "correct": 1176
+          },
+          "INS_CODE": {
+            "precision": 0.8347,
+            "recall": 0.8981,
+            "f1": 0.8652,
+            "support": 697,
+            "predicted": 750,
+            "correct": 626
+          },
+          "FUNCTION_CLASS": {
+            "precision": 0.8816,
+            "recall": 0.8057,
+            "f1": 0.842,
+            "support": 1091,
+            "predicted": 997,
+            "correct": 879
+          },
+          "FLAVOURING": {
+            "precision": 0.8657,
+            "recall": 0.7986,
+            "f1": 0.8308,
+            "support": 581,
+            "predicted": 536,
+            "correct": 464
+          },
+          "INGREDIENT": {
+            "precision": 0.8682,
+            "recall": 0.8489,
+            "f1": 0.8584,
+            "support": 9760,
+            "predicted": 9543,
+            "correct": 8285
+          }
+        },
+        "partial_micro": {
+          "precision": 0.9072,
+          "recall": 0.881,
+          "f1": 0.8939,
+          "support": 16127,
+          "predicted": 15661,
+          "correct": 14208
+        },
+        "documents": 1000
+      },
+      "noisy_test_0.10": {
+        "micro": {
+          "precision": 0.8303,
+          "recall": 0.7125,
+          "f1": 0.7669,
+          "support": 16127,
+          "predicted": 13840,
+          "correct": 11491
+        },
+        "macro_f1": 0.7147,
+        "per_class": {
+          "SUGAR": {
+            "precision": 0.9278,
+            "recall": 0.7157,
+            "f1": 0.8081,
+            "support": 1150,
+            "predicted": 887,
+            "correct": 823
+          },
+          "SWEETENER": {
+            "precision": 0.622,
+            "recall": 0.573,
+            "f1": 0.5965,
+            "support": 89,
+            "predicted": 82,
+            "correct": 51
+          },
+          "FAT": {
+            "precision": 0.8877,
+            "recall": 0.6989,
+            "f1": 0.7821,
+            "support": 950,
+            "predicted": 748,
+            "correct": 664
+          },
+          "PRESERVATIVE": {
+            "precision": 0.7188,
+            "recall": 0.4726,
+            "f1": 0.5702,
+            "support": 146,
+            "predicted": 96,
+            "correct": 69
+          },
+          "COLOUR": {
+            "precision": 0.7353,
+            "recall": 0.5708,
+            "f1": 0.6427,
+            "support": 219,
+            "predicted": 170,
+            "correct": 125
+          },
+          "ADDITIVE": {
+            "precision": 0.7653,
+            "recall": 0.6392,
+            "f1": 0.6966,
+            "support": 1444,
+            "predicted": 1206,
+            "correct": 923
+          },
+          "INS_CODE": {
+            "precision": 0.8198,
+            "recall": 0.8092,
+            "f1": 0.8144,
+            "support": 697,
+            "predicted": 688,
+            "correct": 564
+          },
+          "FUNCTION_CLASS": {
+            "precision": 0.8752,
+            "recall": 0.6104,
+            "f1": 0.7192,
+            "support": 1091,
+            "predicted": 761,
+            "correct": 666
+          },
+          "FLAVOURING": {
+            "precision": 0.8359,
+            "recall": 0.6575,
+            "f1": 0.736,
+            "support": 581,
+            "predicted": 457,
+            "correct": 382
+          },
+          "INGREDIENT": {
+            "precision": 0.8261,
+            "recall": 0.7402,
+            "f1": 0.7808,
+            "support": 9760,
+            "predicted": 8745,
+            "correct": 7224
+          }
+        },
+        "partial_micro": {
+          "precision": 0.8967,
+          "recall": 0.7696,
+          "f1": 0.8283,
+          "support": 16127,
+          "predicted": 13840,
+          "correct": 12411
+        },
+        "documents": 1000
+      }
+    },
+    "distilbert": {
+      "silver_test": {
+        "micro": {
+          "precision": 0.9277,
+          "recall": 0.958,
+          "f1": 0.9426,
+          "support": 16127,
+          "predicted": 16653,
+          "correct": 15449
+        },
+        "macro_f1": 0.9261,
+        "per_class": {
+          "SUGAR": {
+            "precision": 0.9648,
+            "recall": 0.9783,
+            "f1": 0.9715,
+            "support": 1150,
+            "predicted": 1166,
+            "correct": 1125
+          },
+          "SWEETENER": {
+            "precision": 0.7938,
+            "recall": 0.8652,
+            "f1": 0.828,
+            "support": 89,
+            "predicted": 97,
+            "correct": 77
+          },
+          "FAT": {
+            "precision": 0.9448,
+            "recall": 0.9726,
+            "f1": 0.9585,
+            "support": 950,
+            "predicted": 978,
+            "correct": 924
+          },
+          "PRESERVATIVE": {
+            "precision": 0.9145,
+            "recall": 0.9521,
+            "f1": 0.9329,
+            "support": 146,
+            "predicted": 152,
+            "correct": 139
+          },
+          "COLOUR": {
+            "precision": 0.8776,
+            "recall": 0.9498,
+            "f1": 0.9123,
+            "support": 219,
+            "predicted": 237,
+            "correct": 208
+          },
+          "ADDITIVE": {
+            "precision": 0.9056,
+            "recall": 0.9633,
+            "f1": 0.9336,
+            "support": 1444,
+            "predicted": 1536,
+            "correct": 1391
+          },
+          "INS_CODE": {
+            "precision": 0.8677,
+            "recall": 0.9785,
+            "f1": 0.9198,
+            "support": 697,
+            "predicted": 786,
+            "correct": 682
+          },
+          "FUNCTION_CLASS": {
+            "precision": 0.9117,
+            "recall": 0.9652,
+            "f1": 0.9377,
+            "support": 1091,
+            "predicted": 1155,
+            "correct": 1053
+          },
+          "FLAVOURING": {
+            "precision": 0.9139,
+            "recall": 0.9312,
+            "f1": 0.9224,
+            "support": 581,
+            "predicted": 592,
+            "correct": 541
+          },
+          "INGREDIENT": {
+            "precision": 0.9352,
+            "recall": 0.9538,
+            "f1": 0.9444,
+            "support": 9760,
+            "predicted": 9954,
+            "correct": 9309
+          }
+        },
+        "partial_micro": {
+          "precision": 0.9438,
+          "recall": 0.9746,
+          "f1": 0.9589,
+          "support": 16127,
+          "predicted": 16653,
+          "correct": 15717
+        },
+        "documents": 1000
+      },
+      "noisy_test_0.05": {
+        "micro": {
+          "precision": 0.8702,
+          "recall": 0.8016,
+          "f1": 0.8345,
+          "support": 16127,
+          "predicted": 14856,
+          "correct": 12928
+        },
+        "macro_f1": 0.8292,
+        "per_class": {
+          "SUGAR": {
+            "precision": 0.9534,
+            "recall": 0.8548,
+            "f1": 0.9014,
+            "support": 1150,
+            "predicted": 1031,
+            "correct": 983
+          },
+          "SWEETENER": {
+            "precision": 0.8072,
+            "recall": 0.7528,
+            "f1": 0.7791,
+            "support": 89,
+            "predicted": 83,
+            "correct": 67
+          },
+          "FAT": {
+            "precision": 0.9401,
+            "recall": 0.8432,
+            "f1": 0.889,
+            "support": 950,
+            "predicted": 852,
+            "correct": 801
+          },
+          "PRESERVATIVE": {
+            "precision": 0.8281,
+            "recall": 0.726,
+            "f1": 0.7737,
+            "support": 146,
+            "predicted": 128,
+            "correct": 106
+          },
+          "COLOUR": {
+            "precision": 0.8145,
+            "recall": 0.8219,
+            "f1": 0.8182,
+            "support": 219,
+            "predicted": 221,
+            "correct": 180
+          },
+          "ADDITIVE": {
+            "precision": 0.8263,
+            "recall": 0.7479,
+            "f1": 0.7852,
+            "support": 1444,
+            "predicted": 1307,
+            "correct": 1080
+          },
+          "INS_CODE": {
+            "precision": 0.8591,
+            "recall": 0.901,
+            "f1": 0.8796,
+            "support": 697,
+            "predicted": 731,
+            "correct": 628
+          },
+          "FUNCTION_CLASS": {
+            "precision": 0.8767,
+            "recall": 0.7883,
+            "f1": 0.8301,
+            "support": 1091,
+            "predicted": 981,
+            "correct": 860
+          },
+          "FLAVOURING": {
+            "precision": 0.8688,
+            "recall": 0.7522,
+            "f1": 0.8063,
+            "support": 581,
+            "predicted": 503,
+            "correct": 437
+          },
+          "INGREDIENT": {
+            "precision": 0.8633,
+            "recall": 0.7977,
+            "f1": 0.8292,
+            "support": 9760,
+            "predicted": 9019,
+            "correct": 7786
+          }
+        },
+        "partial_micro": {
+          "precision": 0.924,
+          "recall": 0.8512,
+          "f1": 0.8861,
+          "support": 16127,
+          "predicted": 14856,
+          "correct": 13727
+        },
+        "documents": 1000
+      },
+      "noisy_test_0.10": {
+        "micro": {
+          "precision": 0.8204,
+          "recall": 0.6392,
+          "f1": 0.7186,
+          "support": 16127,
+          "predicted": 12564,
+          "correct": 10308
+        },
+        "macro_f1": 0.6902,
+        "per_class": {
+          "SUGAR": {
+            "precision": 0.904,
+            "recall": 0.6957,
+            "f1": 0.7862,
+            "support": 1150,
+            "predicted": 885,
+            "correct": 800
+          },
+          "SWEETENER": {
+            "precision": 0.6429,
+            "recall": 0.5056,
+            "f1": 0.566,
+            "support": 89,
+            "predicted": 70,
+            "correct": 45
+          },
+          "FAT": {
+            "precision": 0.8828,
+            "recall": 0.6979,
+            "f1": 0.7795,
+            "support": 950,
+            "predicted": 751,
+            "correct": 663
+          },
+          "PRESERVATIVE": {
+            "precision": 0.7059,
+            "recall": 0.411,
+            "f1": 0.5195,
+            "support": 146,
+            "predicted": 85,
+            "correct": 60
+          },
+          "COLOUR": {
+            "precision": 0.7514,
+            "recall": 0.621,
+            "f1": 0.68,
+            "support": 219,
+            "predicted": 181,
+            "correct": 136
+          },
+          "ADDITIVE": {
+            "precision": 0.7874,
+            "recall": 0.5388,
+            "f1": 0.6398,
+            "support": 1444,
+            "predicted": 988,
+            "correct": 778
+          },
+          "INS_CODE": {
+            "precision": 0.8293,
+            "recall": 0.7948,
+            "f1": 0.8117,
+            "support": 697,
+            "predicted": 668,
+            "correct": 554
+          },
+          "FUNCTION_CLASS": {
+            "precision": 0.8682,
+            "recall": 0.5857,
+            "f1": 0.6995,
+            "support": 1091,
+            "predicted": 736,
+            "correct": 639
+          },
+          "FLAVOURING": {
+            "precision": 0.8491,
+            "recall": 0.6007,
+            "f1": 0.7036,
+            "support": 581,
+            "predicted": 411,
+            "correct": 349
+          },
+          "INGREDIENT": {
+            "precision": 0.8068,
+            "recall": 0.6439,
+            "f1": 0.7162,
+            "support": 9760,
+            "predicted": 7789,
+            "correct": 6284
+          }
+        },
+        "partial_micro": {
+          "precision": 0.9012,
+          "recall": 0.7021,
+          "f1": 0.7893,
+          "support": 16127,
+          "predicted": 12564,
+          "correct": 11323
+        },
+        "documents": 1000
+      }
+    },
+    "distilbert_aug": {
+      "silver_test": {
+        "micro": {
+          "precision": 0.9223,
+          "recall": 0.9578,
+          "f1": 0.9397,
+          "support": 16127,
+          "predicted": 16749,
+          "correct": 15447
+        },
+        "macro_f1": 0.9271,
+        "per_class": {
+          "SUGAR": {
+            "precision": 0.9733,
+            "recall": 0.9843,
+            "f1": 0.9788,
+            "support": 1150,
+            "predicted": 1163,
+            "correct": 1132
+          },
+          "SWEETENER": {
+            "precision": 0.8667,
+            "recall": 0.8764,
+            "f1": 0.8715,
+            "support": 89,
+            "predicted": 90,
+            "correct": 78
+          },
+          "FAT": {
+            "precision": 0.9355,
+            "recall": 0.9779,
+            "f1": 0.9563,
+            "support": 950,
+            "predicted": 993,
+            "correct": 929
+          },
+          "PRESERVATIVE": {
+            "precision": 0.9195,
+            "recall": 0.9384,
+            "f1": 0.9288,
+            "support": 146,
+            "predicted": 149,
+            "correct": 137
+          },
+          "COLOUR": {
+            "precision": 0.8966,
+            "recall": 0.9498,
+            "f1": 0.9224,
+            "support": 219,
+            "predicted": 232,
+            "correct": 208
+          },
+          "ADDITIVE": {
+            "precision": 0.8767,
+            "recall": 0.9647,
+            "f1": 0.9186,
+            "support": 1444,
+            "predicted": 1589,
+            "correct": 1393
+          },
+          "INS_CODE": {
+            "precision": 0.8385,
+            "recall": 0.9756,
+            "f1": 0.9019,
+            "support": 697,
+            "predicted": 811,
+            "correct": 680
+          },
+          "FUNCTION_CLASS": {
+            "precision": 0.9015,
+            "recall": 0.9652,
+            "f1": 0.9323,
+            "support": 1091,
+            "predicted": 1168,
+            "correct": 1053
+          },
+          "FLAVOURING": {
+            "precision": 0.9047,
+            "recall": 0.9312,
+            "f1": 0.9177,
+            "support": 581,
+            "predicted": 598,
+            "correct": 541
+          },
+          "INGREDIENT": {
+            "precision": 0.9337,
+            "recall": 0.9525,
+            "f1": 0.943,
+            "support": 9760,
+            "predicted": 9956,
+            "correct": 9296
+          }
+        },
+        "partial_micro": {
+          "precision": 0.9376,
+          "recall": 0.9738,
+          "f1": 0.9553,
+          "support": 16127,
+          "predicted": 16749,
+          "correct": 15704
+        },
+        "documents": 1000
+      },
+      "noisy_test_0.05": {
+        "micro": {
+          "precision": 0.9025,
+          "recall": 0.9428,
+          "f1": 0.9222,
+          "support": 16127,
+          "predicted": 16846,
+          "correct": 15204
+        },
+        "macro_f1": 0.8997,
+        "per_class": {
+          "SUGAR": {
+            "precision": 0.9603,
+            "recall": 0.9687,
+            "f1": 0.9645,
+            "support": 1150,
+            "predicted": 1160,
+            "correct": 1114
+          },
+          "SWEETENER": {
+            "precision": 0.8795,
+            "recall": 0.8202,
+            "f1": 0.8488,
+            "support": 89,
+            "predicted": 83,
+            "correct": 73
+          },
+          "FAT": {
+            "precision": 0.9221,
+            "recall": 0.9589,
+            "f1": 0.9401,
+            "support": 950,
+            "predicted": 988,
+            "correct": 911
+          },
+          "PRESERVATIVE": {
+            "precision": 0.8609,
+            "recall": 0.8904,
+            "f1": 0.8754,
+            "support": 146,
+            "predicted": 151,
+            "correct": 130
+          },
+          "COLOUR": {
+            "precision": 0.8077,
+            "recall": 0.863,
+            "f1": 0.8344,
+            "support": 219,
+            "predicted": 234,
+            "correct": 189
+          },
+          "ADDITIVE": {
+            "precision": 0.849,
+            "recall": 0.9384,
+            "f1": 0.8914,
+            "support": 1444,
+            "predicted": 1596,
+            "correct": 1355
+          },
+          "INS_CODE": {
+            "precision": 0.8317,
+            "recall": 0.9713,
+            "f1": 0.8961,
+            "support": 697,
+            "predicted": 814,
+            "correct": 677
+          },
+          "FUNCTION_CLASS": {
+            "precision": 0.8877,
+            "recall": 0.9487,
+            "f1": 0.9171,
+            "support": 1091,
+            "predicted": 1166,
+            "correct": 1035
+          },
+          "FLAVOURING": {
+            "precision": 0.8869,
+            "recall": 0.9174,
+            "f1": 0.9019,
+            "support": 581,
+            "predicted": 601,
+            "correct": 533
+          },
+          "INGREDIENT": {
+            "precision": 0.9139,
+            "recall": 0.9413,
+            "f1": 0.9274,
+            "support": 9760,
+            "predicted": 10053,
+            "correct": 9187
+          }
+        },
+        "partial_micro": {
+          "precision": 0.9243,
+          "recall": 0.9655,
+          "f1": 0.9445,
+          "support": 16127,
+          "predicted": 16846,
+          "correct": 15571
+        },
+        "documents": 1000
+      },
+      "noisy_test_0.10": {
+        "micro": {
+          "precision": 0.8817,
+          "recall": 0.9198,
+          "f1": 0.9004,
+          "support": 16127,
+          "predicted": 16824,
+          "correct": 14834
+        },
+        "macro_f1": 0.8595,
+        "per_class": {
+          "SUGAR": {
+            "precision": 0.9308,
+            "recall": 0.947,
+            "f1": 0.9388,
+            "support": 1150,
+            "predicted": 1170,
+            "correct": 1089
+          },
+          "SWEETENER": {
+            "precision": 0.75,
+            "recall": 0.7416,
+            "f1": 0.7458,
+            "support": 89,
+            "predicted": 88,
+            "correct": 66
+          },
+          "FAT": {
+            "precision": 0.8865,
+            "recall": 0.9368,
+            "f1": 0.911,
+            "support": 950,
+            "predicted": 1004,
+            "correct": 890
+          },
+          "PRESERVATIVE": {
+            "precision": 0.8261,
+            "recall": 0.7808,
+            "f1": 0.8028,
+            "support": 146,
+            "predicted": 138,
+            "correct": 114
+          },
+          "COLOUR": {
+            "precision": 0.7604,
+            "recall": 0.7534,
+            "f1": 0.7569,
+            "support": 219,
+            "predicted": 217,
+            "correct": 165
+          },
+          "ADDITIVE": {
+            "precision": 0.8135,
+            "recall": 0.9065,
+            "f1": 0.8575,
+            "support": 1444,
+            "predicted": 1609,
+            "correct": 1309
+          },
+          "INS_CODE": {
+            "precision": 0.8272,
+            "recall": 0.9613,
+            "f1": 0.8892,
+            "support": 697,
+            "predicted": 810,
+            "correct": 670
+          },
+          "FUNCTION_CLASS": {
+            "precision": 0.8825,
+            "recall": 0.9294,
+            "f1": 0.9054,
+            "support": 1091,
+            "predicted": 1149,
+            "correct": 1014
+          },
+          "FLAVOURING": {
+            "precision": 0.8739,
+            "recall": 0.883,
+            "f1": 0.8784,
+            "support": 581,
+            "predicted": 587,
+            "correct": 513
+          },
+          "INGREDIENT": {
+            "precision": 0.8957,
+            "recall": 0.9225,
+            "f1": 0.9089,
+            "support": 9760,
+            "predicted": 10052,
+            "correct": 9004
+          }
+        },
+        "partial_micro": {
+          "precision": 0.9103,
+          "recall": 0.9496,
+          "f1": 0.9296,
+          "support": 16127,
+          "predicted": 16824,
+          "correct": 15315
+        },
+        "documents": 1000
+      }
+    },
+    "distilbert_crf": {
+      "silver_test": {
+        "micro": {
+          "precision": 0.9378,
+          "recall": 0.9621,
+          "f1": 0.9498,
+          "support": 16127,
+          "predicted": 16545,
+          "correct": 15516
+        },
+        "macro_f1": 0.9378,
+        "per_class": {
+          "SUGAR": {
+            "precision": 0.975,
+            "recall": 0.9817,
+            "f1": 0.9783,
+            "support": 1150,
+            "predicted": 1158,
+            "correct": 1129
+          },
+          "SWEETENER": {
+            "precision": 0.8901,
+            "recall": 0.9101,
+            "f1": 0.9,
+            "support": 89,
+            "predicted": 91,
+            "correct": 81
+          },
+          "FAT": {
+            "precision": 0.9433,
+            "recall": 0.9811,
+            "f1": 0.9618,
+            "support": 950,
+            "predicted": 988,
+            "correct": 932
+          },
+          "PRESERVATIVE": {
+            "precision": 0.9145,
+            "recall": 0.9521,
+            "f1": 0.9329,
+            "support": 146,
+            "predicted": 152,
+            "correct": 139
+          },
+          "COLOUR": {
+            "precision": 0.8884,
+            "recall": 0.9452,
+            "f1": 0.9159,
+            "support": 219,
+            "predicted": 233,
+            "correct": 207
+          },
+          "ADDITIVE": {
+            "precision": 0.9134,
+            "recall": 0.964,
+            "f1": 0.938,
+            "support": 1444,
+            "predicted": 1524,
+            "correct": 1392
+          },
+          "INS_CODE": {
+            "precision": 0.8697,
+            "recall": 0.977,
+            "f1": 0.9203,
+            "support": 697,
+            "predicted": 783,
+            "correct": 681
+          },
+          "FUNCTION_CLASS": {
+            "precision": 0.924,
+            "recall": 0.9688,
+            "f1": 0.9459,
+            "support": 1091,
+            "predicted": 1144,
+            "correct": 1057
+          },
+          "FLAVOURING": {
+            "precision": 0.9344,
+            "recall": 0.9312,
+            "f1": 0.9328,
+            "support": 581,
+            "predicted": 579,
+            "correct": 541
+          },
+          "INGREDIENT": {
+            "precision": 0.9458,
+            "recall": 0.9587,
+            "f1": 0.9522,
+            "support": 9760,
+            "predicted": 9893,
+            "correct": 9357
+          }
+        },
+        "partial_micro": {
+          "precision": 0.949,
+          "recall": 0.9736,
+          "f1": 0.9611,
+          "support": 16127,
+          "predicted": 16545,
+          "correct": 15701
+        },
+        "documents": 1000
+      },
+      "noisy_test_0.05": {
+        "micro": {
+          "precision": 0.8972,
+          "recall": 0.8091,
+          "f1": 0.8509,
+          "support": 16127,
+          "predicted": 14543,
+          "correct": 13048
+        },
+        "macro_f1": 0.8409,
+        "per_class": {
+          "SUGAR": {
+            "precision": 0.9715,
+            "recall": 0.8591,
+            "f1": 0.9119,
+            "support": 1150,
+            "predicted": 1017,
+            "correct": 988
+          },
+          "SWEETENER": {
+            "precision": 0.8293,
+            "recall": 0.764,
+            "f1": 0.7953,
+            "support": 89,
+            "predicted": 82,
+            "correct": 68
+          },
+          "FAT": {
+            "precision": 0.9319,
+            "recall": 0.8505,
+            "f1": 0.8894,
+            "support": 950,
+            "predicted": 867,
+            "correct": 808
+          },
+          "PRESERVATIVE": {
+            "precision": 0.8629,
+            "recall": 0.7329,
+            "f1": 0.7926,
+            "support": 146,
+            "predicted": 124,
+            "correct": 107
+          },
+          "COLOUR": {
+            "precision": 0.8634,
+            "recall": 0.8082,
+            "f1": 0.8349,
+            "support": 219,
+            "predicted": 205,
+            "correct": 177
+          },
+          "ADDITIVE": {
+            "precision": 0.8646,
+            "recall": 0.7604,
+            "f1": 0.8091,
+            "support": 1444,
+            "predicted": 1270,
+            "correct": 1098
+          },
+          "INS_CODE": {
+            "precision": 0.8633,
+            "recall": 0.8967,
+            "f1": 0.8797,
+            "support": 697,
+            "predicted": 724,
+            "correct": 625
+          },
+          "FUNCTION_CLASS": {
+            "precision": 0.8865,
+            "recall": 0.78,
+            "f1": 0.8298,
+            "support": 1091,
+            "predicted": 960,
+            "correct": 851
+          },
+          "FLAVOURING": {
+            "precision": 0.8869,
+            "recall": 0.7556,
+            "f1": 0.816,
+            "support": 581,
+            "predicted": 495,
+            "correct": 439
+          },
+          "INGREDIENT": {
+            "precision": 0.8964,
+            "recall": 0.8081,
+            "f1": 0.8499,
+            "support": 9760,
+            "predicted": 8799,
+            "correct": 7887
+          }
+        },
+        "partial_micro": {
+          "precision": 0.9316,
+          "recall": 0.8401,
+          "f1": 0.8835,
+          "support": 16127,
+          "predicted": 14543,
+          "correct": 13548
+        },
+        "documents": 1000
+      },
+      "noisy_test_0.10": {
+        "micro": {
+          "precision": 0.8723,
+          "recall": 0.6534,
+          "f1": 0.7472,
+          "support": 16127,
+          "predicted": 12081,
+          "correct": 10538
+        },
+        "macro_f1": 0.7194,
+        "per_class": {
+          "SUGAR": {
+            "precision": 0.9278,
+            "recall": 0.7035,
+            "f1": 0.8002,
+            "support": 1150,
+            "predicted": 872,
+            "correct": 809
+          },
+          "SWEETENER": {
+            "precision": 0.7778,
+            "recall": 0.5506,
+            "f1": 0.6447,
+            "support": 89,
+            "predicted": 63,
+            "correct": 49
+          },
+          "FAT": {
+            "precision": 0.9091,
+            "recall": 0.7158,
+            "f1": 0.8009,
+            "support": 950,
+            "predicted": 748,
+            "correct": 680
+          },
+          "PRESERVATIVE": {
+            "precision": 0.7586,
+            "recall": 0.4521,
+            "f1": 0.5665,
+            "support": 146,
+            "predicted": 87,
+            "correct": 66
+          },
+          "COLOUR": {
+            "precision": 0.8204,
+            "recall": 0.6256,
+            "f1": 0.7098,
+            "support": 219,
+            "predicted": 167,
+            "correct": 137
+          },
+          "ADDITIVE": {
+            "precision": 0.8502,
+            "recall": 0.5699,
+            "f1": 0.6824,
+            "support": 1444,
+            "predicted": 968,
+            "correct": 823
+          },
+          "INS_CODE": {
+            "precision": 0.8504,
+            "recall": 0.7991,
+            "f1": 0.824,
+            "support": 697,
+            "predicted": 655,
+            "correct": 557
+          },
+          "FUNCTION_CLASS": {
+            "precision": 0.8947,
+            "recall": 0.5921,
+            "f1": 0.7126,
+            "support": 1091,
+            "predicted": 722,
+            "correct": 646
+          },
+          "FLAVOURING": {
+            "precision": 0.8728,
+            "recall": 0.5904,
+            "f1": 0.7043,
+            "support": 581,
+            "predicted": 393,
+            "correct": 343
+          },
+          "INGREDIENT": {
+            "precision": 0.8679,
+            "recall": 0.6586,
+            "f1": 0.7489,
+            "support": 9760,
+            "predicted": 7406,
+            "correct": 6428
+          }
+        },
+        "partial_micro": {
+          "precision": 0.9166,
+          "recall": 0.6866,
+          "f1": 0.7851,
+          "support": 16127,
+          "predicted": 12081,
+          "correct": 11073
+        },
+        "documents": 1000
+      }
+    }
+  }
+}

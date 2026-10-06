@@ -1,0 +1,14 @@
+# Minimal dependencies to RUN the app (photo -> result). Install CPU PyTorch first, e.g.
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu
+streamlit>=1.35
+easyocr>=1.7
+transformers>=4.40
+torch>=2.2
+pytorch-crf>=0.7
+rapidfuzz>=3.0
+opencv-python-headless>=4.8
+pandas>=2.2
+numpy>=1.26
+PyYAML>=6.0
+requests>=2.31
+Pillow>=10.0

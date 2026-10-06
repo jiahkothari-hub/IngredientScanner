@@ -1,0 +1,65 @@
+# FUNCTION_CLASS lexicon: functional class names as printed on labels.
+# Format:  term | class_id      (class_id links to data/processed/function_classes.csv)
+# Plurals ("emulsifiers", "colours") are matched automatically.
+# Source: Open Food Facts additives_classes taxonomy + Codex INS class names (CXG 36-1989),
+# hand-filtered: too-generic OFF synonyms ("base", "binder", "filler", "carrier", "acid") are excluded
+# because they also occur as ordinary words.
+acidity regulator | acidity-regulator
+acid regulator | acidity-regulator
+acidity corrector | acidity-regulator
+acidifying agent | acid
+acidifier | acid
+acidulant | acid
+food acid | acid
+anti-caking agent | anti-caking-agent
+anticaking agent | anti-caking-agent
+anti caking agent | anti-caking-agent
+anti-foaming agent | anti-foaming-agent
+antifoaming agent | anti-foaming-agent
+anti-foam agent | anti-foaming-agent
+antioxidant | antioxidant
+anti-oxidant | antioxidant
+bulking agent | bulking-agent
+colour | colour
+color | colour
+colouring | colour
+coloring | colour
+colouring agent | colour
+food colour | colour
+food color | colour
+colour retention agent | colour-retention-agent
+emulsifier | emulsifier
+emulsifying agent | emulsifier
+emulsifying salt | emulsifying-salts
+firming agent | firming-agent
+flavour enhancer | flavour-enhancer
+flavor enhancer | flavour-enhancer
+flavour improver | flavour-enhancer
+taste enhancer | flavour-enhancer
+flour treatment agent | flour-treatment-agent
+flour improver | flour-treatment-agent
+dough conditioner | flour-treatment-agent
+improver | flour-treatment-agent
+bread improver | flour-treatment-agent
+foaming agent | foaming-agent
+gelling agent | gelling-agent
+glazing agent | glazing-agent
+coating agent | glazing-agent
+humectant | humectant
+leavening agent | raising-agent
+leavening | raising-agent
+raising agent | raising-agent
+preservative | preservative
+class ii preservative | preservative
+sequestrant | sequestrant
+stabiliser | stabiliser
+stabilizer | stabiliser
+stabilising agent | stabiliser
+stabilizing agent | stabiliser
+sweetener | sweetener
+artificial sweetener | sweetener
+thickener | thickener
+thickening agent | thickener
+propellant | propellent-gas
+packaging gas | packaging-gas
+carrier | carrier

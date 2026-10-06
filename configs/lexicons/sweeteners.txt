@@ -1,0 +1,36 @@
+# SWEETENER lexicon: non-sugar sweeteners (intense sweeteners and polyols / sugar alcohols).
+# Additives with INS 420, 421, 950-969 are also SWEETENER automatically (configs/lexicons/additive_label_rules.yaml).
+sucralose
+aspartame
+acesulfame k
+acesulfame potassium
+acesulfame-k
+saccharin
+sodium saccharin
+cyclamate
+sodium cyclamate
+neotame
+advantame
+stevia
+stevia extract
+stevia leaf extract
+steviol glycosides
+steviol glycosides from stevia
+rebaudioside a
+reb a
+monk fruit extract
+luo han guo extract
+thaumatin
+erythritol
+xylitol
+sorbitol
+maltitol
+maltitol syrup
+mannitol
+isomalt
+lactitol
+polyols
+sugar alcohol
+sugar alcohols
+allulose
+tagatose

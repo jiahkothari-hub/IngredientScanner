@@ -1,0 +1,70 @@
+# How a NAMED additive substance (e.g. "sodium benzoate", "tartrazine") gets its NER label.
+#
+# The INS / E-number system is organised by main function (Codex CXG 36-1989):
+#   100-199 colours, 200-299 preservatives (+ some acids), 300-399 antioxidants/acidity regulators,
+#   400-499 thickeners/stabilisers/emulsifiers, 500-599 acidity regulators/anti-caking agents,
+#   600-699 flavour enhancers, 900-999 glazing agents/sweeteners/gases, 1000+ other/modified starches.
+# We use the ranges, but list numbers explicitly so every decision is visible and checkable.
+#
+# Rule order: COLOUR -> PRESERVATIVE -> SWEETENER -> ADDITIVE (anything else with an INS number).
+# NOTE: the code itself ("INS 211", "E102") is always labelled INS_CODE. These rules are only
+# for the substance NAME.
+
+colour:
+  # every number from 100 to 199 is a colour in the INS system
+  ranges: [[100, 199]]
+  exclude: [170]         # calcium carbonate: on labels almost always a mineral/fortification, not a colour
+
+preservative:
+  # 200-299 are preservatives EXCEPT the acids/acid salts used mainly as acidity regulators
+  # (acetic acid 260, lactic acid 270, malic acid 296, fumaric acid 297, CO2 290 ...),
+  # which are labelled ADDITIVE instead.
+  ranges: [[200, 259], [280, 289]]
+  extra: [1105]          # lysozyme
+  exclude: [260, 261, 262, 263, 264, 265, 266, 270, 290, 296, 297]
+
+sweetener:
+  ranges: [[950, 969]]
+  extra: [420, 421]      # sorbitol, mannitol
+
+# Taxonomy names that are too ambiguous to use for matching (they are normal food words or
+# describe something else on a label). They are still linked to their number when written as a code.
+# Names listed in additive_aliases.txt are always used (aliases override this list).
+blocked_names:
+  - caramel            # "caramel" is usually a food (caramel pieces), not E150a
+  - gold
+  - silver
+  - aluminium
+  - carbon
+  - vegetable carbon   # kept as code only
+  - iron oxides        # vs. "iron" (fortification)
+  - nitrogen
+  - oxygen
+  - argon
+  - helium
+  - hydrogen
+  - salt
+  - salts
+  - milk acid
+  - vinegar
+  - paprika            # spice; "paprika extract" stays (colour E160c)
+  - starch
+  - wax
+  - cellulose          # also a fibre ingredient; kept via aliases "cellulose gum", "microcrystalline cellulose"
+  - riboflavin         # E101 is a colour, but on labels it is almost always vitamin B2 (fortification)
+  - riboflavine
+  - lactoflavin
+  - lactoflavine
+  - amaranth           # E123 colour, but also a grain
+  - linear             # taxonomy artefact
+  # Vitamins / foods: our policy labels vitamins, minerals and foods as INGREDIENT
+  - vitamin b2         # = riboflavin (E101)
+  - vitamin b 2
+  - vitamin g
+  - niacin             # E375, but on labels it is vitamin B3 (fortification)
+  - saffron            # E164, but normally a spice
+  - gelatin            # E428 in OFF, but an ordinary food ingredient on labels
+  - gelatine
+  - zinc salt
+  - choline salt
+  - gum

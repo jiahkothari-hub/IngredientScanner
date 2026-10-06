@@ -1,0 +1,62 @@
+[
+  {
+    "text": "SUGAR",
+    "suffix_key": "s",
+    "background_color": "#eb6834",
+    "text_color": "#ffffff"
+  },
+  {
+    "text": "SWEETENER",
+    "suffix_key": "w",
+    "background_color": "#e87ba4",
+    "text_color": "#ffffff"
+  },
+  {
+    "text": "FAT",
+    "suffix_key": "f",
+    "background_color": "#eda100",
+    "text_color": "#ffffff"
+  },
+  {
+    "text": "PRESERVATIVE",
+    "suffix_key": "p",
+    "background_color": "#e34948",
+    "text_color": "#ffffff"
+  },
+  {
+    "text": "COLOUR",
+    "suffix_key": "c",
+    "background_color": "#4a3aa7",
+    "text_color": "#ffffff"
+  },
+  {
+    "text": "ADDITIVE",
+    "suffix_key": "a",
+    "background_color": "#2a78d6",
+    "text_color": "#ffffff"
+  },
+  {
+    "text": "INS_CODE",
+    "suffix_key": "n",
+    "background_color": "#1baf7a",
+    "text_color": "#ffffff"
+  },
+  {
+    "text": "FUNCTION_CLASS",
+    "suffix_key": "k",
+    "background_color": "#52514e",
+    "text_color": "#ffffff"
+  },
+  {
+    "text": "FLAVOURING",
+    "suffix_key": "v",
+    "background_color": "#008300",
+    "text_color": "#ffffff"
+  },
+  {
+    "text": "INGREDIENT",
+    "suffix_key": "i",
+    "background_color": "#898781",
+    "text_color": "#ffffff"
+  }
+]

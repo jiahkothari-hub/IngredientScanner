@@ -1,0 +1,11 @@
+category,description
+SUGAR,"A sugar or syrup added to the food. Labels use many different names for sugars (e.g. dextrose, glucose syrup, invert syrup, maltose)."
+SWEETENER,A sweetener other than sugar: an intense sweetener (e.g. sucralose) or a polyol / sugar alcohol (e.g. sorbitol).
+FAT,"An oil or fat, e.g. palm oil, palmolein, vegetable fat, butter or ghee."
+PRESERVATIVE,A food additive whose main function is preservation: it helps protect food against spoilage by micro-organisms.
+COLOUR,A food additive that adds or restores colour.
+ADDITIVE,A food additive with an INS/E number. Its function is shown where the label or the reference data states it.
+INS_CODE,"An additive code. INS (International Numbering System, Codex Alimentarius) and E-numbers (EU) use the same numbers, e.g. INS 330 = E330 = citric acid."
+FUNCTION_CLASS,"The functional class written on the label (e.g. 'acidity regulator', 'emulsifier'). It tells what job the additive next to it does."
+FLAVOURING,"A flavouring: natural, nature-identical or artificial flavouring substances."
+INGREDIENT,"A food ingredient (e.g. wheat flour, milk solids, salt, spices)."
