@@ -1,0 +1,732 @@
+number,e_code,name,synonyms,function_classes,classes_source
+100,E100,Curcumin,Turmeric extract|curcuma extract|turmeric color,colour,taxonomy
+1000,E1000,Cholic acid,,,missing
+1001,E1001,Choline salt,,,missing
+1001i,E1001i,Choline acetate,,,missing
+1001ii,E1001ii,Choline carbonate,,,missing
+1001iii,E1001iii,,,,missing
+1001iv,E1001iv,Choline citrate,,,missing
+1001v,E1001v,Choline tartrate,,,missing
+1001vi,E1001vi,Choline lactate,,,missing
+100i,E100i,,,colour,inherited_from_parent
+100ii,E100ii,,,colour,inherited_from_parent
+101,E101,Riboflavin,Vitamin B2|Flavaxin|Vitamin B 2|Vitamin G|Riboflavine|Lactoflavine|Lactoflavin|riboflavin color|3a825i|3a825ii|3a825,colour,taxonomy
+101a,E101a,E101a food additive,,colour,taxonomy
+101i,E101i,Riboflavin,Vitamin B2,colour,taxonomy
+101ii,E101ii,Riboflavin-5′-phosphate,phosphate lactoflavina,colour,taxonomy
+101iii,E101iii,Riboflavin from Bacillus subtilis,,colour,inherited_from_parent
+101iv,E101iv,Riboflavin from Ashbya gossypii,,colour,inherited_from_parent
+102,E102,Tartrazine,Yellow 5|Yellow number 5|Yellow no 5|Yellow no5|FD&C Yellow 5|FD&C Yellow no 5|FD&C Yellow no5|FD and C Yellow no. 5|FD and C Yellow 5|Yellow 5 lake,colour,taxonomy
+103,E103,Alkannin,,,missing
+104,E104,Quinoline yellow,Quinoline Yellow WS|C.I. 47005|Food Yellow 13,colour,taxonomy
+105,E105,Fast Yellow AB,,,missing
+106,E106,flavin mononucleotide,,,missing
+107,E107,Yellow 2G,,,missing
+110,E110,Sunset yellow FCF,CI Food Yellow 3|Orange Yellow S|FD&C Yellow 6|FD & C Yellow No.6|FD and C Yellow No. 6|Yellow No.6|Yellow 6|FD and C Yellow 6|C.I. 15985|Yellow 6 lake|Sunset Yellow,colour,taxonomy
+1100,E1100,Alpha-Amylase,amylase|E-1100,,missing
+1100i,E1100i,,,,missing
+1100ii,E1100ii,,,,missing
+1100iii,E1100iii,,,,missing
+1100iv,E1100iv,alpha-Amylase from Bacillus megaterium expressed in Bacillus subtilis,,,missing
+1100v,E1100v,,,,missing
+1100vi,E1100vi,,,,missing
+1101,E1101,Protease,peptidase|proteinase|EC 3.4|E-1101,stabiliser,taxonomy
+1101i,E1101i,,,stabiliser,inherited_from_parent
+1101ii,E1101ii,,,stabiliser,inherited_from_parent
+1101iii,E1101iii,,,stabiliser,inherited_from_parent
+1101iv,E1101iv,,,stabiliser,inherited_from_parent
+1101v,E1101v,Protease from Streptomyces fradiae,,stabiliser,inherited_from_parent
+1101vi,E1101vi,Proteases from Bacillus subtilis,,stabiliser,inherited_from_parent
+1102,E1102,Glucose oxidase,,antioxidant,taxonomy
+1103,E1103,Invertase,,stabiliser,taxonomy
+1104,E1104,lipase,,,missing
+1105,E1105,Lysozyme,Lysozyme hydrochloride|E-1105,preservative,taxonomy
+111,E111,Orange GGN,Alpha-naphthol|Alpha-naphtol|alpha-naphthol orange,,missing
+120,E120,Cochineal,carminic acid|carmines|Natural Red 4|Cochineal Red,colour,taxonomy
+1200,E1200,Polydextrose,68424-04-4,humectant|stabiliser|thickener,taxonomy
+1201,E1201,Polyvinylpyrrolidone,Povidone|PVP,emulsifier|stabiliser|thickener,taxonomy
+1202,E1202,Polyvinylpolypyrrolidone,Crospovidone|Cross-linked polyvidone,stabiliser,taxonomy
+1203,E1203,Polyvinyl alcohol,Vinyl alcohol polymer|PVOH|PVAl,thickener,taxonomy
+1204,E1204,Pullulan,Linear,thickener,taxonomy
+1205,E1205,Basic methacrylate copolymer,,,missing
+1206,E1206,Neutral methacrylate copolymer,,,missing
+1207,E1207,Anionic methacrylate copolymer,,,missing
+1208,E1208,Polyvinylpyrrolidone-vinyl acetate copolymer,,,missing
+1209,E1209,Polyvinyl alcohol-polyethylene glycol-graft-co-polymer,,,missing
+121,E121,Citrus Red 2,,,missing
+1210,E1210,Carbomer,,,missing
+122,E122,Azorubine,carmoisine|Food Red 3|Brillantcarmoisin O|Acid Red 14|Azorubin S|C.I. 14720,colour,taxonomy
+123,E123,Amaranth,FD&C Red 2,colour,taxonomy
+124,E124,Ponceau 4r,cochineal red a|CI Food Red 7|Brilliant Scarlet 4R|Ponceau,colour,taxonomy
+125,E125,Scarlet GN,C.I. Food Red 1|Ponceau SX|FD&C Red No. 4|C.I. 14700|Scarlet GN,,missing
+126,E126,Ponceau 6R,Ponceau 6R,,missing
+127,E127,Erythrosine,FD&C Red 3|FD & C Red No.3|Red No. 3|FD&C Red no3|FD and C Red 3|Red 3|Red 3 lake,colour,taxonomy
+128,E128,Red 2G,,colour,taxonomy
+129,E129,Allura red,Allura red ac|Allura Red AC|FD&C Red 40|FD and C Red 40|Red 40|Red no40|Red no. 40|FD and C Red no. 40|Food Red 17|C.I. 16035|Red 40 lake,colour,taxonomy
+130,E130,Indanthrene blue RS,Indanthrone blue|indanthrene,,missing
+131,E131,Patent blue v,Food Blue 5|Sulphan Blue|Acid Blue 3|L-Blau 3|C-Blau 20|Patentblau V|Sky Blue|C.I. 42051,,missing
+132,E132,Indigotine,indigo carmine|FD&C Blue 2|FD and C Blue 2|C.I. Food Blue 2|Blue 2 lake|Blue 2,colour,taxonomy
+133,E133,Brilliant blue FCF,FD&C Blue 1|FD and C Blue 1|Blue 1|fd&c blue no. 1|Blue 1 lake,colour,taxonomy
+140,E140,Chlorophylls and Chlorophyllins,,colour,taxonomy
+1400,E1400,Dextrin,,carrier|emulsifier|stabiliser|thickener,taxonomy
+1401,E1401,Acid-treated modified starch,,emulsifier|stabiliser|thickener,taxonomy
+1402,E1402,Alkaline modified starch,,emulsifier|stabiliser|thickener,taxonomy
+1403,E1403,Bleached starch,,emulsifier|stabiliser|thickener,taxonomy
+1404,E1404,Oxidised starch,,emulsifier|stabiliser|thickener,taxonomy
+1405,E1405,Enzyme treated starch,,emulsifier|stabiliser|thickener,taxonomy
+140i,E140i,Chlorophylls,CI Natural Green 3|Magnesium Chlorophyll|chlorophyll,colour,taxonomy
+140ii,E140ii,Chlorophyllins,CI Natural Green 5|Sodium Chlorophyllin,colour,taxonomy
+141,E141,Copper complexes of chlorophylls and chlorophyllins,Copper complexes of chlorophyll and chlorophyllins,colour,taxonomy
+1410,E1410,Monostarch phosphate,,emulsifier|stabiliser|thickener,taxonomy
+1411,E1411,Distarch glycerol,,emulsifier|stabiliser|thickener,taxonomy
+1412,E1412,Distarch phosphate,,emulsifier|stabiliser|thickener,taxonomy
+1413,E1413,Phosphated distarch phosphate,,emulsifier|stabiliser|thickener,taxonomy
+1414,E1414,Acetylated distarch phosphate,,emulsifier|stabiliser|thickener,taxonomy
+141i,E141i,Copper complexes of chlorophylls,CI Natural Green 3|Copper Chlorophyll,colour,taxonomy
+141ii,E141ii,Copper complexes of chlorophyllins,Sodium Copper Chlorophyllin|Potassium Copper Chlorophyllin|Copper Chlorophyllin,colour,taxonomy
+142,E142,Green s,CI Food Green 4,,missing
+1420,E1420,Acetylated starch,,emulsifier|stabiliser|thickener,taxonomy
+1421,E1421,Acetylated starch,mono starch acetate|Starch acetate esterified with vinyl acetate,emulsifier|stabiliser|thickener,taxonomy
+1422,E1422,Acetylated distarch adipate,,emulsifier|stabiliser|thickener,taxonomy
+1423,E1423,Acetylated distarch glycerol,,emulsifier|stabiliser|thickener,taxonomy
+143,E143,Fast Green FCF,Food green 3|C.I. 42053|Solid Green FCF|Green 1724|FD&C Green No. 3|Green 3,colour,taxonomy
+1430,E1430,Distarch glycerine,,emulsifier|stabiliser|thickener,taxonomy
+1440,E1440,Hydroxypropyl starch,,emulsifier|stabiliser|thickener,taxonomy
+1441,E1441,Hydroxy propyl distarch glycerine,,emulsifier|stabiliser|thickener,taxonomy
+1442,E1442,Hydroxypropyl distarch phosphate,,emulsifier|stabiliser|thickener,taxonomy
+1443,E1443,Hydroxy propyl distarch glycerol,,emulsifier|stabiliser|thickener,taxonomy
+1450,E1450,Starch sodium octenyl succinate,,emulsifier|stabiliser|thickener,taxonomy
+1451,E1451,Acetylated oxidised starch,,emulsifier|stabiliser|thickener,taxonomy
+1452,E1452,Starch aluminium octenyl succinate,,emulsifier|stabiliser|thickener,taxonomy
+1499,E1499,E14XX,Modified Starch|E14XX,emulsifier|stabiliser|thickener,taxonomy
+150,E150,Caramel,,,missing
+1503,E1503,Castor oil,,carrier|emulsifier,taxonomy
+1504,E1504,ethyl acetate,ethyl ethanoate,carrier,taxonomy
+1505,E1505,Triethyl citrate,"triethyl 2-hydroxypropane-1,2,3-tricarboxylate",carrier|emulsifier|sequestrant|stabiliser,taxonomy
+150a,E150a,Plain caramel,caramel color|caramel coloring,colour,taxonomy
+150b,E150b,Caustic sulphite caramel,caramel E150b,colour,taxonomy
+150c,E150c,Ammonia caramel,baker's caramel|confectioner's caramel|beer caramel|Caramel Color Ammonia|Ammonia caramel,colour,taxonomy
+150d,E150d,Sulphite ammonia caramel,Sulfite ammonia caramel|Caramel Colour Ammonium Sulphite Process|Colour Sulphite Ammonia Caramel|Colour E150d|Food Colour 150d|CAS 8028-89-5|acid-proof caramel|soft-drink caramel,colour,taxonomy
+151,E151,Brilliant black bn,black pn|C.I. 28440|Brilliant Black PN|Food Black 1|Naphthol Black|C.I. Food Brown 1|Brilliant Black A,colour,taxonomy
+1510,E1510,Ethanol,ethyl alcohol|Methylcarbinol|Ethyl hydroxide|Ethyl hydrate,,missing
+1517,E1517,Glyceryl diacetate,,,missing
+1518,E1518,Glyceryl triacetate,"Triacetin|glycerin triacetate|1,2,3-triacetoxypropane",carrier|emulsifier|humectant,taxonomy
+1519,E1519,Benzyl alcohol,Phenylcarbinol|Phenylmethyl alcohol|Benzenemethanol,,missing
+152,E152,Black 7984,Food Black 2|carbon black,,missing
+1520,E1520,Propylene Glycol,"Propane-1,2-diol|Propan-1,2-diol",emulsifier|humectant,taxonomy
+1521,E1521,Polyethylene glycol,,,missing
+153,E153,Vegetable carbon,,,missing
+154,E154,Brown FK,Kipper Brown,,missing
+155,E155,Brown ht,Chocolate brown HT,colour,taxonomy
+159,E159,E15x,E15x food additive|E15x,,missing
+160,E160,Carotenoids,,,missing
+160a,E160a,carotene,carotene color,colour,taxonomy
+160ai,E160ai,Beta-carotene,b-carotene|beta-carotene color,colour,taxonomy
+160aii,E160aii,Plant carotenes,,colour,taxonomy
+160aiii,E160aiii,Beta-carotene from blakeslea trispora,,colour,taxonomy
+160aiv,E160aiv,Algal carotenes,,colour,taxonomy
+160b,E160b,Annatto,bixin|norbixin|roucou|achiote|annatto norbixin|annatto bixin|Orlean|Terre orellana|L. Orange|CI Natural Orange 4|annatto color,colour,taxonomy
+160bi,E160bi,Annatto bixin,Bixin,colour,taxonomy
+160bii,E160bii,Annatto norbixin,Norbixin,colour,taxonomy
+160biii,E160biii,Oil-extracted annatto,,,missing
+160c,E160c,Paprika extract,capsanthin|capsorubin|Paprika oleoresin|oleoresin of paprika|oleoresin paprika|paprika color|colored with paprika|paprika oleoresin color|oleoresin paprika color,colour,taxonomy
+160ci,E160ci,,,,missing
+160cii,E160cii,,,,missing
+160d,E160d,Lycopene,,colour,taxonomy
+160di,E160di,"Lycopene, synthetic",,,missing
+160dii,E160dii,"Lycopene, tomato",,,missing
+160diii,E160diii,"Lycopene, Blakeslea trispora",,,missing
+160e,E160e,Beta-apo-8′-carotenal (c30),Apocarotenal|Beta-apo-8'-carotenal|C.I. Food orange 6|E number 160E|Trans-beta-apo-8'-carotenal|C30H40O|apo carotenal|apocarotenal color,colour,taxonomy
+160f,E160f,Ethyl ester of beta-apo-8'-carotenic acid (C 30),Ethyl ester of beta-apo-8'-carotenic acid|Food orange 7,colour,taxonomy
+161,E161,Xanthophylls,,,missing
+161a,E161a,Flavoxanthin,,,missing
+161b,E161b,Lutein,Mixed Carotenoids|Xanthophyll|tagete extract,colour,taxonomy
+161bi,E161bi,Lutein from Tagetes erecta,,,missing
+161bii,E161bii,,,,missing
+161biii,E161biii,Lutein esters from Tagetes erecta,,,missing
+161c,E161c,Cryptoaxanthin,Cryptoxanthin,,missing
+161d,E161d,Rubixanthin,,,missing
+161e,E161e,Violaxanthin,,,missing
+161f,E161f,Rhodoxanthin,,,missing
+161g,E161g,Canthaxanthin,,colour,taxonomy
+161h,E161h,Zeaxanthin,,colour,taxonomy
+161hi,E161hi,"Zeaxanthin, synthetic",,,missing
+161hii,E161hii,,,,missing
+161i,E161i,Citranaxanthin,,,missing
+161j,E161j,Astaxanthin,,,missing
+162,E162,Beetroot red,betanin,colour,taxonomy
+163,E163,Anthocyanins,Anthocyanin,colour,taxonomy
+163a,E163a,Cyanidin,,colour,taxonomy
+163b,E163b,Delphinidin,,colour,taxonomy
+163c,E163c,Malvidin,,colour,taxonomy
+163d,E163d,Pelargonidin,,colour,taxonomy
+163e,E163e,Peonidin,,colour,taxonomy
+163f,E163f,Petunidin,,colour,taxonomy
+163ii,E163ii,,,colour,inherited_from_parent
+163iii,E163iii,,,colour,inherited_from_parent
+163iv,E163iv,,,colour,inherited_from_parent
+163ix,E163ix,,,colour,inherited_from_parent
+163v,E163v,,,colour,inherited_from_parent
+163vi,E163vi,,,colour,inherited_from_parent
+163vii,E163vii,,,colour,inherited_from_parent
+163viii,E163viii,,,colour,inherited_from_parent
+163x,E163x,,,colour,inherited_from_parent
+163xi,E163xi,,,colour,inherited_from_parent
+164,E164,saffron,Gardenia Yellow,,missing
+165,E165,Gardenia Blue,,,missing
+166,E166,Sandalwood,,,missing
+170,E170,Calcium carbonates,,,missing
+170i,E170i,Calcium carbonate,CI Pigment White 18|Chalk,colour|stabiliser,taxonomy
+170ii,E170ii,Calcium hydrogen carbonate,Calcium bicarbonate|Calcium acid carbonate,,missing
+171,E171,Titanium dioxide,titanium dioxide color,colour,taxonomy
+172,E172,Iron oxides and iron hydroxides,,colour,taxonomy
+172i,E172i,Black iron oxide,,colour,taxonomy
+172ii,E172ii,Red iron oxide,iron(III) oxide|ferric oxide,colour,taxonomy
+172iii,E172iii,Yellow iron oxide,,colour,taxonomy
+173,E173,Aluminium,Aluminum|element 13,,missing
+174,E174,Silver,element 47,,missing
+175,E175,Gold,Pigment Metal 3|element 79,,missing
+180,E180,Litholrubine bk,CI Pigment Red 57|Rubinpigment|Pigment Rubine|Lithol rubine bk,,missing
+181,E181,Tannin,,colour|emulsifier|stabiliser|thickener,taxonomy
+182,E182,Orcein,,,missing
+200,E200,Sorbic acid,,preservative,taxonomy
+201,E201,Sodium sorbate,"sodium (E,E)-hexa-2,4-dienoate",preservative,taxonomy
+202,E202,Potassium sorbate,1k202,preservative,taxonomy
+203,E203,Calcium sorbate,,preservative,taxonomy
+209,E209,Heptylparaben,,,missing
+210,E210,Benzoic acid,,preservative,taxonomy
+211,E211,Sodium benzoate,,preservative,taxonomy
+212,E212,Potassium benzoate,,preservative,taxonomy
+213,E213,Calcium benzoate,,preservative,taxonomy
+214,E214,Ethyl p-hydroxybenzoate,Ethylparaben|ethyl para-hydroxybenzoate,preservative,taxonomy
+215,E215,Sodium ethyl p-hydroxybenzoate,Sodium ethyl p-hydroxybenzoate,,missing
+216,E216,Propyl para-hydroxybenzoate,Sodium Salt of Propyl-p-hydroxy Benzoic Acid|Propylparaben|propyl paraben,,missing
+217,E217,Sodium propyl para-hydroxybenzoate,,,missing
+218,E218,Methyl p-hydroxybenzoate,Methylparaben|methyl 4-hydroxybenzoate|methyl paraben,preservative,taxonomy
+219,E219,Sodium methyl p-hydroxybenzoate,sodium methylparaben,,missing
+220,E220,Sulphur dioxide,Sulfur dioxide,antioxidant|preservative,taxonomy
+221,E221,Sodium sulphite,Sodium sulfite,antioxidant|preservative,taxonomy
+222,E222,Sodium bisulphite,Sodium bisulfite,antioxidant|preservative,taxonomy
+223,E223,Sodium metabisulphite,Pyrosulphite|Sodium metabisulfite|Pyrosulfite,antioxidant|preservative,taxonomy
+224,E224,Potassium metabisulphite,Potassium metabisulfite,antioxidant|preservative,taxonomy
+225,E225,Calcium Disulphite,Calcium Disulfite|Calcium Pyrosulphite|Calcium Pyrosulfite|Potassium sulfite|Potassium sulphite,antioxidant|preservative,taxonomy
+226,E226,Calcium sulphite,Calcium sulfite,,missing
+227,E227,Calcium bisulphite,Calcium bisulfite,,missing
+228,E228,Potassium bisulphite,Potassium bisulfite,,missing
+230,E230,Biphenyl,diphenyl|(C6H5)2,preservative,taxonomy
+231,E231,Orthophenyl phenol,2-hydroxybiphenyl,preservative,taxonomy
+232,E232,Sodium orthophenyl phenol,,preservative,taxonomy
+233,E233,Thiabendazole,,,missing
+234,E234,Nisin,,preservative,taxonomy
+235,E235,Natamycin,Pimaracin,preservative,taxonomy
+236,E236,Formic acid,methanoic acid,,missing
+237,E237,Sodium formiate,Sodium formate,,missing
+238,E238,Calcium formiate,calcium formate,,missing
+239,E239,Hexamethylene tetramine,Hexamine|hexamethylenetetramine,preservative,taxonomy
+240,E240,Formaldehyde,methanal,,missing
+241,E241,Gum Guaicum,,,missing
+242,E242,Dimethyl dicarbonate,DMDC|methoxycarbonyl methyl carbonate|dicarbonic acid dimethyl ester|Velcorin,preservative,taxonomy
+243,E243,Ethyl lauroyl arginate,,preservative,taxonomy
+246,E246,Glycolipids,,,missing
+249,E249,Potassium nitrite,,preservative,taxonomy
+250,E250,Sodium nitrite,NaNO2,preservative,taxonomy
+251,E251,Sodium nitrate,,preservative,taxonomy
+252,E252,Potassium nitrate,,preservative,taxonomy
+260,E260,Acetic acid,ethanoic acid,preservative,taxonomy
+261,E261,Potassium acetate,,preservative,taxonomy
+261i,E261i,,,preservative,inherited_from_parent
+261ii,E261ii,Potassium diacetate,,preservative,inherited_from_parent
+262,E262,Sodium acetates,,preservative|sequestrant,taxonomy
+262i,E262i,Sodium acetate,,preservative|sequestrant,taxonomy
+262ii,E262ii,Sodium diacetate,,preservative|sequestrant,taxonomy
+263,E263,Calcium acetate,,preservative|stabiliser,taxonomy
+264,E264,Ammonium acetate,,,missing
+265,E265,Dehydroacetic acid,,,missing
+266,E266,Sodium dehydroacetate,,,missing
+267,E267,Buffered vinegar,,,missing
+270,E270,Lactic acid,milk acid|2-Hydroxypropanoic acid,,missing
+280,E280,Propionic acid,Propionic acid|Propanoic acid|CH3CH2COOH,preservative,taxonomy
+281,E281,Sodium propionate,,preservative,taxonomy
+282,E282,calcium propionate,calcium propanoate|cal. pro.|cal.pro.,preservative,taxonomy
+283,E283,Potassium propionate,Potassium propionate|Potassium propanoate,preservative,taxonomy
+284,E284,Boric acid,Boracic acid|Orthoboric acid,,missing
+285,E285,Sodium tetraborate (borax),borax|sodium borate|sodium tetraborate|disodium tetraborate,,missing
+290,E290,Carbon dioxide,Carbonic acid gas,preservative|propellent-gas,taxonomy
+296,E296,Malic acid,hydroxybutanedioic acid|l-malic acid,,missing
+297,E297,Fumaric acid,trans-Butenedioic acid,,missing
+300,E300,Ascorbic acid,l-ascorbic acid|Synonyms L-xylo-Ascorbic acid|3a300,antioxidant|sequestrant,taxonomy
+301,E301,Sodium ascorbate,Sodium L-ascorbate,antioxidant,taxonomy
+302,E302,Calcium ascorbate,,antioxidant,taxonomy
+303,E303,Potassium ascorbate,,,missing
+304,E304,Fatty acid esters of ascorbic acid,ascorbic acid esters of fatty acid,antioxidant,taxonomy
+304i,E304i,Ascorbyl palmitate,L-Ascorbyl Palmitate,antioxidant,taxonomy
+304ii,E304ii,Ascorbyl stearate,,antioxidant,taxonomy
+306,E306,Tocopherol-rich extract,Tocopherols|natural tocopherols|mixed tocopherols|natural mixed tocopherols|1b306i|1b306ii|1b306,,missing
+307,E307,Alpha-tocopherol,,,missing
+307a,E307a,D-Alpha-tocopherol,,antioxidant,taxonomy
+307b,E307b,concentrated tocopherol,,antioxidant,taxonomy
+307c,E307c,DL-Alpha-tocopherol,,antioxidant,taxonomy
+308,E308,Gamme-tocopherol,gamma-Tocopherol,,missing
+309,E309,Delta-tocopherol,δ-tocopherol,,missing
+310,E310,Propyl gallate,Propyl gallate|Propyl ester of gallic acid,antioxidant,taxonomy
+311,E311,Octyl gallate,Octyl gallate|Octyl ester of gallic acid,,missing
+312,E312,Dodecyl gallate,,,missing
+313,E313,Ethyl gallate,,,missing
+314,E314,Guaiacum,,antioxidant,taxonomy
+315,E315,Erythorbic acid,Isoascorbic acid,antioxidant,taxonomy
+316,E316,sodium erythorbate,,antioxidant,taxonomy
+317,E317,Erythorbin acid,,,missing
+318,E318,Calcium erythorbin,,,missing
+319,E319,Tertiary-butylhydroquinone (tbhq),"Tert-butyl-1,4-benzenediol|Butylhydroxinon|TBHQ|Tert-Butylhydroquinone|tertiary butylhydroquinone",antioxidant,taxonomy
+320,E320,Butylated hydroxyanisole (bha),Butylated hydroxyanisole|BHA,antioxidant,taxonomy
+321,E321,Butylated hydroxytoluene,"BHT|2,6-Ditertiary-butyl-p-cresol|Butylated hydroxytoluene|bht added to preserve freshness",antioxidant,taxonomy
+322,E322,Lecithins,Phosphatides,antioxidant|emulsifier,taxonomy
+322a,E322a,Oat lecithin,,antioxidant|emulsifier,inherited_from_parent
+322i,E322i,Lecithin,,antioxidant|emulsifier,taxonomy
+322ii,E322ii,Partially hydrolyzed lecithin,,antioxidant|emulsifier,taxonomy
+322iii,E322iii,"Lecithin, hydroxylated",,antioxidant|emulsifier,inherited_from_parent
+323,E323,Anoxomer,,,missing
+324,E324,Ethoxyquin,,,missing
+325,E325,sodium lactate,,antioxidant|emulsifier|humectant|thickener,taxonomy
+326,E326,potassium lactate,,antioxidant|emulsifier|humectant,taxonomy
+327,E327,calcium lactate,,thickener,taxonomy
+328,E328,ammonium lactate,,,missing
+329,E329,Magnesium lactate,,,missing
+330,E330,Citric acid,,antioxidant|sequestrant,taxonomy
+331,E331,Sodium citrates,,emulsifier|sequestrant|stabiliser,taxonomy
+331i,E331i,Monosodium citrate,,emulsifier|sequestrant|stabiliser,taxonomy
+331ii,E331ii,Disodium citrate,,emulsifier|sequestrant|stabiliser,taxonomy
+331iii,E331iii,Trisodium citrate,tri sodium citrate|tri-sodium citrate,emulsifier|sequestrant|stabiliser,inherited_from_parent
+332,E332,Potassium citrates,,sequestrant|stabiliser,taxonomy
+332i,E332i,Monopotassium citrate,,sequestrant|stabiliser,taxonomy
+332ii,E332ii,Tripotassium citrate,tri-potassium citrate|tri potassium citrate|potassium citrate,sequestrant|stabiliser,taxonomy
+333,E333,Calcium citrates,Calcium citrate|Calcium salts of citric acid,sequestrant|stabiliser,taxonomy
+333i,E333i,Monocalcium citrate,,sequestrant|stabiliser,taxonomy
+333ii,E333ii,Dicalcium citrate,,sequestrant|stabiliser,taxonomy
+333iii,E333iii,Tricalcium citrate,tri-calciumcitrate,sequestrant|stabiliser,taxonomy
+334,E334,L(+)-tartaric acid,"tartaric acid|2,3-dihydroxybutanedioic acid|2,3-dihydroxysuccinic acid|threaric acid|racemic acid|uvic acid|paratartaric acid",antioxidant|sequestrant,taxonomy
+335,E335,Sodium tartrates,,sequestrant|stabiliser,taxonomy
+335i,E335i,Monosodium tartrate,,sequestrant|stabiliser,taxonomy
+335ii,E335ii,Disodium tartrate,,sequestrant|stabiliser,taxonomy
+336,E336,Potassium tartrates,,,missing
+336i,E336i,Monopotassium tartrate,monopotassic tartrate|Potassium bitartrate|potassium hydrogen tartrate|cream of tartar,,missing
+336ii,E336ii,Dipotassium tartrate,dipotassic tartrate|Potassium tartrate,,missing
+337,E337,Potassium sodium tartrate,,sequestrant|stabiliser,taxonomy
+338,E338,Phosphoric acid,Orthophosphoric acid|phosphoric(V) acid,antioxidant|sequestrant,taxonomy
+339,E339,Sodium phosphates,sodium phosphate,emulsifier|humectant|preservative|sequestrant|stabiliser|thickener,taxonomy
+339i,E339i,Monosodium phosphate,Monosodium monophosphate|Acid monosodium monophosphate|Monosodium orthophosphate|Monobasic sodium phosphate,emulsifier|humectant|preservative|sequestrant|stabiliser|thickener,taxonomy
+339ii,E339ii,Disodium phosphate,Disodium monophosphate|Secondary sodium phosphate,emulsifier|humectant|preservative|sequestrant|stabiliser|thickener,taxonomy
+339iii,E339iii,Trisodium phosphate,Tribasic sodium phosphate,emulsifier|humectant|preservative|sequestrant|stabiliser|thickener,taxonomy
+340,E340,Potassium phosphates,potassium phosphate|E-340,emulsifier|humectant|sequestrant|stabiliser|thickener,taxonomy
+340i,E340i,Monopotassium phosphate,Monobasic potassium phosphate|Monopotassium monophosphate|E-340i|E340 i,emulsifier|humectant|sequestrant|stabiliser|thickener,taxonomy
+340ii,E340ii,Dipotassium phosphate,Dipotassium monophosphate|Secondary potassium phosphate|Dipotassium orthophosphate|E340ii|E 340ii|E-340ii|E340 ii,emulsifier|humectant|sequestrant|stabiliser|thickener,taxonomy
+340iii,E340iii,Tripotassium phosphate,tripotassium phosphate|E340iii|E 340iii|E340 iii|E-340iii|Tribasic potassium phosphate,emulsifier|humectant|sequestrant|stabiliser|thickener,taxonomy
+341,E341,Calcium phosphates,calcium phosphate|calcium phosphates|E-341,emulsifier|humectant|sequestrant|stabiliser|thickener,taxonomy
+341i,E341i,Monocalcium phosphate,Monobasic calcium phosphate|mono-calcium phosphate|monocalcium phosphate|E-341i|E341 i,emulsifier|humectant|sequestrant|stabiliser|thickener,taxonomy
+341ii,E341ii,Dicalcium phosphate,Dibasic calcium phosphate|di-calcium phosphate|dicalcium phosphate|E341ii|E 341ii|E-341ii|E341 ii,emulsifier|humectant|sequestrant|stabiliser|thickener,taxonomy
+341iii,E341iii,Tricalcium phosphate,Tricalciumphosphate|tri-calcium phosphate|tricalcium phosphate|E341iii|E 341iii|E-341iii|E341 iii,emulsifier|humectant|sequestrant|stabiliser|thickener,taxonomy
+342,E342,Ammonium phosphate,monoammonium phosphate|diammonium phosphate,stabiliser|thickener,taxonomy
+342i,E342i,Ammonium dihydrogen phosphate,,stabiliser|thickener,inherited_from_parent
+342ii,E342ii,Diammonium hydrogen phosphate,,stabiliser|thickener,inherited_from_parent
+343,E343,Magnesium phosphates,magnesium phosphates|E-343,stabiliser|thickener,taxonomy
+343i,E343i,Monomagnesium phosphate,Magnesiumdihydrogenphosphate|Magnesiumphosphate|monobasic|magnesium phosphate,stabiliser|thickener,taxonomy
+343ii,E343ii,Dimagnesium phosphate,Magnesiumhydrogenphosphate|Magnesiumphosphate - dibasic|Dimagnesium orthophosphate|magnesium hydrogen phosphate|dimagnesium phosphate|E343ii|E 343ii|E-343ii|E343 ii,stabiliser|thickener,taxonomy
+343iii,E343iii,Trimagnesium phosphate,,stabiliser|thickener,inherited_from_parent
+344,E344,Lecithin citrate,,,missing
+345,E345,Magnesium citrate,,,missing
+349,E349,ammonium malate,,,missing
+350,E350,Sodium malates,,humectant,taxonomy
+350i,E350i,Sodium malate,,humectant,taxonomy
+350ii,E350ii,Sodium hydrogen malate,,humectant,taxonomy
+351,E351,Potassium malate,,,missing
+351i,E351i,Potassium hydrogen malate,,,missing
+351ii,E351ii,,,,missing
+352,E352,Calcium malates,,,missing
+352i,E352i,Calcium malate,,,missing
+352ii,E352ii,Calcium hydrogen malate,,,missing
+353,E353,Metatartaric acid,,,missing
+354,E354,Calcium tartrate,,,missing
+355,E355,Adipic acid,Hexanedioic acid,,missing
+356,E356,Sodium adipate,,,missing
+357,E357,Potassium adipate,,,missing
+359,E359,ammonium adipate,,,missing
+363,E363,Succinic acid,Asuccin|Amber acid|1/2-Ethanedicarboxylic acid|Butanedioic acid|Bernsteinsaeure|Ethylenesuccinic acid|Spirit of amber|Butanedionic acid|Bernsteinsaure|Succinate|Butandisaeure|Dihydrofumaric acid|Acidum succinicum|Acide butanedioique|Acide succinique,,missing
+364,E364,Sodium succinates,,,missing
+364i,E364i,Monosodium succinate,,,missing
+364ii,E364ii,Disodium succinate,,,missing
+365,E365,Sodium fumarate,,,missing
+366,E366,Potassium fumarate,,,missing
+367,E367,Calcium fumarate,,,missing
+368,E368,ammonium fumarate,,,missing
+369,E369,Alanin,,,missing
+370,E370,"1,4-Heptonolactone",,,missing
+375,E375,Nicotinic acid,Niacin|Nicotinamide|3a314,,missing
+380,E380,Triammonium citrate,,,missing
+381,E381,ferric ammonium citrate,ammonium ferric citrate,,missing
+383,E383,calcium glycerophosphate,,,missing
+384,E384,Isopropyl citrates,,antioxidant|preservative|sequestrant,taxonomy
+385,E385,Calcium disodium ethylenediaminetetraacetate,Calcium disodium EDTA|Calcium disodium ethylene diamine tetra-acetate|calcium disodium EDTA|calcium-dinatrium-EDTA|Calcium disodium ethylenediaminetetraacetate|E-385,antioxidant|preservative|sequestrant,taxonomy
+386,E386,,,antioxidant|preservative|sequestrant|stabiliser,taxonomy
+387,E387,,,,missing
+388,E388,Thiodipropionic acid,,antioxidant,taxonomy
+389,E389,,,antioxidant,taxonomy
+390,E390,,,,missing
+391,E391,Phytic acid,,,missing
+392,E392,Extracts of rosemary,rosemary extract,,missing
+399,E399,Calcium lactobionate,,,missing
+400,E400,Alginic acid,,carrier|emulsifier|humectant|sequestrant|stabiliser|thickener,taxonomy
+401,E401,sodium alginate,,carrier|emulsifier|humectant|sequestrant|stabiliser|thickener,taxonomy
+402,E402,Potassium alginate,,carrier|emulsifier|humectant|sequestrant|stabiliser|thickener,taxonomy
+403,E403,Ammonium alginate,,carrier|emulsifier|humectant|sequestrant|stabiliser|thickener,taxonomy
+404,E404,Calcium alginate,,carrier|humectant|sequestrant|stabiliser|thickener,taxonomy
+405,E405,"Propane-1,2-diol alginate",Propylene glycol alginate,carrier|emulsifier|stabiliser|thickener,taxonomy
+406,E406,Agar,Gelose|Kanten|Bengal|Ceylon|Chinese or Japanese isinglass|agar-agar|agar agar,carrier|emulsifier|humectant|stabiliser|thickener,taxonomy
+407,E407,Carrageenan,e407 stabilizer,carrier|emulsifier|humectant|stabiliser|thickener,taxonomy
+407a,E407a,Processed eucheuma seaweed,,carrier|emulsifier|humectant|stabiliser|thickener,taxonomy
+408,E408,Bakers yeast glycan,,,missing
+409,E409,Arabinogalactan,,,missing
+410,E410,Locust bean gum,Carob bean gum|Carob gum|garrofin gum|peruvian carob gum,emulsifier|stabiliser|thickener,taxonomy
+411,E411,E411 food additive,,,missing
+412,E412,Guar gum,Gum cyamopsis|guar flour,emulsifier|stabiliser|thickener,taxonomy
+413,E413,Tragacanth,Tragacanth gum,emulsifier|stabiliser|thickener,taxonomy
+414,E414,Acacia gum,gum arabic|gum acacia|arabic gum|Gum arabic|E-414|INS414|INS 414,carrier|emulsifier|stabiliser|thickener,taxonomy
+414a,E414a,E414a food additive,,carrier|emulsifier|stabiliser|thickener,taxonomy
+415,E415,Xanthan gum,xanthan|E-415,emulsifier|stabiliser|thickener,taxonomy
+416,E416,Karaya-gum,Katilo|Kadaya|Gum sterculia|Sterculia|Karaya|gum karaya|Kullo,emulsifier|stabiliser|thickener,taxonomy
+417,E417,Tara gum,,stabiliser|thickener,taxonomy
+418,E418,Gellan gum,gellan|E-418|INS418|INS-418|INS 418,stabiliser|thickener,taxonomy
+418i,E418i,,,stabiliser|thickener,inherited_from_parent
+418ii,E418ii,Low-acyl clarified gellan gum,,stabiliser|thickener,inherited_from_parent
+419,E419,Gum ghatti,,stabiliser|thickener,taxonomy
+420,E420,Sorbitol,glucitol,humectant|sequestrant|stabiliser|sweetener|thickener,taxonomy
+420i,E420i,D-sorbitol,D-glucitol,humectant|sequestrant|stabiliser|sweetener|thickener,taxonomy
+420ii,E420ii,Sorbitol syrup,,humectant|sequestrant|stabiliser|sweetener|thickener,taxonomy
+421,E421,Mannitol,,humectant|stabiliser|sweetener|thickener,taxonomy
+422,E422,Glycerol,Glycerin|Glycerine|vegetable glycerine|vegetable glycerin,humectant|thickener,taxonomy
+424,E424,Curdlan,,stabiliser|thickener,taxonomy
+425,E425,Konjac,,carrier|emulsifier|humectant|stabiliser|thickener,taxonomy
+425i,E425i,Konjac gum,Konjak gum,carrier|emulsifier|humectant|stabiliser|thickener,taxonomy
+425ii,E425ii,Konjac glucomannan,,carrier|emulsifier|humectant|stabiliser|thickener,taxonomy
+426,E426,Soybean hemicellulose,,,missing
+427,E427,Cassia gum,,emulsifier|stabiliser|thickener,taxonomy
+428,E428,Gelatine,gelatin,,missing
+429,E429,peptone,tryptone,,missing
+430,E430,Polyoxyethylene (8) stearate,,emulsifier,taxonomy
+431,E431,Polyoxyethylene (40) stearate,Polyoxyl (40) stearate,emulsifier,taxonomy
+432,E432,Polyoxyethylene sorbitan monolaurate,Polysorbate 20|Alkest TW 20|Tween 20|PEG(20)sorbitan monolaurate,emulsifier|stabiliser,taxonomy
+433,E433,Polyoxyethylene sorbitan monooleate,Polysorbate 80,emulsifier|stabiliser,taxonomy
+434,E434,Polyoxyethylene sorbitan monopalmitate,Polysorbate 40,emulsifier,taxonomy
+435,E435,Polyoxyethylene sorbitan monostearate,Polysorbate 60,emulsifier|stabiliser,taxonomy
+436,E436,Polyoxyethylene sorbitan tristearate,Polysorbate 65,emulsifier|stabiliser,taxonomy
+440,E440,Pectins,pectin,emulsifier|stabiliser|thickener,taxonomy
+440a,E440a,Pectin,,emulsifier|stabiliser|thickener,taxonomy
+440aii,E440aii,Sodium pectate,,emulsifier|stabiliser|thickener,taxonomy
+440aiii,E440aiii,Potassium pectate,,emulsifier|stabiliser|thickener,taxonomy
+440aiv,E440aiv,Ammonium Pectate,,emulsifier|stabiliser|thickener,taxonomy
+440b,E440b,pectin amide,amidated pectin,emulsifier|stabiliser|thickener,taxonomy
+440i,E440i,non-amidated pectines,,emulsifier|stabiliser|thickener,taxonomy
+440ii,E440ii,Amidated pectin,,emulsifier|stabiliser|thickener,taxonomy
+441,E441,Superglycerinated hydrogenated rapeseed oil,Hydrogenated rapeseed oil superglycerinated|Superglycerinated fully hydrogenated rapeseed oil,,missing
+442,E442,Ammonium phosphatides,Mixed ammonium salts of phosphorylated glycerides|Emulsifier YN|Ammonium phosphatide,emulsifier,taxonomy
+443,E443,Brominated vegetable oil,,,missing
+444,E444,Sucrose acetate isobutyrate,,emulsifier|stabiliser,taxonomy
+445,E445,Glycerol esters of wood rosin,Glycerol ester of wood rosin|glyceryl abietate|ester gum,emulsifier|stabiliser,taxonomy
+445i,E445i,Glycerol ester of gum rosin,,emulsifier|stabiliser,inherited_from_parent
+445ii,E445ii,Glycerol ester of tall oil rosin,,emulsifier|stabiliser,inherited_from_parent
+445iii,E445iii,,,emulsifier|stabiliser,inherited_from_parent
+446,E446,Succistearin,,,missing
+450,E450,Diphosphates,Pyrophosphate|diphosphate|E-450|e450 stabilizer,emulsifier|humectant|sequestrant|stabiliser|thickener,taxonomy
+450i,E450i,Disodium diphosphate,Sodium Acid Pyrophosphate|sapp|disodium dihydrogen pyrophosphate|disodium pyrophosphate|sodium acid pyrophosphate|disodium diphosphate|disodium dihydrogen diphosphate,emulsifier|humectant|sequestrant|stabiliser|thickener,taxonomy
+450ii,E450ii,Trisodium diphosphate,e450ii,emulsifier|humectant|sequestrant|stabiliser|thickener,taxonomy
+450iii,E450iii,Tetrasodium diphosphate,Tetrasodium pyrophosphate|Tetrasodium disphosphate|Tetrasodium diphosphate|sodium pyrophosphate|TSPP|e450iii,emulsifier|humectant|sequestrant|stabiliser|thickener,taxonomy
+450iv,E450iv,dipotassium dihydrogenpyrophosphate,E450iv|E-450iv,emulsifier|humectant|sequestrant|stabiliser|thickener,taxonomy
+450ix,E450ix,Magnesium dihydrogen diphosphate,,emulsifier|humectant|sequestrant|stabiliser|thickener,inherited_from_parent
+450v,E450v,Tetrapotassium diphosphate,tetrapotassium pyrophosphate,emulsifier|humectant|sequestrant|stabiliser|thickener,taxonomy
+450vi,E450vi,Dicalcium diphosphate,dicalcium pyrophosphate|e450vi,emulsifier|humectant|sequestrant|stabiliser|thickener,taxonomy
+450vii,E450vii,Calcium dihydrogen diphosphate,Acid calcium pyrophosphate|e450vii,emulsifier|humectant|sequestrant|stabiliser|thickener,taxonomy
+450viii,E450viii,,,emulsifier|humectant|sequestrant|stabiliser|thickener,taxonomy
+451,E451,Triphosphates,triphosphate|e-451,emulsifier|humectant|sequestrant|stabiliser|thickener,taxonomy
+451i,E451i,Pentasodium triphosphate,Pentasodium tripolyphosphate|Sodium triphosphate|e-451i,emulsifier|humectant|sequestrant|stabiliser|thickener,taxonomy
+451ii,E451ii,Pentapotassium triphosphate,potassium triphosphate|potassium tripolyphosphate|KTPP|E451ii|E 451ii|E-451ii,emulsifier|humectant|sequestrant|stabiliser|thickener,taxonomy
+451iii,E451iii,Sodium potassium triphosphate,,emulsifier|humectant|sequestrant|stabiliser|thickener,inherited_from_parent
+452,E452,Polyphosphates,Polyphosphate E452|e-452,emulsifier|humectant|sequestrant|stabiliser|thickener,taxonomy
+452i,E452i,Sodium polyphosphate,sodium hexametaphosphate|sodium polymetaphosphate|e-452i,emulsifier|humectant|sequestrant|stabiliser|thickener,taxonomy
+452ii,E452ii,Potassium polyphosphate,Potassium metaphosphate|Potassium polymetaphosphate|E452ii|E 452ii|E-452ii,emulsifier|humectant|sequestrant|stabiliser|thickener,taxonomy
+452iii,E452iii,Sodium calcium polyphosphate,Sodium calcium polyphosphate|E452iii|E 452iii|E-452iii,emulsifier|humectant|sequestrant|stabiliser|thickener,taxonomy
+452iv,E452iv,Calcium polyphosphate,Calcium metaphosphate|e452iv|e 452iv|e-452iv,emulsifier|humectant|sequestrant|stabiliser|thickener,taxonomy
+452v,E452v,Ammonium polyphosphate,e-452v,emulsifier|humectant|sequestrant|stabiliser|thickener,taxonomy
+452vi,E452vi,Sodium tripolyphosphate,E452vi|E 452vi|E-452vi,emulsifier|humectant|sequestrant|stabiliser|thickener,taxonomy
+457,E457,Alpha-Cyclodextrine,,stabiliser|thickener,taxonomy
+458,E458,Gamma-Cyclodextrine,,stabiliser|thickener,taxonomy
+459,E459,Beta-cyclodextrine,,carrier|stabiliser|thickener,taxonomy
+460,E460,Cellulose,cellulose powder to prevent caking|cellulose powder added to prevent caking,carrier|emulsifier|humectant|stabiliser|thickener,taxonomy
+460i,E460i,Microcrystalline cellulose,,carrier|emulsifier|humectant|stabiliser|thickener,taxonomy
+460ii,E460ii,Powdered cellulose,Purified cellulose,carrier|emulsifier|humectant|stabiliser|thickener,taxonomy
+461,E461,methyl cellulose,methylcellulose,emulsifier|stabiliser|thickener,taxonomy
+462,E462,Ethyl cellulose,Ethylcellulose,carrier|thickener,taxonomy
+463,E463,Hydroxypropyl cellulose,Hydroxypropylcellulose,emulsifier|stabiliser|thickener,taxonomy
+464,E464,Hydroxypropyl methyl cellulose,hypromellose|hydroxypropyl methylcellulose|HPMC|hydroxypropylmethylcellulose|hydroxy propyl methyl cellulose,emulsifier|stabiliser|thickener,taxonomy
+465,E465,Ethyl methyl cellulose,Ethylmethylcellulose,emulsifier|stabiliser|thickener,taxonomy
+466,E466,Sodium carboxy methyl cellulose,sodium carboxymethylcellulose|carboxy methyl cellulose|Carboxymethylcellulose|cellulose gum|carboxymethyl cellulose|CMC|NaCMC,emulsifier|humectant|stabiliser|thickener,taxonomy
+467,E467,Ethulose,,emulsifier|stabiliser|thickener,taxonomy
+468,E468,Cross-linked sodium carboxymethylcellulose,cross-linked cellulose gum|Crosslinked sodium carboxy methyl cellulose,stabiliser|thickener,taxonomy
+469,E469,Enzymatically hydrolysed carboxymethylcellulose,enzymatically hydrolised cellulose gum,stabiliser|thickener,taxonomy
+470,E470,Sodium/potassium/calcium and magnesium salts of fatty acids,,emulsifier|stabiliser|thickener,taxonomy
+470a,E470a,Sodium/potassium and calcium salts of fatty acids,Sodium/potassium and calcium salts of fatty acids,emulsifier|stabiliser|thickener,taxonomy
+470ai,E470ai,Sodium salts of fatty acids,,emulsifier|stabiliser|thickener,taxonomy
+470aii,E470aii,Potassium salts of fatty acids,,emulsifier|stabiliser|thickener,taxonomy
+470aiii,E470aiii,Calcium salts of fatty acids,,emulsifier|stabiliser|thickener,taxonomy
+470b,E470b,Magnesium salts of fatty acids,,emulsifier|stabiliser|thickener,taxonomy
+470i,E470i,,,emulsifier|stabiliser|thickener,inherited_from_parent
+470ii,E470ii,,,emulsifier|stabiliser|thickener,inherited_from_parent
+470iii,E470iii,,,emulsifier|stabiliser|thickener,inherited_from_parent
+471,E471,Mono- and diglycerides of fatty acids,Glyceryl monostearate|Glyceryl monopalmitate|Glyceryl monooleate|Monostearin|Monopalmitin|Monoolein|Mono and diglycerides,emulsifier|stabiliser,taxonomy
+472,E472,acid esters of mono- and diglycerides of fatty acids,,,missing
+472a,E472a,Acetic acid esters of mono- and diglycerides of fatty acids,,emulsifier|sequestrant|stabiliser,taxonomy
+472b,E472b,Lactic acid esters of mono- and diglycerides of fatty acids,,emulsifier|sequestrant|stabiliser,taxonomy
+472c,E472c,Citric acid esters of mono- and diglycerides of fatty acids,,antioxidant|emulsifier|sequestrant|stabiliser,taxonomy
+472d,E472d,Tartaric acid esters of mono- and diglycerides of fatty acids,,,missing
+472e,E472e,Mono- and diacetyltartaric acid esters of mono- and diglycerides of fatty acids,Mono- and diacetyl tartaric acid esters of mono- and diglycerides of fatty acids|DATEM|Mono- and diacetyltartaric esters of mono- and diglycerides of fatty acids|emulsifier E472e,emulsifier|sequestrant|stabiliser,taxonomy
+472f,E472f,Mixed acetic and tartaric acid esters of mono- and diglycerides of fatty acids,,,missing
+472g,E472g,Succinylated monoglycerides,,,missing
+473,E473,Sucrose esters of fatty acids,Sucroesters|sugar ester|sucrose esters,emulsifier|stabiliser,taxonomy
+473a,E473a,Oligoesters of sucrose type I,Oligoesters of sucrose type II|Oligoesters of sucrose,emulsifier|stabiliser,taxonomy
+474,E474,Sucroglycerides,Sucroglyceride,emulsifier,taxonomy
+475,E475,Polyglycerol esters of fatty acids,Polyglycerol fatty acid esters,emulsifier|stabiliser,taxonomy
+476,E476,Polyglycerol polyricinoleate,PGPR,emulsifier,taxonomy
+477,E477,"Propane-1,2-diol esters of fatty acids","Propane-1,2-diol esters of fatty acids",emulsifier,taxonomy
+478,E478,Lactylated fatty acid esters of glycerol and propane-1,,,missing
+479b,E479b,Thermally oxidised soya bean oil interacted with mono- and diglycerides of fatty acids,Thermally oxidised soya bean oil interacted with mono­ and diglycerides of fatty acids,emulsifier,taxonomy
+481,E481,Sodium stearoyl-2-lactylate,Sodium stearoyl lactylate,emulsifier|stabiliser,taxonomy
+481i,E481i,,,emulsifier|stabiliser,inherited_from_parent
+481ii,E481ii,Sodium oleyl lactylate,,emulsifier|stabiliser,inherited_from_parent
+482,E482,Calcium stearoyl-2-lactylate,,emulsifier|stabiliser,taxonomy
+482i,E482i,Calcium stearoyl lactylate,,emulsifier|stabiliser,inherited_from_parent
+482ii,E482ii,Calcium oleyl lactylate,,emulsifier|stabiliser,inherited_from_parent
+483,E483,Stearyl tartrate,Stearyl palmityl tartrate,,missing
+484,E484,Stearyl citrate,,antioxidant|emulsifier|sequestrant,taxonomy
+485,E485,Sodium stearoyl fumarate,,,missing
+486,E486,Calcium stearoyl fumarate,,,missing
+487,E487,sodium dodecyl sulfate,sodium laurilsulfate|sodium lauryl sulfate|NaDS,,missing
+488,E488,Ethoxylated Mono- and Di-Glycerides,,,missing
+489,E489,Methyl glucoside-coconut oil ester,,,missing
+490,E490,Propylene glycol,"1,2-propanediol|propane-1,2-diol|1,2-dihydroxypropane|α-propylene glycol|methyl ethyl glycol|methylethylene glycol|Propan-1,2-diol",,missing
+491,E491,Sorbitan monostearate,,emulsifier,taxonomy
+492,E492,Sorbitan tristearate,,emulsifier|stabiliser,taxonomy
+493,E493,Sorbitan monolaurate,,emulsifier|stabiliser,taxonomy
+494,E494,Sorbitan monooleate,,emulsifier|stabiliser,taxonomy
+495,E495,Sorbitan monopalmitate,,emulsifier,taxonomy
+496,E496,Sorbitan trioleate,,,missing
+500,E500,Sodium carbonates,,stabiliser|thickener,taxonomy
+500i,E500i,Sodium carbonate,washing soda,stabiliser|thickener,taxonomy
+500ii,E500ii,Sodium hydrogen carbonate,Sodium bicarbonate|sodium acid carbonate|Bicarbonate of soda|baking soda,stabiliser|thickener,taxonomy
+500iii,E500iii,Sodium sesquicarbonate,,stabiliser|thickener,taxonomy
+501,E501,Potassium carbonates,,stabiliser,taxonomy
+501i,E501i,Potassium carbonate,,stabiliser,taxonomy
+501ii,E501ii,Potassium hydrogen carbonate,Potassium bicarbonate,stabiliser,taxonomy
+502,E502,Carbonates,,,missing
+503,E503,Ammonium carbonates,,,missing
+503i,E503i,Ammonium carbonate,,,missing
+503ii,E503ii,Ammonium hydrogen carbonate,Baker's ammonia|Sal volatile|Salt of hartshorn|Ammonium bicarbonate,,missing
+504,E504,Magnesium carbonates,,carrier,taxonomy
+504i,E504i,Magnesium carbonate,,carrier,taxonomy
+504ii,E504ii,Magnesium hydroxide carbonate,,carrier,taxonomy
+505,E505,Ferrous carbonate,3b101,,missing
+507,E507,Hydrochloric acid,Hydrogen chloride,,missing
+508,E508,Potassium chloride,Sylvine,stabiliser|thickener|preservative,taxonomy
+509,E509,Calcium chloride,,stabiliser|thickener|coagulant,taxonomy
+510,E510,ammonium chloride,ammonia solution|salmiac,,missing
+511,E511,Magnesium chloride,,stabiliser|coagulant,taxonomy
+512,E512,Stannous chloride,Tin chloride|Tin(II) chloride,antioxidant,taxonomy
+513,E513,Sulphuric acid,Oil of vitriol|sulfuric acid|H2SO4,,missing
+514,E514,Sodium sulphates,,,missing
+514i,E514i,Sodium sulphate,,,missing
+514ii,E514ii,Sodium hydrogen sulphate,Acid sodium sulphate|Sodium bisulphate|sodium bisulfate,,missing
+515,E515,Potassium sulphates,Potassium sulfates|potassium sulfate,,missing
+515i,E515i,Potassium sulphate,,,missing
+515ii,E515ii,Potassium hydrogen sulphate,Potassium bisulphate,,missing
+516,E516,Calcium sulphate,Gypsum|Selenite|Calcium sulfate|calcium sulfate added to prevent caking,sequestrant|stabiliser,taxonomy
+517,E517,Ammonium sulphate,ammonium sulfate,,missing
+518,E518,Magnesium sulphate,Epsom salts|magnesium sulfate,,missing
+519,E519,Copper sulphate,copper(II) sulfate,,missing
+520,E520,Aluminium sulphate,Aluminium sulfate,,missing
+521,E521,Aluminium sodium sulphate,Soda alum|Sodium aluminium sulfate,,missing
+522,E522,Aluminium potassium sulphate,Potassium alum|Potassium aluminium sulfate|potash alum,,missing
+523,E523,Aluminium ammonium sulphate,ammonium aluminium sulfate,stabiliser,taxonomy
+524,E524,Sodium hydroxide,Caustic soda,,missing
+525,E525,Potassium hydroxide,,,missing
+526,E526,Calcium hydroxide,Slaked lime,,missing
+527,E527,Ammonium hydroxide,Aqua ammonia|ammonia|household ammonia|ammonia water|ammonical liquor|ammonia liquor|aqueous ammonia,,missing
+528,E528,Magnesium hydroxide,,,missing
+529,E529,Calcium oxide,,,missing
+530,E530,Magnesium oxide,magnesia,,missing
+535,E535,Sodium ferrocyanide,Yellow prussiate of soda,,missing
+536,E536,Potassium ferrocyanide,Yellow prussiate of potash,,missing
+537,E537,ferrous hexacyanomanganate,,,missing
+538,E538,Calcium ferrocyanide,Yellow prussiate of lime,,missing
+539,E539,sodium thiosulfate,,antioxidant|sequestrant,taxonomy
+540,E540,Dicalcium diphosphate,,,missing
+541,E541,Sodium aluminium phosphate,,emulsifier|stabiliser|thickener,taxonomy
+541i,E541i,Acid sodium aluminium phosphate,,emulsifier|stabiliser|thickener,taxonomy
+541ii,E541ii,Alkaline sodium aluminium phosphate,,emulsifier|stabiliser|thickener,taxonomy
+542,E542,Bone phosphate,"Bone phosphate (Essentiale Calcium Phosphate, Tribasic)",emulsifier|humectant,taxonomy
+543,E543,E543 food additive,,,missing
+544,E544,Calcium polyphosphate,,,missing
+545,E545,Ammonium polyphosphate,,,missing
+546,E546,Magnesium pyrophosphate,,,missing
+550,E550,Sodium silicate,"Sodium Silicates (i), Sodium silicate (ii), Sodium metasilicate",,missing
+550i,E550i,,,,missing
+550ii,E550ii,Sodium metasilicate,,,missing
+551,E551,Silicon dioxide,Silica|SiO2,carrier,taxonomy
+552,E552,Calcium silicate,,,missing
+553,E553,Magnesium silicates,magnesium silicate,thickener,taxonomy
+553a,E553a,synthetic magnesium silicates,,thickener,taxonomy
+553ai,E553ai,Synthetic magnesium silicate,,thickener,taxonomy
+553aii,E553aii,Magnesium trisilicate,,thickener,taxonomy
+553b,E553b,Talc,talcum|hydrated magnesium silicate,thickener,taxonomy
+553i,E553i,"Magnesium silicate, synthetic",,thickener,inherited_from_parent
+553ii,E553ii,,,thickener,inherited_from_parent
+553iii,E553iii,,,thickener,inherited_from_parent
+554,E554,Sodium aluminium silicate,Sodium silicoaluminate|Sodium aluminosilicate,,missing
+555,E555,Potassium aluminium silicate,,,missing
+556,E556,Calcium aluminium silicate,Calcium aluminosilicate|Calcium silicoaluminate|Aluminium calcium silicate,,missing
+557,E557,hemimorphite,calamine,,missing
+558,E558,Bentonite,1m558i|1m558,,missing
+559,E559,Aluminium silicate,Kaolin,,missing
+560,E560,Potassium silicate,,,missing
+570,E570,Fatty acids,Linear fatty acids|caprylic acid (C8)|caprylic acid|capric acid (C10)|capric acid|lauric acid (C12)|lauric acid|myristic acid (C14)|myristic acid|palmitic acid (C16)|palmitic acid|stearic acid (C18)|stearic acid|fatty acid,,missing
+571,E571,,,,missing
+572,E572,Magnesium stearate,,,missing
+573,E573,Aluminium stearate,Aluminum stearate,,missing
+574,E574,Gluconic acid,D-gluconic acid,,missing
+575,E575,Glucono-delta-lactone,Gluconolactone|GDL|D-Gluconic acid delta-lactone,sequestrant,taxonomy
+576,E576,Sodium gluconate,,sequestrant|stabiliser|thickener,taxonomy
+577,E577,Potassium gluconate,,sequestrant,taxonomy
+578,E578,calcium gluconate,,sequestrant,taxonomy
+579,E579,iron gluconate,ferrous gluconate,,missing
+580,E580,Magnesium Gluconate,,,missing
+585,E585,Ferrous lactate,Iron-II lactate,,missing
+586,E586,4-hexylresorcinol,"4-Hexyl-1,3-benzenediol",,missing
+620,E620,Glutamic acid,L-Glutamic acid,,missing
+621,E621,Monosodium glutamate,"monosodium l-glutamate|Sodium glutamate|L-Glutamic acid, monosodium salt|Glutamate|MSG Fine|E-621|MSG",flavour-enhancer,taxonomy
+622,E622,Monopotassium glutamate,Potassium glutamate,,missing
+623,E623,Calcium diglutamate,,,missing
+624,E624,Monoammonium glutamate,,,missing
+625,E625,Magnesium diglutamate,,,missing
+626,E626,Guanylic acid,guanosine monophosphate,,missing
+627,E627,Disodium guanylate,Sodium guanylate,,missing
+628,E628,Dipotassium guanylate,Potassium guanylate,,missing
+629,E629,Calcium guanylate,,,missing
+630,E630,Inosinic acid,,,missing
+631,E631,Disodium inosinate,Sodium inosinate,,missing
+632,E632,Dipotassium inosinate,Potassium inosinate,,missing
+633,E633,Calcium inosinate,,,missing
+634,E634,Calcium 5'-ribonucleotide,Calcium 5'-ribonucleotides,,missing
+635,E635,Disodium 5'-ribonucleotide,Disodium 5'-ribonucleotides,,missing
+636,E636,Maltol,,,missing
+637,E637,Ethyl maltol,,,missing
+638,E638,,,,missing
+640,E640,Glycine and its sodium salt,,,missing
+640i,E640i,Glycine,,,missing
+640ii,E640ii,Sodiumglycinate,,,missing
+641,E641,Leucine,L-Leucine,,missing
+642,E642,,,,missing
+650,E650,Zinc acetate,zinc salt,,missing
+710,E710,Spiramycin,,,missing
+713,E713,Tylosin,,,missing
+900,E900,Dimethylpolysiloxane and Methylphenylpolysiloxane,,,missing
+900a,E900a,Dimethyl polysiloxane,Polydimethyl siloxane|Silicone fluid|Silicone oil|Polydimethylsiloxane|dimethicone|dimethylpolysiloxane,emulsifier,taxonomy
+900b,E900b,Methylphenylpolysiloxane,,,missing
+901,E901,white and yellow beeswax,beeswax|white beeswax|yellow beeswax|white wax|bees wax,carrier|emulsifier|stabiliser|thickener,taxonomy
+902,E902,Candelilla wax,,carrier|emulsifier|thickener,taxonomy
+903,E903,Carnauba wax,carnauba wax coating agents,carrier,taxonomy
+904,E904,Shellac,Bleached shellac,,missing
+905,E905,Synthetic wax,Hydrocarbon wax|Fischer-Tropsch wax,,missing
+905a,E905a,mineral oil,,,missing
+905b,E905b,petroleum jelly,petrolatum|white petrolatum|soft paraffin|multi-hydrocarbon,,missing
+905c,E905c,Petroleum wax,,,missing
+905ci,E905ci,Microcrystalline wax,,,missing
+905cii,E905cii,Paraffin wax,,,missing
+905d,E905d,Mineral oil high viscosity,,,missing
+905e,E905e,Mineral oil medium viscosity,,,missing
+905f,E905f,Mineral oil medium and low viscosity class II,,,missing
+905g,E905g,Mineral oil medium and low viscosity class III,,,missing
+906,E906,Benzoin resin,,,missing
+907,E907,Hydrogenated poly-1-decene,Hydrogenated polydec-1-ene|Crystalline wax,,missing
+908,E908,Rice bran wax,,,missing
+909,E909,Spermaceti,,,missing
+910,E910,Wax ester,,,missing
+911,E911,Fatty acid methyl ester,,,missing
+912,E912,Montanic acid esters,Montan acid esters,,missing
+913,E913,Lanolin,sheep wool grease|wool wax|wool grease,,missing
+914,E914,Oxidised polyethylene wax,,,missing
+915,E915,Esters of Colophane,Esters of colophony,,missing
+916,E916,Calcium iodate,3b202,,missing
+917,E917,potassium iodate,,,missing
+918,E918,Nitrogen oxides,,,missing
+919,E919,Nitrosyl chloride,,,missing
+920,E920,l-cysteine,L-cysteine hydrochloride|L-Cysteine|L-2-Amino-3-mercaptopropionic acid|L-Cys|(R)-2-Amino-3-mercaptopropanoic acid|(2R)-2-amino-3-sulfanylpropanoic acid|(2R)-2-amino-3-mercaptopropanoic acid,,missing
+921,E921,L-cysteine hydrochloride monohydrate,,,missing
+922,E922,Potassium persulfate,,,missing
+923,E923,ammonium persulfate,,,missing
+924,E924,Potassium bromate,,,missing
+924a,E924a,Potassium bromate,,,missing
+924b,E924b,Calcium bromate,,,missing
+925,E925,Chlorine,element 17,,missing
+926,E926,Chlorine dioxide,,,missing
+927,E927,Azodicarbonamide and Carbamide,,,missing
+927a,E927a,Azodicarbonamide,,,missing
+927b,E927b,Carbamide,urea,,missing
+928,E928,Benzole peroxide,benzoyl peroxide,preservative,taxonomy
+929,E929,acetone peroxide,Mother of Satan|Triacetone Triperoxide|Peroxyacetone,,missing
+930,E930,calcium peroxide,,,missing
+931,E931,Nitrogen,,,missing
+932,E932,Nitrogen oxide,,,missing
+938,E938,Argon,element 18,,missing
+939,E939,Helium,element 2,,missing
+940,E940,Dichlorodifluoromethane,,,missing
+941,E941,Nitrogen,nitrogen E941,propellent-gas,taxonomy
+942,E942,Nitrous oxide,propellent gas E942,antioxidant|propellent-gas,taxonomy
+943a,E943a,Butane,,,missing
+943b,E943b,Isobutane,,,missing
+944,E944,Propane,,,missing
+945,E945,chloropentafluoroethane,,,missing
+946,E946,octafluorocyclobutane,,,missing
+948,E948,Oxygen,element 8,,missing
+949,E949,Hydrogen,,,missing
+950,E950,Acesulfame k,Acesulfame potassium,sweetener,taxonomy
+951,E951,Aspartame,1-Methyl N-L-alpha-aspartyl-L-phenylalanine|Asp-phe-ome|3-Amino-N-(alpha-methoxycarbonylphenethyl) succinamic acid|3-Amino-N-(α-carboxyphenethyl)succinamic acid N-methyl ester|L-Aspartyl-L-phenylalanine methyl ester|1-methyl N-L-α-aspartyl-L-phenylalanate|Aspartylphenylalanine methyl ester|3-Amino-N-(alpha-carboxyphenethyl)succinamic acid N-methyl ester|3-Amino-N-(α-methoxycarbonylphenethyl) succinamic acid|1-Methyl N-L-alpha-aspartyl-L-phenylalanate,sweetener,taxonomy
+952,E952,Cyclamic acid and its Na and Ca salts,Cyclamic acid|sodium cyclamate|cyclamates,sweetener,taxonomy
+952i,E952i,,,sweetener,inherited_from_parent
+952ii,E952ii,Calcium cyclamate,,sweetener,inherited_from_parent
+952iv,E952iv,,,sweetener,inherited_from_parent
+953,E953,isomalt,,stabiliser|sweetener|thickener,taxonomy
+954,E954,saccharin and its salts,saccharin|saccharin sodium salt|saccharin sodium|sodium saccharin salt|saccharin calcium salt|saccharin calcium|calcium saccharine|saccharin potassium salt|saccharine potassium|potassium saccharine|sodium saccharin,sweetener,taxonomy
+954i,E954i,,,sweetener,inherited_from_parent
+954ii,E954ii,Calcium saccharin,,sweetener,inherited_from_parent
+954iii,E954iii,Potassium saccharin,,sweetener,inherited_from_parent
+954iv,E954iv,,,sweetener,inherited_from_parent
+955,E955,Sucralose,,sweetener,taxonomy
+956,E956,Alitame,,sweetener,taxonomy
+957,E957,Thaumatin,,sweetener,taxonomy
+958,E958,Glycyrrhizin,,sweetener,taxonomy
+959,E959,Neohesperidine dihydrochalcone,Neohesperidin dihydrochalcone|Neohesperidine DC|NHDC,sweetener,taxonomy
+960,E960,Steviol glycosides,Steviol glycoside|stevia rebaudiana extract|stevia leaf extract|steviol,sweetener,taxonomy
+960a,E960a,Steviol glycosides from Stevia,,sweetener,taxonomy
+960b,E960b,Rebaudioside from multiple gene donors expressed in Yarrowia lipolityca,,sweetener,taxonomy
+960c,E960c,Enzymatically produced steviol glycosides,,sweetener,taxonomy
+960d,E960d,Glucosylated steviol glycosides,,sweetener,taxonomy
+961,E961,Neotame,,sweetener,taxonomy
+962,E962,Salt of aspartame-acesulfame,Aspartame-acesulfame|Aspartame-acesulfame salt|E-962,sweetener,taxonomy
+963,E963,Tagatose,,sweetener,taxonomy
+964,E964,Polyglycitol syrup,,sweetener,taxonomy
+965,E965,maltitol,,emulsifier|humectant|stabiliser|sweetener|thickener,taxonomy
+965i,E965i,D-Maltitol,,emulsifier|humectant|stabiliser|sweetener|thickener,taxonomy
+965ii,E965ii,Maltitol syrup,,emulsifier|humectant|stabiliser|sweetener|thickener,taxonomy
+966,E966,Lactitol,Lactit|Lactositol,emulsifier|sweetener|thickener,taxonomy
+967,E967,Xylitol,,emulsifier|humectant|stabiliser|sweetener|thickener,taxonomy
+968,E968,Erythritol,Meso-erythritol|Tetrahydroxybutane|E-968,humectant|sweetener,taxonomy
+969,E969,Advantame,,sweetener,taxonomy
+999,E999,Quillaia extract,Soapbark extract|Quillay bark extract|Panama bark extract|Quillai extract|Murillo bark extract|Quillaia,emulsifier,taxonomy
+999i,E999i,Quillaia extract type 1,,emulsifier,inherited_from_parent
+999ii,E999ii,Quillaia extract type 2,,emulsifier,inherited_from_parent
