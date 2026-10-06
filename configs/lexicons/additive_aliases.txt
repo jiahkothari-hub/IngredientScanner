@@ -1,0 +1,146 @@
+# Common label names for additives that are missing from (or spelled differently in) the OFF taxonomy.
+# Format:  name | INS number (tag form: 330, 150d, 322i, 500ii)
+soy lecithin | 322
+soya lecithin | 322
+soy lecithins | 322
+soya lecithins | 322
+sunflower lecithin | 322
+sunflower lecithins | 322
+rapeseed lecithin | 322
+lecithin | 322
+lecithins | 322
+mono and diglycerides | 471
+mono- and diglycerides | 471
+mono and di-glycerides | 471
+mono- and di-glycerides of fatty acids | 471
+mono and diglycerides of fatty acids | 471
+monoglycerides | 471
+distilled monoglycerides | 471
+datem | 472e
+caramel colour | 150
+caramel color | 150
+plain caramel | 150a
+caramel colour (plain) | 150a
+annatto | 160b
+annatto extract | 160b
+annatto color | 160b
+paprika extract | 160c
+paprika oleoresin | 160c
+beta carotene | 160a
+beta-carotene | 160a
+curcumin | 100
+turmeric extract | 100
+titanium dioxide | 171
+red 40 | 129
+red no. 40 | 129
+red 3 | 127
+yellow 5 | 102
+yellow 6 | 110
+blue 1 | 133
+blue 2 | 132
+fd&c red 40 | 129
+fd&c yellow 5 | 102
+fd&c yellow 6 | 110
+fd&c blue 1 | 133
+red 40 lake | 129
+yellow 5 lake | 102
+yellow 6 lake | 110
+blue 1 lake | 133
+carmine | 120
+cochineal | 120
+beetroot red | 162
+sodium bicarbonate | 500ii
+baking soda | 500ii
+bicarbonate of soda | 500ii
+sodium hydrogen carbonate | 500ii
+ammonium bicarbonate | 503ii
+ammonium hydrogen carbonate | 503ii
+sodium acid pyrophosphate | 450i
+monocalcium phosphate | 341i
+cream of tartar | 336i
+citric acid | 330
+ascorbic acid | 300
+sodium ascorbate | 301
+lactic acid | 270
+acetic acid | 260
+malic acid | 296
+sodium citrate | 331
+sodium citrates | 331
+trisodium citrate | 331iii
+potassium sorbate | 202
+sorbic acid | 200
+sodium benzoate | 211
+potassium benzoate | 212
+calcium propionate | 282
+sodium metabisulphite | 223
+sodium metabisulfite | 223
+potassium metabisulphite | 224
+potassium metabisulfite | 224
+sulphur dioxide | 220
+sulfur dioxide | 220
+sulphites | 220
+sulfites | 220
+sodium nitrite | 250
+potassium nitrate | 252
+nisin | 234
+natamycin | 235
+xanthan gum | 415
+guar gum | 412
+locust bean gum | 410
+carob bean gum | 410
+gum arabic | 414
+acacia gum | 414
+gum acacia | 414
+carrageenan | 407
+agar | 406
+agar-agar | 406
+pectin | 440
+sodium alginate | 401
+gellan gum | 418
+cellulose gum | 466
+carboxymethylcellulose | 466
+microcrystalline cellulose | 460i
+methylcellulose | 461
+modified starch | 1400
+modified corn starch | 1400
+modified maize starch | 1400
+modified tapioca starch | 1400
+modified food starch | 1400
+monosodium glutamate | 621
+msg | 621
+disodium inosinate | 631
+disodium guanylate | 627
+disodium 5'-ribonucleotides | 635
+silicon dioxide | 551
+calcium silicate | 552
+tocopherols | 306
+mixed tocopherols | 306
+rosemary extract | 392
+bha | 320
+bht | 321
+tbhq | 319
+calcium chloride | 509
+calcium carbonate | 170
+glycerol | 422
+glycerine | 422
+glycerin | 422
+polysorbate 80 | 433
+sodium phosphate | 339
+disodium phosphate | 339ii
+trisodium phosphate | 339iii
+tetrasodium pyrophosphate | 450iii
+sodium tripolyphosphate | 451i
+sodium hexametaphosphate | 452i
+sodium diacetate | 262ii
+sodium erythorbate | 316
+calcium disodium edta | 385
+disodium edta | 386
+ester gum | 445
+glycerol esters of wood rosin | 445
+mono- and diacetyl tartaric acid esters | 472e
+mono- and diacetyl tartaric acid esters of mono- and diglycerides | 472e
+mono- and diacetyl tartaric acid esters of mono- and diglycerides of fatty acids | 472e
+diacetyl tartaric acid esters of mono- and diglycerides | 472e
+diacetyl tartaric acid esters of mono- and diglycerides of fatty acids | 472e
+sodium stearoyl lactylate | 481
+sodium stearoyl-2-lactylate | 481

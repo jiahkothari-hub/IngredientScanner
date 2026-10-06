@@ -1,0 +1,52 @@
+{
+  "funnel": [
+    {
+      "step": "in English-speaking country groups",
+      "products": 1441888
+    },
+    {
+      "step": "unique barcode",
+      "products": 1441883
+    },
+    {
+      "step": "has ingredients_text (not empty / 'undefined')",
+      "products": 531903
+    },
+    {
+      "step": "length 3-1500 chars",
+      "products": 528982
+    },
+    {
+      "step": "English ingredient list",
+      "products": 509294
+    },
+    {
+      "step": "unique ingredient list (exact duplicates removed)",
+      "products": 405812
+    },
+    {
+      "step": "after per-country-group sampling",
+      "products": 22355
+    }
+  ],
+  "detected_language_among_length_filtered": {
+    "en": 493671,
+    "unknown": 23698,
+    "fr": 7013,
+    "de": 2497,
+    "es": 953,
+    "nl": 646,
+    "it": 380,
+    "pt": 124
+  },
+  "final_country_groups": {
+    "uk_ireland": 7000,
+    "north_america": 7000,
+    "india": 4355,
+    "other_english": 4000
+  },
+  "final_english_rule": {
+    "marker_words": 21500,
+    "assumed_ascii_no_markers": 855
+  }
+}

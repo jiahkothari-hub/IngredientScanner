@@ -1,0 +1,77 @@
+{
+  "0.0": {
+    "micro_f1": 1.0,
+    "per_class_f1": {
+      "SUGAR": 1.0,
+      "SWEETENER": 1.0,
+      "FAT": 1.0,
+      "PRESERVATIVE": 1.0,
+      "COLOUR": 1.0,
+      "ADDITIVE": 1.0,
+      "INS_CODE": 1.0,
+      "FUNCTION_CLASS": 1.0,
+      "FLAVOURING": 1.0,
+      "INGREDIENT": 1.0
+    }
+  },
+  "0.01": {
+    "micro_f1": 0.9686,
+    "per_class_f1": {
+      "SUGAR": 0.9821,
+      "SWEETENER": 0.9383,
+      "FAT": 0.9755,
+      "PRESERVATIVE": 0.985,
+      "COLOUR": 0.9565,
+      "ADDITIVE": 0.9513,
+      "INS_CODE": 0.9777,
+      "FUNCTION_CLASS": 0.9536,
+      "FLAVOURING": 0.9666,
+      "INGREDIENT": 0.9707
+    }
+  },
+  "0.02": {
+    "micro_f1": 0.9398,
+    "per_class_f1": {
+      "SUGAR": 0.9659,
+      "SWEETENER": 0.9193,
+      "FAT": 0.9731,
+      "PRESERVATIVE": 0.9291,
+      "COLOUR": 0.9139,
+      "ADDITIVE": 0.9122,
+      "INS_CODE": 0.9462,
+      "FUNCTION_CLASS": 0.9274,
+      "FLAVOURING": 0.9226,
+      "INGREDIENT": 0.9409
+    }
+  },
+  "0.05": {
+    "micro_f1": 0.8601,
+    "per_class_f1": {
+      "SUGAR": 0.9037,
+      "SWEETENER": 0.8194,
+      "FAT": 0.9216,
+      "PRESERVATIVE": 0.8376,
+      "COLOUR": 0.8379,
+      "ADDITIVE": 0.7689,
+      "INS_CODE": 0.8856,
+      "FUNCTION_CLASS": 0.8456,
+      "FLAVOURING": 0.8457,
+      "INGREDIENT": 0.8643
+    }
+  },
+  "0.1": {
+    "micro_f1": 0.7384,
+    "per_class_f1": {
+      "SUGAR": 0.8245,
+      "SWEETENER": 0.687,
+      "FAT": 0.8372,
+      "PRESERVATIVE": 0.6224,
+      "COLOUR": 0.7095,
+      "ADDITIVE": 0.6153,
+      "INS_CODE": 0.7512,
+      "FUNCTION_CLASS": 0.6886,
+      "FLAVOURING": 0.716,
+      "INGREDIENT": 0.7444
+    }
+  }
+}

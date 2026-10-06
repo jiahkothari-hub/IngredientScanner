@@ -1,0 +1,7 @@
+data/raw/
+data/interim/
+models/pretrained/
+models/runs/
+notebooks/
+.venv/
+**/__pycache__/

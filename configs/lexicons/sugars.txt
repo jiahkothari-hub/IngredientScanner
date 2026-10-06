@@ -1,0 +1,69 @@
+# SUGAR lexicon: sugars and syrups whose role is sweetness (mono-/disaccharides, syrups, honey ...).
+# Matching is case-insensitive. Longer entries win over shorter ones ("glucose syrup" over "glucose").
+# A segment whose LAST word is sugar/sugars/syrup/dextrose/... is also SUGAR (see src/labeling/rules.py).
+# Decisions (see reports/entity_schema.md): maltodextrin -> INGREDIENT; fruit juice concentrate -> INGREDIENT;
+# sugar alcohols (sorbitol, maltitol ...) -> SWEETENER.
+sugar
+sugars
+cane sugar
+raw cane sugar
+brown sugar
+light brown sugar
+dark brown sugar
+icing sugar
+powdered sugar
+caster sugar
+castor sugar
+demerara sugar
+muscovado sugar
+coconut sugar
+beet sugar
+invert sugar
+invert sugar syrup
+inverted sugar syrup
+sugar syrup
+glucose
+glucose syrup
+glucose-fructose syrup
+fructose-glucose syrup
+glucose fructose syrup
+dried glucose syrup
+glucose syrup solids
+corn syrup
+corn syrup solids
+high fructose corn syrup
+hfcs
+rice syrup
+brown rice syrup
+tapioca syrup
+malt syrup
+barley malt syrup
+maple syrup
+golden syrup
+agave syrup
+agave nectar
+date syrup
+liquid sugar
+dextrose
+dextrose monohydrate
+fructose
+sucrose
+maltose
+lactose
+galactose
+trehalose
+isoglucose
+honey
+molasses
+cane molasses
+treacle
+black treacle
+jaggery
+gur
+khandsari
+evaporated cane juice
+cane juice
+dehydrated cane juice
+caramelised sugar
+caramelized sugar
+burnt sugar

@@ -1,0 +1,27 @@
+# FAT lexicon: oils and fats. Exact phrases here; in addition any segment whose LAST word is
+# oil/oils/fat/fats/shortening/ghee/lard/... is FAT (src/labeling/rules.py), e.g. "refined palm oil".
+# Exceptions (NOT fat): flavouring oils (peppermint oil ...) -> FLAVOURING, "peanut butter" -> INGREDIENT.
+# Decisions: butter, ghee, cocoa butter -> FAT; cream, cheese, milk fat in a dairy product -> FAT only
+# when the words fat/oil/butter are the head ("milk fat" FAT, "cream" INGREDIENT).
+butter
+unsalted butter
+salted butter
+butter oil
+anhydrous milk fat
+cocoa butter
+shea butter
+ghee
+vanaspati
+lard
+tallow
+beef tallow
+dripping
+suet
+shortening
+margarine
+palmolein
+palm olein
+refined palmolein
+palm stearin
+palm kernel stearin
+interesterified fat

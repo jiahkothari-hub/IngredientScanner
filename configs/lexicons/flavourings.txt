@@ -1,0 +1,18 @@
+# FLAVOURING lexicon. Additionally, any segment containing the word flavour/flavor/flavouring/flavoring
+# (but not "flavour enhancer") is FLAVOURING, e.g. "natural strawberry flavour", "added flavours".
+vanillin
+ethyl vanillin
+smoke flavouring
+liquid smoke
+natural smoke
+peppermint oil
+spearmint oil
+mint oil
+lemon oil
+orange oil
+lime oil
+clove oil
+oil of peppermint
+oil of spearmint
+essential oil
+essential oils

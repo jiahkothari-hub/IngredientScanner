@@ -1,0 +1,150 @@
+"""Compare all NER systems: Dictionary rules vs CRF vs DistilBERT (+augmentation, +CRF) vs BERT.
+
+Usage:  python -m src.ner.evaluate_models [--limit 1000]
+
+Every system is scored with the SAME strict entity-level scorer (src/evaluation/metrics.py) on the
+SAME evaluation sets (src/ner/data.py):
+  silver_test       labels made by the rules  -> "how well did the model learn the labelling policy?"
+                    (the dictionary system scores ~1.0 here by construction: it IS the reference)
+  noisy_test_0.05   same texts with 5% / 10% OCR-style character noise, labels of the clean text
+  noisy_test_0.10   -> "does the system still work on OCR-like text?" (the realistic setting)
+  gold_test         human-verified labels -> the final benchmark (appears after annotation)
+
+Outputs:
+  reports/model_comparison.json / .md
+  reports/figures/12_model_comparison.png      micro F1 per system and evaluation set
+  reports/figures/13_per_class_f1_noisy.png    per-class F1 on noisy_test_0.05
+  reports/error_analysis/<system>_errors_<set>.csv   every error, same categories as the baseline analysis
+"""
+import argparse
+import json
+import time
+
+import matplotlib
+
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+
+from src.baseline.dictionary_ner import DictionaryNER
+from src.evaluation.error_analysis import compare_entities
+from src.evaluation.metrics import evaluate_tag_sequences, format_report
+from src.labeling.bio import LABELS, bio_to_entities, entities_to_bio
+from src.ner.data import evaluation_sets, tags_of
+from src.utils.config import project_path
+
+INK, MUTED = "#0b0b0b", "#52514e"
+SET_COLOURS = {"silver_test": "#2a78d6", "noisy_test_0.05": "#eb6834", "noisy_test_0.10": "#1baf7a",
+               "gold_test": "#4a3aa7"}
+
+
+class DictionarySystem:
+    name = "dictionary"
+
+    def __init__(self):
+        self.ner = DictionaryNER()
+
+    def predict_records(self, records):
+        return [entities_to_bio(r["token_offsets"], self.ner.predict_record(r)) for r in records]
+
+
+def load_systems() -> dict:
+    systems = {"dictionary": DictionarySystem()}
+    from src.ner.crf_baseline import MODEL_PATH, CRFTagger
+    if MODEL_PATH.exists():
+        systems["crf"] = CRFTagger()
+    from src.ner.transformer_ner import TransformerTagger
+    for config in sorted(project_path("models/runs").glob("*/best/config.json")):
+        systems[config.parent.parent.name] = TransformerTagger(config.parent)
+    return systems
+
+
+def plot_comparison(results: dict):
+    systems = list(results)
+    sets = [s for s in SET_COLOURS if s in next(iter(results.values()))]
+    x = np.arange(len(systems))
+    width = 0.8 / len(sets)
+    fig, ax = plt.subplots(figsize=(max(7, 1.5 * len(systems)), 4.2))
+    for k, s in enumerate(sets):
+        values = [results[m][s]["micro"]["f1"] for m in systems]
+        bars = ax.bar(x + (k - (len(sets) - 1) / 2) * width, values, width * 0.92, color=SET_COLOURS[s], label=s)
+        for bar, v in zip(bars, values):
+            ax.text(bar.get_x() + bar.get_width() / 2, v + 0.01, f"{v:.2f}", ha="center", fontsize=7, color=MUTED)
+    ax.set_xticks(x, systems)
+    ax.set_ylim(0, 1.08)
+    ax.set_ylabel("entity-level micro F1")
+    ax.set_title("NER systems compared (same scorer, same data)", loc="left", color=INK)
+    ax.legend(frameon=False, fontsize=8, ncol=len(sets), loc="upper center", bbox_to_anchor=(0.5, -0.1))
+    for side in ("top", "right"):
+        ax.spines[side].set_visible(False)
+    ax.grid(axis="y", color="#e6e5e0", linewidth=0.6)
+    ax.set_axisbelow(True)
+    fig.savefig(project_path("reports/figures/12_model_comparison.png"), dpi=150, bbox_inches="tight")
+    plt.close(fig)
+
+
+def plot_per_class(results: dict, eval_set: str):
+    systems = list(results)
+    matrix = pd.DataFrame({m: {l: results[m][eval_set]["per_class"][l]["f1"] for l in LABELS} for m in systems})
+    fig, ax = plt.subplots(figsize=(1.3 * len(systems) + 3, 5))
+    ax.imshow(matrix.values, cmap="Blues", vmin=0, vmax=1, aspect="auto")
+    ax.set_xticks(range(len(systems)), systems, rotation=20, ha="right", fontsize=8)
+    ax.set_yticks(range(len(LABELS)), LABELS, fontsize=8)
+    for i in range(matrix.shape[0]):
+        for j in range(matrix.shape[1]):
+            v = matrix.values[i, j]
+            ax.text(j, i, f"{v:.2f}", ha="center", va="center", fontsize=8, color="white" if v > 0.6 else INK)
+    ax.set_title(f"Per-class F1 on {eval_set}", loc="left", color=INK)
+    fig.savefig(project_path("reports/figures/13_per_class_f1_noisy.png"), dpi=150, bbox_inches="tight")
+    plt.close(fig)
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--limit", type=int, default=1000, help="silver test sentences used (seeded sample)")
+    args = parser.parse_args()
+    sets = evaluation_sets(limit=args.limit)
+    systems = load_systems()
+    results, speed, markdown = {}, {}, ["# NER model comparison (auto-generated by `python -m src.ner.evaluate_models`)", ""]
+    error_dir = project_path("reports/error_analysis")
+
+    for name, system in systems.items():
+        results[name] = {}
+        for set_name, records in sets.items():
+            start = time.time()
+            predictions = system.predict_records(records)
+            if set_name == "silver_test":
+                speed[name] = round(len(records) / (time.time() - start), 1)
+            result = evaluate_tag_sequences([tags_of(r) for r in records], predictions)
+            results[name][set_name] = result
+            print(f"{name:16} {set_name:16} P {result['micro']['precision']:.3f} R {result['micro']['recall']:.3f} "
+                  f"F1 {result['micro']['f1']:.3f}", flush=True)
+            if set_name in ("noisy_test_0.05", "gold_test"):
+                rows = []
+                for r, tags in zip(records, predictions):
+                    pred = bio_to_entities(r["token_offsets"], tags, r["text"])
+                    rows += [{"product_id": r["product_id"], **row} for row in compare_entities(r["text"], r["entities"], pred)]
+                pd.DataFrame(rows).to_csv(error_dir / f"{name}_errors_{set_name}.csv", index=False)
+
+    summary = pd.DataFrame({name: {s: r[s]["micro"]["f1"] for s in r} for name, r in results.items()}).T
+    summary["sentences_per_second"] = pd.Series(speed)
+    markdown += ["Entity-level micro F1 (strict: exact span and label).", "",
+                 summary.round(3).to_markdown(), "",
+                 "* `silver_test`: reference labels come from the dictionary rules, so `dictionary` = 1.0 by construction.",
+                 "* `noisy_test_*`: OCR-style character noise; reference = labels of the clean text.",
+                 "* `gold_test`: human-verified labels (only present after the annotation).", ""]
+    for set_name in sets:
+        if set_name != "silver_test":
+            for name in results:
+                markdown += [format_report(results[name][set_name], f"{name} on {set_name}"), ""]
+    project_path("reports/model_comparison.md").write_text("\n".join(markdown), encoding="utf-8")
+    project_path("reports/model_comparison.json").write_text(json.dumps({"summary_f1": summary.round(4).to_dict(orient="index"),
+                                                                          "details": results}, indent=2), encoding="utf-8")
+    plot_comparison(results)
+    plot_per_class(results, "noisy_test_0.05")
+    print(summary.round(3).to_string())
+
+
+if __name__ == "__main__":
+    main()
