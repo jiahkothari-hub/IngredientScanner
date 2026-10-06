@@ -144,3 +144,13 @@ diacetyl tartaric acid esters of mono- and diglycerides | 472e
 diacetyl tartaric acid esters of mono- and diglycerides of fatty acids | 472e
 sodium stearoyl lactylate | 481
 sodium stearoyl-2-lactylate | 481
+disodium 5'-guanylate | 627
+disodium 5' guanylate | 627
+disodium 5-guanylate | 627
+disodium 5'-inosinate | 631
+disodium 5' inosinate | 631
+disodium 5-inosinate | 631
+disodium 5'-ribonucleotide | 635
+disodium ribonucleotides | 635
+monosodium glutamate | 621
+msg | 621

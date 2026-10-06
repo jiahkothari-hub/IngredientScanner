@@ -4,10 +4,11 @@ A photo of a packet also contains the brand, nutrition table, address, storage a
 the part after "Ingredients:" and before the next section.
 
 Strategy (first that works):
-  1. keyword: find every "Ingredients" (tolerant to OCR errors: "lngredients", "INGREDIENTS", "Ingredlents"),
+  1. keyword: find every "Ingredients" (and "Contains:", used instead on Australian labels) (tolerant to OCR errors: "lngredients", "INGREDIENTS", "Ingredlents"),
      cut each candidate at the first end marker (nutrition, allergen advice, storage, manufacturer, FSSAI ...)
      and keep the candidate that looks most like a list (commas; a colon right after the keyword).
-     This skips sentences such as "allergens: see ingredients in bold".
+     This skips sentences such as "allergens: see ingredients in bold". A candidate with fewer than two
+     separators ("imported and local ingredients") is not trusted.
   2. comma density: no keyword found -> take the block of consecutive lines with the most commas
      (ingredient lists are the most comma-dense text on a pack).
   3. full text: nothing better found -> use everything (the NER step ignores non-ingredient text
@@ -15,13 +16,23 @@ Strategy (first that works):
 """
 import re
 
+from src.labeling.rules import ALLERGENS
+
 START_RE = re.compile(r"\b[il1|]ngr[eéc]d[il1]?[eéc]nts?\b\s*[:;.\-]?", re.IGNORECASE)
+# Australian / NZ labels: "COLA DRINK CONTAINS: carbonated water, ..." (a colon is required, so that
+# "Contains milk" allergen sentences are not taken; they also score low because they have few commas)
+CONTAINS_START_RE = re.compile(r"\bcontains\s*:", re.IGNORECASE)
+MIN_KEYWORD_SCORE = 2
+ALLERGEN_START_RE = re.compile(rf"(?:{ALLERGENS})\b", re.IGNORECASE)
 END_RE = re.compile(
     r"\b(?:nutrition(?:al)?(?:\s+(?:information|facts|value))?|typical\s+values|energy\s*\(?k?j|"
     r"allerg(?:en|y)\s+(?:information|advice)|storage|store\s+(?:in|at)|keep\s+(?:refrigerated|in)|"
     r"best\s+before|use\s+by|manufactured\s+(?:by|for)|marketed\s+by|packed\s+by|mfd\.?\s+by|"
     r"net\s+(?:wt|weight|qty|quantity)|mrp|m\.r\.p|[fj]s+a[il1]|lic\.?\s*no|customer\s+care|cust\.?\s+care|"
-    r"directions|serving\s+suggestion|preparation|batch\s+no|www\.)",
+    r"directions|serving\s+suggestion|preparation|batch\s+no|www\.|"
+    r"may\s+(?:also\s+)?contain|contains?\s*:?\s*(?:gluten|milk|soy|soya|wheat|nuts?|tree\s*nuts|almonds?|peanuts?|"
+    r"sesame|eggs?|mustard|celery|sulphites?)\b|allergen|%\s*rda|recommended\s+dietary|"
+    r"(?:one|a)\s+serv(?:e|ing)\s+of|phenylketonurics?)",
     re.IGNORECASE,
 )
 
@@ -30,16 +41,19 @@ def extract_ingredients_section(ocr_text: str) -> dict:
     """Return {"text", "method", "start", "end"} with offsets into `ocr_text`."""
     flat = ocr_text.replace("\n", " ")
     candidates = []
-    for start in START_RE.finditer(flat):
+    for start in [*START_RE.finditer(flat), *CONTAINS_START_RE.finditer(flat)]:
         end = END_RE.search(flat, start.end())
         stop = end.start() if end else len(flat)
         text = flat[start.end():stop].strip(" :;.-")
+        if start.re is CONTAINS_START_RE and ALLERGEN_START_RE.match(text):
+            continue                                  # "Contains: milk, soy" is an allergen statement
         # a real ingredient list has separators; "Ingredients:" with a colon is a strong signal
-        score = text.count(",") + text.count(";") + (3 if ":" in start.group(0) else 0)
+        separators = text.count(",") + text.count(";")
+        score = separators + (3 if ":" in start.group(0) and separators else 0)
         candidates.append((score, len(text), start.end(), stop, text))
     if candidates:
         score, _, begin, stop, text = max(candidates)
-        if text:
+        if text and score >= MIN_KEYWORD_SCORE:
             return {"text": text, "method": "keyword", "start": begin, "end": stop}
 
     lines = ocr_text.split("\n")

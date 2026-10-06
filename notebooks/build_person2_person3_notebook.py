@@ -30,8 +30,9 @@ Here we:
 - connect everything into the photo-to-result app.
 
 ```
-PACKET IMAGE → OCR (EasyOCR) → code clean-up → INGREDIENTS SECTION → NORMALISATION
-→ NER (DistilBERT) → ENTITY LINKING (knowledge base) → CATEGORY SUMMARY → USER-FRIENDLY RESULT
+PACKET IMAGE → OCR (RapidOCR PP-OCRv6, auto-enlarge, orientation) → SPELLING CORRECTION (food dictionary)
+→ code clean-up → INGREDIENTS SECTION → NORMALISATION → HYBRID NER (rules + DistilBERT + fuzzy KB)
+→ ENTITY LINKING (knowledge base) → CATEGORY SUMMARY + ALLERGENS + NUTRITION → DAILY INTAKE GUIDE
 ```
 
 **Honesty note.**
@@ -198,15 +199,17 @@ from src.ocr.section_extraction import extract_ingredients_section
 photo = "data/images/packets/8901063162518.jpg"
 display(Image(photo, width=420))
 ocr = read_image(photo)
-print("OCR text (first 600 chars):\\n", ocr["text"][:600])
+print("OCR engine:", ocr["engine"], "| enlarged x", ocr["scale"], "| rotation", ocr["rotation"])
+print("OCR text, raw (first 400 chars):\\n", ocr["raw_text"][:400])
+print("\\nAfter spelling correction (first 400 chars):\\n", ocr["text"][:400])
 cleaned = fix_additive_codes(ocr["text"])
 section = extract_ingredients_section(cleaned)
 print("\\nSection found by:", section["method"]); print(section["text"])
 """)
-explain("EasyOCR (CRAFT detector + CRNN recogniser) with OpenCV pre-processing, reading-order line grouping, automatic rotation, a targeted fix for OCR errors in additive codes ('I5Od' -> '150d'), and extraction of the ingredients section.",
-        "A packet photo contains much more than the ingredient list, and OCR confuses digits with letters exactly where additive codes are.",
+explain("RapidOCR (PaddleOCR PP-OCRv6 detector + recogniser in ONNX). The photo is enlarged so the small print is ~36 px high, sideways/upside-down photos are detected and turned, words are put in reading order, then a food-dictionary spelling corrector (SymSpell; 6,800 words from 22k real ingredient lists) fixes OCR slips ('maltodexirin' -> 'maltodextrin', 'dextr0se' -> 'dextrose'), a targeted fix repairs additive codes ('I5Od' -> '150d'), and the ingredients section is extracted.",
+        "Ingredient lists are the smallest print on a pack; the first version (EasyOCR) read only a median 72% of their words. Correcting OCR words against food vocabulary turns near-misses into dictionary hits.",
         "photo", "ingredient-list text",
-        "The code clean-up only touches code-like tokens in brackets or after INS/E, so it cannot invent ingredients.")
+        "Known words (food dictionary + 82k English words) are never changed and corrections can only produce food words, so the corrector cannot invent ingredients.")
 
 md("### B3. Entity linking")
 code("""
@@ -221,21 +224,32 @@ pd.DataFrame([{**t, **{k: v for k, v in linker.link(t).items() if k in ("link_me
 md("### B4. The complete pipeline: photo in, result out")
 code("""
 from src.app.scanner import IngredientScanner
-scanner = IngredientScanner("auto")
+scanner = IngredientScanner("auto")          # hybrid: rules + fine-tuned DistilBERT + fuzzy KB matching
 result = scanner.scan_image(photo)
-print("NER model:", result["ner_model"], "| OCR + analysis time:", result["ocr"]["seconds"], "s")
-display(pd.DataFrame(result["entities"])[["text", "label", "canonical_name", "function", "link_method"]])
-print(json.dumps(result["summary"], indent=1))
-print(result["disclaimer"])
+print("NER:", result["ner_model"], "| OCR + analysis time:", result["ocr"]["seconds"], "s")
+display(pd.DataFrame(result["entities"])[["text", "label", "source", "canonical_name", "function", "link_method"]])
+print(json.dumps(result["summary"]["groups"], indent=1))
+print("Hidden names:", result["summary"]["hidden"])
+print("Allergens:", result["allergens"])
+print("Nutrition read from the photo (per 100 g):", result["nutrition"]["per_100g"])
 """)
+explain("A hybrid classifier. Exact dictionary/regex/head-word matches are kept (very precise); unknown list items take the DistilBERT label when the model predicts a specific category; still-unknown items are fuzzy-matched to the knowledge base ('glucose syrop' -> glucose syrup -> SUGAR); context rules use the declared class ('Colour (caramel)' -> COLOUR, 'vegetable oil (palm)' -> FAT).",
+        "Rules are precise but brittle; the model generalises to unseen spellings; fuzzy matching catches what both miss. Each entity records which component labelled it (`source`), so every decision can be explained.",
+        "ingredient-list text", "entities with category, source, knowledge-base link",
+        "The hybrid never lets the model or fuzzy matcher overrule an exact dictionary match, and ignores warnings such as 'PHENYLKETONURICS: contains phenylalanine'.")
 
 md("### B5. End-to-end evaluation on 60 real photos (held-out test products)")
 code("""
 e2e = load("reports/ocr_end_to_end.json")
-print("Photos:", e2e["photos"]); display(e2e["ocr"])
-display(pd.DataFrame({s: {"entities exact F1": v["entities_exact"]["f1"], "entities fuzzy F1": v["entities_fuzzy"]["f1"],
-                          "additive numbers P": v["additive_numbers"]["precision"], "additive numbers R": v["additive_numbers"]["recall"],
-                          "additive numbers F1": v["additive_numbers"]["f1"]} for s, v in e2e["systems"].items()}).T)
+v1 = load("reports/ocr_easyocr_v1/ocr_end_to_end.json")      # first version: EasyOCR, no correction
+print("Photos:", e2e["photos"])
+display(pd.DataFrame({"v1 (EasyOCR)": v1["ocr"], "v2 (RapidOCR + correction)": e2e["ocr"]}).drop(["section_methods", "by_market_median_word_recall_full_ocr"]))
+rows = {}
+for name, report in (("v1", v1), ("v2", e2e)):
+    for s, v in report["systems"].items():
+        rows[f"{name}: {s}"] = {"entities fuzzy F1": v["entities_fuzzy"]["f1"], "additive numbers P": v["additive_numbers"]["precision"],
+                                "additive numbers R": v["additive_numbers"]["recall"], "additive numbers F1": v["additive_numbers"]["f1"]}
+display(pd.DataFrame(rows).T)
 """)
 md("""
 * **CER** = character error rate of the extracted section against the product's typed ingredient list.
@@ -244,15 +258,35 @@ md("""
 * **Additive numbers**: which additives the app identifies (through codes or names), compared with the reference.
 """)
 
+md("### B6. Daily intake guide: is this amount OK?")
+code("""
+from src.app.intake import PROFILES, additive_guidance, assess_portion, headline, special_notes
+from src.app.nutrition import estimate_from_similar_product
+text = "Sugar, Palm Oil, Hazelnuts (13%), Skimmed Milk Powder (8.7%), Fat-Reduced Cocoa (7.4%), Emulsifier: Lecithins (Soya), Vanillin."
+nutella = scanner.scan_text(text)
+estimate = estimate_from_similar_product(text)          # no nutrition table in the text -> most similar OFF product
+print("Estimated from:", estimate["product_name"], "| similarity", estimate["similarity"])
+rows = assess_portion(estimate["per_100g"], portion_g=30, profile=PROFILES["Adult (2000 kcal)"])
+print(headline(rows, 30)[0])
+display(pd.DataFrame(rows)[["nutrient", "per_100g", "in_portion", "daily_value", "share", "traffic_light", "max_product_g", "message"]])
+display(pd.DataFrame(additive_guidance(result["entities"], body_weight_kg=60)))
+""")
+explain("For a chosen portion and person profile, each nutrient is compared with official daily reference values: WHO free sugars < 10% of energy (ideally < 5%), WHO salt < 5 g, WHO saturated fat < 10% and trans fat < 1% of energy, EU Reference Intakes (Regulation 1169/2011), UK FSA traffic lights per 100 g. Additives with an INS number get their acceptable daily intake (JECFA / EFSA) scaled to body weight.",
+        "Users want to know whether the amount they eat is a small or large part of a day's limit, and how much of the product alone would reach it.",
+        "nutrition per 100 g (read from the photo, estimated from the most similar of ~9,000 OFF products, or typed), portion, profile",
+        "share of each daily limit, traffic light, maximum amount, ADI table",
+        "Reference values for healthy people from cited authorities - general information, not medical advice. Total sugars on labels include natural sugars, so the sugar comparison is an upper estimate.")
+
 md("""
-### B6. The app
+### B7. The app
 
 ```bash
 streamlit run src/app/streamlit_app.py
 ```
 
-Tabs: **Camera** (take a picture), **Upload photo**, **Example packets** (the 60 real photos), **Paste text**.
-Deployment: `Dockerfile` and `docs/DEPLOYMENT.md` (Hugging Face Spaces recommended).
+Tabs: **Upload photo** (with rotate/crop), **Camera**, **Paste text**, **Example packets** (the 60 real photos).
+The text read from a photo is shown and can be corrected and re-analysed. Sections: what is in it, allergens,
+daily intake guide, details. Deployment: `Dockerfile` and `docs/DEPLOYMENT.md`.
 """)
 code("""
 for shot in sorted(Path("reports/figures").glob("app_*.png")):
@@ -265,12 +299,15 @@ md("""
 * **Silver supervision.** Models learn the rules' policy, including some of their mistakes. Final claims
   need the human gold test set.
 * **CPU training.** 8,000 sentences, 1–2 epochs. More data or epochs would likely help.
-* **OCR.** Curved, glossy or small print causes errors. The photo reference text is crowd-typed.
-  Section extraction fails when "Ingredients" is not printed or not recognised.
+* **OCR.** Curved cans/bottles, glare and very small or blurred print still cause errors (5 of the 60 test
+  photos remain unreadable). The app warns about hard photos and lets the user crop or correct the text.
+  The photo reference text is crowd-typed.
 * **Missing separators.** When OCR loses all commas (second example in A5), neither the rules nor the
   model split the ingredients correctly.
 * **English only.** Labels in other languages or scripts are not handled.
-* **No health claims.** The app identifies and explains ingredients; it does not rate products.
+* **Daily intake guide.** Uses general reference values for healthy people; nutrition values may be
+  estimated from a similar product (clearly labelled) and additive amounts are rarely on labels.
+  It is information, not medical advice.
 """)
 
 nb = nbf.v4.new_notebook()

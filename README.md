@@ -3,38 +3,95 @@
 *NLP-Based Detection and Interpretation of Hidden Food Ingredients*
 
 Take a picture of a food packet's ingredient list. The app reads it (OCR), finds every ingredient
-(a fine-tuned DistilBERT NER model), and explains it in plain language:
-- sugars, including the ones under other names (dextrose, jaggery, invert syrup)
+(hybrid NER: dictionary rules + a fine-tuned DistilBERT model + fuzzy knowledge-base matching), and explains it:
+- sugars, including the ones under other names (dextrose, jaggery, invert syrup), and sugar-like carbohydrates (maltodextrin)
 - fats, sweeteners, preservatives, colours and other additives
 - INS/E codes translated into names and functions: *INS 330 → citric acid → acidity regulator*
+- allergens (the 14 major groups), separated into "contains" and "may contain"
+- **"Is this amount OK?"**: a daily intake guide that compares your portion with official daily limits
+  (WHO sugars/salt/fat guidelines, EU reference intakes, UK traffic lights) and shows each additive's
+  acceptable daily intake (JECFA / EFSA) for your body weight
 
-The system **identifies and interprets** ingredients. It makes **no health claims**.
+Identification and interpretation are kept separate from advice: the guide quotes cited reference values
+for healthy people; it is general information, not medical advice.
 
 ```
-PACKET IMAGE → OCR (EasyOCR) → code clean-up → INGREDIENTS SECTION → TEXT NORMALISATION
-→ NER (DistilBERT, OCR-noise augmented) → ENTITY LINKING (knowledge base) → CATEGORY SUMMARY → APP
+PACKET IMAGE → OCR (RapidOCR PP-OCRv6: auto-enlarge small print, auto-rotate) → SPELLING CORRECTION
+→ code clean-up → INGREDIENTS SECTION → NORMALISATION → HYBRID NER (rules + DistilBERT + fuzzy KB)
+→ ENTITY LINKING (knowledge base) → CATEGORIES + ALLERGENS + NUTRITION → DAILY INTAKE GUIDE → APP
 ```
+
+### What changed in version 2 (and why)
+
+The first version classified pasted text well but often failed on photos: EasyOCR read only a median 72%
+of the words of small ingredient print, a confidence filter dropped blurred lines, a photo left in the
+uploader overrode pasted text, and unknown spellings fell back to "other ingredient". Version 2:
+
+| Problem | Fix | Code |
+|---|---|---|
+| Small print misread or merged | RapidOCR (PP-OCRv6 in ONNX), photo enlarged until the small print is ~36 px high | `src/ocr/ocr_pipeline.py` |
+| Sideways / upside-down photos | text-box shape + quick 4-angle probe picks the orientation | `src/ocr/ocr_pipeline.py` |
+| OCR slips ("maltodexirin", "dextr0se") | SymSpell corrector with a 6,800-word food dictionary built from 22k real lists | `src/ocr/text_correction.py` |
+| Unknown spellings labelled "other" | hybrid NER: exact rules, then DistilBERT, then fuzzy KB matching, plus context rules ("Colour (caramel)") | `src/ner/hybrid.py` |
+| Warnings read as ingredients ("PHENYLKETONURICS") | statement filter extended | `src/labeling/rules.py` |
+| Photo overrode pasted text | each tab has its own button; result kept in session state; OCR text editable and re-analysable; rotate/crop tool | `src/app/streamlit_app.py` |
+| No answer to "how much is OK?" | nutrition table parser, similar-product estimate, daily intake guide, additive ADIs | `src/app/nutrition.py`, `src/app/intake.py`, `data/knowledge_base/additive_adi.csv` |
+
+Measured on the same 60 real packet photos (held-out products, `python -m src.ocr.evaluate_ocr`):
+
+| | v1 (EasyOCR) | v2 (RapidOCR + correction + hybrid) |
+|---|---:|---:|
+| Median share of ingredient words read | 0.72 | **0.96** |
+| Readable photos (≥ 50% of words) | 42 / 60 | **55 / 60** |
+| Character error rate of the extracted ingredient section (median) | 0.64 | **0.22** |
+| Additives identified: precision / recall / F1 | 0.97 / 0.48 / 0.64 (best v1 system) | 0.92 / **0.82** / **0.87** |
+| Entities (fuzzy match), F1 | 0.52 | **0.77-0.79** |
+
+The v1 numbers are kept in `reports/ocr_easyocr_v1/`. The entity reference is silver (made by the rules),
+so it slightly favours the rule system; the additive comparison is the app's real question.
+
+**New samples** (`python -m src.evaluation.unseen_samples`, details in [`reports/unseen_samples.md`](reports/unseen_samples.md)):
+- 15 typed ingredient lists of popular products with hand-written expectations: **100%** of the expected
+  sugars, sweeteners, fats, preservatives and colours found with no wrong extras; **100%** of the expected
+  additive codes identified (precision 0.94).
+- 16 *new* real packet photos (Nutella, Coca-Cola, KitKat, Maggi, Oreo, Haribo, Pringles … not among the 60
+  examples), compared with the same products' typed lists: about **56%** of the sugars/fats/… and **60%** of
+  the additive codes are recovered from the photo. Clear, flat photos are read completely (Nutella, KitKat,
+  Maggi, Oreo); the misses are curved cans, a photo where the list is tiny, and multilingual packs where
+  only part of the English text is visible. For such photos the app shows a warning and offers crop/rotate
+  and text correction.
 
 ![app](reports/figures/app_text.png)
 
 ## Quick start: run the app
 
 ```bash
-git clone https://github.com/jiahkothari-hub/IngredientScanner.git
+git clone https://github.com/jiahkothari-hub/IngredientScanner.git      # or unzip the downloaded zip
 cd IngredientScanner
-pip install -r requirements.txt            # CPU is enough
-streamlit run src/app/streamlit_app.py     # http://localhost:8501
+python -m venv .venv
+.venv\Scripts\activate                     # Windows   (macOS / Linux: source .venv/bin/activate)
+pip install torch --index-url https://download.pytorch.org/whl/cpu    # small CPU-only PyTorch
+pip install -r requirements-app.txt        # app only (requirements.txt = everything incl. training)
+streamlit run src/app/streamlit_app.py     # opens http://localhost:8501
 ```
+
+Check that everything works (after `pip install -r requirements.txt`): `pytest tests -q` (about 1 minute; includes photo tests in several orientations).
 
 From a notebook (Jupyter or Google Colab): open [`notebooks/run_streamlit_app.ipynb`](notebooks/run_streamlit_app.ipynb) and run all cells.
 
-Tabs: **Camera** (take a picture), **Upload photo**, **Example packets** (60 real photos), **Paste text**.
+Tabs: **Upload photo** (with rotate / crop), **Camera**, **Paste text** (ingredient list, optionally with the
+nutrition table), **Example packets** (60 real photos). The text read from a photo is shown; correct any
+misread word and press *Re-analyse*.
 Docker and free hosting (Hugging Face Spaces): [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md).
 
 ```python
 from src.app.scanner import IngredientScanner                       # the same pipeline from Python
 result = IngredientScanner().scan_image("data/images/packets/8901063162518.jpg")
-result["summary"]["groups"]["SUGAR"], result["summary"]["hidden"]
+result["summary"]["groups"]["SUGAR"], result["summary"]["hidden"], result["allergens"], result["nutrition"]
+
+from src.app.intake import PROFILES, assess_portion, headline                 # daily intake guide
+rows = assess_portion({"sugars_g": 56.3, "salt_g": 0.1, "saturated_fat_g": 10.6}, 30, PROFILES["Adult (2000 kcal)"])
+headline(rows, 30)   # ('30 g fits in a day, but uses 34% of the daily limit for sugars; ...', 'caution')
 ```
 
 ## Project structure (three team roles)
@@ -43,7 +100,7 @@ result["summary"]["groups"]["SUGAR"], result["summary"]["hidden"]
 |---|---|---|---|
 | Data + NLP | Person 1 | `src/data`, `src/preprocessing`, `src/labeling`, `src/annotation`, `src/baseline`, `src/evaluation` | 22k-product dataset, schema, silver labels, splits, gold workflow, rule baseline |
 | Deep learning NER | Person 2 | `src/ner` | CRF, DistilBERT (+augmentation, +CRF), BERT; comparison; exported model `models/ingredient-ner-distilbert` |
-| OCR + KB + app | Person 3 | `src/ocr`, `src/kb`, `src/app` | EasyOCR pipeline, knowledge base, entity linking, scanner, Streamlit app, Docker |
+| OCR + KB + app | Person 3 | `src/ocr`, `src/kb`, `src/app`, `src/ner/hybrid.py` | OCR pipeline + spelling correction, knowledge base, entity linking, hybrid NER, allergens, nutrition + daily intake guide, Streamlit app, Docker |
 
 Notebooks with outputs and viva explanations:
 - [`notebooks/ingredient_scanner_person1_pipeline.ipynb`](notebooks/ingredient_scanner_person1_pipeline.ipynb)
@@ -75,11 +132,11 @@ model; 1,000 held-out test products):
 how well a model learned the labelling policy on unseen products. The noisy columns show robustness to
 OCR errors, the realistic setting for photos.
 
-**End to end on 60 real packet photos** (held-out test products, `python -m src.ocr.evaluate_ocr`):
-- OCR reads a median 72% of the ingredient words. 42 of 60 photos are readable (≥ 50% of words).
-- Additives identified by the final pipeline: precision 0.97, recall 0.48 (rules: 0.96 / 0.41).
-- On readable photos, entity F1 is 0.65 (fuzzy match). The remaining gap comes mostly from photos where
-  the print is too small or blurred to read.
+**End to end on 60 real packet photos** (held-out test products, `python -m src.ocr.evaluate_ocr`, v2):
+- OCR reads a median 96% of the ingredient words; 55 of 60 photos are readable (≥ 50% of words).
+- Additives identified by the app (hybrid): precision 0.92, recall 0.82, F1 0.87 (v1: 0.97 / 0.48 / 0.64).
+- Entity F1 (fuzzy match) 0.77-0.79 on all photos. The remaining errors come mostly from curved cans and
+  bottles, glare and blurred print.
 
 **Human-verified gold evaluation: pending.** The annotation files for 400 products are ready
 (section 7). After annotation, `python run_pipeline.py` and `python -m src.ner.evaluate_models` add
@@ -399,10 +456,16 @@ picks the photo whose stored OCR text matches its known ingredient list.
 Output: `data/images/packets/`, `packets.csv`.
 
 ### 3.3 OCR pipeline (`src/ocr/`)
-1. `ocr_pipeline.py`: EasyOCR (CRAFT detector + CRNN recogniser). Before OCR: greyscale, upscaling and
-   CLAHE contrast. After OCR: words are put in reading order, and rotations are tried if little text is found.
-2. `ocr_cleanup.py`: fixes OCR errors only inside additive codes ("(I5Od)" → "(150d)", "INS 33O" → "INS 330").
-3. `section_extraction.py`: finds the ingredients section. It scores every "Ingredients" occurrence
+1. `ocr_pipeline.py`: RapidOCR (PaddleOCR PP-OCRv6 detector + recogniser in ONNX; the models ship inside the
+   pip package). EXIF rotation is applied, the photo is enlarged so the small print (25th percentile of
+   text-line heights) is ~36 px, sideways or upside-down photos are detected (tall text boxes / a quick
+   4-angle probe) and turned, and words are put in reading order. EasyOCR remains as a fallback.
+2. `text_correction.py` + `build_ocr_dictionary.py`: SymSpell spelling correction with a food dictionary
+   (6,841 words from 22k ingredient lists + all lexicon terms). Known words (food or 82k English words) are
+   never changed; corrections can only produce food words ("maltodexirin" → maltodextrin,
+   "acidityregulator" → acidity regulator, "com flour" → corn flour).
+3. `ocr_cleanup.py`: fixes OCR errors only inside additive codes ("(I5Od)" → "(150d)", "INS 33O" → "INS 330").
+4. `section_extraction.py`: finds the ingredients section. It scores every "Ingredients" occurrence
    (tolerating "lngredients"), cuts at end markers (nutrition, FSSAI, storage …), and falls back to
    comma density or the full text.
 
@@ -415,16 +478,39 @@ Each entity is linked to a knowledge-base entry by one of four methods, tried in
 
 The function stated on the label ("Emulsifier (471)") is preferred over the reference function.
 
-### 3.5 Integrated scanner and app
-- `src/app/scanner.py`: `IngredientScanner().scan_image(...)` / `scan_text(...)` returns JSON. It contains
-  every entity with its link and function, a category summary, "hidden" names (sugars under other names,
-  additives written as codes) and a disclaimer.
-- `src/app/streamlit_app.py`: the user interface.
-- `src/app/screenshot_app.py`: automated UI screenshots. These are also the end-to-end check that the app works.
+### 3.5 Hybrid NER (`src/ner/hybrid.py`)
+1. Exact dictionary / regex / head-word entities are kept (very precise).
+2. A list item the rules only know as "some ingredient" takes DistilBERT's label if the model predicts a
+   specific category (sugar, fat, additive …).
+3. Still unknown → fuzzy match against the knowledge base (similarity ≥ 90): "glucose syrop" → SUGAR.
+4. Context: an item inside a declared class takes that class ("Colour (caramel)" → COLOUR; "edible
+   vegetable oil (palm)" → FAT), but only when the bracket is properly closed.
+5. Statements ("PHENYLKETONURICS: contains phenylalanine", "may contain nuts") are not ingredients.
+Every entity carries a `source` (dictionary / model / fuzzy / context / list item) shown in the app.
+
+### 3.6 Allergens, nutrition and the daily intake guide (`src/app/`)
+- `allergens.py`: the 14 major allergen groups (EU 1169/2011 Annex II; FSSAI lists the same groups),
+  "contains" vs "may contain".
+- `nutrition.py`: parses the nutrition table from the photo (kJ/kcal, sodium → salt, per-serving labels
+  converted to per 100 g, sanity checks). Without a table, it offers an **estimate** from the Open Food Facts
+  product with the most similar ingredient list (TF-IDF, ~9,000 products with nutrition facts), clearly labelled.
+- `intake.py`: for a portion and a profile (adult, active adult, teenager, children) it shows each nutrient's
+  share of the daily limit, the UK FSA traffic light per 100 g, and how much of the product alone would reach
+  the limit. Sources: WHO sugars guideline (2015, free sugars < 10% of energy, ideally < 5%), WHO sodium (2012,
+  salt < 5 g), WHO fats (2023, saturated < 10%, trans < 1% of energy), EU Reference Intakes (Regulation
+  1169/2011 Annex XIII), EFSA fibre (25 g). Additives: ADIs from JECFA / EFSA in
+  `data/knowledge_base/additive_adi.csv`, scaled to body weight; notes for caffeine, aspartame (PKU), polyols,
+  partially hydrogenated fats.
+
+### 3.7 Integrated scanner and app
+- `src/app/scanner.py`: `IngredientScanner().scan_image(...)` / `scan_text(...)` returns JSON: entities with
+  link, function and source, category summary, hidden names, allergens, parsed nutrition, OCR details.
+- `src/app/streamlit_app.py`: the user interface (sections: what is in it · allergens · is this amount OK? · details).
+- `src/app/screenshot_app.py`: automated UI screenshots (an end-to-end check that the app works).
 
 ![photo](reports/figures/app_photo.png)
 
-### 3.6 Deployment
+### 3.8 Deployment
 `Dockerfile` (CPU, everything bundled), `requirements-app.txt`, `.streamlit/config.toml`, and
 [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) (local, Docker, Hugging Face Spaces, Streamlit Cloud).
 The app has not been published to a public URL from this environment.
@@ -446,8 +532,8 @@ All entity columns are **silver** (automatic) until the gold annotation is impor
   their errors. Claims about real accuracy need the human-verified gold test set, which still has to be annotated.
 * **Silver label noise.** INGREDIENT (59% of entities) comes from a fallback rule. Rare words are left
   unlabelled to keep OCR garbage out.
-* **Photos.** Small, curved, glossy or blurred print defeats OCR. 18 of the 60 test photos are unreadable,
-  which caps end-to-end recall. Section extraction fails if the "Ingredients" heading is not read.
+* **Photos.** Curved cans/bottles, glare and blurred print still defeat OCR (5 of the 60 test photos remain
+  unreadable). The app warns about hard photos and offers crop/rotate and text correction.
 * **Missing separators.** When OCR loses all commas ("WHEAT FLOUR SUGAR PALM OIL …"), neither the rules
   nor the model split the ingredients correctly.
 * **Compute.** CPU-only training: 8,000 sentences, 2 epochs. More data or epochs and a GPU would likely
@@ -456,4 +542,6 @@ All entity columns are **silver** (automatic) until the gold annotation is impor
   lists (31) are skipped.
 * **Knowledge base.** OFF functional classes are incomplete (e.g. lactic acid has none). The label's
   declared class is preferred.
-* **No health claims.** The app identifies and explains ingredients. It does not rate products.
+* **Daily intake guide.** General reference values for healthy people, not medical advice. Label "sugars"
+  include natural sugars, so the sugar comparison is an upper estimate; nutrition may be estimated from a
+  similar product (labelled as such); additive amounts are rarely printed, so ADIs are shown as reference.

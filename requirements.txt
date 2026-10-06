@@ -18,8 +18,12 @@ sklearn-crfsuite>=0.5     # classic CRF baseline
 datasets>=2.18            # Dataset.from_json(...) on the split files
 
 # Person 3 - OCR, knowledge base, app
-easyocr>=1.7
+rapidocr>=3.4             # OCR engine (PaddleOCR PP-OCRv6 models in ONNX, shipped inside the package)
+onnxruntime>=1.17         # runs the OCR models on CPU
+symspellpy>=6.7           # OCR spelling correction with the food dictionary
+scikit-learn>=1.3         # TF-IDF similar-product search (nutrition estimate)
 opencv-python-headless>=4.8
+easyocr>=1.7              # optional: older OCR engine, used only if rapidocr is missing (and for the v1 comparison)
 rapidfuzz>=3.0            # fuzzy entity linking, character error rate
 streamlit>=1.35
 Pillow>=10.0

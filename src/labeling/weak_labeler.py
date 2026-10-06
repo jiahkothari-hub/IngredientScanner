@@ -53,6 +53,8 @@ def _known_words(piece: str) -> bool:
 
 
 SEPARATOR_RE = re.compile(r"[,;:(\[]|\.(?=\s)")   # a full stop only when followed by a space ("0.08%" is not)
+# a statement can also start right after a closing bracket ("... (citric acid) CONTAINS PHENYLALANINE")
+STATEMENT_BOUNDARY_RE = re.compile(r"[,;:(\[)\]]|\.(?=\s)")
 
 
 def find_statement_spans(text: str) -> list:
@@ -64,7 +66,7 @@ def find_statement_spans(text: str) -> list:
     """
     spans = []
     for m in STATEMENT_START_RE.finditer(text):
-        separators = list(SEPARATOR_RE.finditer(text, 0, m.start()))
+        separators = list(STATEMENT_BOUNDARY_RE.finditer(text, 0, m.start()))
         start = separators[-1].end() if separators else 0
         end = re.search(r"\.(\s|$)", text[m.end():])
         spans.append((start, m.end() + end.start() if end else len(text)))

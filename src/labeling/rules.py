@@ -24,7 +24,10 @@ STATEMENT_START_RE = re.compile(
     r"typical\s+values|per\s+(?:100|serv)|energy\b|freephone|telephone|tel\b|careline|customer\s+care|"
     r"www\.|\.com\b|visit\s+us|find\s+out\s+more|plastic\s+bags?|suffocation|defrost|cooking\s+instructions|"
     r"distributed\s+by|marketed\s+by|manufactured\s+by|packed\s+by|imported\s+by|produce\s+of|product\s+of|"
-    r"packaged\s+in|packed\s+in\s+a\s+protective)",
+    r"packaged\s+in|packed\s+in\s+a\s+protective|"
+    r"phenylketonurics?|contains?\s+(?:a\s+source\s+of\s+)?phenylalanine|this\s+product\s+contains|"
+    r"(?:excessive\s+consumption|consumed\s+in\s+excess)|not\s+recommended\s+for|"
+    r"(?:dietary|food)\s+allergen|%\s*rda\b|recommended\s+dietary\s+allowance|provides\s+these\s+nutrients)",
     re.IGNORECASE,
 )
 

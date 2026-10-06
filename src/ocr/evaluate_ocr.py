@@ -109,6 +109,10 @@ def load_systems() -> dict:
     from src.ner.transformer_ner import TransformerTagger
     for run in sorted(project_path("models/runs").glob("*/best/config.json")):
         systems[run.parent.parent.name] = TransformerTagger(run.parent)
+    from src.app.scanner import FINAL_MODEL_DIR
+    from src.ner.hybrid import HybridNER
+    final = TransformerTagger(FINAL_MODEL_DIR) if (FINAL_MODEL_DIR / "config.json").exists() else None
+    systems["hybrid (app)"] = HybridNER(final)
     return systems
 
 
