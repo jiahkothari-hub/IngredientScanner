@@ -169,7 +169,8 @@ class HybridNER:
     def __init__(self, model=None):
         """model: a TransformerTagger (or anything with .predict(text)), or None for rules + fuzzy only."""
         self.model = model
-        self.name = "hybrid (rules + " + ("DistilBERT" if model is not None else "no model") + " + fuzzy KB)"
+        self.name = ("hybrid (rules + DistilBERT + fuzzy KB)" if model is not None
+                     else "hybrid (rules + fuzzy KB; DistilBERT model not installed)")
 
     def predict(self, text: str) -> dict:
         rules = label_text(text)
