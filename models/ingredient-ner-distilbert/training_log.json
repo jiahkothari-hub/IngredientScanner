@@ -1,0 +1,30 @@
+{
+  "args": {
+    "model": "distilbert-base-uncased",
+    "run": "distilbert_aug",
+    "epochs": 2,
+    "batch_size": 16,
+    "lr": 5e-05,
+    "max_train": 8000,
+    "max_val": 800,
+    "crf": false,
+    "augment": true,
+    "threads": 4,
+    "seed": 42
+  },
+  "epochs": [
+    {
+      "epoch": 1,
+      "train_loss": 0.5232,
+      "val_f1": 0.9289,
+      "minutes": 8.8
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.1328,
+      "val_f1": 0.9444,
+      "minutes": 18.0
+    }
+  ],
+  "best_val_f1": 0.9444
+}
