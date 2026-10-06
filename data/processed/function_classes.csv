@@ -1,0 +1,54 @@
+class_id,name,synonyms
+acid,Acid,Acidifier|Acidulant|tartness|provides tartness|Food acid
+acidity-regulator,Acidity regulator,alkali|base|buffer|buffering agent|pH adjusting agent|corrector of acidity|acid regulator|controls acidity
+anti-caking-agent,Anti-caking agent,anticaking agent|anti-stick agent|anti-sticking|drying agent|dusting agent|prevent caking|prevents caking|anti-clumping|anticaking blend|anticake
+anti-foaming-agent,Anti-foaming agent,de-foaming agent|antifoaming agent|defoaming agent|anti-foaming
+antioxidant,Antioxidant,antibrowning agent|antioxidant synergist
+natural-antioxidant,natural antioxidant,
+release-agent,release agent,
+bleaching-agent,Bleaching agent,
+bulking-agent,Bulking agent,filler
+anti-bulking-agent,anti-bulking agent,
+carbonating-agent,Carbonating agent,carbonation
+carrier,Carrier,carrier solvant|diluent for other food additives|encapsulating agent|nutrient carrier
+colour,Colour,color|colouring|coloring|decorative pigment|surface colorant|for color|artificial color|artificial colour|color added|colors added|artificial color added|colorant|colours|colors|coloring food|colouring food|synthetic colour|colouring agent|coloring agent|colored|coloured|colourant|colourants
+concentrated-plant-colour,concentrated plant colour,
+natural-colours,natural colours,
+crust-colorant,crust colorant,crust colorants
+colour-retention-agent,colour retention agent,colour adjunct|colour fixative|colour stabilizer|maintain color|color retention
+emulsifier,Emulsifier,clouding agent|crystallization inhibitor|density adjustment agent|dispersing agent|emulsifier blend|emulsifying agent|emulsifying|plasticizer|surface active agent|suspension agent
+natural-emulsifier,natural emulsifier,
+emulsifying-salts,Emulsifying salts,emulsifying salt synergist|melding salt|Emulsifying salt|melting salt
+firming-agent,Firming agent,
+natural-firming-agent,Natural firming agent,
+flavour-enhancer,Flavour enhancer,flavour synergist|flavor enhancer|flavor enhancers
+flour-treatment-agent,Flour treatment agent,dough conditioner|dough strengthening agent|flour bleaching agent|flour improver|flour treatment agent
+foaming-agent,Foaming agent,aerating agent|foaming agent|whipping agent
+gelling-agent,Gelling agent,gelifier
+glazing-agent,Glazing agent,coating agent|film forming agent|polishing agent|sealing agent|surface-finishing agent
+humectant,Humectant,moisture retention agent|water retention agent|wetting agent|moisture retention
+modified-starch,Modified starch,
+packaging-gas,Packaging gas,
+preservative,Preservative,antimicrobial preservative|antimicrobial synergist|antimould and antirope agent|antimycotic agent|bacteriophage control agent|fungistatic agent|natural mold inhibitor|maintain freshness|protect flavor
+fruit-preservative,fruit preservative,
+natural-preservative,natural preservative,
+propellent-gas,Propellent gas,propellant gas|propellent|propellant
+raising-agent,Raising agent,leavening
+sequestrant,Sequestrant,
+stabiliser,Stabiliser,stabilizer|binder|colloidal stabilizer|emulsion stabilizer|foam stabilizer|stabilizer synergist|stabilizers|stabilizing agent|binding mixes
+natural-stabilizer,natural stabilizer,
+colour-stabiliser,colour stabiliser,color stabilizer
+sweetener,Sweetener,bulk sweetener|intense sweetener|natural sweetener
+thickener,Thickener,bodying agent|texturizing agent|thickener synergist|thickening agent|provides body|provides thickness
+natural-thickener,natural thickener,
+enriching-substances,enriching substances,enriching additives|enriching substance
+minerals,Minerals,
+amino-acids,Amino acids,amino acid
+nucleotides,Nucleotides,
+other-nutritional-substances,Other nutritional substances,
+coagulant,coagulant,coagulum|coagulating agent|clotting agents
+salt-substitute,salt substitute,
+creaming-agent,creaming agent,
+enhancer,enhancer,
+bread-improver,bread improver,
+cooking-enhancer,cooking enhancer,
