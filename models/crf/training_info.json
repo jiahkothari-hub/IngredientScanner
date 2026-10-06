@@ -1,0 +1,8 @@
+{
+  "train_sentences": 8000,
+  "seconds": 114,
+  "c1": 0.05,
+  "c2": 0.01,
+  "max_iterations": 150,
+  "features": "word, affixes, shape, +-2 context words"
+}
