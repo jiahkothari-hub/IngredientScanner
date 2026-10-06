@@ -1,7 +1,8 @@
 # Running and deploying the Ingredient Scanner app
 
-The app needs about **2.5 GB of RAM**: PyTorch, the DistilBERT model (~265 MB in memory) and the
-EasyOCR models (~100 MB). It runs on CPU only; reading one photo takes roughly 10–40 seconds.
+The app needs about **2 GB of RAM**: PyTorch, the DistilBERT model (~265 MB in memory) and the
+RapidOCR PP-OCRv6 models (~30 MB, shipped inside the `rapidocr` pip package). It runs on CPU only;
+reading one photo takes roughly 2–10 seconds.
 
 ## 1. Local (fastest way to demo)
 
@@ -40,9 +41,9 @@ downloaded at runtime.
 
 ## 4. Streamlit Community Cloud
 
-Possible, but the free tier has ~1 GB RAM, which is tight for PyTorch + DistilBERT + EasyOCR. If you try:
+Possible, but the free tier has ~1 GB RAM, which is tight for PyTorch + DistilBERT + OCR. If you try:
 select the repository, main file `src/app/streamlit_app.py`, and the requirements file
-`requirements-app.txt`. If memory runs out, choose **Dictionary rules** in the sidebar
+`requirements-app.txt`. If memory runs out, choose **Dictionary rules only** in the sidebar
 (no Transformer), or use Hugging Face Spaces.
 
 ## Notes

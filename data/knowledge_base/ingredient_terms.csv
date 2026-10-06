@@ -254,8 +254,14 @@ dipotassium monophosphate,ADDITIVE,340ii,,dict:off_taxonomy
 dipotassium orthophosphate,ADDITIVE,340ii,,dict:off_taxonomy
 dipotassium phosphate,ADDITIVE,340ii,,dict:off_taxonomy
 dipotassium tartrate,ADDITIVE,336ii,,dict:off_taxonomy
-disodium 5'-ribonucleotide,ADDITIVE,635,,dict:off_taxonomy
+disodium 5' guanylate,ADDITIVE,627,,dict:additive_aliases
+disodium 5' inosinate,ADDITIVE,631,,dict:additive_aliases
+disodium 5'-guanylate,ADDITIVE,627,,dict:additive_aliases
+disodium 5'-inosinate,ADDITIVE,631,,dict:additive_aliases
+disodium 5'-ribonucleotide,ADDITIVE,635,,dict:additive_aliases
 disodium 5'-ribonucleotides,ADDITIVE,635,,dict:additive_aliases
+disodium 5-guanylate,ADDITIVE,627,,dict:additive_aliases
+disodium 5-inosinate,ADDITIVE,631,,dict:additive_aliases
 disodium citrate,ADDITIVE,331ii,,dict:off_taxonomy
 disodium dihydrogen diphosphate,ADDITIVE,450i,,dict:off_taxonomy
 disodium dihydrogen pyrophosphate,ADDITIVE,450i,,dict:off_taxonomy
@@ -266,6 +272,7 @@ disodium inosinate,ADDITIVE,631,,dict:additive_aliases
 disodium monophosphate,ADDITIVE,339ii,,dict:off_taxonomy
 disodium phosphate,ADDITIVE,339ii,,dict:additive_aliases
 disodium pyrophosphate,ADDITIVE,450i,,dict:off_taxonomy
+disodium ribonucleotides,ADDITIVE,635,,dict:additive_aliases
 disodium succinate,ADDITIVE,364ii,,dict:off_taxonomy
 disodium tartrate,ADDITIVE,335ii,,dict:off_taxonomy
 distarch glycerine,ADDITIVE,1430,,dict:off_taxonomy

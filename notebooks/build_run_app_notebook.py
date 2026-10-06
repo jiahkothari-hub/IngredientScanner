@@ -72,7 +72,7 @@ os.chdir(ROOT)
 sys.path.insert(0, str(ROOT))
 print("Project folder:", ROOT)
 print("Fine-tuned model present:", (ROOT / "models/ingredient-ner-distilbert/config.json").exists())
-print("OCR models present:      ", (ROOT / "models/easyocr/english_g2.pth").exists())
+print("OCR dictionary present:  ", (ROOT / "data/processed/ocr_dictionary.txt").exists())
 """)
 
 md("""
@@ -84,7 +84,8 @@ On a laptop **without** PyTorch, installing the CPU version first is much smalle
 """)
 code("""
 import importlib.util
-needed = {"streamlit": "streamlit", "easyocr": "easyocr", "transformers": "transformers", "torch": "torch",
+needed = {"streamlit": "streamlit", "rapidocr": "rapidocr", "onnxruntime": "onnxruntime", "symspellpy": "symspellpy",
+          "sklearn": "scikit-learn", "transformers": "transformers", "torch": "torch",
           "torchcrf": "pytorch-crf", "rapidfuzz": "rapidfuzz", "cv2": "opencv-python-headless",
           "pandas": "pandas", "yaml": "PyYAML", "requests": "requests", "PIL": "Pillow"}
 missing = [pkg for module, pkg in needed.items() if importlib.util.find_spec(module) is None]
@@ -124,7 +125,7 @@ else:
 md("""
 ## 5. Open the app
 
-The first scan of a photo takes longer because the OCR model is loaded; then about 10-40 s per photo on a CPU.
+The first scan of a photo takes a little longer because the models are loaded; then about 3-15 s per photo on a CPU.
 **Camera tab:** browsers only allow the camera on `localhost` or HTTPS pages, so use the *open in a new tab* link.
 """)
 code("""
@@ -158,7 +159,8 @@ except NameError:
 md("""
 ## 8. Optional: use the pipeline directly in the notebook (no Streamlit)
 
-Same pipeline as the app: photo → OCR → ingredients section → DistilBERT NER → knowledge base → summary.
+Same pipeline as the app: photo → OCR (RapidOCR + spelling correction) → ingredients section → hybrid NER
+(rules + DistilBERT + fuzzy KB) → knowledge base → summary, allergens, nutrition and the daily intake guide.
 Change `PHOTO` to your own image path, or set `TEXT` to analyse typed text.
 """)
 code("""
@@ -169,7 +171,7 @@ from src.app.scanner import IngredientScanner
 PHOTO = "data/images/packets/8901063162518.jpg"   # any photo of an ingredient list
 TEXT = None                                         # e.g. "Sugar, glucose syrup, acidity regulator (INS 330)"
 
-scanner = IngredientScanner("auto")                 # fine-tuned DistilBERT if present, otherwise dictionary rules
+scanner = IngredientScanner("auto")                 # hybrid: rules + fine-tuned DistilBERT + fuzzy matching
 if TEXT:
     result = scanner.scan_text(TEXT)
 else:
@@ -183,6 +185,16 @@ for category, items in result["summary"]["groups"].items():
     if items:
         print(f"{category:13}", ", ".join(items))
 print("\\nHidden names:", result["summary"]["hidden"])
+print("Allergens:", result["allergens"])
+
+# daily intake guide for a 30 g portion (nutrition from the photo, else an estimate from a similar product)
+from src.app.intake import PROFILES, assess_portion, headline
+from src.app.nutrition import estimate_from_similar_product
+per100 = result["nutrition"]["per_100g"] or estimate_from_similar_product(result["input_text"]).get("per_100g", {})
+if per100:
+    rows = assess_portion(per100, 30, PROFILES["Adult (2000 kcal)"])
+    print(headline(rows, 30)[0])
+    display(pd.DataFrame(rows)[["nutrient", "in_portion", "unit", "daily_value", "share", "traffic_light", "message"]])
 print("\\n" + result["disclaimer"])
 """)
 

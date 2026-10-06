@@ -50,7 +50,7 @@ def test_scanner_text_mode_with_rules():
     assert "211 (Sodium benzoate)" in summary["groups"]["PRESERVATIVE"]
     ins = next(e for e in result["entities"] if e["text"] == "INS 330")
     assert ins["function"] == "acidity regulator" and ins["function_source"] == "label"
-    assert "does not assess whether a product is healthy" in result["disclaimer"]
+    assert "not medical advice" in result["disclaimer"]
 
 
 def test_summary_skips_function_words():

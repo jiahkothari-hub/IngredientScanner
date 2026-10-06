@@ -9,6 +9,8 @@ Linking methods, tried in this order:
   1. ins_number  - the entity is a code ("INS 330", "E 150d", "(471)") -> look the number up
                    (sub-types fall back to their parent: 500ii -> 500)
   2. exact_name  - the normalised text is a known term ("soy lecithin" -> INS 322)
+  2b. additive_name - an additive entity named like an official additive name or synonym in the KB
+                   ("riboflavin" used as a colour -> INS 101)
   3. fuzzy_name  - close spelling of a known term, for OCR errors ("lecithln" -> "lecithin"),
                    Levenshtein similarity >= 88/100, searched within the entity's own category
   4. category    - nothing specific found: explain the category only ("A food ingredient ...")
@@ -35,6 +37,13 @@ class EntityLinker:
         self.terms_by_category = terms.groupby("category")["term"].apply(list).to_dict()
         classes = pd.read_csv(kb_dir / "function_classes.csv", dtype=str).fillna("")
         self.classes = classes.set_index("class_id")
+        # official additive names and synonyms -> INS number ("riboflavin" -> 101), for additive entities
+        self.additive_names = {}
+        for number, row in self.additives.iterrows():
+            for name in [row["name"], *row["synonyms"].split("|")]:
+                key = lookup_key(name) if name else ""
+                if key and key not in self.additive_names:
+                    self.additive_names[key] = number
         cats = pd.read_csv(kb_dir / "categories.csv", dtype=str)
         self.category_text = dict(zip(cats["category"], cats["description"]))
 
@@ -79,6 +88,11 @@ class EntityLinker:
         key = lookup_key(text)
         if key in self.terms:
             return self._from_term(self.terms[key], label, "exact_name", 1.0)
+
+        if label in ADDITIVE_LABELS and key in self.additive_names:
+            found, row = self._additive(self.additive_names[key])
+            if row is not None:
+                return self._from_additive(found, row, "additive_name", 1.0)
 
         candidates = self.terms_by_category.get(label, []) if label != "INGREDIENT" else []
         if label in ADDITIVE_LABELS:

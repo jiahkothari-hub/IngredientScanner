@@ -1,0 +1,271 @@
+{
+ "typed_lists": {
+  "summary": {
+   "category_recall": 1.0,
+   "category_precision": 1.0,
+   "additive_recall": 1.0,
+   "additive_precision": 0.935
+  },
+  "rows": [
+   {
+    "product": "Nutella",
+    "category items found": "2/2",
+    "extra category items": 0,
+    "additive numbers found": "1/1",
+    "missed": "-"
+   },
+   {
+    "product": "Pringles Hot&Spicy",
+    "category items found": "5/5",
+    "extra category items": 0,
+    "additive numbers found": "9/9",
+    "missed": "-"
+   },
+   {
+    "product": "Maggi Masala",
+    "category items found": "3/3",
+    "extra category items": 0,
+    "additive numbers found": "7/7",
+    "missed": "-"
+   },
+   {
+    "product": "Parle-G",
+    "category items found": "5/5",
+    "extra category items": 0,
+    "additive numbers found": "5/5",
+    "missed": "-"
+   },
+   {
+    "product": "Cadbury Dairy Milk",
+    "category items found": "2/2",
+    "extra category items": 0,
+    "additive numbers found": "2/2",
+    "missed": "-"
+   },
+   {
+    "product": "Kurkure Masala Munch",
+    "category items found": "3/3",
+    "extra category items": 0,
+    "additive numbers found": "5/5",
+    "missed": "-"
+   },
+   {
+    "product": "Oreo",
+    "category items found": "3/3",
+    "extra category items": 0,
+    "additive numbers found": "3/3",
+    "missed": "-"
+   },
+   {
+    "product": "Coca-Cola",
+    "category items found": "3/3",
+    "extra category items": 0,
+    "additive numbers found": "2/2",
+    "missed": "-"
+   },
+   {
+    "product": "Diet Coke",
+    "category items found": "4/4",
+    "extra category items": 0,
+    "additive numbers found": "5/5",
+    "missed": "-"
+   },
+   {
+    "product": "Haribo Goldbears",
+    "category items found": "4/4",
+    "extra category items": 0,
+    "additive numbers found": "3/3",
+    "missed": "-"
+   },
+   {
+    "product": "Lays Magic Masala",
+    "category items found": "4/4",
+    "extra category items": 0,
+    "additive numbers found": "4/4",
+    "missed": "-"
+   },
+   {
+    "product": "Kissan Ketchup",
+    "category items found": "2/2",
+    "extra category items": 0,
+    "additive numbers found": "3/3",
+    "missed": "-"
+   },
+   {
+    "product": "Amul Butter",
+    "category items found": "2/2",
+    "extra category items": 0,
+    "additive numbers found": "1/1",
+    "missed": "-"
+   },
+   {
+    "product": "Britannia Good Day",
+    "category items found": "5/5",
+    "extra category items": 0,
+    "additive numbers found": "4/4",
+    "missed": "-"
+   },
+   {
+    "product": "Red Bull",
+    "category items found": "4/4",
+    "extra category items": 0,
+    "additive numbers found": "4/4",
+    "missed": "-"
+   }
+  ]
+ },
+ "new_photos": {
+  "summary": {
+   "photos": 16,
+   "category_items_recovered": 0.556,
+   "additive_numbers_recovered": 0.595,
+   "additive_numbers_precision": 0.532
+  },
+  "rows": [
+   {
+    "product": "Nutella & Go! (Nutella)",
+    "rotation": 0,
+    "OCR confidence": 0.979,
+    "section": "keyword",
+    "category items found": "2/2",
+    "additive numbers found": "1/1",
+    "seconds": 3.2
+   },
+   {
+    "product": "Nutella Ferrero (Nutella,Ferrero)",
+    "rotation": 0,
+    "OCR confidence": 0.91,
+    "section": "keyword",
+    "category items found": "2/2",
+    "additive numbers found": "1/1",
+    "seconds": 1.8
+   },
+   {
+    "product": "CLASSIC (Coca-Cola)",
+    "rotation": 0,
+    "OCR confidence": 0.961,
+    "section": "keyword",
+    "category items found": "2/2",
+    "additive numbers found": "2/2",
+    "seconds": 2.8
+   },
+   {
+    "product": "Coca-Cola (Coca-Cola)",
+    "rotation": 0,
+    "OCR confidence": 0.826,
+    "section": "full_text",
+    "category items found": "0/1",
+    "additive numbers found": "0/1",
+    "seconds": 6.4
+   },
+   {
+    "product": "Mother Energy (Mother,Coca-Cola Amatil)",
+    "rotation": 90,
+    "OCR confidence": 0.92,
+    "section": "keyword",
+    "category items found": "3/4",
+    "additive numbers found": "4/6",
+    "seconds": 3.2
+   },
+   {
+    "product": "KitKat Dark Chocolate Coated Wafer (Nestle)",
+    "rotation": 0,
+    "OCR confidence": 0.987,
+    "section": "keyword",
+    "category items found": "4/4",
+    "additive numbers found": "3/3",
+    "seconds": 2.2
+   },
+   {
+    "product": "KitKat Rich Chocolate Coated Wafer (Nestl\u00e9)",
+    "rotation": 0,
+    "OCR confidence": 0.85,
+    "section": "comma_density",
+    "category items found": "3/4",
+    "additive numbers found": "3/3",
+    "seconds": 2.4
+   },
+   {
+    "product": "Maggi Special Masala (Maggi)",
+    "rotation": 0,
+    "OCR confidence": 0.969,
+    "section": "keyword",
+    "category items found": "1/1",
+    "additive numbers found": "0/0",
+    "seconds": 3.9
+   },
+   {
+    "product": "Special Masala Noodles (Maggi)",
+    "rotation": 0,
+    "OCR confidence": 0.975,
+    "section": "keyword",
+    "category items found": "0/1",
+    "additive numbers found": "0/0",
+    "seconds": 3.2
+   },
+   {
+    "product": "Hot & sweet tomato chili sauce (Maggi)",
+    "rotation": 270,
+    "OCR confidence": 0.966,
+    "section": "keyword",
+    "category items found": "1/1",
+    "additive numbers found": "0/0",
+    "seconds": 1.7
+   },
+   {
+    "product": "mini oreo (Oreo,\u0e42\u0e2d\u0e23\u0e35\u0e42\u0e2d)",
+    "rotation": 0,
+    "OCR confidence": 0.84,
+    "section": "keyword",
+    "category items found": "2/4",
+    "additive numbers found": "4/4",
+    "seconds": 6.3
+   },
+   {
+    "product": "oreo (p) 27.6g (OREO)",
+    "rotation": 0,
+    "OCR confidence": 0.889,
+    "section": "keyword",
+    "category items found": "3/5",
+    "additive numbers found": "6/7",
+    "seconds": 5.2
+   },
+   {
+    "product": "Soda twist (Haribo)",
+    "rotation": 0,
+    "OCR confidence": 0.943,
+    "section": "comma_density",
+    "category items found": "1/1",
+    "additive numbers found": "0/0",
+    "seconds": 2.4
+   },
+   {
+    "product": "haribo blue (nan)",
+    "rotation": 0,
+    "OCR confidence": 0.954,
+    "section": "keyword",
+    "category items found": "1/1",
+    "additive numbers found": "0/0",
+    "seconds": 3.6
+   },
+   {
+    "product": "299 ROP \u00a32.99 P PRINGLES SALT & VINEGAR 18 kcal ri (Pringles)",
+    "rotation": 0,
+    "OCR confidence": 0.893,
+    "section": "full_text",
+    "category items found": "0/4",
+    "additive numbers found": "0/6",
+    "seconds": 5.3
+   },
+   {
+    "product": "Prawn Cocktail Flavour (Pringles)",
+    "rotation": 0,
+    "OCR confidence": 0.954,
+    "section": "keyword",
+    "category items found": "0/8",
+    "additive numbers found": "1/8",
+    "seconds": 2.7
+   }
+  ]
+ }
+}

@@ -24,22 +24,31 @@ CATEGORY_ORDER = ["SUGAR", "SWEETENER", "FAT", "PRESERVATIVE", "COLOUR", "ADDITI
 CATEGORY_TITLES = {"SUGAR": "Sugars", "SWEETENER": "Sweeteners", "FAT": "Fats & oils",
                    "PRESERVATIVE": "Preservatives", "COLOUR": "Colours", "ADDITIVE": "Other additives",
                    "FLAVOURING": "Flavourings", "INGREDIENT": "Other ingredients"}
-DISCLAIMER = ("This tool identifies ingredients and explains what they are and what they are used for. "
-              "It does not assess whether a product is healthy or safe. OCR and automatic classification "
-              "can make mistakes: always check the original label.")
+DISCLAIMER = ("This tool identifies ingredients and explains what they are and what they are used for. The daily "
+              "intake guide compares a portion with official reference values (WHO, EU, EFSA, JECFA): it is general "
+              "information for healthy people, not medical advice. OCR and automatic classification can make "
+              "mistakes: always check the original label.")
 
 
 def load_ner(kind: str = "auto"):
-    """'transformer' = fine-tuned DistilBERT, 'dictionary' = rule baseline, 'auto' = model if available."""
-    if kind in ("auto", "transformer") and (FINAL_MODEL_DIR / "config.json").exists():
-        from src.ner.transformer_ner import TransformerTagger
-        return TransformerTagger(FINAL_MODEL_DIR)
-    if kind == "transformer":
+    """'auto'/'hybrid' = rules + fine-tuned DistilBERT + fuzzy KB (best; see src/ner/hybrid.py),
+    'transformer' = DistilBERT alone, 'dictionary' = rule baseline alone."""
+    from src.ner.hybrid import HybridNER
+    has_model = (FINAL_MODEL_DIR / "config.json").exists()
+    if kind == "transformer" and not has_model:
         raise FileNotFoundError(f"No fine-tuned model in {FINAL_MODEL_DIR}")
-    from src.baseline.dictionary_ner import DictionaryNER
-    ner = DictionaryNER()
-    ner.name = "dictionary_rules"
-    return ner
+    model = None
+    if kind in ("auto", "hybrid", "transformer") and has_model:
+        from src.ner.transformer_ner import TransformerTagger
+        model = TransformerTagger(FINAL_MODEL_DIR)
+    if kind == "transformer":
+        return model
+    if kind == "dictionary":
+        from src.baseline.dictionary_ner import DictionaryNER
+        ner = DictionaryNER()
+        ner.name = "dictionary_rules"
+        return ner
+    return HybridNER(model)
 
 
 class IngredientScanner:
@@ -57,27 +66,45 @@ class IngredientScanner:
         ocr = read_image(image)
         cleaned = fix_additive_codes(ocr["text"])
         section = extract_ingredients_section(cleaned)
-        result = self.scan_text(section["text"])
-        result["ocr"] = {"full_text": ocr["text"], "corrected_text": cleaned, "section_method": section["method"],
-                         "rotation": ocr["rotation"], "mean_confidence": ocr["mean_confidence"],
+        result = self.scan_text(section["text"], extract_section=False, full_text=cleaned)
+        result["ocr"] = {"full_text": cleaned, "raw_text": ocr["raw_text"], "section_method": section["method"],
+                         "rotation": ocr["rotation"], "scale": ocr["scale"], "engine": ocr["engine"],
+                         "mean_confidence": ocr["mean_confidence"], "n_lines": len(ocr["lines"]),
                          "seconds": round(time.time() - start, 1)}
         return result
 
-    def scan_text(self, text: str) -> dict:
+    def scan_text(self, text: str, extract_section: bool = True, full_text: str = None) -> dict:
+        """Classify an ingredient list. Pasted text may also contain the nutrition table, the brand ...:
+        if it has an 'Ingredients' heading, only that section is classified."""
+        from src.app.allergens import allergen_text, find_allergens
+        from src.app.nutrition import parse_nutrition
+        from src.ocr.section_extraction import START_RE, extract_ingredients_section
+        full_text = full_text if full_text is not None else text
+        section_method = "as typed"
+        if extract_section and START_RE.search(text):
+            section = extract_ingredients_section(text)
+            if section["text"]:
+                text, section_method = section["text"], "keyword"
         prediction = self.ner.predict(text)
         norm_text, entities = prediction["text"], prediction["entities"]
         declared = declared_classes(norm_text, entities)
         items = []
         for i, ent in enumerate(entities):
-            link = self.linker.link(ent)
-            function = link["function"]
+            # a fuzzy match ("glucose syrop") is linked through the dictionary term it matched
+            link = self.linker.link({**ent, "text": ent.get("fuzzy_term") or ent["text"]})
+            function, description = link["function"], link["description"]
             if i in declared and declared[i]:
                 function = declared[i].replace("-", " ")      # what THIS label says it is used for
+                if declared[i] in self.linker.classes.index:  # ... and the explanation of THAT function
+                    description = self.linker.classes.loc[declared[i]]["description"] or description
             items.append({"text": ent["text"], "label": ent["label"], "start": ent["start"], "end": ent["end"],
-                          **link, "function": function, "function_source": "label" if i in declared else
+                          "source": ent.get("source", self.ner_name),
+                          **link, "function": function, "description": description,
+                          "function_source": "label" if i in declared else
                           ("reference" if function else "")})
         return {"input_text": text, "text": norm_text, "entities": items, "summary": summarise(items),
-                "ner_model": self.ner_name, "disclaimer": DISCLAIMER}
+                "allergens": find_allergens(allergen_text(text, full_text)), "nutrition": parse_nutrition(full_text),
+                "section_method": section_method, "ner_model": self.ner_name, "disclaimer": DISCLAIMER}
 
 
 def summarise(items: list) -> dict:
@@ -102,5 +129,8 @@ def summarise(items: list) -> dict:
         "sugars_under_other_names": [n for n in groups["SUGAR"] if not re.search(r"sugar", n, re.I)],
         "fats_under_other_names": [n for n in groups["FAT"] if not re.search(r"oil|fat|butter|ghee", n, re.I)],
         "additives_written_as_codes": [it["text"] for it in items if it["label"] == "INS_CODE"],
+        # not a sugar by law (not counted in "sugars" on the label), but digested quickly into glucose
+        "sugar_like_carbohydrates": sorted({it["text"] for it in items if re.search(
+            r"maltodextrin|glucose solids|dextrin|corn solids|rice solids", it["text"], re.I)}),
     }
     return {"counts": {c: len(v) for c, v in groups.items()}, "groups": groups, "hidden": hidden}
