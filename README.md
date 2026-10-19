@@ -63,6 +63,10 @@ so it slightly favours the rule system; the additive comparison is the app's rea
 
 ![app](reports/figures/app_text.png)
 
+| Daily intake guide | Additives explained | How a photo was read |
+|---|---|---|
+| ![guide](reports/figures/app_guide.png) | ![additives](reports/figures/app_additives.png) | ![reading](reports/figures/app_reading.png) |
+
 ## Quick start: run the app
 
 ```bash
@@ -505,7 +509,11 @@ Every entity carries a `source` (dictionary / model / fuzzy / context / list ite
 ### 3.7 Integrated scanner and app
 - `src/app/scanner.py`: `IngredientScanner().scan_image(...)` / `scan_text(...)` returns JSON: entities with
   link, function and source, category summary, hidden names, allergens, parsed nutrition, OCR details.
-- `src/app/streamlit_app.py`: the user interface (sections: what is in it · allergens · is this amount OK? · details).
+- `src/app/streamlit_app.py`: the user interface. A scan shows an "at a glance" row (sugars, additives, allergens,
+  daily-limit share) and five tabs: Ingredients (category cards + the classified label), Is this amount OK?
+  (colour-coded daily-limit meters), Allergens, Additives (one card per additive with its ADI) and How it was read
+  (photo, editable OCR text, pipeline). The landing page offers one-click sample products.
+- `src/app/ui_components.py`: the visual design (theme CSS and HTML components), kept apart from the page logic.
 - `src/app/screenshot_app.py`: automated UI screenshots (an end-to-end check that the app works).
 
 ![photo](reports/figures/app_photo.png)

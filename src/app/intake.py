@@ -122,6 +122,7 @@ def assess_portion(per100: dict, portion_g: float, profile: Profile, kind: str =
         if key in ("sugars_g", "added_sugars_g") and amount > 0:
             extra = f" ≈ {amount / TEASPOON_SUGAR_G:.1f} teaspoons of sugar"
         rows.append({"key": key, "nutrient": NAMES[key], "per_100g": value, "in_portion": round(amount, 1),
+                     "value_exact": amount,
                      "unit": unit, "daily_value": daily, "limit_kind": limit_kind, "share": share,
                      "traffic_light": traffic_light(key, value, kind), "max_product_g": max_product,
                      "message": message + extra, "source": source})
