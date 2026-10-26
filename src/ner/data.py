@@ -8,6 +8,8 @@ Every system is evaluated on the same records with the same scorer. The evaluati
                      The labels are those of the CLEAN text. This measures robustness to OCR, which
                      rules cannot learn. Only letter/digit substitutions are used, so word boundaries,
                      tokens and therefore labels stay aligned.
+  learned_noise_x1/x3  the same products with the noise MEASURED on the real photos
+                     (src/evaluation/learned_noise.py) at its real rate and at 3x. Labels of the clean text.
   gold_test          human-verified (data/splits/gold/test.jsonl), the final benchmark, once annotated.
 """
 import random
@@ -15,6 +17,8 @@ import random
 from src.evaluation.noise_robustness import _SUBSTITUTE
 from src.utils.config import project_path
 from src.utils.io import read_jsonl
+
+LEARNED_NOISE = project_path("data/processed/learned_ocr_noise.json")
 
 
 def load_split(source: str = "silver", split: str = "train", limit: int = None, seed: int = 42) -> list:
@@ -62,6 +66,12 @@ def evaluation_sets(limit: int = None) -> dict:
     sets = {"silver_test": silver_test,
             "noisy_test_0.05": noisy_copy(silver_test, 0.05, seed=1),
             "noisy_test_0.10": noisy_copy(silver_test, 0.10, seed=2)}
+    if LEARNED_NOISE.exists():   # noise measured on the real photos, at 1x and 3x its rate
+        from src.evaluation.learned_noise import load_model, noisy_record
+        model = load_model()
+        for scale, seed in ((1, 3), (3, 4)):
+            rng = random.Random(seed)
+            sets[f"learned_noise_x{scale}"] = [noisy_record(r, model, rng, scale) for r in silver_test]
     gold = load_split("gold", "test")
     if gold:
         sets["gold_test"] = gold

@@ -6,6 +6,8 @@ Usage (from the project root):
     python -m src.ner.transformer_ner --model distilbert-base-uncased --augment --run distilbert_aug
     python -m src.ner.transformer_ner --model bert-base-cased --run bert --max-train 8000
     python -m src.ner.transformer_ner --model distilbert-base-uncased --crf --run distilbert_crf
+    python -m src.ner.transformer_ner --model distilbert-base-uncased --augment --noise learned --run distilbert_aug_learned
+    python -m src.ner.transformer_ner --model distilbert-base-uncased --stability 1.0 --noise learned --run distilbert_nat
 
 How it works, step by step:
   1. Our data has one BIO tag per WORD. The Transformer splits words into sub-words
@@ -20,6 +22,9 @@ How it works, step by step:
      between tags (I-SUGAR may follow B-SUGAR, never O) and decodes the best whole sequence (Viterbi).
   5. --augment: every epoch, half of the training sentences get OCR-style character noise
      (l<->1, O<->0, ...) or a case change, so the model sees text like Person 3's OCR output.
+     --noise learned: use the noise measured on the real photos instead (src/evaluation/learned_noise.py).
+  6. --stability ALPHA (NAT, Namysl et al. 2020): every sentence is paired with a noisy copy and the loss is
+     CE(clean) + ALPHA * KL(p_clean || p_noisy), so the model learns to give the same answer for both.
 
 Runs are saved in models/runs/<run>/ (Hugging Face format + training log).
 """
@@ -34,6 +39,7 @@ import torch
 from torch import nn
 from transformers import AutoModelForTokenClassification, AutoTokenizer, get_linear_schedule_with_warmup
 
+from src.evaluation.learned_noise import load_model as load_noise_model, noisy_words
 from src.evaluation.metrics import evaluate_tag_sequences
 from src.evaluation.noise_robustness import add_ocr_noise
 from src.labeling.bio import ID2LABEL, LABEL2ID, bio_to_entities
@@ -85,10 +91,14 @@ def length_bucketed_batches(items: list, batch_size: int, rng: random.Random) ->
 
 
 # ---------------------------------------------------------------------------- augmentation
-def augment_record(record: dict, rng: random.Random) -> list:
-    """Return the words of a noisy/case-changed copy of the sentence (labels stay the same)."""
-    text = record["text"]
+def augment_record(record: dict, rng: random.Random, noise_model: dict = None) -> list:
+    """Return the words of a noisy/case-changed copy of the sentence (labels stay the same).
+    noise_model=None: hand-made confusion pairs; otherwise the noise learned from real photos
+    (src/evaluation/learned_noise.py), at 1x, 2x or 4x its measured rate."""
     choice = rng.random()
+    if choice < 0.6 and noise_model is not None:
+        return noisy_words(record, noise_model, rng, scale=rng.choice([1.0, 2.0, 4.0]))
+    text = record["text"]
     if choice < 0.6:
         text = add_ocr_noise(text, rng.choice([0.02, 0.05, 0.10]), rng)
     elif choice < 0.8:
@@ -96,6 +106,22 @@ def augment_record(record: dict, rng: random.Random) -> list:
     else:
         text = text.lower()
     return [text[s:e] for s, e in record["token_offsets"]]
+
+
+def stability_kl(clean_logits, noisy_logits, clean_labels, noisy_labels):
+    """NAT stability term: KL(p_clean || p_noisy) over the words of each sentence.
+    Both copies have the same words, so the k-th first sub-word of one matches the k-th of the other.
+    The clean prediction is the (detached) target: noise should not change the model's answer."""
+    terms = []
+    for b in range(clean_logits.size(0)):
+        c = clean_logits[b][clean_labels[b] != IGNORE]
+        n = noisy_logits[b][noisy_labels[b] != IGNORE]
+        k = min(len(c), len(n))                    # truncation at 256 sub-words can differ
+        if k:
+            p_clean = torch.log_softmax(c[:k].detach(), -1)
+            p_noisy = torch.log_softmax(n[:k], -1)
+            terms.append(torch.nn.functional.kl_div(p_noisy, p_clean, log_target=True, reduction="none").sum(-1))
+    return torch.cat(terms).mean()
 
 
 # ---------------------------------------------------------------------------- CRF variant
@@ -233,9 +259,14 @@ def train(args):
                                                 steps_per_epoch * args.epochs)
     log, best_f1, start = {"args": vars(args), "epochs": []}, -1.0, time.time()
 
+    noise_model = load_noise_model() if args.noise == "learned" else None
     for epoch in range(1, args.epochs + 1):
-        if args.augment:   # fresh noise every epoch for half of the sentences
-            items = [encode(tokenizer, augment_record(r, rng), tags_of(r)) if rng.random() < 0.5 else clean
+        noisy_items = None
+        if args.stability:   # NAT stability training: every sentence gets a fresh noisy twin
+            items = clean_items
+            noisy_items = [encode(tokenizer, augment_record(r, rng, noise_model), tags_of(r)) for r in train_records]
+        elif args.augment:   # fresh noise every epoch for half of the sentences
+            items = [encode(tokenizer, augment_record(r, rng, noise_model), tags_of(r)) if rng.random() < 0.5 else clean
                      for r, clean in zip(train_records, clean_items)]
         else:
             items = clean_items
@@ -245,6 +276,11 @@ def train(args):
             batch = collate([items[i] for i in batch_idx], tokenizer.pad_token_id)
             if args.crf:
                 loss = net(**batch)
+            elif noisy_items is not None:
+                noisy = collate([noisy_items[i] for i in batch_idx], tokenizer.pad_token_id)
+                out_clean, out_noisy = net(**batch), net(**noisy)
+                kl = stability_kl(out_clean.logits, out_noisy.logits, batch["labels"], noisy["labels"])
+                loss = out_clean.loss + args.stability * kl
             else:
                 loss = net(**batch).loss
             loss.backward()
@@ -292,9 +328,16 @@ def main():
     parser.add_argument("--max-val", type=int, default=800)
     parser.add_argument("--crf", action="store_true")
     parser.add_argument("--augment", action="store_true")
+    parser.add_argument("--noise", choices=["pairs", "learned"], default="pairs",
+                        help="noise for --augment/--stability: hand-made pairs or learned from real photos")
+    parser.add_argument("--stability", type=float, default=0.0,
+                        help="NAT stability training: weight alpha of KL(clean || noisy); 0 = off")
     parser.add_argument("--threads", type=int, default=4)
     parser.add_argument("--seed", type=int, default=42)
-    train(parser.parse_args())
+    args = parser.parse_args()
+    if args.stability and args.crf:
+        parser.error("--stability is implemented for the softmax head only, not --crf")
+    train(args)
 
 
 if __name__ == "__main__":

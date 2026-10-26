@@ -36,7 +36,7 @@ from src.utils.config import project_path
 
 INK, MUTED = "#0b0b0b", "#52514e"
 SET_COLOURS = {"silver_test": "#2a78d6", "noisy_test_0.05": "#eb6834", "noisy_test_0.10": "#1baf7a",
-               "gold_test": "#4a3aa7"}
+               "learned_noise_x1": "#e0a800", "learned_noise_x3": "#a8327a", "gold_test": "#4a3aa7"}
 
 
 class DictionarySystem:

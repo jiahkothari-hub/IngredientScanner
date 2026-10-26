@@ -1,0 +1,37 @@
+dictionary       silver_test      P 1.000 R 1.000 F1 1.000
+dictionary       noisy_test_0.05  P 0.967 R 0.777 F1 0.862
+dictionary       noisy_test_0.10  P 0.934 R 0.605 F1 0.735
+dictionary       learned_noise_x1 P 0.973 R 0.818 F1 0.888
+dictionary       learned_noise_x3 P 0.928 R 0.571 F1 0.707
+crf              silver_test      P 0.937 R 0.962 F1 0.949
+crf              noisy_test_0.05  P 0.897 R 0.849 F1 0.872
+crf              noisy_test_0.10  P 0.854 R 0.745 F1 0.796
+crf              learned_noise_x1 P 0.911 R 0.887 F1 0.899
+crf              learned_noise_x3 P 0.872 R 0.764 F1 0.814
+distilbert_2k    silver_test      P 0.861 R 0.916 F1 0.887
+distilbert_2k    noisy_test_0.05  P 0.801 R 0.854 F1 0.827
+distilbert_2k    noisy_test_0.10  P 0.741 R 0.777 F1 0.758
+distilbert_2k    learned_noise_x1 P 0.823 R 0.877 F1 0.849
+distilbert_2k    learned_noise_x3 P 0.750 R 0.785 F1 0.767
+distilbert_aug_2k silver_test      P 0.852 R 0.905 F1 0.877
+distilbert_aug_2k noisy_test_0.05  P 0.808 R 0.872 F1 0.839
+distilbert_aug_2k noisy_test_0.10  P 0.771 R 0.842 F1 0.805
+distilbert_aug_2k learned_noise_x1 P 0.818 R 0.878 F1 0.847
+distilbert_aug_2k learned_noise_x3 P 0.765 R 0.827 F1 0.795
+distilbert_aug_learned_2k silver_test      P 0.858 R 0.905 F1 0.881
+distilbert_aug_learned_2k noisy_test_0.05  P 0.813 R 0.872 F1 0.841
+distilbert_aug_learned_2k noisy_test_0.10  P 0.771 R 0.837 F1 0.802
+distilbert_aug_learned_2k learned_noise_x1 P 0.826 R 0.882 F1 0.854
+distilbert_aug_learned_2k learned_noise_x3 P 0.775 R 0.835 F1 0.804
+distilbert_nat_2k silver_test      P 0.857 R 0.905 F1 0.880
+distilbert_nat_2k noisy_test_0.05  P 0.818 R 0.878 F1 0.847
+distilbert_nat_2k noisy_test_0.10  P 0.779 R 0.851 F1 0.813
+distilbert_nat_2k learned_noise_x1 P 0.831 R 0.887 F1 0.858
+distilbert_nat_2k learned_noise_x3 P 0.783 R 0.849 F1 0.814
+                           silver_test  noisy_test_0.05  noisy_test_0.10  learned_noise_x1  learned_noise_x3  sentences_per_second
+dictionary                       1.000            0.862            0.734             0.888             0.707                 711.4
+crf                              0.949            0.872            0.796             0.899             0.814                 814.2
+distilbert_2k                    0.888            0.827            0.758             0.849             0.767                  25.6
+distilbert_aug_2k                0.877            0.839            0.805             0.847             0.795                  21.8
+distilbert_aug_learned_2k        0.881            0.841            0.802             0.854             0.804                  24.7
+distilbert_nat_2k                0.880            0.847            0.813             0.858             0.814                  28.4
