@@ -1,0 +1,23 @@
+{
+  "0": "O",
+  "1": "B-SUGAR",
+  "2": "I-SUGAR",
+  "3": "B-SWEETENER",
+  "4": "I-SWEETENER",
+  "5": "B-FAT",
+  "6": "I-FAT",
+  "7": "B-PRESERVATIVE",
+  "8": "I-PRESERVATIVE",
+  "9": "B-COLOUR",
+  "10": "I-COLOUR",
+  "11": "B-ADDITIVE",
+  "12": "I-ADDITIVE",
+  "13": "B-INS_CODE",
+  "14": "I-INS_CODE",
+  "15": "B-FUNCTION_CLASS",
+  "16": "I-FUNCTION_CLASS",
+  "17": "B-FLAVOURING",
+  "18": "I-FLAVOURING",
+  "19": "B-INGREDIENT",
+  "20": "I-INGREDIENT"
+}

@@ -1,0 +1,51 @@
+photos used 39 / 60 aligned; 8,444 reference letters/digits
+per character: substitution 0.0152, deletion 0.0062, insertion 0.0014 (total 0.0227)
+word merges 3.32 / splits 0.83 per 1000 characters (not simulated)
+characters in dropped spans 639, in stray spans 113 (missing/extra text, not simulated)
+most common substitutions: l->i: 6, z->s: 4, i->l: 4, t->e: 4, e->i: 3, d->l: 3, a->o: 3, s->r: 3, f->t: 3, e->u: 2, e->n: 2, i->u: 2, l->r: 2, l->o: 2, o->l: 2
+saved C:\Users\mhatr\Downloads\IngredientScanner-v2.1\IngredientScanner\data\processed\learned_ocr_noise.json
+Some weights of DistilBertForTokenClassification were not initialized from the model checkpoint at C:\Users\mhatr\Downloads\IngredientScanner-v2.1\IngredientScanner\models\pretrained\distilbert-base-uncased and are newly initialized: ['classifier.bias', 'classifier.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+distilbert_2k: 2,000 train / 800 validation sentences
+  epoch 1 step 100/125 loss 1.1449 (7.1 min)
+  epoch 1: {'epoch': 1, 'train_loss': 0.9942, 'val_f1': 0.8309, 'minutes': 9.8}
+  epoch 2 step 100/125 loss 0.2624 (16.6 min)
+  epoch 2: {'epoch': 2, 'train_loss': 0.2534, 'val_f1': 0.8885, 'minutes': 19.5}
+distilbert_2k: best validation F1 0.8885; saved C:\Users\mhatr\Downloads\IngredientScanner-v2.1\IngredientScanner\models\runs\distilbert_2k\best
+Some weights of DistilBertForTokenClassification were not initialized from the model checkpoint at C:\Users\mhatr\Downloads\IngredientScanner-v2.1\IngredientScanner\models\pretrained\distilbert-base-uncased and are newly initialized: ['classifier.bias', 'classifier.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+distilbert_aug_2k: 2,000 train / 800 validation sentences
+  epoch 1 step 100/125 loss 1.1377 (7.5 min)
+  epoch 1: {'epoch': 1, 'train_loss': 0.9919, 'val_f1': 0.8294, 'minutes': 9.9}
+  epoch 2 step 100/125 loss 0.2998 (16.8 min)
+  epoch 2: {'epoch': 2, 'train_loss': 0.2951, 'val_f1': 0.8817, 'minutes': 19.9}
+distilbert_aug_2k: best validation F1 0.8817; saved C:\Users\mhatr\Downloads\IngredientScanner-v2.1\IngredientScanner\models\runs\distilbert_aug_2k\best
+Some weights of DistilBertForTokenClassification were not initialized from the model checkpoint at C:\Users\mhatr\Downloads\IngredientScanner-v2.1\IngredientScanner\models\pretrained\distilbert-base-uncased and are newly initialized: ['classifier.bias', 'classifier.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+distilbert_aug_learned_2k: 2,000 train / 800 validation sentences
+  epoch 1 step 100/125 loss 1.1787 (7.3 min)
+  epoch 1: {'epoch': 1, 'train_loss': 1.0321, 'val_f1': 0.8275, 'minutes': 10.0}
+  epoch 2 step 100/125 loss 0.3054 (17.5 min)
+  epoch 2: {'epoch': 2, 'train_loss': 0.3006, 'val_f1': 0.88, 'minutes': 20.1}
+distilbert_aug_learned_2k: best validation F1 0.8800; saved C:\Users\mhatr\Downloads\IngredientScanner-v2.1\IngredientScanner\models\runs\distilbert_aug_learned_2k\best
+Some weights of DistilBertForTokenClassification were not initialized from the model checkpoint at C:\Users\mhatr\Downloads\IngredientScanner-v2.1\IngredientScanner\models\pretrained\distilbert-base-uncased and are newly initialized: ['classifier.bias', 'classifier.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+distilbert_nat_2k: 2,000 train / 800 validation sentences
+  epoch 1 step 100/125 loss 1.1923 (14.8 min)
+  epoch 1: {'epoch': 1, 'train_loss': 1.0505, 'val_f1': 0.837, 'minutes': 19.3}
+  epoch 2 step 100/125 loss 0.3375 (33.1 min)
+  epoch 2: {'epoch': 2, 'train_loss': 0.3354, 'val_f1': 0.8813, 'minutes': 38.6}
+distilbert_nat_2k: best validation F1 0.8813; saved C:\Users\mhatr\Downloads\IngredientScanner-v2.1\IngredientScanner\models\runs\distilbert_nat_2k\best
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\mhatr\Downloads\IngredientScanner-v2.1\IngredientScanner\src\ner\evaluate_models.py", line 150, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mhatr\Downloads\IngredientScanner-v2.1\IngredientScanner\src\ner\evaluate_models.py", line 108, in main
+    systems = load_systems()
+  File "C:\Users\mhatr\Downloads\IngredientScanner-v2.1\IngredientScanner\src\ner\evaluate_models.py", line 54, in load_systems
+    from src.ner.crf_baseline import MODEL_PATH, CRFTagger
+  File "C:\Users\mhatr\Downloads\IngredientScanner-v2.1\IngredientScanner\src\ner\crf_baseline.py", line 19, in <module>
+    import sklearn_crfsuite
+ModuleNotFoundError: No module named 'sklearn_crfsuite'

@@ -1,0 +1,18 @@
+[server]
+maxUploadSize = 50          # MB; high-resolution phone cameras can exceed 15 MB
+headless = true
+# Needed when the app is shared through a tunnel (ngrok, localtunnel, Cloudflare): otherwise the
+# upload's XSRF cookie check fails behind the proxy and photo uploads are silently rejected (403).
+# Lower protection: only use this for demos, not for a deployment with user accounts.
+enableXsrfProtection = false
+enableCORS = false
+
+[browser]
+gatherUsageStats = false
+
+[theme]
+base = "light"
+primaryColor = "#0E7C66"
+backgroundColor = "#F7F8FA"
+secondaryBackgroundColor = "#EEF2F0"
+textColor = "#1B2430"

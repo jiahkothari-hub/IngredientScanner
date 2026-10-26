@@ -1,0 +1,298 @@
+{
+ "description": "15 ingredient lists in the style of popular Indian/international products, written by the developer for testing (not copied from current packs: real recipes vary by country and batch). 'expected' = what a consumer should see per category, written by the developer following reports/entity_schema.md - an author-made check, not the team's gold annotation.",
+ "products": [
+  {
+   "product": "Nutella",
+   "ingredients_text": "Ingredients: Sugar, Palm Oil, Hazelnuts (13%), Skimmed Milk Powder (8.7%), Fat-Reduced Cocoa (7.4%), Emulsifier: Lecithins (Soya), Vanillin.",
+   "expected": {
+    "SUGAR": [
+     "sugar"
+    ],
+    "FAT": [
+     "palm oil"
+    ]
+   },
+   "expected_additive_numbers": [
+    "322"
+   ]
+  },
+  {
+   "product": "Pringles Hot&Spicy",
+   "ingredients_text": "Ingredients: Dried potato, palm olein oil, corn flour, starch, hot & spicy seasoning [sugar, salt, flavour enhancers (monosodium L-glutamate, disodium 5'-guanylate, disodium 5'-inosinate), maltodextrin, onion, garlic, spices (chilli, pepper, ginger, cinnamon, fennel, star anise, clove), yeast extract, acidity regulators (citric acid, lactic acid), anti-caking agents (tricalcium phosphate, silicon dioxide), colours (paprika oleoresin, chilli extract), sweetener (aspartame)], emulsifier (mono- and diglycerides of fatty acids), maltodextrin, acidity regulator (citric acid). PHENYLKETONURICS: CONTAINS PHENYLALANINE",
+   "expected": {
+    "SUGAR": [
+     "sugar"
+    ],
+    "FAT": [
+     "palm olein oil"
+    ],
+    "SWEETENER": [
+     "aspartame"
+    ],
+    "COLOUR": [
+     "paprika oleoresin",
+     "chilli extract"
+    ]
+   },
+   "expected_additive_numbers": [
+    "621",
+    "627",
+    "631",
+    "330",
+    "270",
+    "341",
+    "551",
+    "471",
+    "951"
+   ]
+  },
+  {
+   "product": "Maggi Masala",
+   "ingredients_text": "Noodles: Refined Wheat Flour (Maida), Palm Oil, Iodised Salt, Wheat Gluten, Thickeners (508 & 412), Acidity Regulators (501(i) & 500(i)) and Humectant (451(i)). Masala Tastemaker: Mixed Spices (27.4%) (Onion Powder, Coriander, Chilli Powder, Turmeric, Garlic Powder, Cumin, Aniseed, Black Pepper, Fenugreek, Ginger, Clove, Green Cardamom, Nutmeg), Noodle Powder (Refined Wheat Flour, Starch, Iodised Salt, Sugar, Edible Vegetable Oil), Hydrolysed Groundnut Protein, Flavour Enhancer (635), Thickener (508), Acidity Regulator (330).",
+   "expected": {
+    "SUGAR": [
+     "sugar"
+    ],
+    "FAT": [
+     "palm oil",
+     "edible vegetable oil"
+    ]
+   },
+   "expected_additive_numbers": [
+    "508",
+    "412",
+    "501",
+    "500",
+    "451",
+    "635",
+    "330"
+   ]
+  },
+  {
+   "product": "Parle-G",
+   "ingredients_text": "Wheat Flour (68%), Sugar, Edible Vegetable Oil (Palm), Invert Sugar Syrup, Leavening Agents [503(ii), 500(ii)], Milk Solids, Iodised Salt, Emulsifiers [322(i), 471], Dough Conditioner (223). Contains Added Flavours (Natural and Nature Identical Flavouring Substances).",
+   "expected": {
+    "SUGAR": [
+     "sugar",
+     "invert sugar syrup"
+    ],
+    "FAT": [
+     "edible vegetable oil",
+     "palm"
+    ],
+    "PRESERVATIVE": [
+     "223"
+    ]
+   },
+   "expected_additive_numbers": [
+    "503",
+    "500",
+    "322",
+    "471",
+    "223"
+   ]
+  },
+  {
+   "product": "Cadbury Dairy Milk",
+   "ingredients_text": "Sugar, Milk Solids (22%), Cocoa Butter, Cocoa Solids, Emulsifiers (442, 476) and Flavours (Natural, Nature Identical and Artificial (Vanilla) Flavouring Substances).",
+   "expected": {
+    "SUGAR": [
+     "sugar"
+    ],
+    "FAT": [
+     "cocoa butter"
+    ]
+   },
+   "expected_additive_numbers": [
+    "442",
+    "476"
+   ]
+  },
+  {
+   "product": "Kurkure Masala Munch",
+   "ingredients_text": "Rice Meal, Edible Vegetable Oil (Palmolein), Corn Meal, Gram Meal, Spices & Condiments (Onion Powder, Chilli Powder, Garlic Powder, Ginger Powder, Coriander Powder, Turmeric Powder), Salt, Black Salt, Tomato Powder, Sugar, Citric Acid (330), Flavour Enhancers (627, 631), Anticaking Agent (551), Sodium Diacetate (262(ii)).",
+   "expected": {
+    "SUGAR": [
+     "sugar"
+    ],
+    "FAT": [
+     "edible vegetable oil",
+     "palmolein"
+    ]
+   },
+   "expected_additive_numbers": [
+    "330",
+    "627",
+    "631",
+    "551",
+    "262"
+   ]
+  },
+  {
+   "product": "Oreo",
+   "ingredients_text": "Sugar, Unbleached Enriched Flour (Wheat Flour, Niacin, Reduced Iron, Thiamine Mononitrate, Riboflavin, Folic Acid), Palm and/or Canola Oil, Cocoa (Processed with Alkali), High Fructose Corn Syrup, Leavening (Baking Soda and/or Calcium Phosphate), Salt, Soy Lecithin, Vanillin, Artificial Flavor, Chocolate.",
+   "expected": {
+    "SUGAR": [
+     "sugar",
+     "high fructose corn syrup"
+    ],
+    "FAT": [
+     "palm and/or canola oil"
+    ]
+   },
+   "expected_additive_numbers": [
+    "500",
+    "341",
+    "322"
+   ]
+  },
+  {
+   "product": "Coca-Cola",
+   "ingredients_text": "Carbonated Water, Sugar, Colour (Caramel E150d), Phosphoric Acid, Natural Flavourings including Caffeine.",
+   "expected": {
+    "SUGAR": [
+     "sugar"
+    ],
+    "COLOUR": [
+     "caramel",
+     "e150d"
+    ]
+   },
+   "expected_additive_numbers": [
+    "150d",
+    "338"
+   ]
+  },
+  {
+   "product": "Diet Coke",
+   "ingredients_text": "Carbonated Water, Colour (Caramel E150d), Sweeteners (Aspartame, Acesulfame K), Natural Flavourings including Caffeine, Phosphoric Acid, Acidity Regulator (Sodium Citrate). Contains a source of Phenylalanine.",
+   "expected": {
+    "SWEETENER": [
+     "aspartame",
+     "acesulfame k"
+    ],
+    "COLOUR": [
+     "caramel",
+     "e150d"
+    ]
+   },
+   "expected_additive_numbers": [
+    "150d",
+    "951",
+    "950",
+    "338",
+    "331"
+   ]
+  },
+  {
+   "product": "Haribo Goldbears",
+   "ingredients_text": "Glucose Syrup, Sugar, Gelatine, Dextrose, Fruit Juice from Concentrate: Apple, Strawberry, Raspberry, Orange, Lemon, Pineapple; Citric Acid, Fruit and Plant Concentrates: Spirulina, Apple, Radish, Blackcurrant, Carrot, Lemon, Aronia; Glazing Agents: Beeswax, Carnauba Wax; Invert Sugar Syrup, Elderberry Extract, Flavouring.",
+   "expected": {
+    "SUGAR": [
+     "glucose syrup",
+     "sugar",
+     "dextrose",
+     "invert sugar syrup"
+    ]
+   },
+   "expected_additive_numbers": [
+    "330",
+    "901",
+    "903"
+   ]
+  },
+  {
+   "product": "Lays Magic Masala",
+   "ingredients_text": "Potato, Edible Vegetable Oil (Palmolein, Rice Bran Oil), Seasoning (Spices & Condiments, Sugar, Iodised Salt, Edible Starch, Flavour Enhancers (627, 631), Anticaking Agent (551), Tomato Powder, Hydrolysed Vegetable Protein, Acidity Regulator (330), Maltodextrin).",
+   "expected": {
+    "SUGAR": [
+     "sugar"
+    ],
+    "FAT": [
+     "edible vegetable oil",
+     "palmolein",
+     "rice bran oil"
+    ]
+   },
+   "expected_additive_numbers": [
+    "627",
+    "631",
+    "551",
+    "330"
+   ]
+  },
+  {
+   "product": "Kissan Ketchup",
+   "ingredients_text": "Tomato Paste (28%), Sugar, Water, Iodised Salt, Acidity Regulator (260), Thickener (1422), Preservative (211), Onion Powder, Garlic Powder, Spices and Condiments.",
+   "expected": {
+    "SUGAR": [
+     "sugar"
+    ],
+    "PRESERVATIVE": [
+     "211"
+    ]
+   },
+   "expected_additive_numbers": [
+    "260",
+    "1422",
+    "211"
+   ]
+  },
+  {
+   "product": "Amul Butter",
+   "ingredients_text": "Milk Fat, Water, Common Salt, Permitted Natural Colour Annatto.",
+   "expected": {
+    "FAT": [
+     "milk fat"
+    ],
+    "COLOUR": [
+     "annatto"
+    ]
+   },
+   "expected_additive_numbers": [
+    "160b"
+   ]
+  },
+  {
+   "product": "Britannia Good Day",
+   "ingredients_text": "Refined Wheat Flour (Maida), Sugar, Edible Vegetable Oil (Palm), Butter (5%), Cashew Nuts (4%), Invert Syrup, Milk Solids, Raising Agents [503(ii), 500(ii)], Iodised Salt, Emulsifiers [471, 322], Artificial Flavouring Substances (Butter, Milk and Vanilla).",
+   "expected": {
+    "SUGAR": [
+     "sugar",
+     "invert syrup"
+    ],
+    "FAT": [
+     "edible vegetable oil",
+     "palm",
+     "butter"
+    ]
+   },
+   "expected_additive_numbers": [
+    "503",
+    "500",
+    "471",
+    "322"
+   ]
+  },
+  {
+   "product": "Red Bull",
+   "ingredients_text": "Water, Sucrose, Glucose, Acidity Regulator Sodium Citrates, Carbon Dioxide, Acidifier Citric Acid, Taurine (0.4%), Caffeine (0.03%), Vitamins (Niacin, Pantothenic Acid, B6, B12), Flavourings, Colours (Caramel, Riboflavin).",
+   "expected": {
+    "SUGAR": [
+     "sucrose",
+     "glucose"
+    ],
+    "COLOUR": [
+     "caramel",
+     "riboflavin"
+    ]
+   },
+   "expected_additive_numbers": [
+    "331",
+    "290",
+    "330",
+    "101"
+   ]
+  }
+ ]
+}

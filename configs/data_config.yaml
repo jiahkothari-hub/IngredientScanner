@@ -1,0 +1,75 @@
+# Configuration for the Person 1 (DATA + NLP) pipeline.
+# All paths are relative to the project root (the folder containing this configs/ dir).
+
+random_seed: 42
+
+source:
+  # Official Open Food Facts full-database CSV export (tab-separated, gzip).
+  # Documented at https://world.openfoodfacts.org/data
+  # The URLs are tried in order; the second is OFF's official AWS S3 mirror of the same file.
+  urls:
+    - https://static.openfoodfacts.org/data/en.openfoodfacts.org.products.csv.gz
+    - https://openfoodfacts-ds.s3.eu-west-3.amazonaws.com/en.openfoodfacts.org.products.csv.gz
+  raw_file: data/raw/en.openfoodfacts.org.products.csv.gz
+  manifest_file: data/raw/download_manifest.json
+  license: "Open Database License (ODbL) - attribution to Open Food Facts contributors required"
+
+# Only these columns are read from the ~200-column export. Everything else is ignored.
+columns:
+  - code                # barcode, used as product_id
+  - product_name
+  - brands
+  - countries_en        # e.g. "India,United Kingdom"
+  - categories_en
+  - main_category_en
+  - ingredients_text    # THE text we do NLP on (never overwritten)
+  - ingredients_tags    # OFF's own parse of the ingredients (used only for EDA / sanity checks)
+  - additives_n
+  - additives_tags      # OFF's own additive detection, e.g. "en:e330,en:e955" (EDA / sanity checks only)
+
+filter:
+  # Countries are grouped so we can sample a balanced mix of label styles:
+  # India uses "INS 330", the UK/EU use "E330", the US uses names like "Red 40".
+  country_groups:
+    india: ["India"]
+    uk_ireland: ["United Kingdom", "Ireland"]
+    north_america: ["United States", "Canada"]
+    other_english: ["Australia", "New Zealand", "Singapore", "South Africa",
+                    "Malaysia", "Philippines", "United Arab Emirates", "Nigeria", "Kenya", "Pakistan"]
+  # Max number of products sampled per group (after cleaning + dedup). null = keep all.
+  group_quota:
+    india: null
+    uk_ireland: 7000
+    north_america: 7000
+    other_english: 4000
+  min_chars: 3         # single-ingredient lists like "Salt" are valid, so the minimum is small
+  max_chars: 1500      # very long texts are rare outliers; roughly the 512-subword limit of BERT-style models
+  min_english_score: 0.9   # see src/data/language.py; 0.5-0.9 is mostly bilingual EN/FR labels
+
+outputs:
+  source_profile: reports/source_profile.json
+  candidates: data/interim/off_english_candidates.csv.gz
+  filter_log: reports/filter_log.json
+  products: data/processed/products.csv
+
+gold:
+  # Human-verified GOLD sample, drawn from each split so the gold test set stays held out.
+  # Sizes are products. ~400 products x ~17 entities = ~6,800 entities to check (~2-3 min/product
+  # with pre-annotations, i.e. about 6-7 hours per annotator).
+  sizes:
+    train: 220
+    validation: 60
+    test: 120
+  agreement_items: 40        # extra train items annotated by ALL annotators (inter-annotator agreement)
+  annotators: [annotator_1, annotator_2, annotator_3]   # replace with your names
+  # Enrichment: share of each split's sample reserved for hard / rare cases (rest is stratified random
+  # by market x length). Without it, rare classes (SWEETENER, PRESERVATIVE) would have too few test
+  # examples for a meaningful per-class F1.
+  enrich:
+    has_ins_code: 0.10
+    has_preservative: 0.08
+    has_colour: 0.08
+    has_sweetener: 0.08
+    multiple_sugars: 0.06
+    multiple_fats: 0.06
+    noisy_text: 0.08

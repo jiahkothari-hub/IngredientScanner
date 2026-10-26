@@ -1,0 +1,44 @@
+{
+  "seed": 42,
+  "records": 22323,
+  "groups": 20087,
+  "groups_with_more_than_one_product": 1050,
+  "largest_group": 216,
+  "silver_split_sizes": {
+    "train": 15556,
+    "validation": 3280,
+    "test": 3487
+  },
+  "silver_split_percent": {
+    "train": 69.7,
+    "validation": 14.7,
+    "test": 15.6
+  },
+  "market_mix_percent": {
+    "test": {
+      "india": 18.6,
+      "north_america": 30.1,
+      "other_english": 17.2,
+      "uk_ireland": 34.1
+    },
+    "train": {
+      "india": 19.5,
+      "north_america": 31.5,
+      "other_english": 17.9,
+      "uk_ireland": 31.1
+    },
+    "validation": {
+      "india": 20.2,
+      "north_america": 32.0,
+      "other_english": 18.2,
+      "uk_ireland": 29.5
+    }
+  },
+  "gold_split_sizes": null,
+  "leakage_check": {
+    "description": "max Jaccard similarity of ingredient-segment sets between each val/test product and its most similar train product",
+    "median": 0.3,
+    "share_at_least_0.8": 0.0015,
+    "share_identical_1.0": 0.0
+  }
+}

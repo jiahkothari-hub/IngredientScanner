@@ -1,0 +1,7 @@
+{
+  "url": "https://openfoodfacts-ds.s3.eu-west-3.amazonaws.com/en.openfoodfacts.org.products.csv.gz",
+  "downloaded_at_utc": "2026-10-01T18:01:36+00:00",
+  "size_bytes": 1275171186,
+  "sha256": "f72687ee8bc6522054fe69dbfda6b91902c16af1ec2e043cde27bc6c29ad8176",
+  "license": "Open Database License (ODbL) - attribution to Open Food Facts contributors required"
+}

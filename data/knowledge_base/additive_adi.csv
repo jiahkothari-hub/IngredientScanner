@@ -1,0 +1,37 @@
+ins_numbers,substance,adi_mg_per_kg,adi_basis,authority,note
+951,Aspartame,40,,JECFA (1981; reaffirmed 2023) and EFSA (2013),People with phenylketonuria (PKU) must avoid it: it is a source of phenylalanine.
+950,Acesulfame K,15,,JECFA (1990); EFSA (2025),
+955,Sucralose,15,,JECFA (1990); EFSA (2000),
+954,Saccharin and its salts,5,as saccharin,JECFA (1993),
+952,Cyclamates,11,as cyclamic acid,JECFA (1982),EFSA uses 7 mg/kg body weight.
+960,Steviol glycosides,4,as steviol,JECFA (2008) and EFSA (2010),
+961,Neotame,2,,JECFA (2003),
+969,Advantame,5,,JECFA (2013) and EFSA (2013),
+210|211|212|213,Benzoic acid and benzoates,5,as benzoic acid,JECFA (1996) and EFSA (2016),
+200|202|203,Sorbic acid and sorbates,11,as sorbic acid,EFSA (2019),JECFA's older group ADI is 25 mg/kg body weight.
+220|221|222|223|224|225|226|227|228,Sulphur dioxide and sulphites,0.7,as sulphur dioxide,JECFA (1998) and EFSA (2016),Can trigger reactions in some people with asthma; must be declared as an allergen above 10 mg/kg.
+249|250,Nitrites,0.07,as nitrite ion,JECFA (2002) and EFSA (2017),
+251|252,Nitrates,3.7,as nitrate ion,JECFA (2002) and EFSA (2017),
+102,Tartrazine,7.5,,EFSA (2009),JECFA uses 10 mg/kg body weight. EU labels must state: may have an adverse effect on activity and attention in children.
+110,Sunset yellow FCF,4,,JECFA (2011) and EFSA (2014),EU labels must state: may have an adverse effect on activity and attention in children.
+129,Allura red AC,7,,JECFA (1981) and EFSA (2009),EU labels must state: may have an adverse effect on activity and attention in children.
+122,Carmoisine (azorubine),4,,JECFA (1983) and EFSA (2009),EU labels must state: may have an adverse effect on activity and attention in children.
+124,Ponceau 4R,0.7,,EFSA (2009),EU labels must state: may have an adverse effect on activity and attention in children.
+127,Erythrosine,0.1,,JECFA (1990) and EFSA (2011),
+132,Indigotine (indigo carmine),5,,JECFA (1974) and EFSA (2014),
+133,Brilliant blue FCF,6,,EFSA (2010),
+100,Curcumin,3,,JECFA (2004) and EFSA (2010),
+150c|150d,Caramel colours III and IV,200,,JECFA (1985),
+171,Titanium dioxide,,,EFSA (2021),EFSA concluded in 2021 that it can no longer be considered safe as a food additive; it is no longer authorised in the EU (2022). Still permitted in some other countries.
+620|621|622|623|624|625,Glutamic acid and glutamates (e.g. MSG),30,as glutamic acid,EFSA (2017),JECFA did not set a numerical limit (ADI 'not specified').
+338|339|340|341|343|450|451|452,Phosphoric acid and phosphates,40,as phosphorus (all sources),EFSA (2019),The limit covers phosphorus from all foods and additives together.
+319,TBHQ,0.7,,JECFA (1999) and EFSA (2004),
+320,Butylated hydroxyanisole (BHA),1,,EFSA (2011),JECFA uses 0.5 mg/kg body weight.
+321,Butylated hydroxytoluene (BHT),0.25,,EFSA (2012),
+310,Propyl gallate,0.5,,EFSA (2014),
+407|407a,Carrageenan,75,,EFSA (2018; temporary),
+432|433|434|435|436,Polysorbates,25,,EFSA (2015),
+442,Ammonium phosphatides,30,,JECFA (1974),
+476,Polyglycerol polyricinoleate (PGPR),25,,EFSA (2017),
+420|421|953|965|966|967|968,Polyols (sorbitol / mannitol / isomalt / maltitol / lactitol / xylitol / erythritol),,,EU Regulation 1169/2011,No numerical ADI; large amounts can have a laxative effect (EU labels must warn above 10% polyols).
+170|260|270|290|296|300|301|322|325|326|327|330|331|332|333|400|401|402|404|406|410|412|414|415|418|422|440|460|461|463|464|466|471|472a|472b|472c|500|501|503|504|508|509|511|516|524|525|526|551|575|627|631|635|1400|1401|1402|1403|1404|1405|1410|1412|1413|1414|1420|1422|1440|1442|1450,Low-concern additive group,,,JECFA / EFSA,"No numerical ADI was needed ('ADI not specified'): at the levels used in food, regulators found no safety concern."

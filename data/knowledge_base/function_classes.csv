@@ -1,0 +1,54 @@
+class_id,name,synonyms,description,wikidata
+acid,Acid,Acidifier|Acidulant|tartness|provides tartness|Food acid,Acids are substances which increase the acidity of a foodstuff and/or impart a sour taste to it.,Q337038
+acidity-regulator,Acidity regulator,alkali|base|buffer|buffering agent|pH adjusting agent|corrector of acidity|acid regulator|controls acidity,Acidity regulators are substances which alter or control the acidity or alkalinity of a foodstuff.,Q898753
+anti-caking-agent,Anti-caking agent,anticaking agent|anti-stick agent|anti-sticking|drying agent|dusting agent|prevent caking|prevents caking|anti-clumping|anticaking blend|anticake,Anti-caking agents are substances which reduce the tendency of individual particles of a foodstuff to adhere to one another.,Q726460
+anti-foaming-agent,Anti-foaming agent,de-foaming agent|antifoaming agent|defoaming agent|anti-foaming,Anti-foaming agents are substances which prevent or reduce foaming.,Q904035
+antioxidant,Antioxidant,antibrowning agent|antioxidant synergist,"Antioxidants are substances which prolong the shelf-life of foods by protecting them against deterioration caused by oxidation, such as fat rancidity and colour changes.",Q133948
+natural-antioxidant,natural antioxidant,,,
+release-agent,release agent,,,
+bleaching-agent,Bleaching agent,,A food additive (non-flour use) used to decolourize food. Bleaching agents do not include pigments.,
+bulking-agent,Bulking agent,filler,Bulking agents are substances which contribute to the volume of a foodstuff without contributing significantly to its available energy value.,
+anti-bulking-agent,anti-bulking agent,,,
+carbonating-agent,Carbonating agent,carbonation,A food additive used to provide carbonation in a food.,
+carrier,Carrier,carrier solvant|diluent for other food additives|encapsulating agent|nutrient carrier,"A food additive used to dissolve, dilute, disperse or otherwise physically modify a food additive or nutrient without altering its function (and without exerting any technological effect itself) in order to facilitate its handling, application or use of the food additive or nutrient.",
+colour,Colour,color|colouring|coloring|decorative pigment|surface colorant|for color|artificial color|artificial colour|color added|colors added|artificial color added|colorant|colours|colors|coloring food|colouring food|synthetic colour|colouring agent|coloring agent|colored|coloured|colourant|colourants,"Colours are substances which add or restore colour in a food, and include natural constituents of foods and natural sources which are normally not consumed as foods as such and not normally used as characteristic ingredients of food.",Q753009
+concentrated-plant-colour,concentrated plant colour,,,
+natural-colours,natural colours,,,
+crust-colorant,crust colorant,crust colorants,,
+colour-retention-agent,colour retention agent,colour adjunct|colour fixative|colour stabilizer|maintain color|color retention,,
+emulsifier,Emulsifier,clouding agent|crystallization inhibitor|density adjustment agent|dispersing agent|emulsifier blend|emulsifying agent|emulsifying|plasticizer|surface active agent|suspension agent,Emulsifiers are substances which make it possible to form or maintain a homogenous mixture of two or more immiscible phases such as oil and water in a foodstuff.,Q907356
+natural-emulsifier,natural emulsifier,,,
+emulsifying-salts,Emulsifying salts,emulsifying salt synergist|melding salt|Emulsifying salt|melting salt,Emulsifying salts are substances which convert proteins contained in cheese into a dispersed form and thereby bring about homogenous distribution of fat and other components.,Q50419202
+firming-agent,Firming agent,,"Firming agents are substances which make or keep tissues of fruit or vegetables firm or crisp, or interact with gelling agents to produce or strengthen a gel.",Q1408496
+natural-firming-agent,Natural firming agent,,,
+flavour-enhancer,Flavour enhancer,flavour synergist|flavor enhancer|flavor enhancers,Flavour enhancers are substances which enhance the existing taste and/or odour of a foodstuff.,Q898745
+flour-treatment-agent,Flour treatment agent,dough conditioner|dough strengthening agent|flour bleaching agent|flour improver|flour treatment agent,"Flour treatment agents are substances, other than emulsifiers, which are added to flour or dough to improve its baking quality.",Q469842
+foaming-agent,Foaming agent,aerating agent|foaming agent|whipping agent,Foaming agents are substances which make it possible to form a homogenous dispersion of a gaseous phase in a liquid or solid foodstuff.,Q759922
+gelling-agent,Gelling agent,gelifier,Gelling agents are substances which give a foodstuff texture through formation of a gel.,Q27862636
+glazing-agent,Glazing agent,coating agent|film forming agent|polishing agent|sealing agent|surface-finishing agent,"Glazing agents (including lubricants) are substances which, when applied to the external surface of a foodstuff, impart a shiny appearance or provide a protective coating.",Q334582
+humectant,Humectant,moisture retention agent|water retention agent|wetting agent|moisture retention,"Humectants are substances which prevent foods from drying out by counteracting the effect of an atmosphere having a low degree of humidity, or promote the dissolution of a powder in an aqueous medium.",Q911854
+modified-starch,Modified starch,,,Q415766
+packaging-gas,Packaging gas,,"A food additive gas, which is introduced into a container before, during or after filling with food with the intention to protect the food, for example, from oxidation or spoilage.",
+preservative,Preservative,antimicrobial preservative|antimicrobial synergist|antimould and antirope agent|antimycotic agent|bacteriophage control agent|fungistatic agent|natural mold inhibitor|maintain freshness|protect flavor,Preservatives are substances which prolong the shelf-life of foods by protecting them against deterioration caused by micro-organisms and/or which protect against growth of pathogenic micro-organisms.,Q274579
+fruit-preservative,fruit preservative,,,
+natural-preservative,natural preservative,,,
+propellent-gas,Propellent gas,propellant gas|propellent|propellant,Propellants are gases other than air which expel a foodstuff from a container.,Q1875049
+raising-agent,Raising agent,leavening,Raising agents are substances or combinations of substances which liberate gas and thereby increase the volume of a dough or a batter.,Q908833
+sequestrant,Sequestrant,,Sequestrants are substances which form chemical complexes with metallic ions.,Q905648
+stabiliser,Stabiliser,stabilizer|binder|colloidal stabilizer|emulsion stabilizer|foam stabilizer|stabilizer synergist|stabilizers|stabilizing agent|binding mixes,"Stabilisers are substances which make it possible to maintain the physico-chemical state of a foodstuff; stabilisers include substances which enable the maintenance of a homogenous dispersion of two or more immiscible substances in a foodstuff, substances which stabilise, retain or intensify an existing colour of a foodstuff and substances which increase the binding capacity of the food, including the formation of cross-links between proteins enabling the binding of food pieces into re-constituted food.",Q7595716
+natural-stabilizer,natural stabilizer,,,
+colour-stabiliser,colour stabiliser,color stabilizer,,
+sweetener,Sweetener,bulk sweetener|intense sweetener|natural sweetener,Sweeteners are substances used to impart a sweet taste to foods or in table-top sweeteners.,Q626292
+thickener,Thickener,bodying agent|texturizing agent|thickener synergist|thickening agent|provides body|provides thickness,Thickeners are substances which increase the viscosity of a foodstuff.,Q911138
+natural-thickener,natural thickener,,,
+enriching-substances,enriching substances,enriching additives|enriching substance,,
+minerals,Minerals,,,
+amino-acids,Amino acids,amino acid,,
+nucleotides,Nucleotides,,,
+other-nutritional-substances,Other nutritional substances,,,
+coagulant,coagulant,coagulum|coagulating agent|clotting agents,,
+salt-substitute,salt substitute,,,
+creaming-agent,creaming agent,,,
+enhancer,enhancer,,,
+bread-improver,bread improver,,,
+cooking-enhancer,cooking enhancer,,,

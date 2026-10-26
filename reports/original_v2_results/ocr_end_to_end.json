@@ -1,0 +1,132 @@
+{
+  "photos": 60,
+  "ocr": {
+    "median_cer_section": 0.223,
+    "median_word_recall_full_ocr": 0.955,
+    "median_word_recall_section": 0.917,
+    "photos_readable (full-text word recall >= 0.5)": 55,
+    "section_methods": {
+      "keyword": 45,
+      "full_text": 10,
+      "comma_density": 5
+    },
+    "by_market_median_word_recall_full_ocr": {
+      "india": 0.941,
+      "north_america": 0.974,
+      "other_english": 0.956,
+      "uk_ireland": 0.977
+    }
+  },
+  "systems": {
+    "dictionary": {
+      "photos": 60,
+      "entities_exact": {
+        "precision": 0.777,
+        "recall": 0.744,
+        "f1": 0.76
+      },
+      "entities_fuzzy": {
+        "precision": 0.812,
+        "recall": 0.777,
+        "f1": 0.794
+      },
+      "additive_numbers": {
+        "precision": 0.963,
+        "recall": 0.812,
+        "f1": 0.881
+      }
+    },
+    "crf": {
+      "photos": 60,
+      "entities_exact": {
+        "precision": 0.76,
+        "recall": 0.73,
+        "f1": 0.745
+      },
+      "entities_fuzzy": {
+        "precision": 0.794,
+        "recall": 0.764,
+        "f1": 0.779
+      },
+      "additive_numbers": {
+        "precision": 0.94,
+        "recall": 0.787,
+        "f1": 0.857
+      }
+    },
+    "hybrid (app)": {
+      "photos": 60,
+      "entities_exact": {
+        "precision": 0.723,
+        "recall": 0.731,
+        "f1": 0.727
+      },
+      "entities_fuzzy": {
+        "precision": 0.766,
+        "recall": 0.775,
+        "f1": 0.77
+      },
+      "additive_numbers": {
+        "precision": 0.923,
+        "recall": 0.819,
+        "f1": 0.868
+      }
+    }
+  },
+  "systems_readable_photos_only": {
+    "dictionary": {
+      "photos": 55,
+      "entities_exact": {
+        "precision": 0.797,
+        "recall": 0.799,
+        "f1": 0.798
+      },
+      "entities_fuzzy": {
+        "precision": 0.832,
+        "recall": 0.834,
+        "f1": 0.833
+      },
+      "additive_numbers": {
+        "precision": 0.97,
+        "recall": 0.903,
+        "f1": 0.935
+      }
+    },
+    "crf": {
+      "photos": 55,
+      "entities_exact": {
+        "precision": 0.78,
+        "recall": 0.779,
+        "f1": 0.78
+      },
+      "entities_fuzzy": {
+        "precision": 0.816,
+        "recall": 0.815,
+        "f1": 0.816
+      },
+      "additive_numbers": {
+        "precision": 0.954,
+        "recall": 0.868,
+        "f1": 0.909
+      }
+    },
+    "hybrid (app)": {
+      "photos": 55,
+      "entities_exact": {
+        "precision": 0.755,
+        "recall": 0.785,
+        "f1": 0.77
+      },
+      "entities_fuzzy": {
+        "precision": 0.8,
+        "recall": 0.832,
+        "f1": 0.815
+      },
+      "additive_numbers": {
+        "precision": 0.936,
+        "recall": 0.91,
+        "f1": 0.923
+      }
+    }
+  }
+}

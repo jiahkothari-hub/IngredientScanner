@@ -1,0 +1,57 @@
+{
+  "source_file": "data/raw/en.openfoodfacts.org.products.csv.gz",
+  "total_products": 4535553,
+  "missing_percent": {
+    "code": 0.0,
+    "product_name": 7.41,
+    "brands": 37.11,
+    "countries_en": 0.5,
+    "categories_en": 59.77,
+    "main_category_en": 59.78,
+    "ingredients_text": 72.4,
+    "ingredients_tags": 71.67,
+    "additives_n": 71.6,
+    "additives_tags": 84.54
+  },
+  "top_countries": {
+    "France": 1263854,
+    "United States": 910130,
+    "Germany": 408727,
+    "Spain": 354697,
+    "Italy": 266757,
+    "United Kingdom": 186789,
+    "Canada": 120446,
+    "Switzerland": 103613,
+    "Belgium": 100610,
+    "Ireland": 78632,
+    "Netherlands": 75560,
+    "World": 73889,
+    "Australia": 73300,
+    "Japan": 39404,
+    "Romania": 37430,
+    "Poland": 34629,
+    "Russia": 34422,
+    "Brazil": 34109,
+    "Norway": 25555,
+    "Sweden": 25180,
+    "Morocco": 22242,
+    "Austria": 21562,
+    "Portugal": 21262,
+    "India": 21188,
+    "Finland": 19330
+  },
+  "language_estimate_from_sample": {
+    "sample_fraction_of_rows_with_ingredients": 0.02,
+    "note": "only en/fr/de/es/it/nl/pt are detected; every other language counts as 'unknown'",
+    "counts": {
+      "en": 11513,
+      "fr": 6301,
+      "unknown": 2929,
+      "de": 1904,
+      "es": 957,
+      "nl": 667,
+      "it": 556,
+      "pt": 205
+    }
+  }
+}
