@@ -1,0 +1,697 @@
+{
+  "params": {
+    "vector_size": 100,
+    "window": 3,
+    "min_count": 5,
+    "sg": 0,
+    "negative": 10,
+    "epochs": 50,
+    "seed": 42,
+    "workers": 1
+  },
+  "vocabulary": 3544,
+  "labelled_terms": 866,
+  "class_counts": {
+    "ADDITIVE": 249,
+    "SWEETENER": 30,
+    "FUNCTION_CLASS": 111,
+    "FLAVOURING": 113,
+    "FAT": 172,
+    "SUGAR": 109,
+    "COLOUR": 58,
+    "PRESERVATIVE": 24
+  },
+  "classification": {
+    "majority_class": {
+      "accuracy": 0.288,
+      "predicts": "ADDITIVE"
+    },
+    "spelling_char3gram_knn": {
+      "accuracy": 0.905,
+      "macro_f1": 0.858,
+      "per_class_f1": {
+        "ADDITIVE": 0.903,
+        "COLOUR": 0.844,
+        "FAT": 0.924,
+        "FLAVOURING": 0.938,
+        "FUNCTION_CLASS": 0.973,
+        "PRESERVATIVE": 0.667,
+        "SUGAR": 0.889,
+        "SWEETENER": 0.723
+      }
+    },
+    "ingredient2vec_knn": {
+      "accuracy": 0.739,
+      "macro_f1": 0.734,
+      "per_class_f1": {
+        "ADDITIVE": 0.828,
+        "COLOUR": 0.839,
+        "FAT": 0.717,
+        "FLAVOURING": 0.673,
+        "FUNCTION_CLASS": 0.598,
+        "PRESERVATIVE": 0.816,
+        "SUGAR": 0.667,
+        "SWEETENER": 0.735
+      }
+    },
+    "spelling_plus_ingredient2vec_knn": {
+      "accuracy": 0.934,
+      "macro_f1": 0.93,
+      "per_class_f1": {
+        "ADDITIVE": 0.938,
+        "COLOUR": 0.938,
+        "FAT": 0.925,
+        "FLAVOURING": 0.935,
+        "FUNCTION_CLASS": 0.964,
+        "PRESERVATIVE": 0.909,
+        "SUGAR": 0.917,
+        "SWEETENER": 0.915
+      }
+    }
+  },
+  "context_fixes_spelling": [
+    {
+      "term": "acesulfame-k",
+      "spelling_said": "ADDITIVE",
+      "true": "SWEETENER"
+    },
+    {
+      "term": "acesulfame_k",
+      "spelling_said": "ADDITIVE",
+      "true": "SWEETENER"
+    },
+    {
+      "term": "agar",
+      "spelling_said": "SUGAR",
+      "true": "ADDITIVE"
+    },
+    {
+      "term": "agave_nectar",
+      "spelling_said": "ADDITIVE",
+      "true": "SUGAR"
+    },
+    {
+      "term": "amylase",
+      "spelling_said": "SUGAR",
+      "true": "ADDITIVE"
+    },
+    {
+      "term": "anthocyanin",
+      "spelling_said": "FUNCTION_CLASS",
+      "true": "COLOUR"
+    },
+    {
+      "term": "anthocyanins",
+      "spelling_said": "ADDITIVE",
+      "true": "COLOUR"
+    },
+    {
+      "term": "aspartame",
+      "spelling_said": "FAT",
+      "true": "SWEETENER"
+    },
+    {
+      "term": "baking_soda",
+      "spelling_said": "FUNCTION_CLASS",
+      "true": "ADDITIVE"
+    },
+    {
+      "term": "bht",
+      "spelling_said": "SUGAR",
+      "true": "ADDITIVE"
+    },
+    {
+      "term": "butane",
+      "spelling_said": "FAT",
+      "true": "ADDITIVE"
+    },
+    {
+      "term": "caramel_syrup",
+      "spelling_said": "COLOUR",
+      "true": "SUGAR"
+    },
+    {
+      "term": "chicken_flavor",
+      "spelling_said": "FAT",
+      "true": "FLAVOURING"
+    },
+    {
+      "term": "chili_oil",
+      "spelling_said": "FLAVOURING",
+      "true": "FAT"
+    },
+    {
+      "term": "chlorophyll",
+      "spelling_said": "ADDITIVE",
+      "true": "COLOUR"
+    },
+    {
+      "term": "cochineal",
+      "spelling_said": "FAT",
+      "true": "COLOUR"
+    },
+    {
+      "term": "copper_complexes_of_chlorophyllins",
+      "spelling_said": "ADDITIVE",
+      "true": "COLOUR"
+    },
+    {
+      "term": "curcumin",
+      "spelling_said": "ADDITIVE",
+      "true": "COLOUR"
+    },
+    {
+      "term": "datem",
+      "spelling_said": "SUGAR",
+      "true": "ADDITIVE"
+    },
+    {
+      "term": "erythritol",
+      "spelling_said": "ADDITIVE",
+      "true": "SWEETENER"
+    }
+  ],
+  "n_context_fixes": 57,
+  "n_context_breaks": 32,
+  "neighbours": {
+    "sugar": [
+      [
+        "salt",
+        0.483
+      ],
+      [
+        "dextrose",
+        0.46
+      ],
+      [
+        "palm_oil",
+        0.449
+      ],
+      [
+        "water",
+        0.435
+      ],
+      [
+        "brown_sugar",
+        0.404
+      ],
+      [
+        "cane_sugar",
+        0.4
+      ],
+      [
+        "cream_powder",
+        0.397
+      ],
+      [
+        "corn_flour",
+        0.395
+      ]
+    ],
+    "dextrose": [
+      [
+        "sugar",
+        0.46
+      ],
+      [
+        "wheat_starch",
+        0.418
+      ],
+      [
+        "modified_potato_starch",
+        0.416
+      ],
+      [
+        "salt",
+        0.41
+      ],
+      [
+        "sodium_diacetate",
+        0.398
+      ],
+      [
+        "monocalcium_phosphate",
+        0.384
+      ],
+      [
+        "palm_oil",
+        0.366
+      ],
+      [
+        "dextrose_monohydrate",
+        0.365
+      ]
+    ],
+    "palm_oil": [
+      [
+        "palm_kernel_oil",
+        0.476
+      ],
+      [
+        "coconut_oil",
+        0.473
+      ],
+      [
+        "palm",
+        0.463
+      ],
+      [
+        "sugar",
+        0.449
+      ],
+      [
+        "refined_palm_oil",
+        0.44
+      ],
+      [
+        "palm_fat",
+        0.422
+      ],
+      [
+        "icing_sugar",
+        0.408
+      ],
+      [
+        "cocoa_powder_processed_with_alkali",
+        0.406
+      ]
+    ],
+    "citric_acid": [
+      [
+        "sodium_lactate",
+        0.545
+      ],
+      [
+        "sodium_diacetate",
+        0.523
+      ],
+      [
+        "lactic_acid",
+        0.518
+      ],
+      [
+        "phosphoric_acid",
+        0.482
+      ],
+      [
+        "acetic_acid",
+        0.468
+      ],
+      [
+        "malic_acid",
+        0.467
+      ],
+      [
+        "herb",
+        0.437
+      ],
+      [
+        "citric",
+        0.435
+      ]
+    ],
+    "sucralose": [
+      [
+        "aspartame",
+        0.709
+      ],
+      [
+        "sodium_saccharin",
+        0.616
+      ],
+      [
+        "sodium_cyclamate",
+        0.615
+      ],
+      [
+        "sodium_gluconate",
+        0.568
+      ],
+      [
+        "non-nutritive",
+        0.565
+      ],
+      [
+        "steviol_glycosides_from_stevia",
+        0.55
+      ],
+      [
+        "reb_a",
+        0.532
+      ],
+      [
+        "caffeine",
+        0.527
+      ]
+    ],
+    "sodium_benzoate": [
+      [
+        "calcium_disodium_edta",
+        0.694
+      ],
+      [
+        "potassium_benzoate",
+        0.674
+      ],
+      [
+        "sodium_bisulfite",
+        0.628
+      ],
+      [
+        "alum",
+        0.594
+      ],
+      [
+        "sodium_propionate",
+        0.59
+      ],
+      [
+        "nisin",
+        0.553
+      ],
+      [
+        "benzoic_acid",
+        0.552
+      ],
+      [
+        "potassium_metabisulfite",
+        0.509
+      ]
+    ],
+    "caramel_colour": [
+      [
+        "caramel_color",
+        0.47
+      ],
+      [
+        "hydrolyzed_wheat_gluten",
+        0.431
+      ],
+      [
+        "mustard_bran",
+        0.418
+      ],
+      [
+        "disodium_inosinate",
+        0.412
+      ],
+      [
+        "natural_hickory_smoke_flavor",
+        0.412
+      ],
+      [
+        "hydrolyzed_soy_protein",
+        0.399
+      ],
+      [
+        "coloring",
+        0.389
+      ],
+      [
+        "caramel_coloring",
+        0.387
+      ]
+    ],
+    "soya_lecithin": [
+      [
+        "soya_lecithins",
+        0.794
+      ],
+      [
+        "sunflower_lecithins",
+        0.711
+      ],
+      [
+        "sunflower_lecithin",
+        0.606
+      ],
+      [
+        "lecithins",
+        0.604
+      ],
+      [
+        "mono-and_di-glycerides_of_fatty_acids",
+        0.573
+      ],
+      [
+        "soy_lecithin",
+        0.567
+      ],
+      [
+        "from_soy",
+        0.511
+      ],
+      [
+        "sucrose_esters_of_fatty_acids",
+        0.478
+      ]
+    ],
+    "salt": [
+      [
+        "sea_salt",
+        0.625
+      ],
+      [
+        "sugar",
+        0.483
+      ],
+      [
+        "water",
+        0.461
+      ],
+      [
+        "cayenne_pepper",
+        0.446
+      ],
+      [
+        "spices",
+        0.44
+      ],
+      [
+        "torula_yeast",
+        0.436
+      ],
+      [
+        "yeast_extract",
+        0.434
+      ],
+      [
+        "egg_yolks",
+        0.419
+      ]
+    ],
+    "wheat_flour": [
+      [
+        "flour",
+        0.514
+      ],
+      [
+        "riboflavin",
+        0.464
+      ],
+      [
+        "fortified_wheat_flour",
+        0.438
+      ],
+      [
+        "oat_flakes",
+        0.414
+      ],
+      [
+        "wheatflour",
+        0.411
+      ],
+      [
+        "niacin_and_thiamin",
+        0.404
+      ],
+      [
+        "bleached_wheat_flour",
+        0.38
+      ],
+      [
+        "rye_flour",
+        0.377
+      ]
+    ]
+  },
+  "discovery_candidates": {
+    "SUGAR": [
+      [
+        "organic_almonds",
+        0.7
+      ],
+      [
+        "gluten-free_oats",
+        0.661
+      ],
+      [
+        "organic_coconut",
+        0.658
+      ],
+      [
+        "gluten_free_oat_flour",
+        0.618
+      ],
+      [
+        "gluten_free_oats",
+        0.618
+      ],
+      [
+        "date_paste",
+        0.592
+      ],
+      [
+        "chia_seed",
+        0.59
+      ],
+      [
+        "cacao_powder",
+        0.589
+      ],
+      [
+        "pecan_nuts",
+        0.587
+      ],
+      [
+        "chicory_root_fiber",
+        0.584
+      ]
+    ],
+    "FAT": [
+      [
+        "choco_covering",
+        0.632
+      ],
+      [
+        "ragi_flour",
+        0.608
+      ],
+      [
+        "chana_dal",
+        0.597
+      ],
+      [
+        "choco_cr\u00e8me",
+        0.585
+      ],
+      [
+        "rice_flakes",
+        0.573
+      ],
+      [
+        "bengal_gram_flour",
+        0.563
+      ],
+      [
+        "cereal_products",
+        0.56
+      ],
+      [
+        "rice_meal",
+        0.55
+      ],
+      [
+        "peanut",
+        0.543
+      ],
+      [
+        "hydrogenated",
+        0.531
+      ]
+    ],
+    "SWEETENER": [
+      [
+        "creatine_monohydrate",
+        0.712
+      ],
+      [
+        "non-nutritive",
+        0.709
+      ],
+      [
+        "green_tea",
+        0.666
+      ],
+      [
+        "l-glutamine",
+        0.623
+      ],
+      [
+        "bacillus_coagulans",
+        0.605
+      ],
+      [
+        "bromelain",
+        0.605
+      ],
+      [
+        "l-isoleucine",
+        0.604
+      ],
+      [
+        "l-valine",
+        0.596
+      ],
+      [
+        "green_tea_extract",
+        0.592
+      ],
+      [
+        "digezyme",
+        0.584
+      ]
+    ]
+  },
+  "sentences": 14066,
+  "grid": [
+    {
+      "window": 2,
+      "architecture": "CBOW",
+      "w2v_accuracy": 0.741,
+      "w2v_macro_f1": 0.729,
+      "combined_accuracy": 0.931,
+      "combined_macro_f1": 0.923
+    },
+    {
+      "window": 2,
+      "architecture": "skip-gram",
+      "w2v_accuracy": 0.663,
+      "w2v_macro_f1": 0.609,
+      "combined_accuracy": 0.93,
+      "combined_macro_f1": 0.906
+    },
+    {
+      "window": 3,
+      "architecture": "CBOW",
+      "w2v_accuracy": 0.739,
+      "w2v_macro_f1": 0.734,
+      "combined_accuracy": 0.934,
+      "combined_macro_f1": 0.93
+    },
+    {
+      "window": 3,
+      "architecture": "skip-gram",
+      "w2v_accuracy": 0.659,
+      "w2v_macro_f1": 0.612,
+      "combined_accuracy": 0.927,
+      "combined_macro_f1": 0.91
+    },
+    {
+      "window": 5,
+      "architecture": "CBOW",
+      "w2v_accuracy": 0.71,
+      "w2v_macro_f1": 0.693,
+      "combined_accuracy": 0.928,
+      "combined_macro_f1": 0.917
+    },
+    {
+      "window": 5,
+      "architecture": "skip-gram",
+      "w2v_accuracy": 0.633,
+      "w2v_macro_f1": 0.585,
+      "combined_accuracy": 0.925,
+      "combined_macro_f1": 0.907
+    }
+  ]
+}
