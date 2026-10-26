@@ -251,7 +251,7 @@ def view_guide(result: dict, rid: str, profile, weight: float, guide: dict):
                         "limits.", "info"))
     else:
         rows = assess_portion(per100, portion, profile, kind)
-        text, level = headline(rows, portion)
+        text, level = headline(rows, portion, unit)
         detail = "Sugar comparison uses the label's total sugars (includes natural milk/fruit sugars) - an upper estimate."
         html(ui.verdict(text, level, detail))
         limited = [r for r in rows if r["limit_kind"] == "max"]
