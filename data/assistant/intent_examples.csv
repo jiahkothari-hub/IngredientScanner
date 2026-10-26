@@ -1,0 +1,165 @@
+intent,question
+what_is,what is maltodextrin
+what_is,what is INS 330
+what_is,tell me about xanthan gum
+what_is,what does E150d mean
+what_is,explain sodium benzoate
+what_is,what kind of ingredient is dextrose
+what_is,what exactly is soy lecithin
+what_is,whats invert syrup
+what_is,can you explain what 471 is
+what_is,what is acesulfame k
+what_is,i don't know what guar gum is
+what_is,meaning of the code E621
+what_is,what is this ingredient called tartrazine
+what_is,define emulsifier
+what_is,what's an acidity regulator
+why_added,why is citric acid added
+why_added,why do they put lecithin in chocolate
+why_added,what is xanthan gum used for
+why_added,what does sodium benzoate do in this
+why_added,what is the purpose of E471
+why_added,what's the function of maltodextrin here
+why_added,why is there an emulsifier
+why_added,why would a drink contain phosphoric acid
+why_added,what role does guar gum play
+why_added,why add colour to food
+why_added,what is the reason for adding preservatives
+why_added,purpose of raising agent
+why_added,why is it in there
+why_added,what job does it do
+diet,is gelatin vegan
+diet,is INS 471 vegetarian
+diet,is this product vegan
+diet,can vegans eat this
+diet,is carmine vegetarian
+diet,is it suitable for vegetarians
+diet,is E120 from animals
+diet,is lecithin plant based
+diet,is this halal
+diet,is it jain friendly
+diet,does it have any animal ingredients
+diet,is this kosher
+diet,can a vegetarian have this
+diet,is it vegan friendly
+diet,are mono and diglycerides vegan
+contains,does this contain palm oil
+contains,is there any gelatin in this
+contains,does it have msg
+contains,is there sugar in this product
+contains,does this have caffeine
+contains,does it use aspartame
+contains,is there any E211 in this
+contains,does the product contain sucralose
+contains,is palm oil one of the ingredients
+contains,any artificial sweetener in this
+contains,does it contain milk powder
+contains,is corn syrup in this
+contains,does this have added colour
+contains,have they used msg here
+contains,is there wheat in it
+allergens,what allergens are in this
+allergens,does this have nuts
+allergens,is it gluten free
+allergens,i have a peanut allergy does this contain peanuts
+allergens,does it contain any of the 14 allergens
+allergens,is there milk in it for someone lactose intolerant
+allergens,any allergy warnings on this
+allergens,does it say may contain
+allergens,which allergens should i know about
+allergens,is there soy in this
+allergens,does it contain eggs
+allergens,is it dairy free
+allergens,does this have sesame
+allergens,are there traces of nuts
+allergens,allergen information please
+list_category,which ingredients are sugars
+list_category,what are the hidden sugars
+list_category,list the additives
+list_category,what preservatives does it have
+list_category,which colours are used
+list_category,show me the sweeteners
+list_category,what fats are in this
+list_category,how many additives does this have
+list_category,which ingredients are written as codes
+list_category,what flavourings are in it
+list_category,list all the e numbers
+list_category,what oils does it use
+list_category,what sugars are hidden in this
+list_category,give me all the ingredients
+list_category,which ones are artificial
+portion,how much sugar is in a serving
+portion,is this amount ok to eat
+portion,how many calories in my portion
+portion,how much salt does this have
+portion,what percentage of my daily sugar is this
+portion,is 30 g too much
+portion,how much fat is in it
+portion,how much of my daily limit does this use
+portion,how many teaspoons of sugar
+portion,is it high in sugar
+portion,how much saturated fat per portion
+portion,can i eat the whole pack
+portion,is the portion ok
+portion,how much energy does it give
+portion,is this high in salt
+daily_limit,how much aspartame is safe per day
+daily_limit,what is the acceptable daily intake of sucralose
+daily_limit,what is the ADI of E211
+daily_limit,how much sodium benzoate can i have
+daily_limit,daily limit for acesulfame k
+daily_limit,how much of this additive is allowed per day
+daily_limit,what is the safe amount of msg
+daily_limit,maximum daily intake of caramel colour
+daily_limit,how many mg of saccharin per day is ok
+daily_limit,whats the adi for my weight
+daily_limit,is there a limit for INS 621
+daily_limit,how much benzoate per kg body weight
+medical,i have diabetes can i eat this
+medical,is this safe during pregnancy
+medical,will this give me cancer
+medical,is this healthy
+medical,is this good for weight loss
+medical,i have high blood pressure should i eat this
+medical,can my baby eat this
+medical,is it bad for my kidneys
+medical,should i stop eating this
+medical,is this safe for someone on medication
+medical,will this make me fat
+medical,is this product healthy for kids
+medical,i have pcos is this ok
+medical,can this cause hyperactivity in my child
+medical,is it safe for my heart
+smalltalk,hi
+smalltalk,hello there
+smalltalk,thanks
+smalltalk,thank you so much
+smalltalk,what can you do
+smalltalk,help
+smalltalk,who are you
+smalltalk,how do i use this
+smalltalk,ok great
+smalltalk,good morning
+smalltalk,what questions can i ask
+smalltalk,bye
+regulatory,is titanium dioxide banned
+regulatory,is E171 allowed in europe
+regulatory,why is potassium bromate banned
+regulatory,is this legal in the EU
+regulatory,is red 3 banned in america
+regulatory,is anything in this banned
+regulatory,which countries ban tartrazine
+regulatory,is this additive permitted in india
+regulatory,is it approved by the fda
+regulatory,does fssai allow this colour
+regulatory,is cyclamate illegal in the us
+regulatory,are any of these additives banned somewhere
+regulatory,why does the EU need a warning label for this
+regulatory,is it banned anywhere
+regulatory,can this be sold in europe
+list_category,which ingredients are probiotics
+list_category,list the protein sources
+list_category,what fibres does it have
+list_category,which ones are enzymes
+list_category,what spices and herbs are in it
+list_category,which ingredients are vitamins and minerals
