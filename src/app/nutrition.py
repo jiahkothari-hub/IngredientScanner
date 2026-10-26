@@ -12,12 +12,17 @@
    sodium (mg) is converted to salt (salt = sodium x 2.5).
 2. ESTIMATE (fallback, clearly labelled). If the photo shows only the ingredient list, we look for the
    product in our Open Food Facts database (9,000 products with nutrition facts) whose ingredient list is
-   most similar (TF-IDF cosine similarity >= 0.4) and offer its values as an estimate.
+   most similar and offer its values as an estimate. An estimate is only offered when some product is
+   close in wording (TF-IDF cosine similarity >= 0.4). The product is then chosen by TF-IDF and
+   ingredient2vec embeddings together (mean of the two cosine similarities): on 1,320 held-out test
+   products this gives 8-15% lower errors for sugars, fat, salt and energy than TF-IDF alone
+   (src/evaluation/product_similarity.py). Without the embedding model, TF-IDF alone is used.
 3. The user can always correct every number in the app.
 """
 import re
 from functools import lru_cache
 
+import numpy as np
 import pandas as pd
 
 from src.utils.config import project_path
@@ -123,7 +128,34 @@ def _similarity_index():
     data = data.reset_index(drop=True)
     vectorizer = TfidfVectorizer(ngram_range=(1, 2), min_df=2, sublinear_tf=True)
     matrix = vectorizer.fit_transform(data["ingredients_text"].str.lower())
-    return vectorizer, matrix, data
+    return vectorizer, matrix, data, _embedding_index(data)
+
+
+def _embedding_index(data: pd.DataFrame):
+    """(word vectors, L2-normalised mean ingredient2vec vector of every database product), or None."""
+    from sklearn.preprocessing import normalize
+    from src.embeddings.ingredient2vec import MODEL_PATH, document_vector, load_model, record_tokens
+    from src.ner.data import load_split
+    if not MODEL_PATH.exists():
+        return None
+    try:
+        wv = load_model().wv
+    except ImportError:          # gensim not installed: TF-IDF alone
+        return None
+    tokens = {r["product_id"]: record_tokens(r) for split in ("train", "validation", "test")
+              for r in load_split("silver", split)}
+    if not tokens:
+        return None
+    return wv, normalize(np.array([document_vector(tokens.get(pid, []), wv) for pid in data["product_id"]]))
+
+
+def _query_embedding(ingredient_text: str, wv) -> np.ndarray:
+    """Ingredient tokens of free text, found by the same dictionary rules that made the training tokens."""
+    from src.baseline.dictionary_ner import DictionaryNER
+    from src.embeddings.ingredient2vec import document_vector, record_tokens
+    vector = document_vector(record_tokens({"entities": DictionaryNER().predict(ingredient_text)["entities"]}), wv)
+    norm = np.linalg.norm(vector)
+    return vector / norm if norm else vector
 
 
 OFF_COLUMNS = {"energy-kcal_100g": "energy_kcal", "fat_100g": "fat_g", "saturated-fat_100g": "saturated_fat_g",
@@ -136,16 +168,23 @@ def estimate_from_similar_product(ingredient_text: str, min_similarity: float = 
     if not ingredient_text or len(ingredient_text) < 15:
         return {}
     try:
-        vectorizer, matrix, data = _similarity_index()
+        vectorizer, matrix, data, embeddings = _similarity_index()
     except (FileNotFoundError, ValueError):
         return {}
     scores = (matrix @ vectorizer.transform([ingredient_text.lower()]).T).toarray().ravel()
-    best = int(scores.argmax())
-    if scores[best] < min_similarity:
+    if scores.max() < min_similarity:          # nothing close in wording: no estimate
         return {}
+    method = "TF-IDF"
+    if embeddings is not None:
+        wv, product_vectors = embeddings
+        query = _query_embedding(ingredient_text, wv)
+        if query.any():
+            scores = (scores + product_vectors @ query) / 2
+            method = "TF-IDF + ingredient2vec"
+    best = int(scores.argmax())
     row = data.iloc[best]
     per100 = {key: round(float(row[col]), 2) for col, key in OFF_COLUMNS.items() if pd.notna(row[col])}
     name = " - ".join(str(x) for x in (row["product_name"], row["brands"]) if pd.notna(x) and str(x))
     return {"per_100g": per100, "product_name": name or "unnamed product", "product_id": row["product_id"],
-            "similarity": round(float(scores[best]), 2),
+            "similarity": round(float(scores[best]), 2), "method": method,
             "source": f"estimate: most similar product in the Open Food Facts database ({name})"}

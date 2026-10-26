@@ -9,6 +9,7 @@ transformers>=4.40
 torch>=2.2
 pytorch-crf>=0.7
 rapidfuzz>=3.0
+gensim>=4.3
 opencv-python-headless>=4.8
 pandas>=2.2
 numpy>=1.26
