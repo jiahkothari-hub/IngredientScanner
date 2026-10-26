@@ -129,8 +129,8 @@ def assess_portion(per100: dict, portion_g: float, profile: Profile, kind: str =
     return rows
 
 
-def headline(rows: list, portion_g: float) -> tuple:
-    """Overall sentence + level ('ok' / 'caution' / 'high') from the 'max' nutrients."""
+def headline(rows: list, portion_g: float, unit: str = "g") -> tuple:
+    """Overall sentence + level ('ok' / 'caution' / 'high') from the 'max' nutrients (unit: g or ml)."""
     limited = [r for r in rows if r["limit_kind"] == "max"]
     if not limited:
         return "No nutrition values available for this product.", "unknown"
@@ -138,15 +138,15 @@ def headline(rows: list, portion_g: float) -> tuple:
     reds = [r["nutrient"].lower() for r in limited if r["traffic_light"] == "high"]
     if worst["share"] >= 0.5:
         level = "high"
-        text = (f"{portion_g:g} g of this product gives {worst['share']:.0%} of the daily limit for "
+        text = (f"{portion_g:g} {unit} of this product gives {worst['share']:.0%} of the daily limit for "
                 f"{worst['nutrient'].lower()}. Have it occasionally or in a smaller portion.")
     elif worst["share"] >= 0.25 or reds:
         level = "caution"
-        text = (f"{portion_g:g} g fits in a day, but uses {worst['share']:.0%} of the daily limit for "
-                f"{worst['nutrient'].lower()}" + (f"; the product is high in {', '.join(reds)} per 100 g." if reds else "."))
+        text = (f"{portion_g:g} {unit} fits in a day, but uses {worst['share']:.0%} of the daily limit for "
+                f"{worst['nutrient'].lower()}" + (f"; the product is high in {', '.join(reds)} per 100 {unit}." if reds else "."))
     else:
         level = "ok"
-        text = (f"{portion_g:g} g is a small part of the daily limits (highest: {worst['nutrient'].lower()}, "
+        text = (f"{portion_g:g} {unit} is a small part of the daily limits (highest: {worst['nutrient'].lower()}, "
                 f"{worst['share']:.0%}).")
     return text, level
 
