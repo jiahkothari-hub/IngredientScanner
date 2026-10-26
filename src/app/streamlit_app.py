@@ -126,6 +126,9 @@ def nutrition_defaults(result: dict) -> tuple:
                     values.setdefault(k, estimate["per_100g"].get(k))
                 if filled:
                     source += f"; **{', '.join(filled)} estimated** from " + reference
+    # no food has more than 100 g of a nutrient or 900 kcal per 100 g: drop impossible values (OCR or data errors)
+    values = {k: v for k, v in values.items()
+              if v is not None and 0 <= float(v) <= (900 if NUTRIENTS.get(k, ("", "g"))[1] == "kcal" else 100)}
     return values, source or "no nutrition table found - type the values from the packet", serving
 
 
@@ -181,7 +184,7 @@ def view_summary(result: dict, guide: dict):
 
 def view_ingredients(result: dict):
     summary = result["summary"]
-    html(ui.category_cards(summary["groups"], CATEGORY_ORDER))
+    html(ui.category_cards(summary["groups"], CATEGORY_ORDER, summary.get("subgroups")))
 
     hidden, notes = summary["hidden"], []
     if hidden["sugars_under_other_names"]:
@@ -239,8 +242,13 @@ def view_guide(result: dict, rid: str, profile, weight: float, guide: dict):
         per100 = {}
         for i, key in enumerate(EDITABLE_NUTRIENTS):
             name, nunit = NUTRIENTS[key]
+            limit = 900.0 if nunit == "kcal" else 100.0
             default = guide["values"].get(key)
-            value = cols[i % 4].number_input(f"{name} ({nunit})", min_value=0.0, max_value=900.0 if nunit == "kcal" else 100.0,
+            if default is not None and not 0 <= float(default) <= limit:
+                default = None              # an impossible value (bad OCR or data) is left for the user to type
+            if st.session_state.get(f"{rid}-{key}") is not None and not 0 <= st.session_state[f"{rid}-{key}"] <= limit:
+                del st.session_state[f"{rid}-{key}"]
+            value = cols[i % 4].number_input(f"{name} ({nunit})", min_value=0.0, max_value=limit,
                                              value=float(default) if default is not None else None, step=0.1,
                                              format="%.1f", key=f"{rid}-{key}", placeholder="not given")
             if value is not None:
@@ -292,13 +300,16 @@ def view_additives(result: dict, weight: float):
         number = re.search(r"\(INS ([^)]+)\)$", row["additive"])
         if number:
             adi_by_number[number.group(1)] = row
+    from src.assistant.knowledge import knowledge_base
+    kb = knowledge_base()
     seen, cards = set(), []
     for ent in additives:
         key = ent.get("ins_number") or ent["text"].lower()
         if key in seen:
             continue
         seen.add(key)
-        cards.append(ui.additive_card(ent, adi_by_number.get(ent.get("ins_number") or "")))
+        flags = kb.regulatory_flags(ent["ins_number"]) if ent.get("ins_number") else []
+        cards.append(ui.additive_card(ent, adi_by_number.get(ent.get("ins_number") or ""), flags))
     left, right = st.columns(2)
     with left:
         html("".join(cards[0::2]))
@@ -306,7 +317,8 @@ def view_additives(result: dict, weight: float):
         html("".join(cards[1::2]))
     html('<div class="muted">ADI = acceptable daily intake: the amount that can be eaten every day over a lifetime '
          'without appreciable health risk (JECFA / EFSA). Labels rarely state how much additive is inside; permitted '
-         'use levels keep normal portions well below the ADI.</div>')
+         'use levels keep normal portions well below the ADI. ⚖️ badges show additives whose rules differ between '
+         'the EU, India (FSSAI) and the US (FDA); ask the assistant “is it banned?” for details and sources.</div>')
 
 
 def view_reading(result: dict, active: tuple):
@@ -341,6 +353,42 @@ def view_reading(result: dict, active: tuple):
         st.dataframe(pd.DataFrame(result["entities"])[["text", "label", "source", "canonical_name", "ins_number",
                                                         "function", "link_method", "link_score"]],
                      hide_index=True, width="stretch")
+
+
+def view_assistant(result: dict, rid: str, guide: dict, weight: float):
+    """Chat about this product. Answers come from the knowledge base and the scan only (src/assistant)."""
+    from src.assistant.assistant import IngredientAssistant
+    key = f"{rid}-chat"
+    history = st.session_state.setdefault(key, [])
+    bot = IngredientAssistant(result, guide, weight)
+
+    def ask(question: str):
+        reply = bot.answer(question, history)
+        history.append(reply)
+        st.rerun()
+
+    head, clear = st.columns([5, 1])
+    head.markdown(ui.section("Ask about it", "answers from our food database and your scan, with sources"),
+                  unsafe_allow_html=True)
+    if history and clear.button("Clear chat", key=f"{rid}-chat-clear", width="stretch"):
+        st.session_state[key] = []
+        st.rerun()
+    if not history:
+        html(ui.chat_intro())
+    with st.container(border=bool(history)):          # grows with the chat: the newest answer stays in view
+        for reply in history:
+            html(ui.chat_message("user", reply["question"]))
+            html(ui.chat_message("bot", reply["text"], reply["sources"], reply["refused"],
+                                 reply.get("resolved_reference", "")))
+    suggestions = history[-1]["suggestions"] if history else bot.suggestions()
+    if suggestions:
+        html('<div class="suggest-label">Try asking</div>')
+        for col, question in zip(st.columns(len(suggestions)), suggestions):
+            if col.button(question, key=f"{rid}-suggest-{len(history)}-{question}", width="stretch"):
+                ask(question)
+    question = st.chat_input("Ask about an ingredient, a code, allergens, your portion ...", key=f"{rid}-chat-input")
+    if question:
+        ask(question)
 
 
 # ------------------------------------------------------------------------------------ page
@@ -476,8 +524,8 @@ rid = hashlib.md5((result["input_text"] + kind).encode()).hexdigest()[:10]
 guide = current_guide(result, rid, profile)
 view_summary(result, guide)
 
-t_ing, t_guide, t_all, t_add, t_read = st.tabs(["🧾 Ingredients", "⚖️ Is this amount OK?", "⚠️ Allergens",
-                                                 "⚗️ Additives", "🔍 How it was read"])
+t_ing, t_guide, t_all, t_add, t_ask, t_read = st.tabs(["🧾 Ingredients", "⚖️ Is this amount OK?", "⚠️ Allergens",
+                                                        "⚗️ Additives", "💬 Ask about it", "🔍 How it was read"])
 with t_ing:
     view_ingredients(result)
 with t_guide:
@@ -486,6 +534,8 @@ with t_all:
     view_allergens(result)
 with t_add:
     view_additives(result, weight)
+with t_ask:
+    view_assistant(result, rid, guide, weight)
 with t_read:
     view_reading(result, active)
 
