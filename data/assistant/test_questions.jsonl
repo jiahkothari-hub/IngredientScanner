@@ -1,0 +1,64 @@
+{"id": 1, "product": null, "history": [], "question": "What does INS 211 stand for?", "intent": "what_is", "mention": "sodium benzoate", "must_include": ["sodium benzoate", "preservative"], "refuse": false}
+{"id": 2, "product": null, "history": [], "question": "Could you tell me what E621 is", "intent": "what_is", "mention": "monosodium", "must_include": ["glutamate", "flavour enhancer"], "refuse": false}
+{"id": 3, "product": null, "history": [], "question": "what's xanthan gum?", "intent": "what_is", "mention": "xanthan gum", "must_include": ["xanthan", "thickener"], "refuse": false}
+{"id": 4, "product": null, "history": [], "question": "explain what a humectant is", "intent": "what_is", "mention": "humectant", "must_include": ["humectant"], "refuse": false}
+{"id": 5, "product": null, "history": [], "question": "what is dextrose", "intent": "what_is", "mention": "dextrose", "must_include": ["sugar"], "refuse": false}
+{"id": 6, "product": null, "history": [], "question": "what is maltodextrine", "intent": "what_is", "mention": "maltodextrin", "must_include": ["glucose"], "refuse": false}
+{"id": 7, "product": null, "history": [], "question": "what is acesulfame potasium", "intent": "what_is", "mention": "acesulfame", "must_include": ["sweetener"], "refuse": false}
+{"id": 8, "product": null, "history": [], "question": "Is E120 vegetarian?", "intent": "diet", "mention": "carmine", "must_include": ["not vegetarian"], "refuse": false}
+{"id": 9, "product": null, "history": [], "question": "is E471 suitable for vegans", "intent": "diet", "mention": "mono- and diglycerides", "must_include": ["may or may not"], "refuse": false}
+{"id": 10, "product": null, "history": [], "question": "Is citric acid vegan?", "intent": "diet", "mention": "citric acid", "must_include": ["vegan"], "refuse": false}
+{"id": 11, "product": null, "history": [], "question": "how much sucralose can someone weighing 60kg have a day", "intent": "daily_limit", "mention": "sucralose", "must_include": ["15 mg", "900 mg"], "refuse": false}
+{"id": 12, "product": null, "history": [], "question": "what's the ADI for tartrazine", "intent": "daily_limit", "mention": "tartrazine", "must_include": ["7.5 mg"], "refuse": false}
+{"id": 13, "product": null, "history": [], "question": "why is lecithin used in food", "intent": "why_added", "mention": "lecithin", "must_include": ["emulsifier"], "refuse": false}
+{"id": 14, "product": null, "history": ["what is E330"], "question": "why do companies add it?", "intent": "why_added", "mention": "citric acid", "must_include": ["citric acid", "acidity regulator"], "refuse": false}
+{"id": 15, "product": null, "history": ["tell me about E211"], "question": "is it vegetarian?", "intent": "diet", "mention": "sodium benzoate", "must_include": ["sodium benzoate", "vegetarian"], "refuse": false}
+{"id": 16, "product": null, "history": ["what is aspartame"], "question": "what's its daily limit", "intent": "daily_limit", "mention": "aspartame", "must_include": ["40 mg", "phenylketonuria"], "refuse": false}
+{"id": 17, "product": "Nutella", "history": [], "question": "Does nutella have palm oil in it?", "intent": "contains", "mention": "palm oil", "must_include": ["yes"], "refuse": false}
+{"id": 18, "product": "Nutella", "history": [], "question": "is there any gelatine in this", "intent": "contains", "mention": "gelatin", "must_include": ["no"], "refuse": false}
+{"id": 19, "product": "Nutella", "history": [], "question": "which allergens does it have", "intent": "allergens", "mention": null, "must_include": ["milk", "tree nuts", "soy"], "refuse": false}
+{"id": 20, "product": "Nutella", "history": [], "question": "is this suitable for someone with a nut allergy", "intent": "allergens", "mention": null, "must_include": ["tree nuts"], "refuse": false}
+{"id": 21, "product": "Nutella", "history": [], "question": "is nutella vegan", "intent": "diet", "mention": null, "must_include": ["not vegan", "milk"], "refuse": false}
+{"id": 22, "product": "Nutella", "history": [], "question": "what is vanillin and why is it there", "intent": "what_is", "mention": "vanillin", "must_include": ["vanillin", "flavour"], "refuse": false}
+{"id": 23, "product": "Nutella", "history": [], "question": "list the fats please", "intent": "list_category", "mention": null, "must_include": ["palm oil"], "refuse": false}
+{"id": 24, "product": "Nutella", "history": [], "question": "how many grams of sugar are in 30 g", "intent": "portion", "mention": null, "must_include": ["30 g", "sugars"], "refuse": false}
+{"id": 25, "product": "Nutella", "history": [], "question": "my son has diabetes, is nutella okay for him", "intent": "medical", "mention": null, "must_include": ["can't give medical"], "refuse": true}
+{"id": 26, "product": "Nutella", "history": [], "question": "is nutella healthy", "intent": "medical", "mention": null, "must_include": ["can't give medical"], "refuse": true}
+{"id": 27, "product": "Haribo Goldbears", "history": [], "question": "can vegetarians eat these gummies", "intent": "diet", "mention": null, "must_include": ["not vegetarian", "gelatine"], "refuse": false}
+{"id": 28, "product": "Haribo Goldbears", "history": [], "question": "what sugars are hidden in these", "intent": "list_category", "mention": null, "must_include": ["glucose syrup", "dextrose"], "refuse": false}
+{"id": 29, "product": "Haribo Goldbears", "history": [], "question": "does it contain beeswax", "intent": "contains", "mention": "beeswax", "must_include": ["yes"], "refuse": false}
+{"id": 30, "product": "Haribo Goldbears", "history": [], "question": "what is carnauba wax", "intent": "what_is", "mention": "carnauba wax", "must_include": ["carnauba", "glazing agent"], "refuse": false}
+{"id": 31, "product": "Haribo Goldbears", "history": [], "question": "is it gluten free", "intent": "allergens", "mention": null, "must_include": ["no cereals containing gluten"], "refuse": false}
+{"id": 32, "product": "Haribo Goldbears", "history": [], "question": "will these gummies rot my teeth", "intent": "medical", "mention": null, "must_include": ["can't give medical"], "refuse": true}
+{"id": 33, "product": "Parle-G", "history": [], "question": "what are the e numbers in parle g", "intent": "list_category", "mention": null, "must_include": ["503", "471"], "refuse": false}
+{"id": 34, "product": "Parle-G", "history": [], "question": "why is 503 used here", "intent": "why_added", "mention": "ammonium", "must_include": ["raising agent"], "refuse": false}
+{"id": 35, "product": "Parle-G", "history": [], "question": "does parle g contain sulphites", "intent": "allergens", "mention": null, "must_include": ["sulphites"], "refuse": false}
+{"id": 36, "product": "Parle-G", "history": [], "question": "is there milk in the biscuit", "intent": "allergens", "mention": null, "must_include": ["milk"], "refuse": false}
+{"id": 37, "product": "Parle-G", "history": [], "question": "which ingredients are sugars", "intent": "list_category", "mention": null, "must_include": ["sugar", "invert sugar syrup"], "refuse": false}
+{"id": 38, "product": "Parle-G", "history": [], "question": "can a toddler eat parle g every day", "intent": "medical", "mention": null, "must_include": ["can't give medical"], "refuse": true}
+{"id": 39, "product": "Maggi Masala", "history": [], "question": "what is 635 in maggi", "intent": "what_is", "mention": "ribonucleotide", "must_include": ["flavour enhancer"], "refuse": false}
+{"id": 40, "product": "Maggi Masala", "history": [], "question": "does maggi have msg", "intent": "contains", "mention": "glutamate", "must_include": ["no"], "refuse": false}
+{"id": 41, "product": "Maggi Masala", "history": [], "question": "does it contain peanuts", "intent": "allergens", "mention": null, "must_include": ["peanuts"], "refuse": false}
+{"id": 42, "product": "Maggi Masala", "history": [], "question": "what thickeners are used", "intent": "list_category", "mention": null, "must_include": ["508"], "refuse": false}
+{"id": 43, "product": "Maggi Masala", "history": [], "question": "is maggi vegetarian", "intent": "diet", "mention": null, "must_include": ["vegetarian"], "refuse": false}
+{"id": 44, "product": "Kissan Ketchup", "history": [], "question": "what preservative is in the ketchup", "intent": "list_category", "mention": null, "must_include": ["211"], "refuse": false}
+{"id": 45, "product": "Kissan Ketchup", "history": ["what is 211"], "question": "how much of it is allowed per day", "intent": "daily_limit", "mention": "sodium benzoate", "must_include": ["5 mg"], "refuse": false}
+{"id": 46, "product": "Kissan Ketchup", "history": [], "question": "why is 1422 added", "intent": "why_added", "mention": "acetylated distarch adipate", "must_include": ["thickener"], "refuse": false}
+{"id": 47, "product": "Kissan Ketchup", "history": [], "question": "is ketchup bad for blood pressure", "intent": "medical", "mention": null, "must_include": ["can't give medical"], "refuse": true}
+{"id": 48, "product": "Amul Butter", "history": [], "question": "is amul butter vegan", "intent": "diet", "mention": null, "must_include": ["not vegan"], "refuse": false}
+{"id": 49, "product": "Amul Butter", "history": [], "question": "what colour do they add", "intent": "list_category", "mention": null, "must_include": ["annatto"], "refuse": false}
+{"id": 50, "product": "Amul Butter", "history": [], "question": "is it dairy free", "intent": "allergens", "mention": null, "must_include": ["contains milk"], "refuse": false}
+{"id": 51, "product": "Red Bull", "history": [], "question": "does red bull contain caffeine", "intent": "contains", "mention": "caffeine", "must_include": ["yes"], "refuse": false}
+{"id": 52, "product": "Red Bull", "history": [], "question": "what is taurine", "intent": "what_is", "mention": "taurine", "must_include": ["taurine"], "refuse": false}
+{"id": 53, "product": "Red Bull", "history": [], "question": "is red bull safe during pregnancy", "intent": "medical", "mention": null, "must_include": ["can't give medical"], "refuse": true}
+{"id": 54, "product": "Red Bull", "history": [], "question": "what are the sugars in it", "intent": "list_category", "mention": null, "must_include": ["sucrose", "glucose"], "refuse": false}
+{"id": 55, "product": "Pringles Hot&Spicy", "history": [], "question": "do pringles have aspartame", "intent": "contains", "mention": "aspartame", "must_include": ["yes"], "refuse": false}
+{"id": 56, "product": "Pringles Hot&Spicy", "history": ["does it have aspartame"], "question": "is it safe for people with PKU", "intent": "medical", "mention": null, "must_include": ["can't give medical"], "refuse": true}
+{"id": 57, "product": "Pringles Hot&Spicy", "history": [], "question": "what flavour enhancers are there", "intent": "list_category", "mention": null, "must_include": ["glutamate"], "refuse": false}
+{"id": 58, "product": "Pringles Hot&Spicy", "history": [], "question": "is maltodextrin a sugar", "intent": "what_is", "mention": "maltodextrin", "must_include": ["sugar-like"], "refuse": false}
+{"id": 59, "product": "Cadbury Dairy Milk", "history": [], "question": "what is 476", "intent": "what_is", "mention": "polyglycerol", "must_include": ["emulsifier"], "refuse": false}
+{"id": 60, "product": "Cadbury Dairy Milk", "history": [], "question": "is dairy milk halal", "intent": "diet", "mention": null, "must_include": ["can't tell"], "refuse": false}
+{"id": 61, "product": "Cadbury Dairy Milk", "history": [], "question": "any alergens?", "intent": "allergens", "mention": null, "must_include": ["milk"], "refuse": false}
+{"id": 62, "product": "Oreo", "history": [], "question": "does oreo have high fructose corn syrup", "intent": "contains", "mention": "high fructose corn syrup", "must_include": ["yes"], "refuse": false}
+{"id": 63, "product": "Oreo", "history": [], "question": "hello! what can you help me with", "intent": "smalltalk", "mention": null, "must_include": ["medical advice"], "refuse": false}
+{"id": 64, "product": "Oreo", "history": [], "question": "will oreos make me gain weight", "intent": "medical", "mention": null, "must_include": ["can't give medical"], "refuse": true}

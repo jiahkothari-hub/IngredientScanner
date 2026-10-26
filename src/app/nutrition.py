@@ -122,6 +122,12 @@ def _similarity_index():
     from sklearn.feature_extraction.text import TfidfVectorizer
     nutrition = pd.read_csv(project_path("data/knowledge_base/products_nutrition.csv"), dtype={"product_id": str})
     nutrition = nutrition.dropna(subset=["energy-kcal_100g", "sugars_100g", "fat_100g"])
+    # crowd-sourced data has impossible entries (salt 4020 g / 100 g, 26700 kcal / 100 g): a product with one
+    # impossible value is not trusted at all
+    possible = pd.Series(True, index=nutrition.index)
+    for col, limit in LIMITS_100G.items():
+        possible &= nutrition[col].isna() | nutrition[col].between(0, limit)
+    nutrition = nutrition[possible]
     texts = pd.read_csv(project_path("data/processed/products.csv"), dtype={"product_id": str},
                         usecols=["product_id", "ingredients_text_raw"]).rename(columns={"ingredients_text_raw": "ingredients_text"})
     data = nutrition.merge(texts, on="product_id", how="inner").dropna(subset=["ingredients_text"])
@@ -161,6 +167,8 @@ def _query_embedding(ingredient_text: str, wv) -> np.ndarray:
 OFF_COLUMNS = {"energy-kcal_100g": "energy_kcal", "fat_100g": "fat_g", "saturated-fat_100g": "saturated_fat_g",
                "carbohydrates_100g": "carbohydrate_g", "sugars_100g": "sugars_g", "fiber_100g": "fibre_g",
                "proteins_100g": "protein_g", "salt_100g": "salt_g"}
+# physical limits per 100 g: no food has more than 100 g of anything, or more than 900 kcal (pure fat)
+LIMITS_100G = {col: (900 if col == "energy-kcal_100g" else 100) for col in OFF_COLUMNS}
 
 
 def estimate_from_similar_product(ingredient_text: str, min_similarity: float = 0.4) -> dict:
@@ -183,7 +191,8 @@ def estimate_from_similar_product(ingredient_text: str, min_similarity: float = 
             method = "TF-IDF + ingredient2vec"
     best = int(scores.argmax())
     row = data.iloc[best]
-    per100 = {key: round(float(row[col]), 2) for col, key in OFF_COLUMNS.items() if pd.notna(row[col])}
+    per100 = {key: round(float(row[col]), 2) for col, key in OFF_COLUMNS.items()
+              if pd.notna(row[col]) and 0 <= row[col] <= LIMITS_100G[col]}
     name = " - ".join(str(x) for x in (row["product_name"], row["brands"]) if pd.notna(x) and str(x))
     return {"per_100g": per100, "product_name": name or "unnamed product", "product_id": row["product_id"],
             "similarity": round(float(scores[best]), 2), "method": method,
