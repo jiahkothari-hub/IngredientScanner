@@ -64,7 +64,10 @@ def get_reader():
     return easyocr.Reader(["en"], gpu=False, model_storage_directory=str(MODEL_DIR), verbose=False)
 
 
-def engine_name() -> str:
+def engine_name(recognizer: str = "rapidocr") -> str:
+    if recognizer == "crnn":
+        from src.ocr_model.recognizer import NAME
+        return NAME
     return "RapidOCR (PP-OCRv6)" if get_rapidocr() is not None else "EasyOCR"
 
 
@@ -293,8 +296,17 @@ def group_into_lines(detections: list) -> list:
              "box": [b["box"] for b in line]} for line in _untangle_columns(_xy_cut(boxes), boxes)]
 
 
-def _ocr(image: np.ndarray, unclip_ratio: float = None) -> list:
+def _ocr(image: np.ndarray, unclip_ratio: float = None, recognizer: str = "rapidocr") -> list:
+    """recognizer="crnn": RapidOCR only finds the text boxes; our CRNN (src/ocr_model/recognizer.py) reads them."""
     engine = get_rapidocr()
+    if engine is not None and recognizer == "crnn":
+        from src.ocr_model.recognizer import read_boxes
+        out = engine(image, use_det=True, use_cls=False, use_rec=False, unclip_ratio=unclip_ratio)
+        if out.boxes is None:
+            return []
+        boxes = out.boxes.tolist()
+        texts, scores = read_boxes(image, boxes)
+        return group_into_lines([(b, t, s) for b, t, s in zip(boxes, texts, scores) if s >= 0.3])
     if engine is not None:
         out = engine(image, use_det=True, use_cls=False, use_rec=True, text_score=0.3, unclip_ratio=unclip_ratio)
         if out.boxes is None or out.txts is None:
@@ -329,15 +341,19 @@ def _mean_confidence(lines) -> float:
     return float(np.mean([l["confidence"] for l in lines])) if lines else 0.0
 
 
-def _best_reading(image: np.ndarray) -> list:
+def _best_reading(image: np.ndarray, recognizer: str = "rapidocr") -> list:
     """Read the photo; if the reading is unsure, read it again with tighter text boxes and keep the
     better one. (In dense paragraphs with little line spacing, the detector's default box expansion
-    merges two printed lines into one box, which the recogniser cannot read.)"""
-    lines = _ocr(image)
+    merges two printed lines into one box, which the recogniser cannot read.)
+    With recognizer="crnn" the same decision is made with RapidOCR, then our CRNN reads the chosen boxes, so
+    both recognisers read exactly the same text lines."""
+    lines, unclip = _ocr(image), None
     if get_rapidocr() is not None and _mean_confidence(lines) < 0.9:
         tight = _ocr(image, unclip_ratio=1.0)
         if _quality(tight) > _quality(lines):
-            lines = tight
+            lines, unclip = tight, 1.0
+    if recognizer == "crnn":
+        lines = _ocr(image, unclip, recognizer="crnn")
     return lines
 
 
@@ -357,8 +373,28 @@ def _quality(lines) -> float:
     return sum(len(l["text"]) * l["confidence"] for l in lines if all(_is_horizontal(b) for b in l["box"]))
 
 
-def read_image(path_or_array, correct_spelling: bool = True) -> dict:
-    """Run the full OCR pipeline on a file path, bytes or an image array (BGR)."""
+def read_image(path_or_array, correct_spelling: bool = True, recognizer: str = "rapidocr") -> dict:
+    """Run the full OCR pipeline on a file path, bytes or an image array (BGR).
+    recognizer: "rapidocr" (pretrained PP-OCR recogniser) or "crnn" (our own model, src/ocr_model/recognizer.py;
+    RapidOCR still finds the text lines). Photo preparation (straightening, rotation, scale) is the same.
+    Falls back to RapidOCR if our model file is missing."""
+    if recognizer == "crnn":
+        from src.ocr_model.recognizer import available
+        recognizer = "crnn" if available() else "rapidocr"
+    image, lines, rotation, scale = prepare_and_read(path_or_array, recognizer)
+    raw_text = "\n".join(l["text"] for l in lines)
+    text = raw_text
+    if correct_spelling and raw_text:
+        from src.ocr.text_correction import correct_ocr_text
+        text = correct_ocr_text(raw_text)
+    return {"text": text, "raw_text": raw_text, "lines": lines, "rotation": rotation, "scale": round(scale, 2),
+            "engine": engine_name(recognizer),
+            "mean_confidence": round(_mean_confidence(lines), 3)}
+
+
+def prepare_and_read(path_or_array, recognizer: str = "rapidocr") -> tuple:
+    """Straighten / rotate the photo and read it. Returns (upright image before enlargement, lines, rotation,
+    scale): preprocess(image, scale) is exactly the image the lines were read from."""
     try:
         image = load_image(path_or_array)
     except Exception as err:                       # not an image / corrupt file
@@ -382,19 +418,11 @@ def read_image(path_or_array, correct_spelling: bool = True) -> dict:
     else:
         rotation = 0
         scale = choose_scale(image, boxes)
-        lines = _best_reading(preprocess(image, scale))
+        lines = _best_reading(preprocess(image, scale), recognizer)
         if _n_chars(lines) < 150 or _mean_confidence(lines) < 0.85:    # poor reading: upside down, or
             rotation = best_orientation(image, (0, 90, 180, 270))        # sideways text the detector missed
     if rotation:
         image = rotate(image, rotation)
         scale = choose_scale(image)
-        lines = _best_reading(preprocess(image, scale))
-
-    raw_text = "\n".join(l["text"] for l in lines)
-    text = raw_text
-    if correct_spelling and raw_text:
-        from src.ocr.text_correction import correct_ocr_text
-        text = correct_ocr_text(raw_text)
-    return {"text": text, "raw_text": raw_text, "lines": lines, "rotation": rotation, "scale": round(scale, 2),
-            "engine": engine_name(),
-            "mean_confidence": round(_mean_confidence(lines), 3)}
+        lines = _best_reading(preprocess(image, scale), recognizer)
+    return image, lines, rotation, scale

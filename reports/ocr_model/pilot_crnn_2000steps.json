@@ -1,0 +1,277 @@
+{
+  "run": "smoke_crnn",
+  "model": "crnn",
+  "parameters": 1266227,
+  "best": {
+    "step": 2000,
+    "train_loss": 0.1785,
+    "val_loss": 0.1831,
+    "val_cer": 0.0385,
+    "val_wer": 0.1987,
+    "lr": 4.7615403099802134e-09,
+    "minutes": 21.8
+  },
+  "train_minutes": 21.9,
+  "steps_done": 2000,
+  "settings": {
+    "model": "crnn",
+    "run": "smoke_crnn",
+    "steps": 2000,
+    "batch_size": 32,
+    "lr": 0.001,
+    "eval_every": 250,
+    "patience": 20,
+    "val_size": 300,
+    "test_size": 300,
+    "workers": 3,
+    "threads": 0,
+    "seed": 42
+  },
+  "test": {
+    "severity_0": {
+      "cer": 0.024880889359449446,
+      "wer": 0.13925570228091236,
+      "line_accuracy": 0.7266666666666667,
+      "lines": 300,
+      "ms_per_line": 6.394879332898806,
+      "examples": [
+        {
+          "reference": "coffee, caramelized sugar (piloncillo),",
+          "prediction": "coffee, caramelized sugar (piloncillo),"
+        },
+        {
+          "reference": "TOMATO",
+          "prediction": "TOMATO"
+        },
+        {
+          "reference": "enjoy the",
+          "prediction": "enioy the"
+        },
+        {
+          "reference": "Wheat",
+          "prediction": "Wheat"
+        },
+        {
+          "reference": "VITAMIN A PALMITATE, VITAMIN D2,",
+          "prediction": "VITAMIN A PALMITATE, VITAMIN D2,"
+        },
+        {
+          "reference": "3 tbsp soy",
+          "prediction": "3 tbsp soy"
+        },
+        {
+          "reference": "ON",
+          "prediction": "ON"
+        },
+        {
+          "reference": "(ACIDS (SODIUM",
+          "prediction": "(ACIDS (SODIUM"
+        },
+        {
+          "reference": "peas, soybeans), salt,",
+          "prediction": "peas,soybeans), salt,"
+        },
+        {
+          "reference": "Organic",
+          "prediction": "Organic"
+        },
+        {
+          "reference": "& NATURE IDENTICAL",
+          "prediction": "& NATURE IDENTICAL"
+        },
+        {
+          "reference": "[WHOLEMEAL",
+          "prediction": "TWHOLEMEAL"
+        }
+      ]
+    },
+    "severity_1": {
+      "cer": 0.03892324481629684,
+      "wer": 0.19239904988123516,
+      "line_accuracy": 0.6666666666666666,
+      "lines": 300,
+      "ms_per_line": 5.931665333143125,
+      "examples": [
+        {
+          "reference": "GLYCERIN, PURIFIED",
+          "prediction": "GLYCERIN, PURIFIED"
+        },
+        {
+          "reference": "Fat 296kJ/",
+          "prediction": "Fat 296k4l7"
+        },
+        {
+          "reference": "For Color.",
+          "prediction": "For Color."
+        },
+        {
+          "reference": "flakes, pumpkin seeds, chia seeds,",
+          "prediction": "flakes, pumpkin seeds, chia seeds,"
+        },
+        {
+          "reference": "flavors, proplyene glycol",
+          "prediction": "flavors, proplyene glycol"
+        },
+        {
+          "reference": "3,5% currants, candied",
+          "prediction": "3,.5% currants, candied"
+        },
+        {
+          "reference": "CITRATE, NON-NUTRITIVE",
+          "prediction": "CITRATE, NON-NUTRITIVE"
+        },
+        {
+          "reference": "SPRAY CANDY 20mL",
+          "prediction": "SPRAY CANDY 2Oml"
+        },
+        {
+          "reference": "SALT,",
+          "prediction": "SALT,"
+        },
+        {
+          "reference": "salt, crushed red peppers,",
+          "prediction": "salt, crushed red peppers,"
+        },
+        {
+          "reference": "Acidity Regulator (Citric Acid),",
+          "prediction": "Acidity Regulator (Citric Aoid),"
+        },
+        {
+          "reference": "(415), PARSLEY.",
+          "prediction": "(415), PARSLEY."
+        }
+      ]
+    },
+    "severity_2": {
+      "cer": 0.14931315946645432,
+      "wer": 0.4945205479452055,
+      "line_accuracy": 0.35,
+      "lines": 300,
+      "ms_per_line": 6.134664001098524,
+      "examples": [
+        {
+          "reference": "sugar, pistachios,",
+          "prediction": "sugar, pistachios,"
+        },
+        {
+          "reference": "Water, fructose, sugar,",
+          "prediction": "Water, fructose, sugar,"
+        },
+        {
+          "reference": "oil), salt,",
+          "prediction": "6, sat."
+        },
+        {
+          "reference": "CORN GRITS, GRAM GRITS",
+          "prediction": "CGRN GRITS, GRAM GRITS"
+        },
+        {
+          "reference": "olive oil, ground black",
+          "prediction": "olive oil, ground ulack"
+        },
+        {
+          "reference": "AND",
+          "prediction": "AND"
+        },
+        {
+          "reference": "(94%), Sugar, Palm Oil, Sea",
+          "prediction": "(9.%),Sugar, Palm O s.."
+        },
+        {
+          "reference": "whisky, defrosted.",
+          "prediction": "wnisky, defrosted.,"
+        },
+        {
+          "reference": "C).",
+          "prediction": "C)."
+        },
+        {
+          "reference": "sugar, raising",
+          "prediction": "sugar, raising"
+        },
+        {
+          "reference": "potassium",
+          "prediction": "potasium."
+        },
+        {
+          "reference": "Acids (Citric acid, Malic",
+          "prediction": "Acids (Citric acid, Malic"
+        }
+      ]
+    }
+  },
+  "history": [
+    {
+      "step": 250,
+      "train_loss": 4.8437,
+      "val_loss": 3.9491,
+      "val_cer": 1.0,
+      "val_wer": 1.0,
+      "lr": 0.000998020540623254,
+      "minutes": 3.0
+    },
+    {
+      "step": 500,
+      "train_loss": 3.0696,
+      "val_loss": 2.6623,
+      "val_cer": 0.8097,
+      "val_wer": 1.0064,
+      "lr": 0.000932575979982011,
+      "minutes": 5.7
+    },
+    {
+      "step": 750,
+      "train_loss": 1.4722,
+      "val_loss": 0.9689,
+      "val_cer": 0.2566,
+      "val_wer": 0.8667,
+      "lr": 0.0007860737924310112,
+      "minutes": 8.5
+    },
+    {
+      "step": 1000,
+      "train_loss": 0.5592,
+      "val_loss": 0.411,
+      "val_cer": 0.0991,
+      "val_wer": 0.4577,
+      "lr": 0.0005859662062815041,
+      "minutes": 11.3
+    },
+    {
+      "step": 1250,
+      "train_loss": 0.3349,
+      "val_loss": 0.2826,
+      "val_cer": 0.0614,
+      "val_wer": 0.3,
+      "lr": 0.00036975026668769316,
+      "minutes": 13.9
+    },
+    {
+      "step": 1500,
+      "train_loss": 0.2338,
+      "val_loss": 0.2209,
+      "val_cer": 0.048,
+      "val_wer": 0.241,
+      "lr": 0.00017794147336656628,
+      "minutes": 16.5
+    },
+    {
+      "step": 1750,
+      "train_loss": 0.192,
+      "val_loss": 0.1892,
+      "val_cer": 0.0397,
+      "val_wer": 0.2064,
+      "lr": 4.648180694229615e-05,
+      "minutes": 19.2
+    },
+    {
+      "step": 2000,
+      "train_loss": 0.1785,
+      "val_loss": 0.1831,
+      "val_cer": 0.0385,
+      "val_wer": 0.1987,
+      "lr": 4.7615403099802134e-09,
+      "minutes": 21.8
+    }
+  ]
+}

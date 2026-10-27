@@ -1,0 +1,450 @@
+{
+  "crops": 377,
+  "photos": 57,
+  "check_exact_agreement_with_rapidocr": 306,
+  "settings": {
+    "learning_rates_tried": [
+      1e-05,
+      3e-05,
+      0.0001
+    ],
+    "max_steps": 400,
+    "eval_every": 50,
+    "batch_size": 8,
+    "seed": 0,
+    "end_mismatch_chars": 2
+  },
+  "folds": [
+    {
+      "fold": 0,
+      "train_crops": 193,
+      "dropped_misaligned": 10,
+      "chosen": {
+        "lr": 1e-05,
+        "steps": 50,
+        "val_cer": 0.03813229571984436,
+        "val_cer_pretrained": 0.03968871595330739,
+        "curves": {
+          "1e-05": [
+            [
+              50,
+              0.03813229571984436
+            ],
+            [
+              100,
+              0.05058365758754864
+            ],
+            [
+              150,
+              0.053696498054474705
+            ],
+            [
+              200,
+              0.04357976653696498
+            ],
+            [
+              250,
+              0.05680933852140078
+            ],
+            [
+              300,
+              0.06614785992217899
+            ],
+            [
+              350,
+              0.053696498054474705
+            ],
+            [
+              400,
+              0.053696498054474705
+            ]
+          ],
+          "3e-05": [
+            [
+              50,
+              0.04046692607003891
+            ],
+            [
+              100,
+              0.0490272373540856
+            ],
+            [
+              150,
+              0.047470817120622566
+            ],
+            [
+              200,
+              0.047470817120622566
+            ],
+            [
+              250,
+              0.045914396887159536
+            ],
+            [
+              300,
+              0.047470817120622566
+            ],
+            [
+              350,
+              0.04669260700389105
+            ],
+            [
+              400,
+              0.04669260700389105
+            ]
+          ],
+          "0.0001": [
+            [
+              50,
+              0.054474708171206226
+            ],
+            [
+              100,
+              0.058365758754863814
+            ],
+            [
+              150,
+              0.05525291828793774
+            ],
+            [
+              200,
+              0.05758754863813229
+            ],
+            [
+              250,
+              0.06381322957198443
+            ],
+            [
+              300,
+              0.0622568093385214
+            ],
+            [
+              350,
+              0.058365758754863814
+            ],
+            [
+              400,
+              0.058365758754863814
+            ]
+          ]
+        }
+      },
+      "test_crops": 184,
+      "test_cer_before": 0.09290985767000527,
+      "test_cer_after": 0.09778597785977859
+    },
+    {
+      "fold": 1,
+      "train_crops": 184,
+      "dropped_misaligned": 13,
+      "chosen": {
+        "lr": 0.0,
+        "steps": 0,
+        "val_cer": 0.09326923076923077,
+        "val_cer_pretrained": 0.09326923076923077,
+        "curves": {
+          "1e-05": [
+            [
+              50,
+              0.12740384615384615
+            ],
+            [
+              100,
+              0.14038461538461539
+            ],
+            [
+              150,
+              0.12980769230769232
+            ],
+            [
+              200,
+              0.10865384615384616
+            ],
+            [
+              250,
+              0.12403846153846154
+            ],
+            [
+              300,
+              0.175
+            ],
+            [
+              350,
+              0.13846153846153847
+            ],
+            [
+              400,
+              0.14326923076923076
+            ]
+          ],
+          "3e-05": [
+            [
+              50,
+              0.10576923076923077
+            ],
+            [
+              100,
+              0.1831730769230769
+            ],
+            [
+              150,
+              0.11538461538461539
+            ],
+            [
+              200,
+              0.12211538461538461
+            ],
+            [
+              250,
+              0.12067307692307692
+            ],
+            [
+              300,
+              0.11634615384615385
+            ],
+            [
+              350,
+              0.1110576923076923
+            ],
+            [
+              400,
+              0.11201923076923077
+            ]
+          ],
+          "0.0001": [
+            [
+              50,
+              0.13076923076923078
+            ],
+            [
+              100,
+              0.14711538461538462
+            ],
+            [
+              150,
+              0.15048076923076922
+            ],
+            [
+              200,
+              0.11971153846153847
+            ],
+            [
+              250,
+              0.12163461538461538
+            ],
+            [
+              300,
+              0.1360576923076923
+            ],
+            [
+              350,
+              0.11826923076923077
+            ],
+            [
+              400,
+              0.11394230769230769
+            ]
+          ]
+        }
+      },
+      "test_crops": 193,
+      "test_cer_before": 0.043408594319009466,
+      "test_cer_after": 0.04253459577567371
+    }
+  ],
+  "systems": {
+    "rapidocr": {
+      "cer": 0.0689130284370027,
+      "wer": 0.22111055527763882,
+      "line_accuracy": 0.506631299734748,
+      "cer_ignoring_case": 0.04013007680066422,
+      "wer_ignoring_case": 0.17408704352176088
+    },
+    "ppocr_torch_pretrained": {
+      "cer": 0.06939735695011416,
+      "wer": 0.21660830415207605,
+      "line_accuracy": 0.5119363395225465,
+      "cer_ignoring_case": 0.040476025738600985,
+      "wer_ignoring_case": 0.17108554277138568
+    },
+    "ppocr_finetuned": {
+      "cer": 0.07154224036532209,
+      "wer": 0.21710855427713857,
+      "line_accuracy": 0.5119363395225465,
+      "cer_ignoring_case": 0.04289766830415831,
+      "wer_ignoring_case": 0.16908454227113556
+    }
+  },
+  "our_crnn_finetuned": {
+    "cer": 0.14502179478309002,
+    "wer": 0.439719859929965,
+    "cer_ignoring_case": 0.11305611291773335,
+    "lines_wrong": 0.8222811671087533,
+    "line_accuracy": 0.17771883289124668,
+    "perfect_crops": 67,
+    "confusions": [
+      "'a'->'o' x65",
+      "'e'->'E' x34",
+      "'s'->'S' x34",
+      "'a'->'A' x28",
+      "'t'->'T' x26",
+      "'.'->',' x24",
+      "'r'->'R' x22",
+      "'o'->'O' x19"
+    ]
+  },
+  "photos_finetuned_better": 12,
+  "photos_rapidocr_better": 18,
+  "examples": [
+    {
+      "label": "(INS 322(i))). Sugar, Cocoa Powder (5.6%), Iodized Salt, Vitamins",
+      "before": "(INS 322(1)), Sugar, Cocoa Powder (5.6%), Iodized Salt, Vitamins",
+      "after": "(INS 322)(1), Sugar, Cocoa Powder (5.6%), lodized Salt, Vitamins"
+    },
+    {
+      "label": "SOLIDS&SWEETENED CONDENSED PARTLY SKIMMED MILK), RAISING AGENTS [503(ii) & 500(ii)], IODISED SALT, MINERALS**, ARTIFICIAL",
+      "before": "SOLIDS & SWEETENED CONDENSED PARTLY SKIMMED MILK), RAISING AGENTS [503(ii) & 500(ii)], IODISED SALT, MINERALS**, ARTIFICIAL",
+      "after": "SOLIDS & SWEETENED CONDENSED PARTLY SKIMMED MILK), RAISING AGENTS [503(ii) & S00(i)], 1ODISED SALT, MINERALS, ARTIFICIAL"
+    },
+    {
+      "label": "COLOUR (150d) AND IMPROVER (1101(i))",
+      "before": "COLOUR (150d) AND IMPROVER (1101(i)).",
+      "after": "COLOUR (150d) AND IMPROVER (1101(i))"
+    },
+    {
+      "label": "Edible Vegetable Oil (Palmolein Oil), Dried Potato",
+      "before": "Edible Vegetable Oil (Palmolein Oil). Dried Potato",
+      "after": "Edible Vegetable Oil (Palmolein Oil), Dried Potato"
+    },
+    {
+      "label": "Maltodextrin, Mint Flavor(Mint, Garlic, Tamarind),",
+      "before": "Maltodetrin, Mint Rlavor(Mint Garic, Tamarind)",
+      "after": "Maltodextrin, Mint Flavor(Mint, Garlic, Tamarind),"
+    },
+    {
+      "label": "NATURE IDENTICAL FLAVOURING",
+      "before": "NATURE IDENTICALFLAVOURING",
+      "after": "NATURE IDENTICAL FLAVOURING"
+    },
+    {
+      "label": "CONTAINS ADDED FLAVOUR-NATURAL AND",
+      "before": "CONTAINS ADDED FLAVOUR-NATURALAND",
+      "after": "CONTAINS ADDED FLAVOUR-NATURAL AND"
+    },
+    {
+      "label": "FLAVOURS (NATURE-IDENTICAL AND NATURAL),",
+      "before": "FLAVOURS (NATURE-IDENTICAL AND NATURAL),",
+      "after": "FLAVOURS (NATURE-IDENTICAL AND NATURAL)"
+    },
+    {
+      "label": "Vegetable Oil (Palm, Sunflower, Peanut), Hydrolysed Vegetable Protein,",
+      "before": "Vegetable Oil(Pam, Sunfiower, Peanut), Hydrolysed Vegetable Protein,",
+      "after": "Vegetable Oil Pam, Sunfiower, Peanut), Hydrolysed Vegetable Protein,"
+    },
+    {
+      "label": "Anticaking Agent (551), Cocoa Solids, Lactose).",
+      "before": "Anticaking agent (551). Cocoa Solids, Lactose).",
+      "after": "Anticaking agent (551). Cocca Solids, Lactose)."
+    },
+    {
+      "label": "*As flavouring agent. Contains Onion and Garlic",
+      "before": "\"As filavouring agent. \"Contains Onion and Garlic",
+      "after": "\"Asflavourng agent. \"Contains Onion and Garlic"
+    },
+    {
+      "label": "CONTAINS PERMITTED CLASS II",
+      "before": "CONTAINS PERMITTED CLASS II",
+      "after": "CONTAINS PERMITTED CLASS I"
+    },
+    {
+      "label": "Tomato Paste (41%), Water, Onions,",
+      "before": "Tomato Paste (41%), Water, Onions,",
+      "after": "Tomato Paste (419), Water, Onions,"
+    },
+    {
+      "label": "Oil), lodized Salt, Spices & Condiments (Garlic Powder",
+      "before": "Oil) lodized Salt, Spices & Condiments Garlic Powder",
+      "after": "Oil), lodized Salt, Spices & Condiments (Garlic Powder"
+    },
+    {
+      "label": "(0.97%), Mixed Spices, Red Chilli Flakes (0.25%) and",
+      "before": "(0.979%), Mixed Spices, Red Chilli Rakes (0.25%) and",
+      "after": "(0.979), Mixed Spices, Red hill Rakes (0.25%) and"
+    },
+    {
+      "label": "Red Paprika (0.19%)), Acidity Regulators (INS 260,",
+      "before": "Red Paprika (.19%), Acidity Regulators (INS 260,",
+      "after": "Red Paprika (0.199)), Acidity Regulators (NS 260,"
+    },
+    {
+      "label": "Refined Sunflower Oil: 99.99%, TBHQ (E319): Antioxidant,",
+      "before": "Refined Sunflower Oil:99.99%, TBHQ (E319): Antioxidant,",
+      "after": "Refined Sunflower Oil: 99.99%, TBHQ (E319): Antioxidant,"
+    },
+    {
+      "label": "RECIPES SCAN THE OR CODE PLAM",
+      "before": "RECIPES SCAN THE QR CODE",
+      "after": "RECIPES SCAN THE OR CODE"
+    },
+    {
+      "label": "Orange Fruit Powder (0.9%), Colours (171, 110, 102),",
+      "before": "Fruit Powder (0.9%\"), Colours (171, 110, 102),",
+      "after": "Fruit Powder (0.9%), Colours (171, 110, 102),"
+    },
+    {
+      "label": "Vitamins, Anticaking Agent (341), Stabilizers",
+      "before": "Vitamins, Anticaking Agent (341(i), tabilizers",
+      "after": "Vitamins, Anticaking Agent (341(ii), Stabilizers"
+    },
+    {
+      "label": "Fruit Powder (0.9%), Colours (171, 110, 102),",
+      "before": "Fruit Powder (0.9%*). Colours (171, 110, 102).",
+      "after": "Fruit Powder (0. 9%*). Colours (171, 110, 102)."
+    },
+    {
+      "label": "Flavour Enhancers (627, 631), Edible Vegetable Oil (Palm, Coconut), Anticaking Agent (551))",
+      "before": "Flavour Enhancers (627, 631), Edible Vegetable Oil (Palm, Coconut), Anticaking Agent (51)",
+      "after": "Elavour Enhancers (627, 631), Edible Vegetable Oil (Palm, Coconut), Anticaking Agent (551))"
+    },
+    {
+      "label": "[INS 500(ii), INS 503(ii)], Emulsifier [INS-322(i), INS 472)",
+      "before": "[INS 500(i),INS 503(i)], Emulsifier [INS-322(i), INS 4720],",
+      "after": "[INS 500(i),INS 503(i)], Emulsifier [INS-322(), INS 4720]"
+    },
+    {
+      "label": "Cranberry(4%),Raisins(4%),Almonds(4%),Pumpkin Seeds(3%),Sugar,Cereal",
+      "before": "anbery(4%), Raisins (4%), Almonds (4%), Pumpkin Seeds",
+      "after": "aey (4%), Raisins (4%) Amonds (4%), Pumpki Seeds"
+    },
+    {
+      "label": "Salt,Vitamins & Minerals,Anti Oxidants(INS 320,INS 307b)",
+      "before": "Vitanins& Minerals, Antioxidants (INS 320, INS 307b)",
+      "after": "Vitanins& Minerals, Antioxidants (INS320,INS 307b)"
+    },
+    {
+      "label": "Potato, Edible Vegetable Oil (Palmolein, Cotton Seed, Corn, Sunflower, Rice Bran),",
+      "before": "Potato, (dible Vegetable Oil Pamolein, Cotto Sed, Corn, Sunflower, Rice Bran),",
+      "after": "Potato, dble Vegetable Oil Palmolein, Cottn Seed, Corn, Sunflower, Rice Bran),"
+    },
+    {
+      "label": "Bengal Gram Flour (Besan), Potato Flakes, Potato Starch, Tapioca Starch, Tepary Beans (Moth Dal)",
+      "before": "Bengal Gram Flour Besan),Potato Flakes, Potato Starch,Tapioca Starch,Tepary Beans (Moth Dal)",
+      "after": "Benga Gram Flour (Bean), Potato Flae ,Potato Starch,aioca Starc, Teary Beans (Moth Dal)"
+    },
+    {
+      "label": "Flour, lodised Salt, Red Chilli Powder, Black Salt, Acidity Regulator (INS 330), Black Pepper, Clove,",
+      "before": "Flour lodised Salt, Re Cilli Powder, Plack Salt, cidity Regulator INS 330),Black Pepper, Clove,",
+      "after": "Flour loied Salt e Chilli Powder, Pack Salt, cidity Regulator (NS 330),Black Pepper, Clove,"
+    },
+    {
+      "label": "Dried Ginger Powder, Dried Garlic Powder, Cumin Powder, Bay Leaf, Nutmeg, Cinnamon, Turmeric,",
+      "before": "Dried Ginger Powe,Dried Garli Powder, Cumin Powder,BayLeaf, Nutmeg,Cinnamon,Turmerc",
+      "after": "Dried Ginger Powe,Dried Gari wder, Cumin Powder,Bay Leaf, utmeg,Cinnamon, Turmeric,"
+    },
+    {
+      "label": "Mint Leaves, Natural Flavouring Substances & Nature Identical Flavouring Substances.",
+      "before": "Mint Leaves,NauralFlavouring Substances & Nature ldentical Flavouring SUubstances.",
+      "after": "Mint Leaves Naturl Flavouring Substances &Nature ldentical lvouring Substances."
+    }
+  ]
+}

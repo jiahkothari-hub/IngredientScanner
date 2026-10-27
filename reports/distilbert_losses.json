@@ -1,0 +1,10 @@
+{
+  "cross_entropy_per_word": {
+    "validation_800_as_in_training": 0.1316,
+    "validation_all": 0.1268,
+    "silver_test": 0.1292,
+    "noisy_test_0.05": 0.1548,
+    "noisy_test_0.10": 0.1887
+  },
+  "parameters": 66379029
+}

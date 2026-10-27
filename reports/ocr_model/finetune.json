@@ -1,0 +1,554 @@
+{
+  "base": "crnn_tough",
+  "crops": 377,
+  "photos": 57,
+  "settings": {
+    "steps": 1500,
+    "lr": 0.0003,
+    "real_per_batch": 16,
+    "synthetic_per_batch": 16,
+    "seed": 0
+  },
+  "folds": [
+    {
+      "fold": 0,
+      "train_crops": 193,
+      "test_crops": 184,
+      "test_cer": 0.15972588297311544
+    },
+    {
+      "fold": 1,
+      "train_crops": 184,
+      "test_crops": 193,
+      "test_cer": 0.12876911871813548
+    }
+  ],
+  "systems": {
+    "rapidocr": {
+      "cer": 0.0689130284370027,
+      "wer": 0.22111055527763882,
+      "line_accuracy": 0.506631299734748,
+      "cer_ignoring_case": 0.04013007680066422,
+      "wer_ignoring_case": 0.17408704352176088
+    },
+    "crnn": {
+      "cer": 0.25448003874628106,
+      "wer": 0.624312156078039,
+      "line_accuracy": 0.10875331564986737,
+      "cer_ignoring_case": 0.22230678751816232,
+      "wer_ignoring_case": 0.5992996498249125
+    },
+    "crnn_tough": {
+      "cer": 0.19435411333287206,
+      "wer": 0.5262631315657829,
+      "line_accuracy": 0.14854111405835543,
+      "cer_ignoring_case": 0.16273438040545216,
+      "wer_ignoring_case": 0.49524762381190596
+    },
+    "crnn_tough_finetuned": {
+      "cer": 0.14502179478309002,
+      "wer": 0.439719859929965,
+      "line_accuracy": 0.17771883289124668,
+      "cer_ignoring_case": 0.11305611291773335,
+      "wer_ignoring_case": 0.3936968484242121
+    }
+  },
+  "photos_finetuned_beats_rapidocr": 2,
+  "photos_rapidocr_beats_finetuned": 55,
+  "per_photo_cer": {
+    "0004444444392": {
+      "rapidocr": 0.0,
+      "crnn": 0.05555555555555555,
+      "crnn_tough": 0.027777777777777776,
+      "crnn_tough_finetuned": 0.037037037037037035
+    },
+    "0023249093480": {
+      "rapidocr": 0.16494845360824742,
+      "crnn": 0.3711340206185567,
+      "crnn_tough": 0.36082474226804123,
+      "crnn_tough_finetuned": 0.27835051546391754
+    },
+    "0033674149706": {
+      "rapidocr": 0.012048192771084338,
+      "crnn": 0.2891566265060241,
+      "crnn_tough": 0.3493975903614458,
+      "crnn_tough_finetuned": 0.060240963855421686
+    },
+    "0051900016080": {
+      "rapidocr": 0.8661417322834646,
+      "crnn": 0.9921259842519685,
+      "crnn_tough": 0.9133858267716536,
+      "crnn_tough_finetuned": 0.8818897637795275
+    },
+    "0060383034016": {
+      "rapidocr": 0.027777777777777776,
+      "crnn": 0.3194444444444444,
+      "crnn_tough": 0.1909722222222222,
+      "crnn_tough_finetuned": 0.059027777777777776
+    },
+    "0078742194790": {
+      "rapidocr": 0.03578528827037773,
+      "crnn": 0.19284294234592445,
+      "crnn_tough": 0.31411530815109345,
+      "crnn_tough_finetuned": 0.18290258449304175
+    },
+    "0194346539871": {
+      "rapidocr": 0.8251533742331288,
+      "crnn": 0.9079754601226994,
+      "crnn_tough": 0.9141104294478528,
+      "crnn_tough_finetuned": 0.8374233128834356
+    },
+    "0222780002252": {
+      "rapidocr": 0.004329004329004329,
+      "crnn": 0.27705627705627706,
+      "crnn_tough": 0.21212121212121213,
+      "crnn_tough_finetuned": 0.06926406926406926
+    },
+    "0278760001920": {
+      "rapidocr": 0.02689486552567237,
+      "crnn": 0.11735941320293398,
+      "crnn_tough": 0.10757946210268948,
+      "crnn_tough_finetuned": 0.08557457212713937
+    },
+    "0287312001301": {
+      "rapidocr": 0.03619047619047619,
+      "crnn": 0.11047619047619048,
+      "crnn_tough": 0.08761904761904762,
+      "crnn_tough_finetuned": 0.05714285714285714
+    },
+    "0647603657196": {
+      "rapidocr": 0.006535947712418301,
+      "crnn": 0.2549019607843137,
+      "crnn_tough": 0.2222222222222222,
+      "crnn_tough_finetuned": 0.11764705882352941
+    },
+    "07200564": {
+      "rapidocr": 0.018691588785046728,
+      "crnn": 0.056074766355140186,
+      "crnn_tough": 0.06230529595015576,
+      "crnn_tough_finetuned": 0.056074766355140186
+    },
+    "0787099827861": {
+      "rapidocr": 0.0962566844919786,
+      "crnn": 0.0962566844919786,
+      "crnn_tough": 0.09090909090909091,
+      "crnn_tough_finetuned": 0.11764705882352941
+    },
+    "0810187830075": {
+      "rapidocr": 0.19791666666666666,
+      "crnn": 0.25,
+      "crnn_tough": 0.2604166666666667,
+      "crnn_tough_finetuned": 0.22916666666666666
+    },
+    "0818290018489": {
+      "rapidocr": 0.0,
+      "crnn": 0.23555555555555555,
+      "crnn_tough": 0.21333333333333335,
+      "crnn_tough_finetuned": 0.017777777777777778
+    },
+    "0818290019646": {
+      "rapidocr": 0.04419889502762431,
+      "crnn": 0.09944751381215469,
+      "crnn_tough": 0.08287292817679558,
+      "crnn_tough_finetuned": 0.06077348066298342
+    },
+    "0839423002557": {
+      "rapidocr": 0.03504043126684636,
+      "crnn": 0.05121293800539083,
+      "crnn_tough": 0.026954177897574125,
+      "crnn_tough_finetuned": 0.0215633423180593
+    },
+    "0853672002748": {
+      "rapidocr": 0.07216494845360824,
+      "crnn": 0.16494845360824742,
+      "crnn_tough": 0.10309278350515463,
+      "crnn_tough_finetuned": 0.1134020618556701
+    },
+    "4056489914181": {
+      "rapidocr": 0.10106382978723404,
+      "crnn": 0.5904255319148937,
+      "crnn_tough": 0.5851063829787234,
+      "crnn_tough_finetuned": 0.43882978723404253
+    },
+    "4088700084397": {
+      "rapidocr": 0.030470914127423823,
+      "crnn": 0.7811634349030471,
+      "crnn_tough": 0.628808864265928,
+      "crnn_tough_finetuned": 0.5152354570637119
+    },
+    "5000169389300": {
+      "rapidocr": 0.015306122448979591,
+      "crnn": 0.413265306122449,
+      "crnn_tough": 0.375,
+      "crnn_tough_finetuned": 0.1760204081632653
+    },
+    "5000232900326": {
+      "rapidocr": 0.045454545454545456,
+      "crnn": 0.29545454545454547,
+      "crnn_tough": 0.045454545454545456,
+      "crnn_tough_finetuned": 0.09090909090909091
+    },
+    "5010052111376": {
+      "rapidocr": 0.02491103202846975,
+      "crnn": 0.03558718861209965,
+      "crnn_tough": 0.046263345195729534,
+      "crnn_tough_finetuned": 0.046263345195729534
+    },
+    "5010251602170": {
+      "rapidocr": 0.00847457627118644,
+      "crnn": 0.03389830508474576,
+      "crnn_tough": 0.025423728813559324,
+      "crnn_tough_finetuned": 0.03389830508474576
+    },
+    "5010525381299": {
+      "rapidocr": 0.03496503496503497,
+      "crnn": 0.14685314685314685,
+      "crnn_tough": 0.11888111888111888,
+      "crnn_tough_finetuned": 0.0979020979020979
+    },
+    "5018374188618": {
+      "rapidocr": 0.007352941176470588,
+      "crnn": 0.42830882352941174,
+      "crnn_tough": 0.12316176470588236,
+      "crnn_tough_finetuned": 0.03125
+    },
+    "5050854977572": {
+      "rapidocr": 0.072992700729927,
+      "crnn": 0.08759124087591241,
+      "crnn_tough": 0.10218978102189781,
+      "crnn_tough_finetuned": 0.08029197080291971
+    },
+    "5057753211844": {
+      "rapidocr": 0.21100917431192662,
+      "crnn": 0.22935779816513763,
+      "crnn_tough": 0.22935779816513763,
+      "crnn_tough_finetuned": 0.23853211009174313
+    },
+    "5063210074839": {
+      "rapidocr": 0.0069605568445475635,
+      "crnn": 0.21577726218097448,
+      "crnn_tough": 0.1368909512761021,
+      "crnn_tough_finetuned": 0.12993039443155452
+    },
+    "7622202820946": {
+      "rapidocr": 0.0572289156626506,
+      "crnn": 0.18072289156626506,
+      "crnn_tough": 0.13855421686746988,
+      "crnn_tough_finetuned": 0.18674698795180722
+    },
+    "8716100216389": {
+      "rapidocr": 0.13032581453634084,
+      "crnn": 0.39097744360902253,
+      "crnn_tough": 0.2681704260651629,
+      "crnn_tough_finetuned": 0.22055137844611528
+    },
+    "8886467127861": {
+      "rapidocr": 0.1111111111111111,
+      "crnn": 0.5333333333333333,
+      "crnn_tough": 0.31555555555555553,
+      "crnn_tough_finetuned": 0.23555555555555555
+    },
+    "8901063162518": {
+      "rapidocr": 0.013550135501355014,
+      "crnn": 0.05962059620596206,
+      "crnn_tough": 0.02710027100271003,
+      "crnn_tough_finetuned": 0.02710027100271003
+    },
+    "8901207021220": {
+      "rapidocr": 0.014634146341463415,
+      "crnn": 0.11707317073170732,
+      "crnn_tough": 0.06341463414634146,
+      "crnn_tough_finetuned": 0.07317073170731707
+    },
+    "8901246006189": {
+      "rapidocr": 0.02476780185758514,
+      "crnn": 0.15479876160990713,
+      "crnn_tough": 0.02476780185758514,
+      "crnn_tough_finetuned": 0.034055727554179564
+    },
+    "8901491101813": {
+      "rapidocr": 0.064,
+      "crnn": 0.108,
+      "crnn_tough": 0.128,
+      "crnn_tough_finetuned": 0.14
+    },
+    "8901491502054": {
+      "rapidocr": 0.037333333333333336,
+      "crnn": 0.256,
+      "crnn_tough": 0.144,
+      "crnn_tough_finetuned": 0.10666666666666667
+    },
+    "8901499009289": {
+      "rapidocr": 0.011904761904761904,
+      "crnn": 0.01984126984126984,
+      "crnn_tough": 0.015873015873015872,
+      "crnn_tough_finetuned": 0.01984126984126984
+    },
+    "8901499009623": {
+      "rapidocr": 0.020242914979757085,
+      "crnn": 0.048582995951417005,
+      "crnn_tough": 0.012145748987854251,
+      "crnn_tough_finetuned": 0.044534412955465584
+    },
+    "8901499010483": {
+      "rapidocr": 0.3048128342245989,
+      "crnn": 0.40641711229946526,
+      "crnn_tough": 0.3582887700534759,
+      "crnn_tough_finetuned": 0.3582887700534759
+    },
+    "8901719120800": {
+      "rapidocr": 0.05337078651685393,
+      "crnn": 0.12359550561797752,
+      "crnn_tough": 0.09831460674157304,
+      "crnn_tough_finetuned": 0.10674157303370786
+    },
+    "8904004400755": {
+      "rapidocr": 0.05730129390018484,
+      "crnn": 0.18853974121996303,
+      "crnn_tough": 0.024029574861367836,
+      "crnn_tough_finetuned": 0.04066543438077634
+    },
+    "8904004404685": {
+      "rapidocr": 0.007380073800738007,
+      "crnn": 0.07380073800738007,
+      "crnn_tough": 0.07011070110701106,
+      "crnn_tough_finetuned": 0.05904059040590406
+    },
+    "8904304365853": {
+      "rapidocr": 0.051470588235294115,
+      "crnn": 0.13602941176470587,
+      "crnn_tough": 0.09558823529411764,
+      "crnn_tough_finetuned": 0.09926470588235294
+    },
+    "8906032019664": {
+      "rapidocr": 0.023706896551724137,
+      "crnn": 0.05172413793103448,
+      "crnn_tough": 0.03879310344827586,
+      "crnn_tough_finetuned": 0.07112068965517242
+    },
+    "8906035030222": {
+      "rapidocr": 0.043478260869565216,
+      "crnn": 0.12318840579710146,
+      "crnn_tough": 0.10144927536231885,
+      "crnn_tough_finetuned": 0.12318840579710146
+    },
+    "8906080600357": {
+      "rapidocr": 0.010362694300518135,
+      "crnn": 0.031088082901554404,
+      "crnn_tough": 0.031088082901554404,
+      "crnn_tough_finetuned": 0.04145077720207254
+    },
+    "8908002557824": {
+      "rapidocr": 0.0,
+      "crnn": 0.12184873949579832,
+      "crnn_tough": 0.10504201680672269,
+      "crnn_tough_finetuned": 0.06302521008403361
+    },
+    "8908018729086": {
+      "rapidocr": 0.007246376811594203,
+      "crnn": 0.007246376811594203,
+      "crnn_tough": 0.007246376811594203,
+      "crnn_tough_finetuned": 0.08695652173913043
+    },
+    "9300633627935": {
+      "rapidocr": 0.0,
+      "crnn": 0.20353982300884957,
+      "crnn_tough": 0.18584070796460178,
+      "crnn_tough_finetuned": 0.035398230088495575
+    },
+    "9300657233860": {
+      "rapidocr": 0.17209302325581396,
+      "crnn": 0.4325581395348837,
+      "crnn_tough": 0.2930232558139535,
+      "crnn_tough_finetuned": 0.19069767441860466
+    },
+    "9300662888888": {
+      "rapidocr": 0.0,
+      "crnn": 0.0364963503649635,
+      "crnn_tough": 0.0364963503649635,
+      "crnn_tough_finetuned": 0.051094890510948905
+    },
+    "9310354983005": {
+      "rapidocr": 0.057692307692307696,
+      "crnn": 0.6105769230769231,
+      "crnn_tough": 0.3798076923076923,
+      "crnn_tough_finetuned": 0.2692307692307692
+    },
+    "9312336037560": {
+      "rapidocr": 0.0,
+      "crnn": 0.5064102564102564,
+      "crnn_tough": 0.3974358974358974,
+      "crnn_tough_finetuned": 0.019230769230769232
+    },
+    "9324306010688": {
+      "rapidocr": 0.008695652173913044,
+      "crnn": 0.1391304347826087,
+      "crnn_tough": 0.19130434782608696,
+      "crnn_tough_finetuned": 0.02608695652173913
+    },
+    "9337896000649": {
+      "rapidocr": 0.03289473684210526,
+      "crnn": 0.6008771929824561,
+      "crnn_tough": 0.375,
+      "crnn_tough_finetuned": 0.2236842105263158
+    },
+    "9415077070763": {
+      "rapidocr": 0.21428571428571427,
+      "crnn": 0.2857142857142857,
+      "crnn_tough": 0.5714285714285714,
+      "crnn_tough_finetuned": 0.35714285714285715
+    }
+  },
+  "examples": [
+    {
+      "label": "Multi Grain Flour Mix (Rice Flour, Whole Oats Flour,",
+      "rapidocr": "Multi Grain Flour Mix (Rice Flour, Whole Oats Flour,",
+      "before": "Multi Grain Flour Mix (Rice Flour, Whole Oats Flour,",
+      "after": "dies: Multi Grain Flour Mix (Rice Flour, Whole Oats Flour,"
+    },
+    {
+      "label": "Whole Wheat Flour), Choco Cream (Sugar, Edible Vegetable Oil",
+      "rapidocr": "Whole Wheat Flour), Choco Cream (Sugar, Edible Vegetable Oi",
+      "before": "Whole Wheat Flour), Choco Cream (Sugar, Edible Vegetable Ol",
+      "after": "Whole Wheat Flour), Choco Cream (Sugar, Edible Vegetable Oil"
+    },
+    {
+      "label": "(INS 322(i))). Sugar, Cocoa Powder (5.6%), Iodized Salt, Vitamins",
+      "rapidocr": "(INS 322(1)), Sugar, Cocoa Powder (5.6%), Iodized Salt, Vitamins",
+      "before": "(INS 322(i))), Sugar, Cocoa Powder (5.6%), Iodized Salt, Vitamins",
+      "after": "(INS 322(i), Sugar, Cocoa Powder (5.6%), lodized Salt, Vitamins"
+    },
+    {
+      "label": "REFINED WHEAT FLOUR (MAIDA) (73%), SUGAR, REFINED PALM OIL, INVERT SUGAR SYRUP, MILK PRODUCTS (MILK",
+      "rapidocr": "REFINED WHEAT FLOUR (MAIDA) (73%), SUGAR, REFINED PALM OIL, INVERT SUGAR SYRUP, MILK PRODUCTS (MILK",
+      "before": "REFINED WHEAT FLOUR (MAIDA) (73%), SUGAR, REFINED PALM OIL, INVERT SUGAR SYRUP MILK PRODUCTS (MILK",
+      "after": ":REFINED WHEAT FLOUR (MAIDA) (73%), SUGAR, REFINED PALM OIL, INVERT SUGAR SYRUP MILK PRODUCTS (MILK"
+    },
+    {
+      "label": "SOLIDS&SWEETENED CONDENSED PARTLY SKIMMED MILK), RAISING AGENTS [503(ii) & 500(ii)], IODISED SALT, MINERALS**, ARTIFICIAL",
+      "rapidocr": "SOLIDS & SWEETENED CONDENSED PARTLY SKIMMED MILK), RAISING AGENTS [503(ii) & 500(ii)], IODISED SALT, MINERALS**, ARTIFICIAL",
+      "before": "SOLIDS & 5WEETENED CONDENSED PARTUY SKIMMED MILK), RAISING AGENTS [503(i) & 500(ii)], IODISED SALT, MINERALS**, ARTIFICIAL",
+      "after": "SOLIDS & SWEETENED CONDENSED PARTUY SKIMMED MILK), RAISING AGENTS [503(i) & 500(ii)], IODISED SALT, MINERALS**, ARTIFICIAL"
+    },
+    {
+      "label": "(MILK & VANILLA) & NATURE IDENTICAL FLAVOURING SUBSTANCES, EMULSIFIER (472e), DOUGH CONDITIONER (223), VITAMINS\",",
+      "rapidocr": "(MILK & VANILLA) & NATURE IDENTICAL FLAVOURING SUBSTANCES, EMULSIFIER (472e), DOUGH CONDITIONER (223), VITAMINS",
+      "before": "(MILK & VANILLA) & NATURE IDENTICAL FLAVOURING SUBSTANCES, EMULSIFIER (4720), DOUGH (ONDITIONER (223), VITAMINS",
+      "after": "(MILK & VANILLA) & NATURE IDENTICAL FLAVOURING SUBSTANCES, EMULSIFIER (472), DOUGH CONDITIONER (223), VITAMINS"
+    },
+    {
+      "label": "COLOUR (150d) AND IMPROVER (1101(i))",
+      "rapidocr": "COLOUR (150d) AND IMPROVER (1101(i)).",
+      "before": "COLOUR (150d) AND IMPROVER (1101(i))",
+      "after": "COLOUR (150d) AND IMPROVER (1101(i),"
+    },
+    {
+      "label": "Edible Vegetable Oil (Palmolein Oil), Dried Potato",
+      "rapidocr": "Edible Vegetable Oil (Palmolein Oil). Dried Potato",
+      "before": "Eoible Vegetable Oil (Palmolein Oil), Dried Potato",
+      "after": "Eoible Vegetable Oil (Palmolein Oil), Dnied Potato"
+    },
+    {
+      "label": "iodised Salt, Dried Mango Powder, Red Chilli",
+      "rapidocr": "lodised Salt, Dried Mango Powder, Red Chill",
+      "before": "lodised Salt, Dried Mango Powder, Red Chill",
+      "after": "lodised Salt, Dried Mango Powder, Red Chili"
+    },
+    {
+      "label": "Maltodextrin, Mint Flavor(Mint, Garlic, Tamarind),",
+      "rapidocr": "Maltodetrin, Mint Rlavor(Mint Garic, Tamarind)",
+      "before": "Matodextrin, Mint Flavor (Mint, Garlic, Tamarind),",
+      "after": "Maltodextrin, Mint Flavor(Mint, Garlic, Tamarind),"
+    },
+    {
+      "label": "NATURE IDENTICAL FLAVOURING",
+      "rapidocr": "NATURE IDENTICALFLAVOURING",
+      "before": "NATURE IDENTICAL FLAVOURING",
+      "after": "NATURE IDENTICALFLAVOURING"
+    },
+    {
+      "label": "Powder, Onion Powder, Cardamom, Ginger Powder,",
+      "rapidocr": "Powder, Onion Powder, Cardamom, Ginger Powder,",
+      "before": "Powder, Onion Powder, Cardamorn, Ginger Powder,",
+      "after": "Powder, Onion Powder, Cardamom, Ginger Powder,"
+    },
+    {
+      "label": "CARRAGEENAN), ANTIOXIDANT (ASCORBIC ACID)",
+      "rapidocr": "CARRAGEENAN), ANTIOXIDANT (ASCORBIC ACID)",
+      "before": "CARRAGEENAN); ANTIOXIDANT (ASCORBIC ACID,",
+      "after": "CARRAGEENAN; ANTIOXIDANT (ASCOREIC ACID,"
+    },
+    {
+      "label": "Refined White Flour (Maida), Double Toned Milk (27%), Unsalted Butter, Sugar, Water, Wheat",
+      "rapidocr": "Refined White Flour (Maida), Double Toned Milk* (27%), Unsalted Butter, Sugar, Water, Wheat",
+      "before": "Refined White Flour (Maida), Double Toned Milk* (27%), Unsalted Butter, Sugar, Water, Wheat",
+      "after": "IGEDIENTS: Refined White Flour (Maida), Double Toned Milk* (27%), Unsalted Butter, Sugar, Water, Wheat"
+    },
+    {
+      "label": "HERBS (QUILLAJA EXTRACT INS",
+      "rapidocr": "HERBS (QUILLAJA EXTRACT INS",
+      "before": "HERBS (OUILL4/& EXTRACT [NS",
+      "after": "HERBS (OUILL/A EXTRACT INS"
+    },
+    {
+      "label": "PERMITTED CLASS II",
+      "rapidocr": "PERMITTED CLASS IL",
+      "before": "PERMITTED (CLASS [I",
+      "after": "PERMITTED CLASS II"
+    },
+    {
+      "label": "PERMITTED NATURAL FOOD",
+      "rapidocr": "PERMITTED NATURAL FOOD",
+      "before": "PERMIITED NATURAL FO0D",
+      "after": "PERMIITED NATURAL E0oD"
+    },
+    {
+      "label": "COLOUR (INS 150d) AND ADDED",
+      "rapidocr": "COLOUR (INS 1503) AND ADDED",
+      "before": "COLOUR (INS 1502) AND ADDED",
+      "after": "COLOUR INS 1503) AND ADDED"
+    },
+    {
+      "label": "FLAVOURS (NATURAL, NATURE",
+      "rapidocr": "FLAVOURS (NATURAL, NATURE",
+      "before": "FLAVOUPS (NATURAL, NATURE",
+      "after": "FLAVOUPS (NATURAL, \"NATURE"
+    },
+    {
+      "label": "IDENTICAL AND ARTIFICIAL",
+      "rapidocr": "IDENTICAL AND ARTIFICIAL",
+      "before": "IDERNTICAL AND ARTIFI(CIAL",
+      "after": "ERICAL AND ARTIFICIAL"
+    },
+    {
+      "label": "FLAVOURING SUBSTANCES CRANBERRY)",
+      "rapidocr": "FLAVOURING SUBSTANCES-",
+      "before": "FLAVOURING SUBSTANDES *",
+      "after": "FLAVOURING SUBSTANCES *,"
+    },
+    {
+      "label": "Maltodextrin, lodised Salt, Flavour (Natural and Nature Identical Flavouring",
+      "rapidocr": "Maltodexdrin, lodised Salt, Flavour (Natural and Nature Identical Flavouring",
+      "before": "Ma*odextrin, lodis2d Sat, Flavur (Natural and Nature lJznt-cal Flavourng",
+      "after": "Matodextrin, fdisad Sat, Flavour (Natural and Nature antical flavouring"
+    },
+    {
+      "label": "Substances), Spices & Condiments, Flavour Enhancers (E627 & E631), Edible",
+      "rapidocr": "Substances), \"Spices & Condimenits, Flavour Enhancers (627 & 631), Edible",
+      "before": "Substarces), \"Spies & Condinerts, Flavur Erhacers (327 & 631), Eoiblg",
+      "after": "substarces), *Spioes & Condimerts, Flavour Erhancers (327 & 631), Eoible"
+    },
+    {
+      "label": "Vegetable Oil (Palm, Sunflower, Peanut), Hydrolysed Vegetable Protein,",
+      "rapidocr": "Vegetable Oil(Pam, Sunfiower, Peanut), Hydrolysed Vegetable Protein,",
+      "before": "Veetable Ol (Paln, Sunflower, Peaanut), Hydrolysed Vegetatile Protein,",
+      "after": "Vegatabile Oil (Paltm, Sunflower, Peanut), Hydrolysed Vegetable Ptotein,"
+    },
+    {
+      "label": "Anticaking Agent (551), Cocoa Solids, Lactose).",
+      "rapidocr": "Anticaking agent (551). Cocoa Solids, Lactose).",
+      "before": "Ant-cakro 33%rt (551), Cocoa Soids, Lactoce),",
+      "after": "Antcakno apent (551), Cocoa solds, Lactose),"
+    }
+  ]
+}

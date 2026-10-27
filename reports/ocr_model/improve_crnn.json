@@ -1,0 +1,156 @@
+{
+  "crops": 377,
+  "off_training_crops": 494,
+  "folds": [
+    {
+      "fold": 0,
+      "test_cer_greedy": 0.11887190300474433
+    },
+    {
+      "fold": 1,
+      "test_cer_greedy": 0.11128914785142024
+    }
+  ],
+  "beam_settings": [
+    {
+      "alpha": 0.7,
+      "beta": 0.5,
+      "cer_on_choice_half": 0.08594319009468318,
+      "greedy_like_cer_on_choice_half": 0.1101238164603059
+    },
+    {
+      "alpha": 0.7,
+      "beta": 1.0,
+      "cer_on_choice_half": 0.09001054296257248,
+      "greedy_like_cer_on_choice_half": 0.11768581971534
+    }
+  ],
+  "systems": {
+    "CRNN v2 + fine-tuned (before)": {
+      "cer": 0.14502179478309002,
+      "cer_ignoring_case": 0.11305611291773335,
+      "wer": 0.439719859929965,
+      "line_accuracy": 0.17771883289124668
+    },
+    "+ Open Food Facts crops": {
+      "cer": 0.11527018612052861,
+      "cer_ignoring_case": 0.09133051961530478,
+      "wer": 0.37868934467233617,
+      "line_accuracy": 0.22546419098143236
+    },
+    "+ Open Food Facts crops + beam search with food LM": {
+      "cer": 0.09181484812841624,
+      "cer_ignoring_case": 0.06739085311008096,
+      "wer": 0.2766383191595798,
+      "line_accuracy": 0.3421750663129973
+    },
+    "RapidOCR (reference)": {
+      "cer": 0.0689130284370027,
+      "cer_ignoring_case": 0.04013007680066422,
+      "wer": 0.22111055527763882,
+      "line_accuracy": 0.506631299734748
+    }
+  },
+  "examples": [
+    {
+      "label": "Multi Grain Flour Mix (Rice Flour, Whole Oats Flour,",
+      "greedy": "IgMult Grain Flour Miax (Rice Flour, Wihole Oats Flour,",
+      "beam": "Multi Grain Flour Mix (Rice Flour, Whole Oats Flour,"
+    },
+    {
+      "label": "REFINED WHEAT FLOUR (MAIDA) (73%), SUGAR, REFINED PALM OIL, INVERT SUGAR SYRUP, MILK PRODUCTS (MILK",
+      "greedy": "FI WHEAT FLOUR (mAIDA) (73%), SUGAR, REFINED PALM OIL, INVERT SUGAR SYRUP mILK PRODUCTS (MILK",
+      "beam": "WHEAT FLOUR (mAIDA) (73%), SUGAR, REFINED PALM OIL, INVERT SUGAR SYRUP mILK PRODUCTS (MILK"
+    },
+    {
+      "label": "SOLIDS&SWEETENED CONDENSED PARTLY SKIMMED MILK), RAISING AGENTS [503(ii) & 500(ii)], IODISED SALT, MINERALS**, ARTIFICIAL",
+      "greedy": "SOLIDS & SWEETENED CONDENSED PARTUY SKIMMED MILK), RAISING AGENTS [503(i) & 500(ii)], IODISED SALT, MINERALS**, ARTIFICIAL",
+      "beam": "SOLIDS & SWEETENED CONDENSED PARTLY SKIMMED MILK), RAISING AGENTS [503(ii) & 500(ii)], IODISED SALT, MINERALS**, ARTIFICIAL"
+    },
+    {
+      "label": "Powder (28%), Chickpea Flour (18%), Maize Starch,",
+      "greedy": "Powder(28%), Chickpea Flour(18%), Maize Starch,",
+      "beam": "Powder (28%), Chickpea Flour(18%), Maize Starch,"
+    },
+    {
+      "label": "Edible Vegetable Oil (Palmolein Oil), Dried Potato",
+      "greedy": "Eoiole Vegetable Oil (Palmolein Oil), Dried Potato",
+      "beam": "Edible Vegetable Oil (Palmolein Oil), Dried Potato"
+    },
+    {
+      "label": "iodised Salt, Dried Mango Powder, Red Chilli",
+      "greedy": "lodised Salt, Dried Mango Powder, Red Chillil",
+      "beam": "lodised Salt, Dried Mango Powder, Red Chilli"
+    },
+    {
+      "label": "Maltodextrin, Mint Flavor(Mint, Garlic, Tamarind),",
+      "greedy": "Matodextrin, Mint Flavor (Mint, Garlic, Tamarind),",
+      "beam": "Maltodextrin, Mint Flavor (Mint, Garlic, Tamarind),"
+    },
+    {
+      "label": "Powder, Onion Powder, Cardamom, Ginger Powder,",
+      "greedy": "Powder, Onion Powder, Cardamomn, Ginger Powder,",
+      "beam": "Powder, Onion Powder, Cardamom, Ginger Powder,"
+    },
+    {
+      "label": "CONCENTRATE#,",
+      "greedy": "CONCENTRATE",
+      "beam": "CONCENTRATE,"
+    },
+    {
+      "label": "(TRISODIUM CITRATE AND CITRIC ACID),",
+      "greedy": "(TRISODIUM CITFATE AND CITRIC ACID),",
+      "beam": "(TRISODIUM CITRATE AND CITRIC ACID),"
+    },
+    {
+      "label": "FLAVOURS (NATURE-IDENTICAL AND NATURAL),",
+      "greedy": "FLAVOURS (NATURE-ADENTICAL AND NATURAL],",
+      "beam": "FLAVOURS (NATURE-IDENTICAL AND NATURALT,"
+    },
+    {
+      "label": "CARRAGEENAN), ANTIOXIDANT (ASCORBIC ACID)",
+      "greedy": "CARRAGEENAN; ANTIOXIDANT (ASCOREIC ACID),",
+      "beam": "CARRAGEENAN), ANTIOXIDANT (ASCORBIC ACID),"
+    },
+    {
+      "label": "AND VITAMIN D2 (ERGOCALCIFEROL).",
+      "greedy": "AND VITAMIN D2 (ERGOCALCIFEROL).",
+      "beam": "AND VITAMIN D2 (ERGOCALCIFEROL),"
+    },
+    {
+      "label": "Refined White Flour (Maida), Double Toned Milk (27%), Unsalted Butter, Sugar, Water, Wheat",
+      "greedy": "IGREDIENTS: Refined White Flour (Maida), Double Toned Milk* (27%), Unsalted Butter, Sugar, Water, Wheat",
+      "beam": "Refined White Flour (Maida), Double Toned Milk (27%), Unsalted Butter, Sugar, Water, Wheat"
+    },
+    {
+      "label": "CARBONATED",
+      "greedy": "INGREDENTS CARBONATED",
+      "beam": "CARBONATED"
+    },
+    {
+      "label": "HERBS (QUILLAJA EXTRACT INS",
+      "greedy": "HERBS (OUILLAjA EXTRACT [NS",
+      "beam": "HERBS (OUILLAjA EXTRACT INS"
+    },
+    {
+      "label": "PERMITTED CLASS II",
+      "greedy": "PERMITTED CLASS [I",
+      "beam": "PERMITTED CLASS II"
+    },
+    {
+      "label": "PRESERVATIVES (INS 211)",
+      "greedy": "PRESRVATIVES (NS 211),",
+      "beam": "PRESERVATIVES (INS 211),"
+    },
+    {
+      "label": "PERMITTED NATURAL FOOD",
+      "greedy": "PERMIITED NATURAL FOOD",
+      "beam": "PERMITTED NATURAL FOOD"
+    },
+    {
+      "label": "COLOUR (INS 150d) AND ADDED",
+      "greedy": "gOLOUR (INS 1603) AND ADDED",
+      "beam": "COLOUR (INS 1503) AND ADDED"
+    }
+  ]
+}

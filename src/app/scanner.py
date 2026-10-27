@@ -57,13 +57,13 @@ class IngredientScanner:
         self.ner_name = getattr(self.ner, "name", "model")
         self.linker = get_linker()
 
-    def scan_image(self, image) -> dict:
-        """image: file path, bytes or OpenCV array."""
+    def scan_image(self, image, recognizer: str = "rapidocr") -> dict:
+        """image: file path, bytes or OpenCV array. recognizer: "rapidocr" or "crnn" (our own text recogniser)."""
         from src.ocr.ocr_cleanup import fix_additive_codes
         from src.ocr.ocr_pipeline import read_image
         from src.ocr.section_extraction import extract_ingredients_section
         start = time.time()
-        ocr = read_image(image)
+        ocr = read_image(image, recognizer=recognizer)
         cleaned = fix_additive_codes(ocr["text"])
         section = extract_ingredients_section(cleaned)
         result = self.scan_text(section["text"], extract_section=False, full_text=cleaned)

@@ -1,0 +1,300 @@
+{
+  "run": "optimizer_study/rmsprop_lr0.001_bs64",
+  "model": "crnn",
+  "parameters": 1266227,
+  "best": {
+    "step": 2500,
+    "train_loss": 0.2483,
+    "val_loss": 0.2218,
+    "val_cer": 0.0484,
+    "val_wer": 0.2008,
+    "lr": 4.487385842907102e-09,
+    "minutes": 6.3
+  },
+  "device": "NVIDIA GeForce RTX 3050 Laptop GPU",
+  "train_minutes": 6.4,
+  "steps_done": 2500,
+  "settings": {
+    "model": "crnn",
+    "run": "optimizer_study/rmsprop_lr0.001_bs64",
+    "steps": 2500,
+    "batch_size": 64,
+    "lr": 0.001,
+    "eval_every": 250,
+    "patience": 99,
+    "val_size": 500,
+    "test_size": 300,
+    "workers": 3,
+    "threads": 0,
+    "device": "auto",
+    "tough": true,
+    "optimizer": "rmsprop",
+    "cycle_momentum": false,
+    "seed": 42
+  },
+  "test": {
+    "severity_0": {
+      "cer": 0.014469737074289748,
+      "wer": 0.10084033613445378,
+      "line_accuracy": 0.8233333333333334,
+      "lines": 300,
+      "ms_per_line": 1.2578079981418948,
+      "examples": [
+        {
+          "reference": "coffee, caramelized sugar (piloncillo),",
+          "prediction": "coffee, caramelized sugar (piloncillo),"
+        },
+        {
+          "reference": "TOMATO",
+          "prediction": "TOMATO"
+        },
+        {
+          "reference": "enjoy the",
+          "prediction": "enjoy the"
+        },
+        {
+          "reference": "Wheat",
+          "prediction": "Wheat"
+        },
+        {
+          "reference": "VITAMIN A PALMITATE, VITAMIN D2,",
+          "prediction": "VITAMIN A PALMITATE, VITAMIN D2,"
+        },
+        {
+          "reference": "3 tbsp soy",
+          "prediction": "3 tbsp soy"
+        },
+        {
+          "reference": "ON",
+          "prediction": "ON"
+        },
+        {
+          "reference": "(ACIDS (SODIUM",
+          "prediction": "(ACIDS (SODIUM"
+        },
+        {
+          "reference": "peas, soybeans), salt,",
+          "prediction": "peas, soybeans), salt,"
+        },
+        {
+          "reference": "Organic",
+          "prediction": "Organic"
+        },
+        {
+          "reference": "& NATURE IDENTICAL",
+          "prediction": "& NATURE IDENTICAL"
+        },
+        {
+          "reference": "[WHOLEMEAL",
+          "prediction": "IWHOLEMEAL"
+        }
+      ]
+    },
+    "severity_1": {
+      "cer": 0.01600582029829029,
+      "wer": 0.09026128266033254,
+      "line_accuracy": 0.8133333333333334,
+      "lines": 300,
+      "ms_per_line": 1.013915000949055,
+      "examples": [
+        {
+          "reference": "GLYCERIN, PURIFIED",
+          "prediction": "GLYCERIN, PURIFIED"
+        },
+        {
+          "reference": "Fat 296kJ/",
+          "prediction": "Fat 296k4/"
+        },
+        {
+          "reference": "For Color.",
+          "prediction": "For Color."
+        },
+        {
+          "reference": "flakes, pumpkin seeds, chia seeds,",
+          "prediction": "flakes, pumpkin seeds, chia seeds,"
+        },
+        {
+          "reference": "flavors, proplyene glycol",
+          "prediction": "flavors, proplyene glycol"
+        },
+        {
+          "reference": "3,5% currants, candied",
+          "prediction": "3. 5% currants, candied"
+        },
+        {
+          "reference": "CITRATE, NON-NUTRITIVE",
+          "prediction": "CITRATE, NON-NUTRITIVE"
+        },
+        {
+          "reference": "SPRAY CANDY 20mL",
+          "prediction": "SPRAY CANIY 2OmL"
+        },
+        {
+          "reference": "SALT,",
+          "prediction": "SALT,"
+        },
+        {
+          "reference": "salt, crushed red peppers,",
+          "prediction": "salt, crushed red peppers,"
+        },
+        {
+          "reference": "Acidity Regulator (Citric Acid),",
+          "prediction": "Acidity Regulator (Citric Acid),"
+        },
+        {
+          "reference": "(415), PARSLEY.",
+          "prediction": "(415), PARSLEY."
+        }
+      ]
+    },
+    "severity_2": {
+      "cer": 0.07067489548078837,
+      "wer": 0.2876712328767123,
+      "line_accuracy": 0.5866666666666667,
+      "lines": 300,
+      "ms_per_line": 1.1926739996609588,
+      "examples": [
+        {
+          "reference": "sugar, pistachios,",
+          "prediction": "sugar, pistachios,"
+        },
+        {
+          "reference": "Water, fructose, sugar,",
+          "prediction": "Water, fructose, sugar,"
+        },
+        {
+          "reference": "oil), salt,",
+          "prediction": "cal), salt.,"
+        },
+        {
+          "reference": "CORN GRITS, GRAM GRITS",
+          "prediction": "CORN GRITS, GRAM GRITS"
+        },
+        {
+          "reference": "olive oil, ground black",
+          "prediction": "olive oil, ground black"
+        },
+        {
+          "reference": "AND",
+          "prediction": "AND"
+        },
+        {
+          "reference": "(94%), Sugar, Palm Oil, Sea",
+          "prediction": "(94%), Sugar, Palm Oil S.,"
+        },
+        {
+          "reference": "whisky, defrosted.",
+          "prediction": "whisky, defrosted."
+        },
+        {
+          "reference": "C).",
+          "prediction": "C)."
+        },
+        {
+          "reference": "sugar, raising",
+          "prediction": "sugar, raising"
+        },
+        {
+          "reference": "potassium",
+          "prediction": "potasium:"
+        },
+        {
+          "reference": "Acids (Citric acid, Malic",
+          "prediction": "Acids (Citric acid, Malic"
+        }
+      ]
+    }
+  },
+  "history": [
+    {
+      "step": 250,
+      "train_loss": 4.1247,
+      "val_loss": 3.5428,
+      "val_cer": 0.9934,
+      "val_wer": 1.0,
+      "lr": 0.0009999995126141572,
+      "minutes": 0.7
+    },
+    {
+      "step": 500,
+      "train_loss": 3.0125,
+      "val_loss": 2.2841,
+      "val_cer": 0.6377,
+      "val_wer": 1.0423,
+      "lr": 0.0009696071989431495,
+      "minutes": 1.4
+    },
+    {
+      "step": 750,
+      "train_loss": 1.46,
+      "val_loss": 0.9266,
+      "val_cer": 0.243,
+      "val_wer": 0.7774,
+      "lr": 0.0008825735676449953,
+      "minutes": 2.0
+    },
+    {
+      "step": 1000,
+      "train_loss": 0.682,
+      "val_loss": 0.5333,
+      "val_cer": 0.1369,
+      "val_wer": 0.5019,
+      "lr": 0.0007493961591338485,
+      "minutes": 2.6
+    },
+    {
+      "step": 1250,
+      "train_loss": 0.4648,
+      "val_loss": 0.3759,
+      "val_cer": 0.0887,
+      "val_wer": 0.3449,
+      "lr": 0.0005861381343653727,
+      "minutes": 3.2
+    },
+    {
+      "step": 1500,
+      "train_loss": 0.3588,
+      "val_loss": 0.2918,
+      "val_cer": 0.0681,
+      "val_wer": 0.2679,
+      "lr": 0.0004124908205584799,
+      "minutes": 3.8
+    },
+    {
+      "step": 1750,
+      "train_loss": 0.2993,
+      "val_loss": 0.2691,
+      "val_cer": 0.0598,
+      "val_wer": 0.243,
+      "lr": 0.0002493986465196916,
+      "minutes": 4.4
+    },
+    {
+      "step": 2000,
+      "train_loss": 0.2832,
+      "val_loss": 0.2377,
+      "val_cer": 0.0524,
+      "val_wer": 0.2113,
+      "lr": 0.00011653293542222299,
+      "minutes": 5.1
+    },
+    {
+      "step": 2250,
+      "train_loss": 0.2526,
+      "val_loss": 0.2235,
+      "val_cer": 0.0494,
+      "val_wer": 0.2015,
+      "lr": 2.9919252913484595e-05,
+      "minutes": 5.7
+    },
+    {
+      "step": 2500,
+      "train_loss": 0.2483,
+      "val_loss": 0.2218,
+      "val_cer": 0.0484,
+      "val_wer": 0.2008,
+      "lr": 4.487385842907102e-09,
+      "minutes": 6.3
+    }
+  ]
+}

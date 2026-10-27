@@ -65,8 +65,9 @@ def prepare_photo(image_bytes: bytes, rotation: int = 0, crop: tuple = NO_CROP):
 
 
 @st.cache_data(show_spinner=False, max_entries=30)
-def scan_image_cached(image_bytes: bytes, kind: str, rotation: int = 0, crop: tuple = NO_CROP) -> dict:
-    return get_scanner(kind).scan_image(prepare_photo(image_bytes, rotation, crop))
+def scan_image_cached(image_bytes: bytes, kind: str, rotation: int = 0, crop: tuple = NO_CROP,
+                      recognizer: str = "rapidocr") -> dict:
+    return get_scanner(kind).scan_image(prepare_photo(image_bytes, rotation, crop), recognizer=recognizer)
 
 
 @st.cache_data(show_spinner=False, max_entries=30)
@@ -421,6 +422,15 @@ with st.sidebar:
     choice = st.radio("Classifier", options,
                       help="Hybrid = dictionary rules + fine-tuned DistilBERT + fuzzy matching against the knowledge base.")
     kind = CLASSIFIERS[choice]
+    from src.ocr_model.recognizer import available as crnn_available
+    readers = {"Our CRNN (trained by us)": "crnn", "RapidOCR (pretrained)": "rapidocr"}
+    if not crnn_available():
+        readers.pop("Our CRNN (trained by us)")
+    recognizer = readers[st.radio("Text reader", list(readers),
+                                  help="Our CRNN: CNN + BiLSTM + CTC, trained by us on synthetic and real food-label "
+                                       "lines; RapidOCR still finds where the text lines are. RapidOCR: the "
+                                       "pretrained PP-OCR recogniser. The nutrition-table photo is always read "
+                                       "by RapidOCR.")]
     st.markdown("### 👤 Who is eating?")
     profile_name = st.selectbox("Profile", list(PROFILES), label_visibility="collapsed", key="profile")
     profile = PROFILES[profile_name]
@@ -539,7 +549,7 @@ result = None
 if active[0] == "image":
     with st.spinner("Reading the label (usually 2-10 seconds) ..."):
         try:
-            result = scan_image_cached(active[1], kind, active[2], active[3])
+            result = scan_image_cached(active[1], kind, active[2], active[3], recognizer)
         except Exception as err:
             st.error(f"This file could not be read as an image: {err}")
 else:
