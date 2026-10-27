@@ -69,6 +69,26 @@ def scan_image_cached(image_bytes: bytes, kind: str, rotation: int = 0, crop: tu
     return get_scanner(kind).scan_image(prepare_photo(image_bytes, rotation, crop))
 
 
+@st.cache_data(show_spinner=False, max_entries=30)
+def read_nutrition_photo(image_bytes: bytes) -> dict:
+    """OCR a photo of the nutrition table and parse its values (src/app/nutrition.py parse_nutrition)."""
+    from src.app.nutrition import parse_nutrition, table_rows
+    from src.ocr.ocr_pipeline import read_image
+    ocr = read_image(prepare_photo(image_bytes))
+    # the normal reading order works for most tables; when it finds (almost) nothing, the OCR has usually read
+    # the labels and the numbers as two separate columns, so the table is rebuilt row by row instead.
+    # (Choosing by "more values" was tested and rejected: on 2 of 5 example photos the row-wise reading
+    # found more values but wrong ones.)
+    parsed = parse_nutrition(ocr["text"])
+    if len(parsed["per_100g"]) < 3:
+        rows = parse_nutrition(table_rows(ocr["lines"]))
+        if len(rows["per_100g"]) > len(parsed["per_100g"]):
+            parsed = rows
+    if parsed["per_100g"]:
+        parsed["source"] = "the nutrition-table photo" + (f" ({parsed['basis']})" if parsed["basis"].startswith("converted") else "")
+    return {"parsed": parsed, "text": ocr["text"], "confidence": ocr["mean_confidence"]}
+
+
 @st.cache_data(show_spinner=False, max_entries=100)
 def scan_text_cached(text: str, kind: str) -> dict:
     return get_scanner(kind).scan_text(text)
@@ -448,6 +468,32 @@ with st.expander("📥  Scan a product: photo, camera, text or example", expande
             if scan_now:
                 st.session_state.active = ("image", data, rot_u, crop)
 
+        # optional second photo: the nutrition table (often on another side of the pack)
+        st.markdown("**Nutrition table photo** (optional) - for the daily intake guide, instead of an estimate")
+        nutrition_upload = st.file_uploader("Drop a photo of the nutrition table", type=["jpg", "jpeg", "png", "webp"],
+                                            key="nutrition_upload", label_visibility="collapsed")
+        if nutrition_upload is not None:
+            st.session_state.nutrition_photo = nutrition_upload.getvalue()
+            n_col, msg_col = st.columns([1, 2])
+            with n_col:
+                st.image(nutrition_upload.getvalue(), caption="Nutrition table photo", width="stretch")
+            with msg_col:
+                with st.spinner("Reading the nutrition table ..."):
+                    try:
+                        read = read_nutrition_photo(st.session_state.nutrition_photo)
+                        values = read["parsed"]["per_100g"]
+                    except Exception:
+                        values = {}
+                if values:
+                    found = ", ".join(NUTRIENTS[k][0].lower() for k in values if k in NUTRIENTS)
+                    html(ui.callout(f"✅ <b>{len(values)} values read</b> ({ui.e(found)}). They are used in "
+                                    "<b>Is this amount OK?</b> - check and correct them there.", "good"))
+                else:
+                    html(ui.callout("No nutrition values could be read from this photo. Try a sharper, straight "
+                                    "photo of the table, or type the values in <b>Is this amount OK?</b>.", "warn"))
+        else:
+            st.session_state.nutrition_photo = None
+
     with tab_camera:
         shot = st.camera_input("Point the camera at the ingredient list")
         if shot is not None:
@@ -500,6 +546,15 @@ else:
     result = scan_text_cached(active[1], kind)
 if result is None:
     st.stop()
+nutrition_sig = ""
+if st.session_state.get("nutrition_photo"):     # values from the nutrition-table photo replace any estimate
+    try:
+        read = read_nutrition_photo(st.session_state.nutrition_photo)
+    except Exception:
+        read = None
+    if read and read["parsed"]["per_100g"]:
+        result = {**result, "nutrition": read["parsed"]}
+        nutrition_sig = hashlib.md5(st.session_state.nutrition_photo).hexdigest()[:8]
 
 head_left, head_right = st.columns([5, 1])
 source = "your photo" if active[0] == "image" else "the typed text"
@@ -520,7 +575,8 @@ if "ocr" in result and (result["ocr"]["mean_confidence"] < 0.8 or len(result["en
                     "may be missing. Crop to the list in the Upload tab, or fix the text in <b>How it was read</b>.",
                     "warn"))
 
-rid = hashlib.md5((result["input_text"] + kind).encode()).hexdigest()[:10]
+# a new nutrition-table photo gives a new id, so the guide's inputs start from its values
+rid = hashlib.md5((result["input_text"] + kind + nutrition_sig).encode()).hexdigest()[:10]
 guide = current_guide(result, rid, profile)
 view_summary(result, guide)
 

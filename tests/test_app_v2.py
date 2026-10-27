@@ -147,3 +147,17 @@ def test_photo_end_to_end_any_orientation(rotation):
     sugars = {s.lower() for s in result["summary"]["groups"]["SUGAR"]}
     assert {"sugar", "dextrose", "honey"} <= sugars
     assert any("150d" in c for c in result["summary"]["groups"]["COLOUR"])
+
+
+def test_nutrition_table_rows_rebuilt_from_ocr_boxes():
+    """OCR often reads a table as two columns (labels, then numbers); table_rows pairs them by height."""
+    from src.app.nutrition import table_rows
+    box = lambda x, y: [[[x, y], [x + 100, y], [x + 100, y + 20], [x, y + 20]]]
+    lines = [{"text": "Serving size 1 bar (50g)", "box": box(0, 0)}, {"text": "Energy", "box": box(0, 40)},
+             {"text": "Protein", "box": box(0, 80)}, {"text": "Sodium", "box": box(0, 120)},
+             {"text": "173 Kcal", "box": box(300, 42)}, {"text": "10.0 g", "box": box(300, 81)},
+             {"text": "138 mg", "box": box(300, 118)}]
+    rows = table_rows(lines)
+    assert rows.splitlines()[1:] == ["Energy 173 Kcal", "Protein 10.0 g", "Sodium 138 mg"]
+    parsed = parse_nutrition(rows)
+    assert parsed["per_100g"]["energy_kcal"] == 346.0 and parsed["per_100g"]["protein_g"] == 20.0

@@ -60,6 +60,31 @@ NUMBER_RE = re.compile(r"(\d+(?:[.,]\d+)?)\s*(kcal|kj|mg|g|%)?", re.IGNORECASE)
 SERVING_LINE_RE = re.compile(r"(?:serving|portion|serve)\s*(?:size)?[^\n]{0,30}?(\d+(?:[.,]\d+)?)\s*(g|ml)\b", re.IGNORECASE)
 
 
+def table_rows(ocr_lines: list) -> str:
+    """Rebuild the ROWS of a nutrition table from OCR boxes.
+
+    The OCR's reading order keeps text columns apart (right for ingredient lists), so a table comes out as
+    all the labels, then all the numbers ("Energy / Protein / ... / 173 Kcal / 10.0 g / ..."). Here the
+    boxes are grouped by vertical position instead: boxes whose centres are within about half a text
+    height of each other form one row, read left to right ("Energy 173 Kcal 8.7%")."""
+    boxes = []
+    for line in ocr_lines:
+        for box in (line.get("box") or []):
+            ys, xs = [p[1] for p in box], [p[0] for p in box]
+            boxes.append({"y": (min(ys) + max(ys)) / 2, "h": max(ys) - min(ys), "x": min(xs), "text": line["text"]})
+            break                                    # one position per OCR line
+    if not boxes:
+        return "\n".join(l["text"] for l in ocr_lines)
+    tolerance = 0.55 * sorted(b["h"] for b in boxes)[len(boxes) // 2]
+    rows = []
+    for b in sorted(boxes, key=lambda b: b["y"]):
+        if rows and abs(b["y"] - sum(r["y"] for r in rows[-1]) / len(rows[-1])) <= tolerance:
+            rows[-1].append(b)
+        else:
+            rows.append([b])
+    return "\n".join(" ".join(b["text"] for b in sorted(row, key=lambda b: b["x"])) for row in rows)
+
+
 def _num(s: str) -> float:
     return float(s.replace(",", "."))
 
