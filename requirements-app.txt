@@ -1,6 +1,6 @@
 # Minimal dependencies to RUN the app (photo -> result). Install CPU PyTorch first, e.g.
 #   pip install torch --index-url https://download.pytorch.org/whl/cpu
-streamlit>=1.35
+streamlit>=1.35,<1.50   # 1.50+ switched to a Uvicorn server that rejected phone uploads through a dev tunnel
 rapidocr>=3.4
 onnxruntime>=1.17
 symspellpy>=6.7
@@ -9,6 +9,7 @@ transformers>=4.40
 torch>=2.2
 pytorch-crf>=0.7
 rapidfuzz>=3.0
+gensim>=4.3
 opencv-python-headless>=4.8
 pandas>=2.2
 numpy>=1.26

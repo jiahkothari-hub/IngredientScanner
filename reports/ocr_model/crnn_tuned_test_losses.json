@@ -1,0 +1,21 @@
+{
+  "synthetic_test_severity0": {
+    "loss": 0.0144,
+    "cer": 0.0038,
+    "wer": 0.027,
+    "line_acc": 0.945
+  },
+  "synthetic_test_severity1": {
+    "loss": 0.0164,
+    "cer": 0.0041,
+    "wer": 0.0302,
+    "line_acc": 0.94
+  },
+  "synthetic_test_severity2": {
+    "loss": 0.1232,
+    "cer": 0.0351,
+    "wer": 0.1377,
+    "line_acc": 0.752
+  },
+  "real_crops_ctc_loss_two_fold": 0.8218
+}

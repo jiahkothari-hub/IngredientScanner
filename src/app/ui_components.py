@@ -5,6 +5,7 @@ component returns an HTML string that the page renders with st.markdown(..., uns
 all user/label text is escaped with html.escape before it is inserted.
 """
 import html
+import re
 
 # category -> (colour, soft background, icon, plural title)
 CATEGORY_STYLE = {
@@ -89,6 +90,13 @@ h1, h2, h3, h4 { color: var(--ink); letter-spacing: -0.01em; }
 .cat .none { color: #98A2B3; font-size: .82rem; margin-top: 8px; }
 .chip { background: #fff; color: var(--ink); border: 1px solid rgba(0,0,0,.07); border-radius: 999px;
         padding: 2px 9px; font-size: .78rem; font-weight: 500; }
+.chip.est { border-style: dashed; color: var(--muted); }
+.cat.wide { grid-column: 1 / -1; }
+.subgroups { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 8px 14px; margin-top: 8px; }
+.sg .sgt { font-size: .76rem; font-weight: 800; color: var(--c); text-transform: uppercase; letter-spacing: .03em;
+           margin-bottom: 4px; }
+.sg .items { margin-top: 0; }
+.cat .note { color: var(--muted); font-size: .74rem; margin-top: 8px; }
 
 /* classified text */
 .legend { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
@@ -129,6 +137,8 @@ h1, h2, h3, h4 { color: var(--ink); letter-spacing: -0.01em; }
 .add .fn { font-size: .84rem; color: var(--ink); margin-top: 3px; }
 .add .ds { font-size: .82rem; color: var(--muted); margin-top: 4px; line-height: 1.45; }
 .add .adi { font-size: .8rem; margin-top: 7px; padding-top: 7px; border-top: 1px dashed var(--line); color: var(--ink); }
+.add .reg { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 7px; }
+.add .reg span { border-radius: 999px; padding: 1px 9px; font-size: .74rem; font-weight: 700; border: 1px solid; }
 
 /* allergens */
 .alg { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -139,6 +149,29 @@ h1, h2, h3, h4 { color: var(--ink); letter-spacing: -0.01em; }
 .pipe { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
 .pipe .p { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 6px 10px; font-size: .8rem; font-weight: 600; }
 .pipe .arrow { color: #98A2B3; }
+
+/* ingredient assistant chat */
+.chat-intro { display: flex; gap: 14px; align-items: flex-start; background: #fff; border: 1px solid var(--line);
+              border-radius: 16px; padding: 14px 16px; margin-bottom: 10px; }
+.chat-intro .ic { font-size: 1.7rem; line-height: 1; }
+.chat-intro .t { font-weight: 800; color: var(--ink); }
+.chat-intro .d { color: var(--muted); font-size: .88rem; margin-top: 2px; line-height: 1.45; }
+.msg { display: flex; margin: 10px 0; }
+.msg.user { justify-content: flex-end; }
+.msg .bubble { max-width: 82%; border-radius: 16px; padding: 10px 14px; font-size: .94rem; line-height: 1.5; }
+.msg.user .bubble { background: linear-gradient(120deg, #0A5C4C 0%, #0E7C66 100%); color: #fff;
+                    border-bottom-right-radius: 5px; box-shadow: 0 6px 16px -10px rgba(10,92,76,.7); }
+.msg.bot .bubble { background: #fff; color: var(--ink); border: 1px solid var(--line); border-left: 4px solid var(--brand);
+                   border-bottom-left-radius: 5px; box-shadow: 0 1px 2px rgba(16,24,40,.04); }
+.msg.bot.refused .bubble { border-left-color: #E09200; background: #FFFCF4; }
+.msg .who { font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .05em; color: var(--brand);
+            margin-bottom: 3px; }
+.msg.refused .who { color: #B76E00; }
+.msg .srcs { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; padding-top: 7px; border-top: 1px dashed var(--line); }
+.msg .src { background: var(--soft); color: var(--muted); border: 1px solid var(--line); border-radius: 999px;
+            padding: 1px 8px; font-size: .72rem; font-weight: 600; }
+.msg .ref { color: var(--muted); font-size: .76rem; margin-bottom: 4px; }
+.suggest-label { color: var(--muted); font-size: .8rem; font-weight: 700; margin: 2px 0 4px; }
 
 /* streamlit widgets */
 .stTabs [role="tablist"] { gap: 6px; background: #EAF0ED; padding: 5px; border-radius: 14px; border: none; }
@@ -193,11 +226,35 @@ def glance(tiles: list) -> str:
         f'<div class="s">{e(s)}</div></div>' for k, v, s, c in tiles) + "</div>"
 
 
-def category_cards(groups: dict, order: list) -> str:
+def subgroup_card(items: list, subgroups: dict) -> str:
+    """The 'Other ingredients' card, full width, its ingredients sorted into sub-groups (protein, fibre ...)."""
+    from src.kb.ingredient_subgroups import INFO
+    colour, bg, icon, title = CATEGORY_STYLE["INGREDIENT"]
+    blocks = []
+    for key, names in subgroups.items():
+        info = INFO[key]
+        chips = "".join(
+            f'<span class="chip{" est" if n["estimated"] else ""}" title="'
+            f'{"Group estimated from word embeddings (ingredients used in similar lists)" if n["estimated"] else e(info["description"])}">'
+            f'{e(n["name"])}{" ~" if n["estimated"] else ""}</span>' for n in names)
+        blocks.append(f'<div class="sg"><div class="sgt">{info["icon"]} {e(info["title"])} · {len(names)}</div>'
+                      f'<div class="items">{chips}</div></div>')
+    note = ('<div class="note">Dashed chips marked ~ were grouped by the word embeddings (an estimate, about 83% '
+            'accurate when tested); the others by name rules.</div>'
+            if any(n["estimated"] for names in subgroups.values() for n in names) else "")
+    return (f'<div class="cat wide" style="--c:{colour};--bg:{bg}"><div class="top"><span class="name">{icon} '
+            f'{e(title)}</span><span class="n">{len(items)}</span></div><div class="subgroups">{"".join(blocks)}</div>'
+            f'{note}</div>')
+
+
+def category_cards(groups: dict, order: list, subgroups: dict = None) -> str:
     cards = []
     for cat in order:
         colour, bg, icon, title = CATEGORY_STYLE[cat]
         items = groups.get(cat, [])
+        if cat == "INGREDIENT" and items and subgroups:
+            cards.append(subgroup_card(items, subgroups))
+            continue
         chips = ("".join(f'<span class="chip">{e(x)}</span>' for x in items[:12])
                  + (f'<span class="chip">+{len(items) - 12} more</span>' if len(items) > 12 else "")
                  if items else '<div class="none">None found</div>')
@@ -277,7 +334,19 @@ def meter(row: dict, unit_word: str) -> str:
             f'</div><div class="ft">{"".join(foot)}</div></div>')
 
 
-def additive_card(ent: dict, adi: dict = None) -> str:
+def regulatory_badges(flags: list) -> str:
+    """'Banned in EU' (red) / 'Warning label required in EU' (amber) pills for an additive card."""
+    if not flags:
+        return ""
+    pills = []
+    for flag in flags:
+        c, bg = ("#C92A2A", "#FFEDED") if flag.startswith(("Banned", "Not authorised")) else ("#B76E00", "#FFF6E0")
+        pills.append(f'<span style="color:{c};background:{bg};border-color:{c}44" '
+                     f'title="Ask the assistant “is it banned?” for details and sources">⚖️ {e(flag)}</span>')
+    return '<div class="reg">' + "".join(pills) + "</div>"
+
+
+def additive_card(ent: dict, adi: dict = None, flags: list = ()) -> str:
     cat = ent["label"] if ent["label"] in CATEGORY_STYLE else (ent.get("kb_category") or "ADDITIVE")
     colour, bg = CATEGORY_STYLE.get(cat, CATEGORY_STYLE["ADDITIVE"])[:2]
     name = ent.get("canonical_name") or ent["text"]
@@ -293,7 +362,7 @@ def additive_card(ent: dict, adi: dict = None) -> str:
             adi_html += f'<br><span class="muted">{e(adi["note"])}</span>'
         adi_html += "</div>"
     return (f'<div class="add" style="--c:{colour};--bg:{bg}"><div class="hd"><span class="nm">{e(name)}</span>'
-            f'<span class="code">{e(code)}</span></div>{fn}{desc}{adi_html}</div>')
+            f'<span class="code">{e(code)}</span></div>{fn}{regulatory_badges(flags)}{desc}{adi_html}</div>')
 
 
 def allergen_badges(groups: dict, kind: str) -> str:
@@ -301,6 +370,31 @@ def allergen_badges(groups: dict, kind: str) -> str:
     return '<div class="alg">' + "".join(
         f'<div class="a" style="color:{c};background:{bg};border-color:{c}44">{e(g)}<small>{e(", ".join(w))}</small></div>'
         for g, w in groups.items()) + "</div>"
+
+
+def _inline_markdown(text: str) -> str:
+    """Escape, then render the assistant's tiny markdown: **bold** and blank-line paragraphs."""
+    out = e(text)
+    out = re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", out)
+    return out.replace("\n\n", "<br><br>").replace("\n", "<br>")
+
+
+def chat_intro() -> str:
+    return ('<div class="chat-intro"><div class="ic">💬</div><div><div class="t">Ask about this product</div>'
+            '<div class="d">What is an ingredient or code, why is it added, is it vegan, which allergens or hidden '
+            'sugars are there, how does a portion compare with daily limits. Answers come only from our food '
+            'database and your scan, with their source. No medical advice.</div></div></div>')
+
+
+def chat_message(role: str, text: str, sources: list = (), refused: bool = False, reference: str = "") -> str:
+    if role == "user":
+        return f'<div class="msg user"><div class="bubble">{e(text)}</div></div>'
+    who = "Can't advise on that" if refused else "Ingredient assistant"
+    ref = f'<div class="ref">“it” = {e(reference)}</div>' if reference else ""
+    srcs = ('<div class="srcs">' + "".join(f'<span class="src">📚 {e(s)}</span>' for s in sources) + "</div>"
+            if sources else "")
+    return (f'<div class="msg bot{" refused" if refused else ""}"><div class="bubble"><div class="who">{who}</div>'
+            f'{ref}{_inline_markdown(text)}{srcs}</div></div>')
 
 
 def pipeline(steps: list) -> str:

@@ -12,12 +12,17 @@
    sodium (mg) is converted to salt (salt = sodium x 2.5).
 2. ESTIMATE (fallback, clearly labelled). If the photo shows only the ingredient list, we look for the
    product in our Open Food Facts database (9,000 products with nutrition facts) whose ingredient list is
-   most similar (TF-IDF cosine similarity >= 0.4) and offer its values as an estimate.
+   most similar and offer its values as an estimate. An estimate is only offered when some product is
+   close in wording (TF-IDF cosine similarity >= 0.4). The product is then chosen by TF-IDF and
+   ingredient2vec embeddings together (mean of the two cosine similarities): on 1,320 held-out test
+   products this gives 8-15% lower errors for sugars, fat, salt and energy than TF-IDF alone
+   (src/evaluation/product_similarity.py). Without the embedding model, TF-IDF alone is used.
 3. The user can always correct every number in the app.
 """
 import re
 from functools import lru_cache
 
+import numpy as np
 import pandas as pd
 
 from src.utils.config import project_path
@@ -53,6 +58,31 @@ SERVING_NO_UNIT_RE = re.compile(r"serving\s*size\s*:?\s*(\d+(?:[.,]\d+)?)\b(?!\s
                                 r"tbsp|tsp|pcs?|bars?|sachets?|packs?|cookies?|units?)\b)", re.IGNORECASE)
 NUMBER_RE = re.compile(r"(\d+(?:[.,]\d+)?)\s*(kcal|kj|mg|g|%)?", re.IGNORECASE)
 SERVING_LINE_RE = re.compile(r"(?:serving|portion|serve)\s*(?:size)?[^\n]{0,30}?(\d+(?:[.,]\d+)?)\s*(g|ml)\b", re.IGNORECASE)
+
+
+def table_rows(ocr_lines: list) -> str:
+    """Rebuild the ROWS of a nutrition table from OCR boxes.
+
+    The OCR's reading order keeps text columns apart (right for ingredient lists), so a table comes out as
+    all the labels, then all the numbers ("Energy / Protein / ... / 173 Kcal / 10.0 g / ..."). Here the
+    boxes are grouped by vertical position instead: boxes whose centres are within about half a text
+    height of each other form one row, read left to right ("Energy 173 Kcal 8.7%")."""
+    boxes = []
+    for line in ocr_lines:
+        for box in (line.get("box") or []):
+            ys, xs = [p[1] for p in box], [p[0] for p in box]
+            boxes.append({"y": (min(ys) + max(ys)) / 2, "h": max(ys) - min(ys), "x": min(xs), "text": line["text"]})
+            break                                    # one position per OCR line
+    if not boxes:
+        return "\n".join(l["text"] for l in ocr_lines)
+    tolerance = 0.55 * sorted(b["h"] for b in boxes)[len(boxes) // 2]
+    rows = []
+    for b in sorted(boxes, key=lambda b: b["y"]):
+        if rows and abs(b["y"] - sum(r["y"] for r in rows[-1]) / len(rows[-1])) <= tolerance:
+            rows[-1].append(b)
+        else:
+            rows.append([b])
+    return "\n".join(" ".join(b["text"] for b in sorted(row, key=lambda b: b["x"])) for row in rows)
 
 
 def _num(s: str) -> float:
@@ -117,18 +147,53 @@ def _similarity_index():
     from sklearn.feature_extraction.text import TfidfVectorizer
     nutrition = pd.read_csv(project_path("data/knowledge_base/products_nutrition.csv"), dtype={"product_id": str})
     nutrition = nutrition.dropna(subset=["energy-kcal_100g", "sugars_100g", "fat_100g"])
+    # crowd-sourced data has impossible entries (salt 4020 g / 100 g, 26700 kcal / 100 g): a product with one
+    # impossible value is not trusted at all
+    possible = pd.Series(True, index=nutrition.index)
+    for col, limit in LIMITS_100G.items():
+        possible &= nutrition[col].isna() | nutrition[col].between(0, limit)
+    nutrition = nutrition[possible]
     texts = pd.read_csv(project_path("data/processed/products.csv"), dtype={"product_id": str},
                         usecols=["product_id", "ingredients_text_raw"]).rename(columns={"ingredients_text_raw": "ingredients_text"})
     data = nutrition.merge(texts, on="product_id", how="inner").dropna(subset=["ingredients_text"])
     data = data.reset_index(drop=True)
     vectorizer = TfidfVectorizer(ngram_range=(1, 2), min_df=2, sublinear_tf=True)
     matrix = vectorizer.fit_transform(data["ingredients_text"].str.lower())
-    return vectorizer, matrix, data
+    return vectorizer, matrix, data, _embedding_index(data)
+
+
+def _embedding_index(data: pd.DataFrame):
+    """(word vectors, L2-normalised mean ingredient2vec vector of every database product), or None."""
+    from sklearn.preprocessing import normalize
+    from src.embeddings.ingredient2vec import MODEL_PATH, document_vector, load_model, record_tokens
+    from src.ner.data import load_split
+    if not MODEL_PATH.exists():
+        return None
+    try:
+        wv = load_model().wv
+    except ImportError:          # gensim not installed: TF-IDF alone
+        return None
+    tokens = {r["product_id"]: record_tokens(r) for split in ("train", "validation", "test")
+              for r in load_split("silver", split)}
+    if not tokens:
+        return None
+    return wv, normalize(np.array([document_vector(tokens.get(pid, []), wv) for pid in data["product_id"]]))
+
+
+def _query_embedding(ingredient_text: str, wv) -> np.ndarray:
+    """Ingredient tokens of free text, found by the same dictionary rules that made the training tokens."""
+    from src.baseline.dictionary_ner import DictionaryNER
+    from src.embeddings.ingredient2vec import document_vector, record_tokens
+    vector = document_vector(record_tokens({"entities": DictionaryNER().predict(ingredient_text)["entities"]}), wv)
+    norm = np.linalg.norm(vector)
+    return vector / norm if norm else vector
 
 
 OFF_COLUMNS = {"energy-kcal_100g": "energy_kcal", "fat_100g": "fat_g", "saturated-fat_100g": "saturated_fat_g",
                "carbohydrates_100g": "carbohydrate_g", "sugars_100g": "sugars_g", "fiber_100g": "fibre_g",
                "proteins_100g": "protein_g", "salt_100g": "salt_g"}
+# physical limits per 100 g: no food has more than 100 g of anything, or more than 900 kcal (pure fat)
+LIMITS_100G = {col: (900 if col == "energy-kcal_100g" else 100) for col in OFF_COLUMNS}
 
 
 def estimate_from_similar_product(ingredient_text: str, min_similarity: float = 0.4) -> dict:
@@ -136,16 +201,24 @@ def estimate_from_similar_product(ingredient_text: str, min_similarity: float = 
     if not ingredient_text or len(ingredient_text) < 15:
         return {}
     try:
-        vectorizer, matrix, data = _similarity_index()
+        vectorizer, matrix, data, embeddings = _similarity_index()
     except (FileNotFoundError, ValueError):
         return {}
     scores = (matrix @ vectorizer.transform([ingredient_text.lower()]).T).toarray().ravel()
-    best = int(scores.argmax())
-    if scores[best] < min_similarity:
+    if scores.max() < min_similarity:          # nothing close in wording: no estimate
         return {}
+    method = "TF-IDF"
+    if embeddings is not None:
+        wv, product_vectors = embeddings
+        query = _query_embedding(ingredient_text, wv)
+        if query.any():
+            scores = (scores + product_vectors @ query) / 2
+            method = "TF-IDF + ingredient2vec"
+    best = int(scores.argmax())
     row = data.iloc[best]
-    per100 = {key: round(float(row[col]), 2) for col, key in OFF_COLUMNS.items() if pd.notna(row[col])}
+    per100 = {key: round(float(row[col]), 2) for col, key in OFF_COLUMNS.items()
+              if pd.notna(row[col]) and 0 <= row[col] <= LIMITS_100G[col]}
     name = " - ".join(str(x) for x in (row["product_name"], row["brands"]) if pd.notna(x) and str(x))
     return {"per_100g": per100, "product_name": name or "unnamed product", "product_id": row["product_id"],
-            "similarity": round(float(scores[best]), 2),
+            "similarity": round(float(scores[best]), 2), "method": method,
             "source": f"estimate: most similar product in the Open Food Facts database ({name})"}

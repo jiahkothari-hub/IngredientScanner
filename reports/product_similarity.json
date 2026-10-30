@@ -1,0 +1,358 @@
+{
+  "Baseline: database mean": {
+    "top1": {
+      "sugars_g": {
+        "mae": 12.88,
+        "median_ae": 10.56
+      },
+      "fat_g": {
+        "mae": 11.07,
+        "median_ae": 10.4
+      },
+      "salt_g": {
+        "mae": 1.28,
+        "median_ae": 0.93
+      },
+      "energy_kcal": {
+        "mae": 149.87,
+        "median_ae": 148.0
+      }
+    },
+    "top5": null,
+    "same_category_top1": null
+  },
+  "Baseline: random product": {
+    "top1": {
+      "sugars_g": {
+        "mae": 16.55,
+        "median_ae": 7.73
+      },
+      "fat_g": {
+        "mae": 14.72,
+        "median_ae": 10.0
+      },
+      "salt_g": {
+        "mae": 1.8,
+        "median_ae": 0.64
+      },
+      "energy_kcal": {
+        "mae": 208.98,
+        "median_ae": 176.01
+      }
+    },
+    "top5": null,
+    "same_category_top1": 0.003
+  },
+  "Jaccard (word sets)": {
+    "top1": {
+      "sugars_g": {
+        "mae": 6.98,
+        "median_ae": 2.03
+      },
+      "fat_g": {
+        "mae": 6.12,
+        "median_ae": 2.2
+      },
+      "salt_g": {
+        "mae": 1.03,
+        "median_ae": 0.22
+      },
+      "energy_kcal": {
+        "mae": 79.8,
+        "median_ae": 35.0
+      }
+    },
+    "top5": {
+      "sugars_g": {
+        "mae": 5.94,
+        "median_ae": 2.52
+      },
+      "fat_g": {
+        "mae": 5.79,
+        "median_ae": 3.49
+      },
+      "salt_g": {
+        "mae": 1.09,
+        "median_ae": 0.26
+      },
+      "energy_kcal": {
+        "mae": 72.7,
+        "median_ae": 46.8
+      }
+    },
+    "same_category_top1": 0.154
+  },
+  "BoW + Euclidean": {
+    "top1": {
+      "sugars_g": {
+        "mae": 7.99,
+        "median_ae": 2.3
+      },
+      "fat_g": {
+        "mae": 9.73,
+        "median_ae": 3.0
+      },
+      "salt_g": {
+        "mae": 1.26,
+        "median_ae": 0.28
+      },
+      "energy_kcal": {
+        "mae": 107.57,
+        "median_ae": 44.0
+      }
+    },
+    "top5": {
+      "sugars_g": {
+        "mae": 7.52,
+        "median_ae": 3.16
+      },
+      "fat_g": {
+        "mae": 7.87,
+        "median_ae": 4.66
+      },
+      "salt_g": {
+        "mae": 1.12,
+        "median_ae": 0.28
+      },
+      "energy_kcal": {
+        "mae": 90.16,
+        "median_ae": 60.29
+      }
+    },
+    "same_category_top1": 0.125
+  },
+  "BoW + Manhattan": {
+    "top1": {
+      "sugars_g": {
+        "mae": 7.84,
+        "median_ae": 2.3
+      },
+      "fat_g": {
+        "mae": 10.48,
+        "median_ae": 3.09
+      },
+      "salt_g": {
+        "mae": 1.22,
+        "median_ae": 0.28
+      },
+      "energy_kcal": {
+        "mae": 111.67,
+        "median_ae": 44.0
+      }
+    },
+    "top5": {
+      "sugars_g": {
+        "mae": 7.7,
+        "median_ae": 3.53
+      },
+      "fat_g": {
+        "mae": 8.54,
+        "median_ae": 5.23
+      },
+      "salt_g": {
+        "mae": 1.1,
+        "median_ae": 0.29
+      },
+      "energy_kcal": {
+        "mae": 94.96,
+        "median_ae": 63.66
+      }
+    },
+    "same_category_top1": 0.126
+  },
+  "BoW + cosine": {
+    "top1": {
+      "sugars_g": {
+        "mae": 7.31,
+        "median_ae": 2.1
+      },
+      "fat_g": {
+        "mae": 6.19,
+        "median_ae": 2.66
+      },
+      "salt_g": {
+        "mae": 1.11,
+        "median_ae": 0.25
+      },
+      "energy_kcal": {
+        "mae": 82.86,
+        "median_ae": 38.82
+      }
+    },
+    "top5": {
+      "sugars_g": {
+        "mae": 6.55,
+        "median_ae": 2.8
+      },
+      "fat_g": {
+        "mae": 5.99,
+        "median_ae": 3.57
+      },
+      "salt_g": {
+        "mae": 1.08,
+        "median_ae": 0.31
+      },
+      "energy_kcal": {
+        "mae": 76.54,
+        "median_ae": 53.0
+      }
+    },
+    "same_category_top1": 0.142
+  },
+  "TF-IDF words + cosine": {
+    "top1": {
+      "sugars_g": {
+        "mae": 7.31,
+        "median_ae": 2.32
+      },
+      "fat_g": {
+        "mae": 6.59,
+        "median_ae": 2.6
+      },
+      "salt_g": {
+        "mae": 1.33,
+        "median_ae": 0.25
+      },
+      "energy_kcal": {
+        "mae": 87.7,
+        "median_ae": 40.0
+      }
+    },
+    "top5": {
+      "sugars_g": {
+        "mae": 6.6,
+        "median_ae": 3.08
+      },
+      "fat_g": {
+        "mae": 6.28,
+        "median_ae": 3.61
+      },
+      "salt_g": {
+        "mae": 1.25,
+        "median_ae": 0.31
+      },
+      "energy_kcal": {
+        "mae": 80.53,
+        "median_ae": 52.42
+      }
+    },
+    "same_category_top1": 0.145
+  },
+  "TF-IDF words+pairs + cosine (app)": {
+    "top1": {
+      "sugars_g": {
+        "mae": 7.63,
+        "median_ae": 2.33
+      },
+      "fat_g": {
+        "mae": 7.3,
+        "median_ae": 2.98
+      },
+      "salt_g": {
+        "mae": 1.36,
+        "median_ae": 0.25
+      },
+      "energy_kcal": {
+        "mae": 91.52,
+        "median_ae": 42.0
+      }
+    },
+    "top5": {
+      "sugars_g": {
+        "mae": 6.68,
+        "median_ae": 2.96
+      },
+      "fat_g": {
+        "mae": 6.65,
+        "median_ae": 3.9
+      },
+      "salt_g": {
+        "mae": 1.18,
+        "median_ae": 0.3
+      },
+      "energy_kcal": {
+        "mae": 81.23,
+        "median_ae": 54.33
+      }
+    },
+    "same_category_top1": 0.144
+  },
+  "ingredient2vec mean + cosine": {
+    "top1": {
+      "sugars_g": {
+        "mae": 8.02,
+        "median_ae": 2.8
+      },
+      "fat_g": {
+        "mae": 6.51,
+        "median_ae": 3.28
+      },
+      "salt_g": {
+        "mae": 1.15,
+        "median_ae": 0.3
+      },
+      "energy_kcal": {
+        "mae": 89.79,
+        "median_ae": 44.0
+      }
+    },
+    "top5": {
+      "sugars_g": {
+        "mae": 6.46,
+        "median_ae": 2.96
+      },
+      "fat_g": {
+        "mae": 6.34,
+        "median_ae": 3.95
+      },
+      "salt_g": {
+        "mae": 1.03,
+        "median_ae": 0.32
+      },
+      "energy_kcal": {
+        "mae": 82.22,
+        "median_ae": 52.25
+      }
+    },
+    "same_category_top1": 0.116
+  },
+  "TF-IDF + ingredient2vec + cosine": {
+    "top1": {
+      "sugars_g": {
+        "mae": 6.99,
+        "median_ae": 2.16
+      },
+      "fat_g": {
+        "mae": 6.23,
+        "median_ae": 2.5
+      },
+      "salt_g": {
+        "mae": 1.04,
+        "median_ae": 0.22
+      },
+      "energy_kcal": {
+        "mae": 79.66,
+        "median_ae": 35.69
+      }
+    },
+    "top5": {
+      "sugars_g": {
+        "mae": 5.99,
+        "median_ae": 2.69
+      },
+      "fat_g": {
+        "mae": 5.9,
+        "median_ae": 3.36
+      },
+      "salt_g": {
+        "mae": 1.07,
+        "median_ae": 0.27
+      },
+      "energy_kcal": {
+        "mae": 73.61,
+        "median_ae": 45.72
+      }
+    },
+    "same_category_top1": 0.149
+  }
+}

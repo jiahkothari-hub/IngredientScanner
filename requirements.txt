@@ -25,7 +25,8 @@ scikit-learn>=1.3         # TF-IDF similar-product search (nutrition estimate)
 opencv-python-headless>=4.8
 easyocr>=1.7              # optional: older OCR engine, used only if rapidocr is missing (and for the v1 comparison)
 rapidfuzz>=3.0            # fuzzy entity linking, character error rate
-streamlit>=1.35
+gensim>=4.3               # ingredient2vec word embeddings
+streamlit>=1.35,<1.50
 Pillow>=10.0
 
 # Notebooks

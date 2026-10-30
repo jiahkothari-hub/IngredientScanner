@@ -57,13 +57,13 @@ class IngredientScanner:
         self.ner_name = getattr(self.ner, "name", "model")
         self.linker = get_linker()
 
-    def scan_image(self, image) -> dict:
-        """image: file path, bytes or OpenCV array."""
+    def scan_image(self, image, recognizer: str = "rapidocr") -> dict:
+        """image: file path, bytes or OpenCV array. recognizer: "rapidocr" or "crnn" (our own text recogniser)."""
         from src.ocr.ocr_cleanup import fix_additive_codes
         from src.ocr.ocr_pipeline import read_image
         from src.ocr.section_extraction import extract_ingredients_section
         start = time.time()
-        ocr = read_image(image)
+        ocr = read_image(image, recognizer=recognizer)
         cleaned = fix_additive_codes(ocr["text"])
         section = extract_ingredients_section(cleaned)
         result = self.scan_text(section["text"], extract_section=False, full_text=cleaned)
@@ -102,6 +102,8 @@ class IngredientScanner:
                           **link, "function": function, "description": description,
                           "function_source": "label" if i in declared else
                           ("reference" if function else "")})
+        from src.kb.ingredient_subgroups import add_subgroups
+        add_subgroups(items)                  # protein / fibre / probiotic ... for the generic ingredients
         return {"input_text": text, "text": norm_text, "entities": items, "summary": summarise(items),
                 "allergens": find_allergens(allergen_text(text, full_text)), "nutrition": parse_nutrition(full_text),
                 "section_method": section_method, "ner_model": self.ner_name, "disclaimer": DISCLAIMER}
@@ -133,4 +135,15 @@ def summarise(items: list) -> dict:
         "sugar_like_carbohydrates": sorted({it["text"] for it in items if re.search(
             r"maltodextrin|glucose solids|dextrin|corn solids|rice solids", it["text"], re.I)}),
     }
-    return {"counts": {c: len(v) for c, v in groups.items()}, "groups": groups, "hidden": hidden}
+    # the generic ingredients by sub-group (src/kb/ingredient_subgroups.py), in display order;
+    # each item notes whether a rule or the word embeddings (an estimate) placed it
+    from src.kb.ingredient_subgroups import ORDER
+    subgroups = {}
+    for it in items:
+        if it["label"] == "INGREDIENT" and it.get("subgroup"):
+            names = subgroups.setdefault(it["subgroup"], [])
+            if it["text"].lower() not in {n["name"].lower() for n in names}:
+                names.append({"name": it["text"], "estimated": it.get("subgroup_method") == "embedding"})
+    subgroups = {k: subgroups[k] for k in ORDER if k in subgroups}
+    return {"counts": {c: len(v) for c, v in groups.items()}, "groups": groups, "hidden": hidden,
+            "subgroups": subgroups}

@@ -1,0 +1,149 @@
+{
+  "crops": 377,
+  "photos": 57,
+  "methods": {
+    "line": {
+      "cer": 0.06912059779976476,
+      "wer": 0.22161080540270134,
+      "line_accuracy": 0.5092838196286472,
+      "cer_ignoring_case": 0.04013007680066422,
+      "lines_changed_from_rapidocr": 7,
+      "chosen_margins": [
+        {
+          "margin": "inf",
+          "cer_on_choice_half": {
+            "0.0": 0.04428259286234523,
+            "0.1": 0.042825928623452296,
+            "0.25": 0.042097596504005824,
+            "0.5": 0.04224326292789512,
+            "1.0": 0.04166059723233795,
+            "inf": 0.04166059723233795
+          }
+        },
+        {
+          "margin": "0.25",
+          "cer_on_choice_half": {
+            "0.0": 0.09290985767000527,
+            "0.1": 0.09132841328413284,
+            "0.25": 0.09040590405904059,
+            "0.5": 0.09066947812335266,
+            "1.0": 0.0926462836056932,
+            "inf": 0.09356879283078545
+          }
+        }
+      ]
+    },
+    "word": {
+      "cer": 0.06870545907424064,
+      "wer": 0.22011005502751377,
+      "line_accuracy": 0.506631299734748,
+      "cer_ignoring_case": 0.03978412786272746,
+      "lines_changed_from_rapidocr": 11,
+      "chosen_margins": [
+        {
+          "margin": "1.0",
+          "cer_on_choice_half": {
+            "0.0": 0.04632192279679534,
+            "0.1": 0.04515659140568099,
+            "0.25": 0.041514930808448654,
+            "0.5": 0.04180626365622724,
+            "1.0": 0.04136926438455936,
+            "inf": 0.04166059723233795
+          }
+        },
+        {
+          "margin": "0.5",
+          "cer_on_choice_half": {
+            "0.0": 0.09356879283078545,
+            "0.1": 0.09185556141275698,
+            "0.25": 0.09053769109119662,
+            "0.5": 0.08987875593041644,
+            "1.0": 0.09304164470216131,
+            "inf": 0.09356879283078545
+          }
+        }
+      ]
+    }
+  },
+  "rapidocr": {
+    "cer": 0.0689130284370027,
+    "wer": 0.22111055527763882,
+    "line_accuracy": 0.506631299734748,
+    "cer_ignoring_case": 0.04013007680066422
+  },
+  "crnn_ft": {
+    "cer": 0.14502179478309002,
+    "wer": 0.439719859929965,
+    "line_accuracy": 0.17771883289124668,
+    "cer_ignoring_case": 0.11305611291773335
+  },
+  "changed_examples": [
+    {
+      "label": "Maltodextrin, Mint Flavor(Mint, Garlic, Tamarind),",
+      "rapidocr": "Maltodetrin, Mint Rlavor(Mint Garic, Tamarind)",
+      "crnn": "Maltodextrin, Mint Flavor(Mint, Garlic, Tamarind),",
+      "combined": "Maltodextrin, Mint Rlavor(Mint Garic, Tamarind)"
+    },
+    {
+      "label": "*As flavouring agent. Contains Onion and Garlic",
+      "rapidocr": "\"As filavouring agent. \"Contains Onion and Garlic",
+      "crnn": "*As favouring agert. *Contains Onion and Garlic",
+      "combined": "\"As favouring agent. \"Contains Onion and Garlic"
+    },
+    {
+      "label": "Vitamins, Anticaking Agent (341), Stabilizers",
+      "rapidocr": "Vitamins, Anticaking Agent (341(i), tabilizers",
+      "crnn": "Vitamins, Anticaking Agent (341(ii)), Stabilizers",
+      "combined": "Vitamins, Anticaking Agent (341(i), Stabilizers"
+    },
+    {
+      "label": "& Artificial Flavouring Substances (Milk & Vanilla).",
+      "rapidocr": "& Artificial Flavouring Substances (Milk & Vanilla).",
+      "crnn": "&. Artificial Flavouring Substances (Milk & Vanilla).",
+      "combined": "&. Artificial Flavouring Substances (Milk & Vanilla)."
+    },
+    {
+      "label": "[1101 (ii)] AND EMULSIFIER OF VEGETABLE ORIGIN [472e]",
+      "rapidocr": "(1101 () AND EMULSIFIER OF VEGETABLE ORIGIN [472e]",
+      "crnn": "(1101 (i)] AND EMULSIFIER OF VEGETABLE ORIcIN [472e]",
+      "combined": "(1101 (i)] AND EMULSIFIER OF VEGETABLE ORIGIN [472e]"
+    },
+    {
+      "label": "(D-GLUCOSE, LEVULOSE)",
+      "rapidocr": "D-GLUCOSE,LEVULOSE",
+      "crnn": "D - GluCoSE, LEVULOSE,",
+      "combined": "D - GluCoSE, LEVULOSE,"
+    },
+    {
+      "label": "acid), colours (paprika extract, plain",
+      "rapidocr": "acid). coiours (paprika extract, plain",
+      "crnn": "ocid), colours (popriko extroct, ploin",
+      "combined": "acid). colours (paprika extract, plain"
+    },
+    {
+      "label": "Potassium Carbonate), Soya Flour, Maize",
+      "rapidocr": "Potasslum Carhonate), Soya Flour, Maize",
+      "crnn": "Potassium Curlenate), Soyn Flour, Maize",
+      "combined": "Potassium Carhonate), Soya Flour, Maize"
+    },
+    {
+      "label": "Acid), Milk Proteins.",
+      "rapidocr": "Acid), MIIk Proteins.",
+      "crnn": "Acid), Milk Proteins.",
+      "combined": "Acid), Milk Proteins."
+    },
+    {
+      "label": "(5%): Milk Solids, Live aBc Probiotic Cultures",
+      "rapidocr": "(59): Milk Solids. Live aBc Probiotic Cultures",
+      "crnn": "(6%), mik solids, live an prohintic cullures",
+      "combined": "(6%), Milk Solids. Live aBc Probiotic Cultures"
+    },
+    {
+      "label": "lactis Lactobacillus casei 1 Billion Probiotic Count",
+      "rapidocr": "6 Lactobacillus casei 1 Billion Probiotic Count",
+      "crnn": "c lactohacilc racpi 1 billin prohiotic coun",
+      "combined": "c Lactobacillus casei 1 Billion Probiotic Count"
+    }
+  ],
+  "best_method": "word"
+}

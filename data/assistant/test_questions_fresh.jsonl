@@ -1,0 +1,24 @@
+{"id": 101, "product": "Kurkure Masala Munch", "history": [], "question": "what is 627", "intent": "what_is", "mention": "guanylate", "must_include": ["flavour enhancer"], "refuse": false}
+{"id": 102, "product": "Kurkure Masala Munch", "history": ["what is 551"], "question": "and why is that added", "intent": "why_added", "mention": "silicon dioxide", "must_include": ["anti-caking"], "refuse": false}
+{"id": 103, "product": "Kurkure Masala Munch", "history": [], "question": "does kurkure contain any wheat", "intent": "allergens", "mention": null, "must_include": ["no cereals containing gluten"], "refuse": false}
+{"id": 104, "product": "Kurkure Masala Munch", "history": [], "question": "is kurkure ok for my child with adhd", "intent": "medical", "mention": null, "must_include": ["can't give medical"], "refuse": true}
+{"id": 105, "product": "Kurkure Masala Munch", "history": [], "question": "list all the additives", "intent": "list_category", "mention": null, "must_include": ["citric acid", "silicon dioxide"], "refuse": false}
+{"id": 106, "product": "Coca-Cola", "history": [], "question": "how much sugar is in a 250 ml glass", "intent": "portion", "mention": null, "must_include": ["250 ml", "sugars"], "refuse": false}
+{"id": 107, "product": "Coca-Cola", "history": [], "question": "is there phosphoric acid in coke", "intent": "contains", "mention": "phosphoric acid", "must_include": ["yes"], "refuse": false}
+{"id": 108, "product": "Coca-Cola", "history": ["what is E150d"], "question": "is it vegetarian", "intent": "diet", "mention": "caramel", "must_include": ["vegetarian"], "refuse": false}
+{"id": 109, "product": "Coca-Cola", "history": [], "question": "is coke bad for my bones", "intent": "medical", "mention": null, "must_include": ["can't give medical"], "refuse": true}
+{"id": 110, "product": "Diet Coke", "history": [], "question": "which sweetners does diet coke use", "intent": "list_category", "mention": null, "must_include": ["aspartame", "acesulfame"], "refuse": false}
+{"id": 111, "product": "Diet Coke", "history": [], "question": "whats the daily limit for acesulfame k", "intent": "daily_limit", "mention": "acesulfame", "must_include": ["15 mg"], "refuse": false}
+{"id": 112, "product": "Diet Coke", "history": [], "question": "does it have any sugar", "intent": "contains", "mention": null, "must_include": ["no"], "refuse": false}
+{"id": 113, "product": "Lays Magic Masala", "history": [], "question": "what oils are in lays", "intent": "list_category", "mention": null, "must_include": ["palmolein"], "refuse": false}
+{"id": 114, "product": "Lays Magic Masala", "history": [], "question": "are there hidden sugars in these chips", "intent": "list_category", "mention": null, "must_include": ["maltodextrin"], "refuse": false}
+{"id": 115, "product": "Lays Magic Masala", "history": [], "question": "is lays vegan", "intent": "diet", "mention": null, "must_include": ["vegan"], "refuse": false}
+{"id": 116, "product": "Lays Magic Masala", "history": [], "question": "what is hydrolysed vegetable protein", "intent": "what_is", "mention": "hydrolysed vegetable protein", "must_include": ["hydrolysed vegetable protein"], "refuse": false}
+{"id": 117, "product": "Britannia Good Day", "history": [], "question": "does good day have cashews", "intent": "allergens", "mention": null, "must_include": ["tree nuts"], "refuse": false}
+{"id": 118, "product": "Britannia Good Day", "history": [], "question": "is good day vegetarian", "intent": "diet", "mention": null, "must_include": ["vegetarian"], "refuse": false}
+{"id": 119, "product": "Britannia Good Day", "history": [], "question": "why is 500 in the biscuit", "intent": "why_added", "mention": "sodium carbonate", "must_include": ["raising agent"], "refuse": false}
+{"id": 120, "product": "Britannia Good Day", "history": [], "question": "what is invert syrup", "intent": "what_is", "mention": "invert", "must_include": ["sugar"], "refuse": false}
+{"id": 121, "product": null, "history": [], "question": "what is E330 used for", "intent": "why_added", "mention": "citric acid", "must_include": ["citric acid"], "refuse": false}
+{"id": 122, "product": null, "history": [], "question": "is shellac vegan", "intent": "diet", "mention": "shellac", "must_include": ["not vegan"], "refuse": false}
+{"id": 123, "product": null, "history": [], "question": "what does an anti-caking agent do", "intent": "what_is", "mention": "anti-caking", "must_include": ["anti-caking"], "refuse": false}
+{"id": 124, "product": null, "history": [], "question": "thanks a lot!", "intent": "smalltalk", "mention": null, "must_include": ["welcome"], "refuse": false}

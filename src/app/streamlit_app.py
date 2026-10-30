@@ -65,8 +65,29 @@ def prepare_photo(image_bytes: bytes, rotation: int = 0, crop: tuple = NO_CROP):
 
 
 @st.cache_data(show_spinner=False, max_entries=30)
-def scan_image_cached(image_bytes: bytes, kind: str, rotation: int = 0, crop: tuple = NO_CROP) -> dict:
-    return get_scanner(kind).scan_image(prepare_photo(image_bytes, rotation, crop))
+def scan_image_cached(image_bytes: bytes, kind: str, rotation: int = 0, crop: tuple = NO_CROP,
+                      recognizer: str = "rapidocr") -> dict:
+    return get_scanner(kind).scan_image(prepare_photo(image_bytes, rotation, crop), recognizer=recognizer)
+
+
+@st.cache_data(show_spinner=False, max_entries=30)
+def read_nutrition_photo(image_bytes: bytes) -> dict:
+    """OCR a photo of the nutrition table and parse its values (src/app/nutrition.py parse_nutrition)."""
+    from src.app.nutrition import parse_nutrition, table_rows
+    from src.ocr.ocr_pipeline import read_image
+    ocr = read_image(prepare_photo(image_bytes))
+    # the normal reading order works for most tables; when it finds (almost) nothing, the OCR has usually read
+    # the labels and the numbers as two separate columns, so the table is rebuilt row by row instead.
+    # (Choosing by "more values" was tested and rejected: on 2 of 5 example photos the row-wise reading
+    # found more values but wrong ones.)
+    parsed = parse_nutrition(ocr["text"])
+    if len(parsed["per_100g"]) < 3:
+        rows = parse_nutrition(table_rows(ocr["lines"]))
+        if len(rows["per_100g"]) > len(parsed["per_100g"]):
+            parsed = rows
+    if parsed["per_100g"]:
+        parsed["source"] = "the nutrition-table photo" + (f" ({parsed['basis']})" if parsed["basis"].startswith("converted") else "")
+    return {"parsed": parsed, "text": ocr["text"], "confidence": ocr["mean_confidence"]}
 
 
 @st.cache_data(show_spinner=False, max_entries=100)
@@ -126,6 +147,9 @@ def nutrition_defaults(result: dict) -> tuple:
                     values.setdefault(k, estimate["per_100g"].get(k))
                 if filled:
                     source += f"; **{', '.join(filled)} estimated** from " + reference
+    # no food has more than 100 g of a nutrient or 900 kcal per 100 g: drop impossible values (OCR or data errors)
+    values = {k: v for k, v in values.items()
+              if v is not None and 0 <= float(v) <= (900 if NUTRIENTS.get(k, ("", "g"))[1] == "kcal" else 100)}
     return values, source or "no nutrition table found - type the values from the packet", serving
 
 
@@ -181,7 +205,7 @@ def view_summary(result: dict, guide: dict):
 
 def view_ingredients(result: dict):
     summary = result["summary"]
-    html(ui.category_cards(summary["groups"], CATEGORY_ORDER))
+    html(ui.category_cards(summary["groups"], CATEGORY_ORDER, summary.get("subgroups")))
 
     hidden, notes = summary["hidden"], []
     if hidden["sugars_under_other_names"]:
@@ -239,8 +263,13 @@ def view_guide(result: dict, rid: str, profile, weight: float, guide: dict):
         per100 = {}
         for i, key in enumerate(EDITABLE_NUTRIENTS):
             name, nunit = NUTRIENTS[key]
+            limit = 900.0 if nunit == "kcal" else 100.0
             default = guide["values"].get(key)
-            value = cols[i % 4].number_input(f"{name} ({nunit})", min_value=0.0, max_value=900.0 if nunit == "kcal" else 100.0,
+            if default is not None and not 0 <= float(default) <= limit:
+                default = None              # an impossible value (bad OCR or data) is left for the user to type
+            if st.session_state.get(f"{rid}-{key}") is not None and not 0 <= st.session_state[f"{rid}-{key}"] <= limit:
+                del st.session_state[f"{rid}-{key}"]
+            value = cols[i % 4].number_input(f"{name} ({nunit})", min_value=0.0, max_value=limit,
                                              value=float(default) if default is not None else None, step=0.1,
                                              format="%.1f", key=f"{rid}-{key}", placeholder="not given")
             if value is not None:
@@ -292,13 +321,16 @@ def view_additives(result: dict, weight: float):
         number = re.search(r"\(INS ([^)]+)\)$", row["additive"])
         if number:
             adi_by_number[number.group(1)] = row
+    from src.assistant.knowledge import knowledge_base
+    kb = knowledge_base()
     seen, cards = set(), []
     for ent in additives:
         key = ent.get("ins_number") or ent["text"].lower()
         if key in seen:
             continue
         seen.add(key)
-        cards.append(ui.additive_card(ent, adi_by_number.get(ent.get("ins_number") or "")))
+        flags = kb.regulatory_flags(ent["ins_number"]) if ent.get("ins_number") else []
+        cards.append(ui.additive_card(ent, adi_by_number.get(ent.get("ins_number") or ""), flags))
     left, right = st.columns(2)
     with left:
         html("".join(cards[0::2]))
@@ -306,7 +338,8 @@ def view_additives(result: dict, weight: float):
         html("".join(cards[1::2]))
     html('<div class="muted">ADI = acceptable daily intake: the amount that can be eaten every day over a lifetime '
          'without appreciable health risk (JECFA / EFSA). Labels rarely state how much additive is inside; permitted '
-         'use levels keep normal portions well below the ADI.</div>')
+         'use levels keep normal portions well below the ADI. ⚖️ badges show additives whose rules differ between '
+         'the EU, India (FSSAI) and the US (FDA); ask the assistant “is it banned?” for details and sources.</div>')
 
 
 def view_reading(result: dict, active: tuple):
@@ -343,6 +376,42 @@ def view_reading(result: dict, active: tuple):
                      hide_index=True, width="stretch")
 
 
+def view_assistant(result: dict, rid: str, guide: dict, weight: float):
+    """Chat about this product. Answers come from the knowledge base and the scan only (src/assistant)."""
+    from src.assistant.assistant import IngredientAssistant
+    key = f"{rid}-chat"
+    history = st.session_state.setdefault(key, [])
+    bot = IngredientAssistant(result, guide, weight)
+
+    def ask(question: str):
+        reply = bot.answer(question, history)
+        history.append(reply)
+        st.rerun()
+
+    head, clear = st.columns([5, 1])
+    head.markdown(ui.section("Ask about it", "answers from our food database and your scan, with sources"),
+                  unsafe_allow_html=True)
+    if history and clear.button("Clear chat", key=f"{rid}-chat-clear", width="stretch"):
+        st.session_state[key] = []
+        st.rerun()
+    if not history:
+        html(ui.chat_intro())
+    with st.container(border=bool(history)):          # grows with the chat: the newest answer stays in view
+        for reply in history:
+            html(ui.chat_message("user", reply["question"]))
+            html(ui.chat_message("bot", reply["text"], reply["sources"], reply["refused"],
+                                 reply.get("resolved_reference", "")))
+    suggestions = history[-1]["suggestions"] if history else bot.suggestions()
+    if suggestions:
+        html('<div class="suggest-label">Try asking</div>')
+        for col, question in zip(st.columns(len(suggestions)), suggestions):
+            if col.button(question, key=f"{rid}-suggest-{len(history)}-{question}", width="stretch"):
+                ask(question)
+    question = st.chat_input("Ask about an ingredient, a code, allergens, your portion ...", key=f"{rid}-chat-input")
+    if question:
+        ask(question)
+
+
 # ------------------------------------------------------------------------------------ page
 html(ui.hero())
 
@@ -353,6 +422,9 @@ with st.sidebar:
     choice = st.radio("Classifier", options,
                       help="Hybrid = dictionary rules + fine-tuned DistilBERT + fuzzy matching against the knowledge base.")
     kind = CLASSIFIERS[choice]
+    # ingredient photos are always read by our own CRNN (read_image falls back to RapidOCR only if the
+    # model file is missing); RapidOCR's detector still finds where the text lines are
+    recognizer = "crnn"
     st.markdown("### 👤 Who is eating?")
     profile_name = st.selectbox("Profile", list(PROFILES), label_visibility="collapsed", key="profile")
     profile = PROFILES[profile_name]
@@ -400,6 +472,32 @@ with st.expander("📥  Scan a product: photo, camera, text or example", expande
             if scan_now:
                 st.session_state.active = ("image", data, rot_u, crop)
 
+        # optional second photo: the nutrition table (often on another side of the pack)
+        st.markdown("**Nutrition table photo** (optional) - for the daily intake guide, instead of an estimate")
+        nutrition_upload = st.file_uploader("Drop a photo of the nutrition table", type=["jpg", "jpeg", "png", "webp"],
+                                            key="nutrition_upload", label_visibility="collapsed")
+        if nutrition_upload is not None:
+            st.session_state.nutrition_photo = nutrition_upload.getvalue()
+            n_col, msg_col = st.columns([1, 2])
+            with n_col:
+                st.image(nutrition_upload.getvalue(), caption="Nutrition table photo", width="stretch")
+            with msg_col:
+                with st.spinner("Reading the nutrition table ..."):
+                    try:
+                        read = read_nutrition_photo(st.session_state.nutrition_photo)
+                        values = read["parsed"]["per_100g"]
+                    except Exception:
+                        values = {}
+                if values:
+                    found = ", ".join(NUTRIENTS[k][0].lower() for k in values if k in NUTRIENTS)
+                    html(ui.callout(f"✅ <b>{len(values)} values read</b> ({ui.e(found)}). They are used in "
+                                    "<b>Is this amount OK?</b> - check and correct them there.", "good"))
+                else:
+                    html(ui.callout("No nutrition values could be read from this photo. Try a sharper, straight "
+                                    "photo of the table, or type the values in <b>Is this amount OK?</b>.", "warn"))
+        else:
+            st.session_state.nutrition_photo = None
+
     with tab_camera:
         shot = st.camera_input("Point the camera at the ingredient list")
         if shot is not None:
@@ -445,13 +543,22 @@ result = None
 if active[0] == "image":
     with st.spinner("Reading the label (usually 2-10 seconds) ..."):
         try:
-            result = scan_image_cached(active[1], kind, active[2], active[3])
+            result = scan_image_cached(active[1], kind, active[2], active[3], recognizer)
         except Exception as err:
             st.error(f"This file could not be read as an image: {err}")
 else:
     result = scan_text_cached(active[1], kind)
 if result is None:
     st.stop()
+nutrition_sig = ""
+if st.session_state.get("nutrition_photo"):     # values from the nutrition-table photo replace any estimate
+    try:
+        read = read_nutrition_photo(st.session_state.nutrition_photo)
+    except Exception:
+        read = None
+    if read and read["parsed"]["per_100g"]:
+        result = {**result, "nutrition": read["parsed"]}
+        nutrition_sig = hashlib.md5(st.session_state.nutrition_photo).hexdigest()[:8]
 
 head_left, head_right = st.columns([5, 1])
 source = "your photo" if active[0] == "image" else "the typed text"
@@ -472,12 +579,13 @@ if "ocr" in result and (result["ocr"]["mean_confidence"] < 0.8 or len(result["en
                     "may be missing. Crop to the list in the Upload tab, or fix the text in <b>How it was read</b>.",
                     "warn"))
 
-rid = hashlib.md5((result["input_text"] + kind).encode()).hexdigest()[:10]
+# a new nutrition-table photo gives a new id, so the guide's inputs start from its values
+rid = hashlib.md5((result["input_text"] + kind + nutrition_sig).encode()).hexdigest()[:10]
 guide = current_guide(result, rid, profile)
 view_summary(result, guide)
 
-t_ing, t_guide, t_all, t_add, t_read = st.tabs(["🧾 Ingredients", "⚖️ Is this amount OK?", "⚠️ Allergens",
-                                                 "⚗️ Additives", "🔍 How it was read"])
+t_ing, t_guide, t_all, t_add, t_ask, t_read = st.tabs(["🧾 Ingredients", "⚖️ Is this amount OK?", "⚠️ Allergens",
+                                                        "⚗️ Additives", "💬 Ask about it", "🔍 How it was read"])
 with t_ing:
     view_ingredients(result)
 with t_guide:
@@ -486,6 +594,8 @@ with t_all:
     view_allergens(result)
 with t_add:
     view_additives(result, weight)
+with t_ask:
+    view_assistant(result, rid, guide, weight)
 with t_read:
     view_reading(result, active)
 

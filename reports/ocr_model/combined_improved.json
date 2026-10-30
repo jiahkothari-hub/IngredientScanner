@@ -1,0 +1,266 @@
+{
+  "crops": 377,
+  "photos": 57,
+  "methods": {
+    "line": {
+      "cer": 0.07700823358472289,
+      "wer": 0.23461730865432717,
+      "line_accuracy": 0.4960212201591512,
+      "cer_ignoring_case": 0.042482529578634194,
+      "lines_changed_from_rapidocr": 39,
+      "chosen_margins": [
+        {
+          "margin": "inf",
+          "cer_on_choice_half": {
+            "0.0": 0.05928623452294246,
+            "0.1": 0.05870356882738529,
+            "0.25": 0.05506190823015295,
+            "0.5": 0.047050254916241804,
+            "1.0": 0.0450109249817917,
+            "inf": 0.04166059723233795
+          }
+        },
+        {
+          "margin": "0.1",
+          "cer_on_choice_half": {
+            "0.0": 0.09198734844491302,
+            "0.1": 0.09106483921982077,
+            "0.25": 0.0911966262519768,
+            "0.5": 0.0911966262519768,
+            "1.0": 0.09370057986294149,
+            "inf": 0.09356879283078545
+          }
+        }
+      ]
+    },
+    "word": {
+      "cer": 0.07161143015290942,
+      "wer": 0.22011005502751377,
+      "line_accuracy": 0.5145888594164456,
+      "cer_ignoring_case": 0.04054521552618833,
+      "lines_changed_from_rapidocr": 31,
+      "chosen_margins": [
+        {
+          "margin": "inf",
+          "cer_on_choice_half": {
+            "0.0": 0.051128914785142025,
+            "0.1": 0.049526584122359794,
+            "0.25": 0.04734158776402039,
+            "0.5": 0.04603058994901675,
+            "1.0": 0.043117261471230885,
+            "inf": 0.04166059723233795
+          }
+        },
+        {
+          "margin": "0.25",
+          "cer_on_choice_half": {
+            "0.0": 0.09093305218766473,
+            "0.1": 0.09014232999472852,
+            "0.25": 0.08869267264101212,
+            "0.5": 0.08895624670532419,
+            "1.0": 0.0926462836056932,
+            "inf": 0.09356879283078545
+          }
+        }
+      ]
+    }
+  },
+  "rapidocr": {
+    "cer": 0.0689130284370027,
+    "wer": 0.22111055527763882,
+    "line_accuracy": 0.506631299734748,
+    "cer_ignoring_case": 0.04013007680066422
+  },
+  "crnn_ft": {
+    "cer": 0.09181484812841624,
+    "wer": 0.2766383191595798,
+    "line_accuracy": 0.3421750663129973,
+    "cer_ignoring_case": 0.06739085311008096
+  },
+  "changed_examples": [
+    {
+      "label": "PERMITTED CLASS II",
+      "rapidocr": "PERMITTED CLASS IL",
+      "crnn": "PERMITTED CLASS II",
+      "combined": "PERMITTED CLASS II"
+    },
+    {
+      "label": "Maltodextrin, lodised Salt, Flavour (Natural and Nature Identical Flavouring",
+      "rapidocr": "Maltodexdrin, lodised Salt, Flavour (Natural and Nature Identical Flavouring",
+      "crnn": "maltodextrin, lodised Salt, flavour (Natural and Nature Identical Flavouring",
+      "combined": "maltodextrin, lodised Salt, Flavour (Natural and Nature Identical Flavouring"
+    },
+    {
+      "label": "Substances), Spices & Condiments, Flavour Enhancers (E627 & E631), Edible",
+      "rapidocr": "Substances), \"Spices & Condimenits, Flavour Enhancers (627 & 631), Edible",
+      "crnn": "Substances), Spices & Condiments, Flavour Enhancers (327 & 631), Edible",
+      "combined": "Substances), \"Spices & Condiments, Flavour Enhancers (627 & 631), Edible"
+    },
+    {
+      "label": "*As flavouring agent. Contains Onion and Garlic",
+      "rapidocr": "\"As filavouring agent. \"Contains Onion and Garlic",
+      "crnn": "*As flavouring agent. \"Contains Onion and Garlic",
+      "combined": "*As flavouring agent. \"Contains Onion and Garlic"
+    },
+    {
+      "label": "ALLERGEN ADVICE: Contains Nut, Milk, Wheat",
+      "rapidocr": "ALLERGEN ADVICE: Contains Nut, Mik, Wheat",
+      "crnn": "Allergen ADvice: Contains nut, Milk, Wheat",
+      "combined": "ALLERGEN ADVICE: Contains Nut, Milk, Wheat"
+    },
+    {
+      "label": "Whole Wheat,",
+      "rapidocr": "WHOLEWHEAT",
+      "crnn": "WHOLE WHEAT",
+      "combined": "WHOLE WHEAT"
+    },
+    {
+      "label": "Refined Sunflower Oil: 99.99%, TBHQ (E319): Antioxidant,",
+      "rapidocr": "Refined Sunflower Oil:99.99%, TBHQ (E319): Antioxidant,",
+      "crnn": "Refined Sunflower Oil: 99.99%, TBHQ (E319) Antioxidant,",
+      "combined": "Refined Sunflower Oil: 99.99%, TBHQ (E319) Antioxidant,"
+    },
+    {
+      "label": "Vitamin A: Micronutrient, Vitamin D: Micronutrient",
+      "rapidocr": "Vitamin A: Micronutrient, Vitamin D: Micronutrient",
+      "crnn": "Vitamin A Micronutrient, Vitamin D Micronutrient",
+      "combined": "Vitamin A Micronutrient, Vitamin D Micronutrient"
+    },
+    {
+      "label": "Powder, Dried Garlic Powder, Black Salt,",
+      "rapidocr": "Powder, DriedGarlic Powder, Black Salt,",
+      "crnn": "Powder, Dried Garlic Powder, Black Salt,",
+      "combined": "Powder, Dried Garlic Powder, Black Salt,"
+    },
+    {
+      "label": "Orange Fruit Powder (0.9%), Colours (171, 110, 102),",
+      "rapidocr": "Fruit Powder (0.9%\"), Colours (171, 110, 102),",
+      "crnn": "Fruit Powder (0.9%), Colours (171, 110, 102),",
+      "combined": "Fruit Powder (0.9%), Colours (171, 110, 102),"
+    },
+    {
+      "label": "Vitamins, Anticaking Agent (341), Stabilizers",
+      "rapidocr": "Vitamins, Anticaking Agent (341(i), tabilizers",
+      "crnn": "Vitamins, Anticaking Agent (341(ii)), Stabilizers",
+      "combined": "Vitamins, Anticaking Agent (341(i), Stabilizers"
+    },
+    {
+      "label": "Wheat flour (Atta 53.8%), Refined Palm oil,",
+      "rapidocr": "Wheat flour (Atta 53.8%), Refined Palm oil,",
+      "crnn": "Wheat flour (Atta (53.8%), Refssed Palm oil,",
+      "combined": "Wheat flour (Atta (53.8%), Refined Palm oil,"
+    },
+    {
+      "label": "Sugar, Invert syrup, Multi grain flour mix 2.8% Jowar,",
+      "rapidocr": "Sugar, Invert syrup, Multi grain flour mix 2.8% Jwar,",
+      "crnn": "Sugar, Invert syrup, Multi grain flour mix 2.8% (war,",
+      "combined": "Sugar, Invert syrup, Multi grain flour mix 2.8% (war,"
+    },
+    {
+      "label": "[INS 500(ii), INS 503(ii)], Emulsifier [INS-322(i), INS 472)",
+      "rapidocr": "[INS 500(i),INS 503(i)], Emulsifier [INS-322(i), INS 4720],",
+      "crnn": "[INS 500(i), INS 503(ii)], Emulsifier [INS322(i), INS 472),",
+      "combined": "[INS 500(i), INS 503(ii)], Emulsifier [INS322(i), INS 472),"
+    },
+    {
+      "label": "ALLERGEN: WHEAT, MILK, SOY, SULPHITE",
+      "rapidocr": "ERGEN:WHEAT, MILK, SOY, SULPHITE",
+      "crnn": "ERGEN WHEAT, MILK, SOY, SULPHITE",
+      "combined": "ERGEN WHEAT, MILK, SOY, SULPHITE"
+    },
+    {
+      "label": "Cranberry(4%),Raisins(4%),Almonds(4%),Pumpkin Seeds(3%),Sugar,Cereal",
+      "rapidocr": "anbery(4%), Raisins (4%), Almonds (4%), Pumpkin Seeds",
+      "crnn": "le (6%), Raisins (4%), Almonds (4%), Pumpkin Seeds",
+      "combined": "le (6%), Raisins (4%), Almonds (4%), Pumpkin Seeds"
+    },
+    {
+      "label": "[SUGAR, CITRIC ACID], 10DISED SALT, RAISING AGENTS",
+      "rapidocr": "[SUGAR, CITRIC ACID], IODISED SALT, RAISING AGENTS",
+      "crnn": "SUGAR, CITRIC ACID], IODISED SALT, RAISING AGENTS",
+      "combined": "SUGAR, CITRIC ACID], IODISED SALT, RAISING AGENTS"
+    },
+    {
+      "label": "(503 (ii), 500 (i)], MILK SOLIDS, FLOUR TREATMENT AGENT",
+      "rapidocr": "(503 (). 500 ()], MILK SOLIDS, FLOUR TREATMENT AGENT",
+      "crnn": "(503 (Ii), 500 (II)], MILK SOLIDS, FLOUR TREATMENT AGENT",
+      "combined": "(503 (Ii), 500 (II)], MILK SOLIDS, FLOUR TREATMENT AGENT"
+    },
+    {
+      "label": "[1101 (ii)] AND EMULSIFIER OF VEGETABLE ORIGIN [472e]",
+      "rapidocr": "(1101 () AND EMULSIFIER OF VEGETABLE ORIGIN [472e]",
+      "crnn": "(1101 (i)] and emulsifier of vegetaBle origin [472e]",
+      "combined": "(1101 (i)] AND EMULSIFIER OF VEGETABLE ORIGIN [472e]"
+    },
+    {
+      "label": "(D-GLUCOSE, LEVULOSE)",
+      "rapidocr": "D-GLUCOSE,LEVULOSE",
+      "crnn": "0 - Glucose, Levulose",
+      "combined": "0 - Glucose, Levulose"
+    },
+    {
+      "label": "CONTAINS: WHEAT, MILK",
+      "rapidocr": "CONTAINS:WHEAT,MILK",
+      "crnn": "contains wheat, milk",
+      "combined": "contains wheat, milk"
+    },
+    {
+      "label": "acid), colours (paprika extract, plain",
+      "rapidocr": "acid). coiours (paprika extract, plain",
+      "crnn": "acid), colours (poprika extroct, plain",
+      "combined": "acid). colours (paprika extract, plain"
+    },
+    {
+      "label": "Bacopa monnieri (brahmi) whole plant-BacoMind 20",
+      "rapidocr": "Bacopa monnieri (brahmi) whole plant- Bacolind 2s",
+      "crnn": "Bana mornier (brahmi whole plant - Baonlind 2",
+      "combined": "Bana mornier (brahmi whole plant - Baonlind 2"
+    },
+    {
+      "label": "Ginkgo biloba (ginkgo) leaf - GinkgoSelect",
+      "rapidocr": "Gnkgo biloba (ginkgo) leaf - GinkgoSelect",
+      "crnn": "Ginkgo biloba (ginkgo leaf - Ginkgosoloct",
+      "combined": "Ginkgo biloba (ginkgo) leaf - GinkgoSelect"
+    },
+    {
+      "label": "sd to gtsenosides Rg1, Re, Rf, Rg2, Rb1,",
+      "rapidocr": "d to pesenos des Rg1, Re, Rt, Rg2, Rb1,",
+      "crnn": "sed o green ondes Pg), Re, Ri, R2, Rol,",
+      "combined": "sed to green des Pg), Re, Rt, Rg2, Rol,"
+    },
+    {
+      "label": "Rb2, Rc, Rd 4.25mg",
+      "rapidocr": "Rb2, Rc. Rd 4 25mg",
+      "crnn": "602, RC Rd 4 250g",
+      "combined": "602, Rc. Rd 4 25mg"
+    },
+    {
+      "label": "Made in Australia.",
+      "rapidocr": "Made in Australa.",
+      "crnn": "Made n Australia.",
+      "combined": "Made in Australia."
+    },
+    {
+      "label": "(5%): Milk Solids, Live aBc Probiotic Cultures",
+      "rapidocr": "(59): Milk Solids. Live aBc Probiotic Cultures",
+      "crnn": "(5%), Milk solids, live a Probiotic cultures",
+      "combined": "(5%), Milk Solids. Live aBc Probiotic Cultures"
+    },
+    {
+      "label": "lactis Lactobacillus casei 1 Billion Probiotic Count",
+      "rapidocr": "6 Lactobacillus casei 1 Billion Probiotic Count",
+      "crnn": "c lactobacillus casei 31 Billion Probiotic coun",
+      "combined": "c Lactobacillus casei 1 Billion Probiotic Count"
+    },
+    {
+      "label": "raising agent (sodium bicarbonate).",
+      "rapidocr": "raising agent (sodlum bicarbonate)",
+      "crnn": "raising agent (sodium bicarbonate,",
+      "combined": "raising agent (sodium bicarbonate)"
+    }
+  ],
+  "best_method": "word",
+  "crnn_version": "improved",
+  "oracle_line_cer": 0.04760257386009825,
+  "lines_crnn_strictly_better": 67
+}
