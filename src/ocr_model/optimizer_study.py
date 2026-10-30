@@ -111,7 +111,6 @@ def report(study: dict):
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
-    import numpy as np
     sweep = [r for r in study["runs"] if r["batch_size"] == 32]
     figs = project_path("reports/figures/ocr_model")
 

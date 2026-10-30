@@ -22,7 +22,7 @@ import gzip
 import json
 import random
 import time
-from collections import Counter, deque
+from collections import deque
 
 import cv2
 import numpy as np

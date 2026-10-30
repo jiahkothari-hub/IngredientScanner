@@ -25,6 +25,11 @@ Thumbs.db
 # Pretrained base weights and intermediate checkpoints (re-downloadable / re-trainable)
 models/pretrained/
 models/runs/
+# EasyOCR weights (only for the optional EasyOCR fallback; EasyOCR downloads them itself)
+models/easyocr/
+
+# Build artefacts
+paper/*.zip
 
 # Open Food Facts training crops for the OCR model (re-creatable: python -m src.ocr_model.collect_off_crops)
 data/ocr_crops/off/

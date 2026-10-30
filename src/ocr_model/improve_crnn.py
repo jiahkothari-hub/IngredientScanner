@@ -19,7 +19,7 @@ import numpy as np
 import pandas as pd
 import torch
 
-from src.ocr_model.charset import BLANK, ID2CHAR, NUM_CLASSES
+from src.ocr_model.charset import BLANK, ID2CHAR
 from src.ocr_model.evaluate import error_rates
 from src.ocr_model.finetune import crnn_read, finetune, load_rows, photo_halves, read_crop
 from src.ocr_model.ppocr_finetune import misaligned

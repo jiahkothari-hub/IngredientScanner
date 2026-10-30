@@ -422,15 +422,9 @@ with st.sidebar:
     choice = st.radio("Classifier", options,
                       help="Hybrid = dictionary rules + fine-tuned DistilBERT + fuzzy matching against the knowledge base.")
     kind = CLASSIFIERS[choice]
-    from src.ocr_model.recognizer import available as crnn_available
-    readers = {"Our CRNN (trained by us)": "crnn", "RapidOCR (pretrained)": "rapidocr"}
-    if not crnn_available():
-        readers.pop("Our CRNN (trained by us)")
-    recognizer = readers[st.radio("Text reader", list(readers),
-                                  help="Our CRNN: CNN + BiLSTM + CTC, trained by us on synthetic and real food-label "
-                                       "lines; RapidOCR still finds where the text lines are. RapidOCR: the "
-                                       "pretrained PP-OCR recogniser. The nutrition-table photo is always read "
-                                       "by RapidOCR.")]
+    # ingredient photos are always read by our own CRNN (read_image falls back to RapidOCR only if the
+    # model file is missing); RapidOCR's detector still finds where the text lines are
+    recognizer = "crnn"
     st.markdown("### 👤 Who is eating?")
     profile_name = st.selectbox("Profile", list(PROFILES), label_visibility="collapsed", key="profile")
     profile = PROFILES[profile_name]
